@@ -1,4 +1,26 @@
 site_name: Evelina_IS
 theme: 
     name: material
-    
+    highlightjs: true
+    hljs_languages:
+    - c
+    - assembly
+    - python
+
+    primary: purple
+
+    icon:
+        logo:material/dog
+    language: en
+    features:
+        - navigation.tabs
+        - search.highlight
+        - search.suggestions
+copyright: "Copyright © 2026 Evelina_IS"
+nav:
+  - 首页: index.md
+  - fds_project:
+      - project1: fds_project/project1.md
+
+
+
