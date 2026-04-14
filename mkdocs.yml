@@ -1,26 +1,126 @@
 site_name: Evelina_IS
-theme: 
+site_description: My personal documentation site
+site_author: Evelina_IS
+site_url: https://evelina-is.github.io/mkdocs_project/
+
+# 仓库配置（如果使用 GitHub Pages）
+repo_name: Evelina_IS/mkdocs_project
+repo_url: https://github.com/Evelina_IS/mkdocs_project
+edit_uri: edit/main/docs/
+
+# 主题配置
+theme:
     name: material
     highlightjs: true
     hljs_languages:
-    - c
-    - assembly
-    - python
-
+        - c
+        - assembly
+        - python
+        - javascript
+        - bash
+        - yaml
+        - json
     primary: purple
-
     icon:
-        logo:material/dog
+        logo: material/dog
     language: en
     features:
         - navigation.tabs
+        - navigation.tabs.sticky
+        - navigation.sections
+        - navigation.expand
+        - navigation.top
         - search.highlight
         - search.suggestions
-copyright: "Copyright © 2026 Evelina_IS"
+        - search.share
+        - content.code.copy
+        - content.code.annotate
+
+# 版权信息
+copyright: "Copyright &copy; 2026 Evelina_IS"
+
+# 导航结构
 nav:
-  - 首页: index.md
-  - fds_project:
-      - project1: fds_project/project1.md
+    - 首页: index.md
+    - FDS Project:
+        - Project 1: fds_project/project1.md
 
+# Markdown 扩展配置
+markdown_extensions:
+    # Python Markdown 基础扩展
+    - admonition
+    - pymdownx.details
+    - pymdownx.superfences
+    - pymdownx.highlight:
+        anchor_linenums: true
+        line_spans: __span
+        pygments_lang_class: true
+    - pymdownx.inlinehilite
+    - pymdownx.snippets
+    - pymdownx.tabbed:
+        alternate_style: true
+    - pymdownx.critic
+    - pymdownx.caret
+    - pymdownx.keys
+    - pymdownx.mark
+    - pymdownx.tilde
+    - attr_list
+    - def_list
+    - footnotes
+    - md_in_html
+    - tables
+    - toc:
+        permalink: true
+        toc_depth: 3
+    
+    # 额外的扩展
+    - pymdownx.arithmatex:
+        generic: true
+    - pymdownx.betterem:
+        smart_enable: all
+    - pymdownx.emoji:
+        emoji_index: !!python/name:material.extensions.emoji.twemoji
+        emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
+# 插件配置
+plugins:
+    - search:
+        lang: en
+        separator: '[\s\-]+'
+        min_search_length: 3
+        prebuild_index: true
+    - mkdocs-nav-weight
+    - git-revision-date-localized:
+        type: date
+        fallback_to_build_date: true
+    - mkdocstrings:
+        default_handler: python
+        handlers:
+            python:
+                paths: [src]
+                options:
+                    show_root_heading: true
+                    show_source: true
 
+# 额外的 CSS/JS
+extra_css:
+    - stylesheets/extra.css
+
+extra_javascript:
+    - javascripts/mathjax.js
+    - https://polyfill.io/v3/polyfill.min.js?features=es6
+    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# 社交链接等额外配置
+extra:
+    social:
+        - icon: fontawesome/brands/github
+          link: https://github.com/Evelina_IS
+        - icon: fontawesome/brands/twitter
+          link: https://twitter.com/Evelina_IS
+    consent:
+        title: Cookie consent
+        description: >-
+          We use cookies to recognize your repeated visits and preferences,
+          as well as to measure the effectiveness of our documentation and
+          whether users find what they're searching for.

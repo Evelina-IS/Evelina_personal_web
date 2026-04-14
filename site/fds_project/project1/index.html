@@ -1,0 +1,1245 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../..">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>project1 - Evelina_IS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#comparison-of-two-algorithms" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Evelina_IS" class="md-header__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Evelina_IS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              project1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  fds_project
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Evelina_IS" class="md-nav__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Evelina_IS
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fds_project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    fds_project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    project1
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    project1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#authors-name-wei-lan-evelina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Author's Name: Wei Lan Evelina
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Author&#39;s Name: Wei Lan Evelina">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-2026-03-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DATA: 2026-03-11
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DATA: 2026-03-11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter1: Introduction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter2-algorithm-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter2: Algorithm Specification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter2: Algorithm Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algorithm-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        algorithm 1:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithm-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algorithm 2:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter3testing-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter3:Testing result
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter3:Testing result">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#experimental-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experimental Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charpter-4-analysis-and-comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Charpter 4 : Analysis and Comments
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Charpter 4 : Analysis and Comments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-and-space-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time and space complexity:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        conclusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#authors-name-wei-lan-evelina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Author's Name: Wei Lan Evelina
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Author&#39;s Name: Wei Lan Evelina">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-2026-03-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DATA: 2026-03-11
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DATA: 2026-03-11">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chapter1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter1: Introduction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter2-algorithm-specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter2: Algorithm Specification
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter2: Algorithm Specification">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#algorithm-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        algorithm 1:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#algorithm-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Algorithm 2:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chapter3testing-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Chapter3:Testing result
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Chapter3:Testing result">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#experimental-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Experimental Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#charpter-4-analysis-and-comments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Charpter 4 : Analysis and Comments
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Charpter 4 : Analysis and Comments">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#time-and-space-complexity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Time and space complexity:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        conclusion
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="comparison-of-two-algorithms">Comparison of two algorithms</h1>
+<h2 id="authors-name-wei-lan-evelina">Author's Name: Wei Lan Evelina</h2>
+<h3 id="data-2026-03-11">DATA: 2026-03-11</h3>
+<hr />
+<h4 id="chapter1-introduction">Chapter1: Introduction</h4>
+<p><strong>Performance Measurement:</strong></p>
+<ul>
+<li>
+<p>Given $S$ as a collection of $N$ positive integers that are no more than $V$. For any given number $c$, you are supposed to find two integers $a$ and $b$ from $S$, so that $a+b=c$.</p>
+</li>
+<li>
+<p>And the following will give two typical algorithms to compare their time conplexity.</p>
+</li>
+</ul>
+<h4 id="chapter2-algorithm-specification">Chapter2: Algorithm Specification</h4>
+<ul>
+<li>General explanation: the two algotithms adopted <code>srand()</code>&amp;<code>rand()</code> to gennerate random number to make sure the randomness. Also, they adopt repetition factor to ensure the accuracy.</li>
+</ul>
+<h5 id="algorithm-1">algorithm 1:</h5>
+<pre><code class="language-c">
+
+
+#include&lt;stdio.h&gt;
+
+
+
+#include&lt;time.h&gt;
+
+
+
+#include&lt;stdlib.h&gt;
+
+
+
+clock_t start,stop;
+
+
+
+double duration;
+
+
+
+int main(){
+
+
+
+    int s[100000]; //a collection that contain the elements of N
+
+
+
+    int v;// defining the maximum number
+
+
+
+    int c;//defining the targeted number
+
+
+
+    int N;//defining the total number
+
+
+
+    printf(&quot;PLS input maximum,targeted number and total number&quot;);
+
+
+
+    scanf(&quot;%d %d %d&quot;,&amp;v,&amp;c,&amp;N);//inputing the maximum number &amp; targeted number
+
+
+
+    srand(time(NULL));
+
+
+
+    for(int i=1;i&lt;=N;i++){
+
+
+
+        /*scanf(&quot;%d&quot;,&amp;s[i-1]);//inputing the elements of s
+
+
+
+        if (s[i-1]&gt;v){//check if the input number exceeds the boundary
+
+
+
+            printf(&quot;the entered number exceeds the maximum value!!&quot;);
+
+
+
+            return 0;//the version that need to input number by hand
+
+
+
+        }*/
+
+
+
+        s[i-1]=rand()%v+1;
+
+
+
+    }
+
+
+
+    // the algorithm 1 adopted is two-double traversal method. the following is the main part of the function.
+
+
+
+    //i&amp;j contain the targeted-position information
+
+
+
+    int K=100;
+
+
+
+    for(int m=1;m&lt;=K;m++){//to ensure the accuracy by running the program repeatedly
+
+
+
+    start=clock();
+
+
+
+    int number=0; //finding the total targeted number
+
+
+
+    for(int i=0;i&lt;=N-2;i++){//traverse every posible combinations
+
+
+
+        for(int j=i+1;j&lt;=N-1;j++){
+
+
+
+              if(s[i]+s[j]==c){
+
+
+
+                    printf(&quot;(%d , %d)\n&quot;,s[i],s[j]);//outputing the targeted number
+
+
+
+              }
+
+
+
+        }
+
+
+
+    }
+
+
+
+    stop=clock();
+
+
+
+    duration+=((double)(stop-start)/CLK_TCK);//number of ticks per second.
+
+
+
+}
+
+
+
+    printf(&quot;the running time is %f&quot;,duration/K);
+
+
+
+}
+
+
+
+</code></pre>
+<ul>
+<li>This one adopts two-double traversal method. We need to traverse all the posible situation by two-double circulation.Because of its loop structure, the time complexity reaches $O(N^2)$.</li>
+</ul>
+<h5 id="algorithm-2">Algorithm 2:</h5>
+<pre><code class="language-c">
+
+
+#include&lt;stdio.h&gt;
+
+
+
+#include&lt;time.h&gt;
+
+
+
+#include&lt;stdlib.h&gt;
+
+
+
+clock_t start,stop;
+
+
+
+double duration;
+
+
+
+int main(){
+
+
+
+    int s[100000]; //a collection that contain the elements of N
+
+
+
+    int hash[100000]={0};
+
+
+
+    int v;// defining the maximum number
+
+
+
+    int c;//defining the targeted number
+
+
+
+    int N;//defining the total number
+
+
+
+    printf(&quot;PLS input maximum,targeted number and total number&quot;);
+
+
+
+    scanf(&quot;%d %d %d&quot;,&amp;v,&amp;c,&amp;N);//inputing the maximum number &amp; targeted number
+
+
+
+    srand(time(NULL));
+
+
+
+    for(int i=1;i&lt;=N;i++){
+
+
+
+        /*scanf(&quot;%d&quot;,&amp;s[i-1]);//inputing the elements of s
+
+
+
+        if (s[i-1]&gt;v){//check if the input number exceeds the boundary
+
+
+
+            printf(&quot;the entered number exceeds the maximum value!!&quot;);
+
+
+
+            return 0;//the version that need to input number by hand
+
+
+
+        }*/
+
+
+
+        s[i-1]=rand()%v+1;
+
+
+
+    }
+
+
+
+
+
+    //the algorithms 2 is based on the hash algorithms
+
+
+
+    start=clock();
+
+    for(int k=0;k&lt;=9;k++)//to ensure the accuracy by running the program repeatedly
+
+    for (int i=0;i&lt;N-1;i++){
+
+
+
+            hash[s[i]]=1;// to mark this number
+
+
+
+            if(s[i]&lt;c&amp;&amp;hash[c-s[i]]==1){// to find if the targeted number has already appeared.
+
+
+
+                printf(&quot;(%d , %d)\n&quot;,s[i],c-s[i]);
+
+
+
+            }
+
+
+
+    }
+
+
+
+    stop=clock();
+
+
+
+    duration=((double)(stop-start))/CLK_TCK;
+
+
+
+    printf(&quot;%f&quot;,duration);
+
+
+
+}
+
+
+
+</code></pre>
+<ul>
+<li>
+<p>This algorithm adopts hash algorithm. It can traverse for only one loop and it is the most effective one I have thought.The time complexity is $O(N)$,far above that in algorithm 1.</p>
+</li>
+<li>
+<p>The main strategy of algorithm 2 is to mark the number that has already appeared and check if the targeted number--the one that adds the giving number is $c$ --has already appeared. If it is ,than put it out.</p>
+</li>
+</ul>
+<h4 id="chapter3testing-result">Chapter3:Testing result</h4>
+<h5 id="experimental-setup">Experimental Setup</h5>
+<ul>
+<li>To empirically validate the theoretical complexity analysis, both algorithms were tested under identical conditions:</li>
+</ul>
+<p>Compiler: devc++ version 5</p>
+<p>Input Parameters: N ranging from small to large values, V = 10000, c randomly chosen</p>
+<p>Measurement: Each data point represents the average of 100 runs to ensure statistical significance</p>
+<ul>
+<li>the following is the testing result.</li>
+</ul>
+<p><img alt="" src="../fds.png" /></p>
+<ul>
+<li>the following is the comparison graph. ps:the bule one is for algorithm 1 and the yellow one is for algorithm 2.</li>
+</ul>
+<p><img alt="" src="../graph.png" /></p>
+<ul>
+<li>The result clearly demonstrate the superiority of algorithm 2 for the large input. As the N increases,  algorithm2 is increasing linearing .</li>
+</ul>
+<h4 id="charpter-4-analysis-and-comments">Charpter 4 : Analysis and Comments</h4>
+<h5 id="time-and-space-complexity">Time and space complexity:</h5>
+<p><strong>algorithm1</strong>:</p>
+<ul>
+<li>ANALYSIS：- The algorithm employs two nested loops to examine all possible unordered pairs of elements</li>
+<li>The outer loop runs from <code>i = 0</code> to <code>N-2</code>, iterating N-1 times</li>
+<li>For each iteration of the outer loop, the inner loop runs from <code>j = i+1</code> to <code>N-1</code></li>
+<li>
+<p>The total number of comparisons is:
+$$
+(N-1) + (N-2) + ... + 2 + 1 = N(N-1)/2 ≈ N²/2
+$$</p>
+</li>
+<li>
+<p>the time complexity is $O(N^2)$ and the space complexity is $O(N)$.</p>
+</li>
+<li>
+<p>It can be completely improved. So I introduce algorithm 2.</p>
+</li>
+</ul>
+<p><strong>algorithm 2</strong>:</p>
+<ul>
+<li>ANALYSIS:The main loop runs exactly N times (from <code>i = 0</code> to <code>N-1</code>)</li>
+<li>
+<p>Inside the loop, each operation is constant time O(1):</p>
+</li>
+<li>
+<p>$\therefore$ the time complexity is $O(N)$ and the space complexity is $O(V)$.</p>
+</li>
+<li>
+<p>I think this algorithm is almost the most effective one, because you should at least traverse the whole number . And the searching movement has already reached $O(N)$.</p>
+</li>
+<li>
+<p>And I think the future improvement for this algorithm should be focused on the space complexcity.</p>
+</li>
+</ul>
+<h5 id="conclusion">conclusion</h5>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th>algorithm1</th>
+<th>algorithm 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>time efficiency</td>
+<td>poor</td>
+<td>excellent</td>
+</tr>
+<tr>
+<td>space efficiency</td>
+<td>based on N</td>
+<td>based on V</td>
+</tr>
+</tbody>
+</table>
+<h4 id="declaration">Declaration</h4>
+<ul>
+<li>I hereby declare that all the work done in this project titled "Comparison of two algorithms" is of my independent effort</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Evelina_IS
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "search.highlight", "search.suggestions"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
