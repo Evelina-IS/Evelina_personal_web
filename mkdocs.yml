@@ -21,6 +21,7 @@ nav:
     - 首页: index.md
     - fds_project:
         - project1: fds_project/project1.md
+    - website_oneinall: oneinall.md
 
 # Markdown 扩展
 markdown_extensions:
