@@ -22,26 +22,27 @@ nav:
     - fds_project:
         - project1: fds_project/project1.md
 
-# 简化的 Markdown 扩展
+# Markdown 扩展
 markdown_extensions:
     - admonition
     - pymdownx.details
     - pymdownx.superfences
-    - pymdownx.highlight:
-        anchor_linenums: true
+    - pymdownx.highlight
     - pymdownx.inlinehilite
-    - pymdownx.tabbed:
-        alternate_style: true
     - attr_list
     - def_list
     - footnotes
     - tables
     - toc:
         permalink: true
+    # 数学公式支持
+    - pymdownx.arithmatex:
+        generic: true
 
-# 简化的插件配置（只保留搜索）
+# 插件
 plugins:
     - search
 
-extra_css:
-    - stylesheets/extra.css
+# 添加 MathJax JavaScript
+extra_javascript:
+    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
