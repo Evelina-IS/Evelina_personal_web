@@ -22,6 +22,7 @@ nav:
     - fds_project:
         - project1: fds_project/project1.md
     - website_oneinall: oneinall.md
+    - FDSNOTE: fds.md
 
 # Markdown 扩展
 markdown_extensions:
