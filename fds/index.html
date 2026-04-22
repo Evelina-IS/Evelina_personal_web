@@ -1350,13 +1350,38 @@
 <hr />
 <p><strong>实现方式2：链表（Linked Lists）</strong></p>
 <p>结点结构：地址 + 数据 + 指针</p>
-<p>示例数据：
-| 地址 | 数据 | 指针 |
-|------|------|------|
-| 0010 | SUN  | 1011 |
-| 0011 | QIAN | 0010 |
-| 0110 | ZHAO | 0011 |
-| 1011 | LIN  | NULL |</p>
+<p>示例数据：</p>
+<table>
+<thead>
+<tr>
+<th>地址</th>
+<th>数据</th>
+<th>指针</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0010</td>
+<td>SUN</td>
+<td>1011</td>
+</tr>
+<tr>
+<td>0011</td>
+<td>QIAN</td>
+<td>0010</td>
+</tr>
+<tr>
+<td>0110</td>
+<td>ZHAO</td>
+<td>0011</td>
+</tr>
+<tr>
+<td>1011</td>
+<td>LIN</td>
+<td>NULL</td>
+</tr>
+</tbody>
+</table>
 <p>连接 ZHAO 和 QIAN 的操作顺序问题：
 - 若顺序颠倒会怎样？
 - 如何插入新的首结点？
