@@ -1,19 +1,4 @@
 site_name: Evelina_IS
-theme:
-    name: material
-    highlightjs: true
-    hljs_languages:
-        - c
-        - assembly
-        - python
-    primary: purple
-    icon:
-        logo: material/dog
-    language: en
-    features:
-        - navigation.tabs
-        - search.highlight
-        - search.suggestions
 
 copyright: "Copyright © 2026 Evelina_IS"
 
@@ -24,27 +9,83 @@ nav:
     - website_oneinall: oneinall.md
     - FDSNOTE: fds.md
 
-# Markdown 扩展
+theme:
+  name: material
+  icon:
+    edit: material/pencil
+  features:
+    - content.action.edit
+    - content.code.copy
+    - navigation.tracking
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+  font:
+    code: JetBrains Mono
+    text: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+
 markdown_extensions:
-    - admonition
-    - pymdownx.details
-    - pymdownx.superfences
-    - pymdownx.highlight
-    - pymdownx.inlinehilite
-    - attr_list
-    - def_list
-    - footnotes
-    - tables
-    - toc:
-        permalink: true
-    # 数学公式支持
-    - pymdownx.arithmatex:
-        generic: true
+  - toc:
+      permalink: true
+      toc_depth: 4
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - meta
+  - def_list
+  - attr_list
+  - md_in_html
+  - sane_lists
+  - admonition
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.snippets
+  - pymdownx.magiclink
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  # - pymdownx.emoji:
+  #     emoji_index: !!python/name:materialx.emoji.twemoji
+  #     emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      linenums: true
+  - pymdownx.arithmatex:
+      generic: true
 
-# 插件
 plugins:
-    - search
+  - search
+  - heti:
+      extra_skipped_class:
+        - arithmatex
+  - macros
 
-# MathJax 数学公式渲染
 extra_javascript:
-    - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.tonycrane.cc/utils/katex.min.js
+  - js/katex.js
+
+extra_css:
+  - https://cdn.tonycrane.cc/utils/katex.min.css
+  - https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&display=fallback
+  - css/custom.css
+
+
