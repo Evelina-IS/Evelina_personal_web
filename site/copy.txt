@@ -1,4 +1,4 @@
 git add .
-git commmit -m "1"
+git commit -m "1"
 git push
 python -m mkdocs gh-deploy
