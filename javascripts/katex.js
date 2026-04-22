@@ -1,4 +1,13 @@
-document$.subscribe(({ body }) => { 
+document$.subscribe(({ body }) => {
+  // 先将所有 $$...$$ 块保护起来
+  const content = body.innerHTML;
+  
+  // 替换已经被 p 标签包裹的公式
+  body.innerHTML = content.replace(/<p>\s*\$\$([\s\S]*?)\$\$\s*<\/p>/g, (match, formula) => {
+    return `<div class="arithmatex">\\[${formula}\\]</div>`;
+  });
+  
+  // 渲染数学公式
   renderMathInElement(body, {
     delimiters: [
       {left: '$$', right: '$$', display: true},
@@ -6,10 +15,8 @@ document$.subscribe(({ body }) => {
       {left: '\\[', right: '\\]', display: true},
       {left: '\\(', right: '\\)', display: false}
     ],
-    // 关键配置：忽略特定类名的元素
-    ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-    // 允许在代码块外处理 $$
-    ignoredClasses: ['highlight', 'codehilite'],
-    throwOnError: false
+    throwOnError: false,
+    strict: false,
+    trust: true
   });
 });
