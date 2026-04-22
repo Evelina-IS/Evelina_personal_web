@@ -72,12 +72,6 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
-plugins:
-  - search
-  - heti:
-      extra_skipped_class:
-        - arithmatex
-  - macros
 
 extra_javascript:
   - https://cdn.tonycrane.cc/utils/katex.min.js
