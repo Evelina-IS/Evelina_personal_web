@@ -1,13 +1,12 @@
 site_name: Evelina_IS
-
 copyright: "Copyright © 2026 Evelina_IS"
 
 nav:
-    - 首页: index.md
-    - fds_project:
-        - project1: fds_project/project1.md
-    - website_oneinall: oneinall.md
-    - FDSNOTE: fds.md
+  - 首页: index.md
+  - fds_project:
+      - project1: fds_project/project1.md
+  - website_oneinall: oneinall.md
+  - FDSNOTE: fds.md
 
 theme:
   name: material
@@ -35,14 +34,10 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
-
 markdown_extensions:
   - toc:
       permalink: true
       toc_depth: 4
-      slugify: !!python/object/apply:pymdownx.slugs.slugify
-        kwds:
-          case: lower
   - meta
   - def_list
   - attr_list
@@ -58,28 +53,22 @@ markdown_extensions:
   - pymdownx.magiclink
   - pymdownx.superfences
   - pymdownx.inlinehilite
-  # - pymdownx.emoji:
-  #     emoji_index: !!python/name:materialx.emoji.twemoji
-  #     emoji_generator: !!python/name:materialx.emoji.to_svg
   - pymdownx.tabbed:
-      alternate_style: true 
+      alternate_style: true
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
   - pymdownx.highlight:
       anchor_linenums: true
-      linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.arithmatex:
       generic: true
 
-
 extra_javascript:
-  - https://cdn.tonycrane.cc/utils/katex.min.js
-  - js/katex.js
+  - javascripts/katex.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
 
 extra_css:
-  - https://cdn.tonycrane.cc/utils/katex.min.css
-  - https://fonts.googleapis.com/css?family=Roboto:500,500i,600,600i&display=fallback
-  - css/custom.css
-
-
+  - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
