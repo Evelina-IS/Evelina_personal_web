@@ -1,12 +1,15 @@
+以下是您提供的复习笔记，其中所有原本用 `$$` 渲染的数学符号（包括行内和独立公式）已统一改为用 `$` 渲染。
+
+```markdown
 ## 数据结构与算法分析 复习笔记
 
 ### 第2章 算法分析（Algorithm Analysis）
 
 #### 3. 算法比较（Compare the Algorithms）
 
-**问题**：给定整数序列 $$A_1, A_2, \ldots, A_N$$（可能为负数），求 $$\sum_{k=i}^{j} A_k$$ 的最大值。
+**问题**：给定整数序列 $A_1, A_2, \ldots, A_N$（可能为负数），求 $\sum_{k=i}^{j} A_k$ 的最大值。
 
-**算法1**（三重循环，$$O(N^3)$$）：
+**算法1**（三重循环，$O(N^3)$）：
 ```c
 int MaxSubsequenceSum (const int A[], int N) {
     int ThisSum, MaxSum, i, j, k;
@@ -22,9 +25,9 @@ int MaxSubsequenceSum (const int A[], int N) {
     return MaxSum;
 }
 ```
-$$T(N) = O(N^3)$$
+$T(N) = O(N^3)$
 
-**算法2**（两重循环，$$O(N^2)$$）：
+**算法2**（两重循环，$O(N^2)$）：
 ```c
 int MaxSubsequenceSum (const int A[], int N) {
     int ThisSum, MaxSum, i, j;
@@ -40,16 +43,16 @@ int MaxSubsequenceSum (const int A[], int N) {
     return MaxSum;
 }
 ```
-$$T(N) = O(N^2)$$
+$T(N) = O(N^2)$
 
-**算法3**（分治，$$O(N \log N)$$）：
-递归关系：$$T(N) = 2T(N / 2) + cN, \quad T(1) = O(1)$$
+**算法3**（分治，$O(N \log N)$）：
+递归关系：$T(N) = 2T(N / 2) + cN, \quad T(1) = O(1)$
 展开：
-$$= 2[2T(N / 2^2) + cN / 2] + cN$$
-$$= 2^k O(1) + c k N$$，其中 $$N / 2^k = 1$$
-$$= O(N \log N)$$
+$= 2[2T(N / 2^2) + cN / 2] + cN$
+$= 2^k O(1) + c k N$，其中 $N / 2^k = 1$
+$= O(N \log N)$
 
-**算法4**（在线算法 On-line Algorithm，$$O(N)$$）：
+**算法4**（在线算法 On-line Algorithm，$O(N)$）：
 ```c
 int MaxSubsequenceSum( const int A[], int N) {
     int ThisSum, MaxSum, j;
@@ -64,26 +67,26 @@ int MaxSubsequenceSum( const int A[], int N) {
     return MaxSum;
 }
 ```
-$$T(N) = O(N)$$。A[] 只被扫描一次。在任何时刻，算法都能对已读入的数据给出正确的子序列和答案。
+$T(N) = O(N)$。A[] 只被扫描一次。在任何时刻，算法都能对已读入的数据给出正确的子序列和答案。
 
 ---
 
 #### 4. 运行时间中的对数（Logarithms in the Running Time）
 
 **二分查找（Binary Search）**：
-给定：$$A[0] \le A[1] \le \dots \le A[N-1]$$ 和 X
+给定：$A[0] \le A[1] \le \dots \le A[N-1]$ 和 X
 任务：查找 X
-输出：若 $$X == A[i]$$ 则返回 i，否则返回 -1
+输出：若 $X == A[i]$ 则返回 i，否则返回 -1
 
 ---
 
 #### 5. 验证分析（Checking Your Analysis）
 
 验证方法：
-- 当 $$T(N) = O(N)$$，检查是否 $$T(2N) / T(N) \approx 2$$
-- 当 $$T(N) = O(N^2)$$，检查是否 $$T(2N) / T(N) \approx 4$$
-- 当 $$T(N) = O(N^3)$$，检查是否 $$T(2N) / T(N) \approx 8$$
-- 一般情况：当 $$T(N) = O(f(N))$$，检查 $$\lim_{N\to \infty} \frac{T(N)}{f(N)} \approx \text{Constant}$$
+- 当 $T(N) = O(N)$，检查是否 $T(2N) / T(N) \approx 2$
+- 当 $T(N) = O(N^2)$，检查是否 $T(2N) / T(N) \approx 4$
+- 当 $T(N) = O(N^3)$，检查是否 $T(2N) / T(N) \approx 8$
+- 一般情况：当 $T(N) = O(f(N))$，检查 $\lim_{N\to \infty} \frac{T(N)}{f(N)} \approx \text{Constant}$
 
 ---
 
@@ -106,7 +109,7 @@ $$T(N) = O(N)$$。A[] 只被扫描一次。在任何时刻，算法都能对已�
 - 求表的长度 N
 - 打印表中所有元素
 - 创建空表
-- 查找第 k 个元素（$$0 \le k < N$$）
+- 查找第 k 个元素（$0 \le k < N$）
 - 在第 k 个元素后插入新元素
 - 删除表中的元素
 - 查找当前元素的下一个元素
@@ -116,8 +119,8 @@ $$T(N) = O(N)$$。A[] 只被扫描一次。在任何时刻，算法都能对已�
 
 **实现方式1：简单数组实现（Simple Array Implementation）**
 - MaxSize 需要预先估计
-- 查找第 k 个元素：$$O(1)$$ 时间
-- 插入和删除：$$O(N)$$ 时间，且涉及大量数据移动
+- 查找第 k 个元素：$O(1)$ 时间
+- 插入和删除：$O(N)$ 时间，且涉及大量数据移动
 
 ---
 
@@ -142,7 +145,7 @@ $$T(N) = O(N)$$。A[] 只被扫描一次。在任何时刻，算法都能对已�
 
 **多项式ADT（The Polynomial ADT）**
 
-**对象**：$$P(x) = a_1 x^{e_1} + \dots + a_n x^{e_n}$$，一组有序对 $$<e_i, a_i>$$，其中 $$a_i$$ 为系数，$$e_i$$ 为指数（非负整数）。
+**对象**：$P(x) = a_1 x^{e_1} + \dots + a_n x^{e_n}$，一组有序对 $<e_i, a_i>$，其中 $a_i$ 为系数，$e_i$ 为指数（非负整数）。
 
 **操作**：求多项式的次数、加法、减法、乘法、求导。
 
@@ -153,7 +156,7 @@ typedef struct {
     int HighPower;
 } *Polynomial;
 ```
-缺点：对稀疏多项式（如 $$10x^{1000} + 5x^{14} + 1$$ 和 $$3x^{1990} - 2x^{1492} + 11x + 5$$）浪费空间。
+缺点：对稀疏多项式（如 $10x^{1000} + 5x^{14} + 1$ 和 $3x^{1990} - 2x^{1492} + 11x + 5$）浪费空间。
 
 **表示法2**（链表）：
 ```c
@@ -241,27 +244,27 @@ struct StackRecord {
 ---
 
 **应用1：符号平衡（Balancing Symbols）**
-检查括号 ( )、方括号 [ ] 和花括号 { } 是否平衡。$$T(N) = O(N)$$，无需知道优先级规则。
+检查括号 ( )、方括号 [ ] 和花括号 { } 是否平衡。$T(N) = O(N)$，无需知道优先级规则。
 
 ---
 
 **应用2：中缀转后缀表达式（Infix to Postfix Conversion）**
 
-示例：$$a + b * c - d \rightarrow a b c * + d -$$
+示例：$a + b * c - d \rightarrow a b c * + d -$
 
 注意：
 - 操作数的顺序在中缀和后缀中相同。
 - 高优先级的操作符先出现。
 
-示例：$$a * (b + c) / d \rightarrow a b c + * d /$$
+示例：$a * (b + c) / d \rightarrow a b c + * d /$
 
 **处理规则**：
 ① 只有在处理右括号 ) 时才从栈中弹出左括号 (。
 ② 定义栈内优先级（in-stack precedence）和入栈优先级（incoming precedence），每次比较时使用对应的优先级。
 
 注意：
-- $$a - b - c$$ 转换为 $$a b - c -$$（左结合）。
-- $$2^{\wedge}2^{\wedge}3$$（即 $$2^{2^3}$$）必须转换为 $$2 2 3 \wedge \wedge$$，而非 $$2 2 \wedge 3 \wedge$$，因为幂运算是右结合的。
+- $a - b - c$ 转换为 $a b - c -$（左结合）。
+- $2^{\wedge}2^{\wedge}3$（即 $2^{2^3}$）必须转换为 $2 2 3 \wedge \wedge$，而非 $2 2 \wedge 3 \wedge$，因为幂运算是右结合的。
 
 ---
 
@@ -314,7 +317,7 @@ struct QueueRecord {
 
 **定义**：树是结点的集合。集合可以为空；否则，树由以下部分组成：
 (1) 一个特殊的结点 r，称为根（root）；
-(2) 以及零个或多个非空（子）树 $$T_1, \dots, T_k$$，每棵子树的根通过从 r 出发的有向边连接。
+(2) 以及零个或多个非空（子）树 $T_1, \dots, T_k$，每棵子树的根通过从 r 出发的有向边连接。
 
 注意：
 - 子树之间不能相互连接。因此树中的每个结点都是某棵子树的根。
@@ -323,12 +326,12 @@ struct QueueRecord {
 
 **术语**：
 - **结点的度（degree of a node）**：结点的子树个数。例如 degree(A) = 3，degree(F) = 0。
-- **树的度（degree of a tree）**：$$\max\{\text{degree(node)}\}$$
+- **树的度（degree of a tree）**：$\max\{\text{degree(node)}\}$
 - **父结点（parent）**：具有子树的结点。
 - **子结点（children）**：父结点的子树的根。
 - **兄弟（siblings）**：同一父结点的子结点。
 - **叶结点/终端结点（leaf / terminal node）**：度为 0 的结点（无子结点）。
-- **从 n₁ 到 nₖ 的路径（path）**：唯一的结点序列 $$n_1, n_2, \dots, n_k$$，使得对于 $$1 \le i < k$$，$$n_i$$ 是 $$n_{i+1}$$ 的父结点。
+- **从 n₁ 到 nₖ 的路径（path）**：唯一的结点序列 $n_1, n_2, \dots, n_k$，使得对于 $1 \le i < k$，$n_i$ 是 $n_{i+1}$ 的父结点。
 - **路径长度（length of path）**：路径上的边数。
 - **nᵢ 的深度（depth）**：从根到 nᵢ 的唯一路径的长度。根的深度 = 0。
 - **nᵢ 的高度（height）**：从 nᵢ 到叶结点的最长路径的长度。叶结点的高度 = 0。height(D) = 2。
@@ -353,10 +356,10 @@ struct QueueRecord {
 
 **表达式树（Expression Trees / Syntax Trees）**
 
-示例：中缀表达式 $$A + B * C / D$$
+示例：中缀表达式 $A + B * C / D$
 
 从后缀表达式构造表达式树：
-示例：$$(a + b) * (c * (d + e)) = a b + c d e + * *$$
+示例：$(a + b) * (c * (d + e)) = a b + c d e + * *$
 
 ---
 
@@ -408,9 +411,9 @@ void inorder (tree_ptr tree) {
 ```
 
 对于表达式树：
-- 中序遍历 → $$A + B * C / D$$
-- 后序遍历 → $$A B C * D / +$$
-- 前序遍历 → $$+ A / * B C D$$
+- 中序遍历 → $A + B * C / D$
+- 后序遍历 → $A B C * D / +$
+- 前序遍历 → $+ A / * B C D$
 
 **迭代版中序遍历**：
 ```c
@@ -431,7 +434,7 @@ void iter_inorder (tree_ptr tree) {
 ---
 
 **应用示例**：层次化文件系统中的目录列表
-- 深度为 $$d_i$$ 的文件将缩进 $$d_i$$ 个制表符。
+- 深度为 $d_i$ 的文件将缩进 $d_i$ 个制表符。
 
 ```c
 static void ListDir (DirOrFile D, int Depth) {
@@ -443,7 +446,7 @@ static void ListDir (DirOrFile D, int Depth) {
     }
 }
 ```
-$$T(N) = O(N)$$
+$T(N) = O(N)$
 
 对外接口：
 ```c
@@ -478,16 +481,16 @@ typedef struct ThreadedTreeNode {
 ---
 
 **二叉树的性质（Properties of Binary Trees）**：
-- 第 i 层的最大结点数为 $$2^{i-1}$$（$$i \ge 1$$）。
-- 深度为 k 的二叉树的最大结点数为 $$2^k - 1$$（$$k \ge 1$$）。
-- 对于任何非空二叉树，$$n_0 = n_2 + 1$$，其中 $$n_0$$ 为叶结点数，$$n_2$$ 为度为 2 的结点数。
+- 第 i 层的最大结点数为 $2^{i-1}$（$i \ge 1$）。
+- 深度为 k 的二叉树的最大结点数为 $2^k - 1$（$k \ge 1$）。
+- 对于任何非空二叉树，$n_0 = n_2 + 1$，其中 $n_0$ 为叶结点数，$n_2$ 为度为 2 的结点数。
 
 **证明**：
-设 $$n_1$$ 为度为 1 的结点数，n 为结点总数。
-$$n = n_0 + n_1 + n_2$$  (1)
-设 B 为分支数，则 $$n = B + 1$$。
-所有分支来自度为 1 或 2 的结点，故 $$B = n_1 + 2n_2$$。
-代入得 $$n_0 = n_2 + 1$$。
+设 $n_1$ 为度为 1 的结点数，n 为结点总数。
+$n = n_0 + n_1 + n_2$  (1)
+设 B 为分支数，则 $n = B + 1$。
+所有分支来自度为 1 或 2 的结点，故 $B = n_1 + 2n_2$。
+代入得 $n_0 = n_2 + 1$。
 
 注意：在一般树中，子结点的顺序无关紧要。但在二叉树中，左子结点和右子结点是不同的。
 
@@ -536,7 +539,7 @@ Position Iter_Find(ElementType X, SearchTree T) {
     return NULL; /* not found */
 }
 ```
-$$T(N) = O(d)$$，其中 d 为深度。
+$T(N) = O(d)$，其中 d 为深度。
 
 **FindMin**：
 ```c
@@ -616,7 +619,7 @@ SearchTree Delete(ElementType X, SearchTree T) {
     return T;
 }
 ```
-$$T(N) = O(h)$$，其中 h 为树的高度。
+$T(N) = O(h)$，其中 h 为树的高度。
 
 **懒惰删除（Lazy Deletion）**：
 如果删除操作不多，可采用懒惰删除：为每个结点添加一个标志字段，标记该结点是活跃的还是已删除。这样可以不实际释放结点空间。如果已删除的键值被重新插入，无需再次调用 malloc。
@@ -655,20 +658,20 @@ ElementType FindMin(PriorityQueue H);
 #### §2 简单实现
 
 **数组（Array）**：
-- 插入：在末尾添加一项 $$\sim \Theta(1)$$
-- 删除：查找最大/最小键值 $$\sim \Theta(n)$$，移除元素并移动数组 $$\sim O(n)$$
+- 插入：在末尾添加一项 $\sim \Theta(1)$
+- 删除：查找最大/最小键值 $\sim \Theta(n)$，移除元素并移动数组 $\sim O(n)$
 
 **链表（Linked List）**：
-- 插入：添加到链表头部 $$\sim \Theta(1)$$
-- 删除：查找最大/最小键值 $$\sim \Theta(n)$$，移动元素 $$\sim \Theta(1)$$
+- 插入：添加到链表头部 $\sim \Theta(1)$
+- 删除：查找最大/最小键值 $\sim \Theta(n)$，移动元素 $\sim \Theta(1)$
 
 **有序数组（Ordered Array）**：
-- 插入：找到合适位置 $$\sim O(n)$$，添加元素 $$\sim \Theta(1)$$
-- 删除：移除第一个/最后一个元素 $$\sim \Theta(1)$$
+- 插入：找到合适位置 $\sim O(n)$，添加元素 $\sim \Theta(1)$
+- 删除：移除第一个/最后一个元素 $\sim \Theta(1)$
 
 **有序链表（Ordered Linked List）**：
-- 插入：找到合适位置 $$\sim O(n)$$，添加元素 $$\sim \Theta(1)$$
-- 删除：移除第一个/最后一个元素 $$\sim \Theta(1)$$
+- 插入：找到合适位置 $\sim O(n)$，添加元素 $\sim \Theta(1)$
+- 删除：移除第一个/最后一个元素 $\sim \Theta(1)$
 
 由于删除操作永远不会多于插入操作，有序结构可能更好。
 
@@ -680,7 +683,7 @@ ElementType FindMin(PriorityQueue H);
 
 **定义**：有 n 个结点、高度为 h 的二叉树是完全的（complete），当且仅当其结点对应于高度为 h 的完美二叉树中从 1 到 n 编号的结点。
 
-高度为 h 的完全二叉树的结点数在 $$2^h$$ 到 $$2^{h+1} - 1$$ 之间。$$h = \lfloor \log N \rfloor$$
+高度为 h 的完全二叉树的结点数在 $2^h$ 到 $2^{h+1} - 1$ 之间。$h = \lfloor \log N \rfloor$
 
 **数组表示**：BT[n+1]（BT[0] 不使用）
 
@@ -692,8 +695,8 @@ ElementType FindMin(PriorityQueue H);
 |---|---|---|----|----|----|----|
 | G | H | I | J  |    |    |    |
 
-**引理**：若一棵有 n 个结点的完全二叉树顺序表示，则对于索引为 i（$$1 \le i \le n$$）的任意结点，有：
-(1) parent(i) 的索引 = $$\lfloor i/2 \rfloor$$（若 i ≠ 1）；若 i = 1 则无父结点。
+**引理**：若一棵有 n 个结点的完全二叉树顺序表示，则对于索引为 i（$1 \le i \le n$）的任意结点，有：
+(1) parent(i) 的索引 = $\lfloor i/2 \rfloor$（若 i ≠ 1）；若 i = 1 则无父结点。
 (2) left_child(i) 的索引 = 2i（若 2i ≤ n）；若 2i > n 则无左子结点。
 (3) right_child(i) 的索引 = 2i + 1（若 2i + 1 ≤ n）；若 2i + 1 > n 则无右子结点。
 
@@ -742,7 +745,7 @@ void Insert(ElementType X, PriorityQueue H) {
     H->Elements[i] = X;
 }
 ```
-$$T(N) = O(\log N)$$
+$T(N) = O(\log N)$
 
 H->Element[0] 是哨兵（sentinel），其值不大于堆中最小元素。这种方法比交换（swap）更快。
 
@@ -771,7 +774,7 @@ ElementType DeleteMin(PriorityQueue H) {
     return MinElement;
 }
 ```
-$$T(N) = O(\log N)$$
+$T(N) = O(\log N)$
 
 ---
 
@@ -785,8 +788,8 @@ $$T(N) = O(\log N)$$
 
 ---
 
-**定理**：对于高度为 h、包含 $$2^{h+1} - 1$$ 个结点的完美二叉树，所有结点的高度之和为 $$2^{h+1} - 1 - (h+1)$$。
-$$T(N) = O(N)$$（建堆复杂度）
+**定理**：对于高度为 h、包含 $2^{h+1} - 1$ 个结点的完美二叉树，所有结点的高度之和为 $2^{h+1} - 1 - (h+1)$。
+$T(N) = O(N)$（建堆复杂度）
 
 ---
 
@@ -802,7 +805,7 @@ $$T(N) = O(N)$$（建堆复杂度）
 **问题**：是否应将 d 设得尽可能大？
 
 注意：
-① DeleteMin 需要 d-1 次比较来找到最小的子结点。因此总时间复杂度为 $$O(d \log_d N)$$。
+① DeleteMin 需要 d-1 次比较来找到最小的子结点。因此总时间复杂度为 $O(d \log_d N)$。
 ② *2 或 /2 只是位移操作，但 *d 或 /d 不是。
 ③ 当优先队列太大无法完全放入主存时，d-堆会变得有意义。
 
@@ -814,15 +817,15 @@ $$T(N) = O(N)$$（建堆复杂度）
 
 **定义**：关系 R 定义在集合 S 上，若对于每对元素 (a, b)（a, b ∈ S），a R b 要么为真要么为假。若 a R b 为真，则称 a 与 b 相关。
 
-**定义**：集合 S 上的关系 $$\sim$$ 称为等价关系，当且仅当它在 S 上满足对称性（symmetric）、自反性（reflexive）和传递性（transitive）。
+**定义**：集合 S 上的关系 $\sim$ 称为等价关系，当且仅当它在 S 上满足对称性（symmetric）、自反性（reflexive）和传递性（transitive）。
 
-**定义**：集合 S 的两个成员 x 和 y 属于同一等价类，当且仅当 $$x \sim y$$。
+**定义**：集合 S 的两个成员 x 和 y 属于同一等价类，当且仅当 $x \sim y$。
 
 ---
 
 #### 2. 动态等价问题（The Dynamic Equivalence Problem）
 
-给定等价关系 $$\sim$$，判断任意 a 和 b 是否有 $$a \sim b$$。
+给定等价关系 $\sim$，判断任意 a 和 b 是否有 $a \sim b$。
 
 **示例**：给定 S = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12} 和 9 个关系：
 12 = 4, 3 = 1, 6 = 10, 8 = 9, 7 = 4, 6 = 8, 3 = 5, 2 = 11, 11 = 12。
@@ -849,15 +852,15 @@ while (read in a and b)
 #### 3. 基本数据结构
 
 集合元素：1, 2, 3, ..., N
-集合：$$S_1, S_2, \ldots$$ 且 $$S_i \cap S_j = \emptyset$$（若 i ≠ j）—— 互不相交（disjoint）
+集合：$S_1, S_2, \ldots$ 且 $S_i \cap S_j = \emptyset$（若 i ≠ j）—— 互不相交（disjoint）
 
-示例：$$S_1 = \{6, 7, 8, 10\}, S_2 = \{1, 4, 9\}, S_3 = \{2, 3, 5\}$$
+示例：$S_1 = \{6, 7, 8, 10\}, S_2 = \{1, 4, 9\}, S_3 = \{2, 3, 5\}$
 
 **操作**：
-(1) Union(i, j)：将 $$S_i$$ 和 $$S_j$$ 替换为 $$S = S_i \cup S_j$$
-(2) Find(i)：找出包含元素 i 的集合 $$S_k$$
+(1) Union(i, j)：将 $S_i$ 和 $S_j$ 替换为 $S = S_i \cup S_j$
+(2) Find(i)：找出包含元素 i 的集合 $S_k$
 
-**Union(i, j) 思路**：使 $$S_i$$ 成为 $$S_j$$ 的子树，或反之。即将其中一个根的父指针指向另一个根。
+**Union(i, j) 思路**：使 $S_i$ 成为 $S_j$ 的子树，或反之。即将其中一个根的父指针指向另一个根。
 
 **实现1**：S[element] = 该元素的父结点。
 注意：S[root] = 0，集合名 = 根索引。
@@ -870,7 +873,7 @@ SetType Find(ElementType X, DisjSet S) {
 }
 ```
 
-**分析**：以下操作序列会导致 $$T = \Theta(N^2)$$：
+**分析**：以下操作序列会导致 $T = \Theta(N^2)$：
 union(2, 1), find(1);
 union(3, 2), find(1);
 ...
@@ -883,4 +886,4 @@ union(N, N-1), find(1);
 **按大小合并（Union-by-Size）**—— 总是将较小的树挂到较大的树上。
 S[Root] = -size; /* 初始化为 -1 */
 
-**引理**：设 T 是由按大小合并创建的具有 N 个结点的树，则树的高度不超过 $$\lfloor \log_2 N \rfloor$$。
+**引理**：设 T 是由按大小合并创建的具有 N 个结点的树，则树的高度不超过 $\lfloor \log_2 N \rfloor$。
