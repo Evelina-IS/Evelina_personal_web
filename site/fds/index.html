@@ -1257,8 +1257,8 @@
 <h2 id="_1">数据结构与算法分析 复习笔记<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h3 id="2-algorithm-analysis">第2章 算法分析（Algorithm Analysis）<a class="headerlink" href="#2-algorithm-analysis" title="Permanent link">&para;</a></h3>
 <h4 id="3-compare-the-algorithms">3. 算法比较（Compare the Algorithms）<a class="headerlink" href="#3-compare-the-algorithms" title="Permanent link">&para;</a></h4>
-<p><strong>问题</strong>：给定整数序列 $<span class="arithmatex">\(A_1, A_2, \ldots, A_N\)</span>$（可能为负数），求 $<span class="arithmatex">\(\sum_{k=i}^{j} A_k\)</span>$ 的最大值。</p>
-<p><strong>算法1</strong>（三重循环，$<span class="arithmatex">\(O(N^3)\)</span>$）：
+<p><strong>问题</strong>：给定整数序列 <span class="arithmatex">\(A_1, A_2, \ldots, A_N\)</span>（可能为负数），求 <span class="arithmatex">\(\sum_{k=i}^{j} A_k\)</span> 的最大值。</p>
+<p><strong>算法1</strong>（三重循环，<span class="arithmatex">\(O(N^3)\)</span>）：
 <div class="language-c highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">MaxSubsequenceSum</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ThisSum</span><span class="p">,</span><span class="w"> </span><span class="n">MaxSum</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">MaxSum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="cm">/* initialize the maximum sum */</span>
@@ -1273,8 +1273,8 @@
 </span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MaxSum</span><span class="p">;</span>
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="p">}</span>
 </span></code></pre></div>
-$<span class="arithmatex">\(T(N) = O(N^3)\)</span>$</p>
-<p><strong>算法2</strong>（两重循环，$<span class="arithmatex">\(O(N^2)\)</span>$）：
+<span class="arithmatex">\(T(N) = O(N^3)\)</span></p>
+<p><strong>算法2</strong>（两重循环，<span class="arithmatex">\(O(N^2)\)</span>）：
 <div class="language-c highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">MaxSubsequenceSum</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ThisSum</span><span class="p">,</span><span class="w"> </span><span class="n">MaxSum</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="n">MaxSum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="cm">/* initialize the maximum sum */</span>
@@ -1289,14 +1289,14 @@ $<span class="arithmatex">\(T(N) = O(N^3)\)</span>$</p>
 </span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MaxSum</span><span class="p">;</span>
 </span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">}</span>
 </span></code></pre></div>
-$<span class="arithmatex">\(T(N) = O(N^2)\)</span>$</p>
-<p><strong>算法3</strong>（分治，$<span class="arithmatex">\(O(N \log N)\)</span><span class="arithmatex">\(）：
-递归关系：\)</span><span class="arithmatex">\(T(N) = 2T(N / 2) + cN, \quad T(1) = O(1)\)</span>$
+<span class="arithmatex">\(T(N) = O(N^2)\)</span></p>
+<p><strong>算法3</strong>（分治，<span class="arithmatex">\(O(N \log N)\)</span>）：
+递归关系：<span class="arithmatex">\(T(N) = 2T(N / 2) + cN, \quad T(1) = O(1)\)</span>
 展开：
-$<span class="arithmatex">\(= 2[2T(N / 2^2) + cN / 2] + cN\)</span>$
-$<span class="arithmatex">\(= 2^k O(1) + c k N\)</span>$，其中 $<span class="arithmatex">\(N / 2^k = 1\)</span>$
-$<span class="arithmatex">\(= O(N \log N)\)</span>$</p>
-<p><strong>算法4</strong>（在线算法 On-line Algorithm，$<span class="arithmatex">\(O(N)\)</span>$）：
+<span class="arithmatex">\(= 2[2T(N / 2^2) + cN / 2] + cN\)</span>
+<span class="arithmatex">\(= 2^k O(1) + c k N\)</span>，其中 <span class="arithmatex">\(N / 2^k = 1\)</span>
+<span class="arithmatex">\(= O(N \log N)\)</span></p>
+<p><strong>算法4</strong>（在线算法 On-line Algorithm，<span class="arithmatex">\(O(N)\)</span>）：
 <div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">MaxSubsequenceSum</span><span class="p">(</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">A</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ThisSum</span><span class="p">,</span><span class="w"> </span><span class="n">MaxSum</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">;</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="n">ThisSum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MaxSum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -1310,20 +1310,20 @@ $<span class="arithmatex">\(= O(N \log N)\)</span>$</p>
 </span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MaxSum</span><span class="p">;</span>
 </span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="p">}</span>
 </span></code></pre></div>
-$<span class="arithmatex">\(T(N) = O(N)\)</span>$。A[] 只被扫描一次。在任何时刻，算法都能对已读入的数据给出正确的子序列和答案。</p>
+<span class="arithmatex">\(T(N) = O(N)\)</span>。A[] 只被扫描一次。在任何时刻，算法都能对已读入的数据给出正确的子序列和答案。</p>
 <hr />
 <h4 id="4-logarithms-in-the-running-time">4. 运行时间中的对数（Logarithms in the Running Time）<a class="headerlink" href="#4-logarithms-in-the-running-time" title="Permanent link">&para;</a></h4>
 <p><strong>二分查找（Binary Search）</strong>：
-给定：$<span class="arithmatex">\(A[0] \le A[1] \le \dots \le A[N-1]\)</span>$ 和 X
+给定：<span class="arithmatex">\(A[0] \le A[1] \le \dots \le A[N-1]\)</span> 和 X
 任务：查找 X
-输出：若 $<span class="arithmatex">\(X == A[i]\)</span>$ 则返回 i，否则返回 -1</p>
+输出：若 <span class="arithmatex">\(X == A[i]\)</span> 则返回 i，否则返回 -1</p>
 <hr />
 <h4 id="5-checking-your-analysis">5. 验证分析（Checking Your Analysis）<a class="headerlink" href="#5-checking-your-analysis" title="Permanent link">&para;</a></h4>
 <p>验证方法：
-- 当 $<span class="arithmatex">\(T(N) = O(N)\)</span>$，检查是否 $<span class="arithmatex">\(T(2N) / T(N) \approx 2\)</span>$
-- 当 $<span class="arithmatex">\(T(N) = O(N^2)\)</span>$，检查是否 $<span class="arithmatex">\(T(2N) / T(N) \approx 4\)</span>$
-- 当 $<span class="arithmatex">\(T(N) = O(N^3)\)</span>$，检查是否 $<span class="arithmatex">\(T(2N) / T(N) \approx 8\)</span>$
-- 一般情况：当 $<span class="arithmatex">\(T(N) = O(f(N))\)</span>$，检查 $<span class="arithmatex">\(\lim_{N\to \infty} \frac{T(N)}{f(N)} \approx \text{Constant}\)</span>$</p>
+- 当 <span class="arithmatex">\(T(N) = O(N)\)</span>，检查是否 <span class="arithmatex">\(T(2N) / T(N) \approx 2\)</span>
+- 当 <span class="arithmatex">\(T(N) = O(N^2)\)</span>，检查是否 <span class="arithmatex">\(T(2N) / T(N) \approx 4\)</span>
+- 当 <span class="arithmatex">\(T(N) = O(N^3)\)</span>，检查是否 <span class="arithmatex">\(T(2N) / T(N) \approx 8\)</span>
+- 一般情况：当 <span class="arithmatex">\(T(N) = O(f(N))\)</span>，检查 <span class="arithmatex">\(\lim_{N\to \infty} \frac{T(N)}{f(N)} \approx \text{Constant}\)</span></p>
 <hr />
 <h3 id="3-list">第3章 表（List）<a class="headerlink" href="#3-list" title="Permanent link">&para;</a></h3>
 <h4 id="1-abstract-data-type-adt">1. 抽象数据类型（Abstract Data Type, ADT）<a class="headerlink" href="#1-abstract-data-type-adt" title="Permanent link">&para;</a></h4>
@@ -1337,7 +1337,7 @@ $<span class="arithmatex">\(T(N) = O(N)\)</span>$。A[] 只被扫描一次。在
 - 求表的长度 N
 - 打印表中所有元素
 - 创建空表
-- 查找第 k 个元素（$<span class="arithmatex">\(0 \le k &lt; N\)</span>$）
+- 查找第 k 个元素（<span class="arithmatex">\(0 \le k &lt; N\)</span>）
 - 在第 k 个元素后插入新元素
 - 删除表中的元素
 - 查找当前元素的下一个元素
@@ -1345,8 +1345,8 @@ $<span class="arithmatex">\(T(N) = O(N)\)</span>$。A[] 只被扫描一次。在
 <hr />
 <p><strong>实现方式1：简单数组实现（Simple Array Implementation）</strong>
 - MaxSize 需要预先估计
-- 查找第 k 个元素：$<span class="arithmatex">\(O(1)\)</span>$ 时间
-- 插入和删除：$<span class="arithmatex">\(O(N)\)</span>$ 时间，且涉及大量数据移动</p>
+- 查找第 k 个元素：<span class="arithmatex">\(O(1)\)</span> 时间
+- 插入和删除：<span class="arithmatex">\(O(N)\)</span> 时间，且涉及大量数据移动</p>
 <hr />
 <p><strong>实现方式2：链表（Linked Lists）</strong></p>
 <p>结点结构：地址 + 数据 + 指针</p>
@@ -1363,7 +1363,7 @@ $<span class="arithmatex">\(T(N) = O(N)\)</span>$。A[] 只被扫描一次。在
 - 如何删除首结点？可以通过添加哑头结点（dummy head node）解决。</p>
 <hr />
 <p><strong>多项式ADT（The Polynomial ADT）</strong></p>
-<p><strong>对象</strong>：$<span class="arithmatex">\(P(x) = a_1 x^{e_1} + \dots + a_n x^{e_n}\)</span>$，一组有序对 $<span class="arithmatex">\(&lt;e_i, a_i&gt;\)</span>$，其中 $<span class="arithmatex">\(a_i\)</span>$ 为系数，$<span class="arithmatex">\(e_i\)</span>$ 为指数（非负整数）。</p>
+<p><strong>对象</strong>：<span class="arithmatex">\(P(x) = a_1 x^{e_1} + \dots + a_n x^{e_n}\)</span>，一组有序对 <span class="arithmatex">\(&lt;e_i, a_i&gt;\)</span>，其中 <span class="arithmatex">\(a_i\)</span> 为系数，<span class="arithmatex">\(e_i\)</span> 为指数（非负整数）。</p>
 <p><strong>操作</strong>：求多项式的次数、加法、减法、乘法、求导。</p>
 <p><strong>表示法1</strong>（数组）：
 <div class="language-c highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="p">{</span>
@@ -1371,7 +1371,7 @@ $<span class="arithmatex">\(T(N) = O(N)\)</span>$。A[] 只被扫描一次。在
 </span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">HighPower</span><span class="p">;</span>
 </span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="p">}</span><span class="w"> </span><span class="o">*</span><span class="n">Polynomial</span><span class="p">;</span>
 </span></code></pre></div>
-缺点：对稀疏多项式（如 $<span class="arithmatex">\(10x^{1000} + 5x^{14} + 1\)</span>$ 和 $<span class="arithmatex">\(3x^{1990} - 2x^{1492} + 11x + 5\)</span>$）浪费空间。</p>
+缺点：对稀疏多项式（如 <span class="arithmatex">\(10x^{1000} + 5x^{14} + 1\)</span> 和 <span class="arithmatex">\(3x^{1990} - 2x^{1492} + 11x + 5\)</span>）浪费空间。</p>
 <p><strong>表示法2</strong>（链表）：
 <div class="language-c highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">poly_node</span><span class="w"> </span><span class="o">*</span><span class="n">poly_ptr</span><span class="p">;</span>
 </span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="k">struct</span><span class="w"> </span><span class="nc">poly_node</span><span class="w"> </span><span class="p">{</span>
@@ -1433,20 +1433,20 @@ b) 新结构体可通过 malloc 从系统全局内存获取，通过 free 释放
 ② Push 或 Pop(Top) 前必须进行错误检查。</p>
 <hr />
 <p><strong>应用1：符号平衡（Balancing Symbols）</strong>
-检查括号 ( )、方括号 [ ] 和花括号 { } 是否平衡。$<span class="arithmatex">\(T(N) = O(N)\)</span>$，无需知道优先级规则。</p>
+检查括号 ( )、方括号 [ ] 和花括号 { } 是否平衡。<span class="arithmatex">\(T(N) = O(N)\)</span>，无需知道优先级规则。</p>
 <hr />
 <p><strong>应用2：中缀转后缀表达式（Infix to Postfix Conversion）</strong></p>
-<p>示例：$<span class="arithmatex">\(a + b * c - d \rightarrow a b c * + d -\)</span>$</p>
+<p>示例：<span class="arithmatex">\(a + b * c - d \rightarrow a b c * + d -\)</span></p>
 <p>注意：
 - 操作数的顺序在中缀和后缀中相同。
 - 高优先级的操作符先出现。</p>
-<p>示例：$<span class="arithmatex">\(a * (b + c) / d \rightarrow a b c + * d /\)</span>$</p>
+<p>示例：<span class="arithmatex">\(a * (b + c) / d \rightarrow a b c + * d /\)</span></p>
 <p><strong>处理规则</strong>：
 ① 只有在处理右括号 ) 时才从栈中弹出左括号 (。
 ② 定义栈内优先级（in-stack precedence）和入栈优先级（incoming precedence），每次比较时使用对应的优先级。</p>
 <p>注意：
-- $<span class="arithmatex">\(a - b - c\)</span>$ 转换为 $<span class="arithmatex">\(a b - c -\)</span>$（左结合）。
-- $<span class="arithmatex">\(2^{\wedge}2^{\wedge}3\)</span>$（即 $<span class="arithmatex">\(2^{2^3}\)</span>$）必须转换为 $<span class="arithmatex">\(2 2 3 \wedge \wedge\)</span>$，而非 $<span class="arithmatex">\(2 2 \wedge 3 \wedge\)</span>$，因为幂运算是右结合的。</p>
+- <span class="arithmatex">\(a - b - c\)</span> 转换为 <span class="arithmatex">\(a b - c -\)</span>（左结合）。
+- <span class="arithmatex">\(2^{\wedge}2^{\wedge}3\)</span>（即 <span class="arithmatex">\(2^{2^3}\)</span>）必须转换为 <span class="arithmatex">\(2 2 3 \wedge \wedge\)</span>，而非 <span class="arithmatex">\(2 2 \wedge 3 \wedge\)</span>，因为幂运算是右结合的。</p>
 <hr />
 <p><strong>应用3：函数调用——系统栈（Function Calls — System Stack）</strong></p>
 <hr />
@@ -1483,19 +1483,19 @@ b) 新结构体可通过 malloc 从系统全局内存获取，通过 free 释放
 <h4 id="1-preliminaries">1. 预备知识（Preliminaries）<a class="headerlink" href="#1-preliminaries" title="Permanent link">&para;</a></h4>
 <p><strong>定义</strong>：树是结点的集合。集合可以为空；否则，树由以下部分组成：
 (1) 一个特殊的结点 r，称为根（root）；
-(2) 以及零个或多个非空（子）树 $<span class="arithmatex">\(T_1, \dots, T_k\)</span>$，每棵子树的根通过从 r 出发的有向边连接。</p>
+(2) 以及零个或多个非空（子）树 <span class="arithmatex">\(T_1, \dots, T_k\)</span>，每棵子树的根通过从 r 出发的有向边连接。</p>
 <p>注意：
 - 子树之间不能相互连接。因此树中的每个结点都是某棵子树的根。
 - 有 N 个结点的树有 N-1 条边。
 - 通常根画在顶部。</p>
 <p><strong>术语</strong>：
 - <strong>结点的度（degree of a node）</strong>：结点的子树个数。例如 degree(A) = 3，degree(F) = 0。
-- <strong>树的度（degree of a tree）</strong>：$<span class="arithmatex">\(\max\{\text{degree(node)}\}\)</span>$
+- <strong>树的度（degree of a tree）</strong>：<span class="arithmatex">\(\max\{\text{degree(node)}\}\)</span>
 - <strong>父结点（parent）</strong>：具有子树的结点。
 - <strong>子结点（children）</strong>：父结点的子树的根。
 - <strong>兄弟（siblings）</strong>：同一父结点的子结点。
 - <strong>叶结点/终端结点（leaf / terminal node）</strong>：度为 0 的结点（无子结点）。
-- <strong>从 n₁ 到 nₖ 的路径（path）</strong>：唯一的结点序列 $<span class="arithmatex">\(n_1, n_2, \dots, n_k\)</span>$，使得对于 $<span class="arithmatex">\(1 \le i &lt; k\)</span><span class="arithmatex">\(，\)</span><span class="arithmatex">\(n_i\)</span>$ 是 $<span class="arithmatex">\(n_{i+1}\)</span>$ 的父结点。
+- <strong>从 n₁ 到 nₖ 的路径（path）</strong>：唯一的结点序列 <span class="arithmatex">\(n_1, n_2, \dots, n_k\)</span>，使得对于 <span class="arithmatex">\(1 \le i &lt; k\)</span>，<span class="arithmatex">\(n_i\)</span> 是 <span class="arithmatex">\(n_{i+1}\)</span> 的父结点。
 - <strong>路径长度（length of path）</strong>：路径上的边数。
 - <strong>nᵢ 的深度（depth）</strong>：从根到 nᵢ 的唯一路径的长度。根的深度 = 0。
 - <strong>nᵢ 的高度（height）</strong>：从 nᵢ 到叶结点的最长路径的长度。叶结点的高度 = 0。height(D) = 2。
@@ -1511,9 +1511,9 @@ b) 新结构体可通过 malloc 从系统全局内存获取，通过 free 释放
 <p>将 FirstChild-NextSibling 树顺时针旋转 45° 即可得到二叉树。</p>
 <hr />
 <p><strong>表达式树（Expression Trees / Syntax Trees）</strong></p>
-<p>示例：中缀表达式 $<span class="arithmatex">\(A + B * C / D\)</span>$</p>
+<p>示例：中缀表达式 <span class="arithmatex">\(A + B * C / D\)</span></p>
 <p>从后缀表达式构造表达式树：
-示例：$<span class="arithmatex">\((a + b) * (c * (d + e)) = a b + c d e + * *\)</span>$</p>
+示例：<span class="arithmatex">\((a + b) * (c * (d + e)) = a b + c d e + * *\)</span></p>
 <hr />
 <p><strong>树的遍历（Tree Traversals）—— 恰好访问每个结点一次</strong></p>
 <p><strong>前序遍历（Preorder Traversal）</strong>：
@@ -1554,9 +1554,9 @@ b) 新结构体可通过 malloc 从系统全局内存获取，通过 free 释放
 </span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="p">}</span>
 </span></code></pre></div></p>
 <p>对于表达式树：
-- 中序遍历 → $<span class="arithmatex">\(A + B * C / D\)</span>$
-- 后序遍历 → $<span class="arithmatex">\(A B C * D / +\)</span>$
-- 前序遍历 → $<span class="arithmatex">\(+ A / * B C D\)</span>$</p>
+- 中序遍历 → <span class="arithmatex">\(A + B * C / D\)</span>
+- 后序遍历 → <span class="arithmatex">\(A B C * D / +\)</span>
+- 前序遍历 → <span class="arithmatex">\(+ A / * B C D\)</span></p>
 <p><strong>迭代版中序遍历</strong>：
 <div class="language-c highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">iter_inorder</span><span class="w"> </span><span class="p">(</span><span class="n">tree_ptr</span><span class="w"> </span><span class="n">tree</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">    </span><span class="n">Stack</span><span class="w"> </span><span class="n">S</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CreateStack</span><span class="p">(</span><span class="n">MAX_SIZE</span><span class="p">);</span>
@@ -1573,7 +1573,7 @@ b) 新结构体可通过 malloc 从系统全局内存获取，通过 free 释放
 </span></code></pre></div></p>
 <hr />
 <p><strong>应用示例</strong>：层次化文件系统中的目录列表
-- 深度为 $<span class="arithmatex">\(d_i\)</span>$ 的文件将缩进 $<span class="arithmatex">\(d_i\)</span>$ 个制表符。</p>
+- 深度为 <span class="arithmatex">\(d_i\)</span> 的文件将缩进 <span class="arithmatex">\(d_i\)</span> 个制表符。</p>
 <p><div class="language-c highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">ListDir</span><span class="w"> </span><span class="p">(</span><span class="n">DirOrFile</span><span class="w"> </span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">Depth</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">D</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">legitimate</span><span class="w"> </span><span class="n">entry</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">        </span><span class="n">PrintName</span><span class="w"> </span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="n">Depth</span><span class="p">);</span>
@@ -1583,7 +1583,7 @@ b) 新结构体可通过 malloc 从系统全局内存获取，通过 free 释放
 </span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">    </span><span class="p">}</span>
 </span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="p">}</span>
 </span></code></pre></div>
-$<span class="arithmatex">\(T(N) = O(N)\)</span>$</p>
+<span class="arithmatex">\(T(N) = O(N)\)</span></p>
 <p>对外接口：
 <div class="language-c highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">ListDirectory</span><span class="w"> </span><span class="p">(</span><span class="n">DirOrFile</span><span class="w"> </span><span class="n">D</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">    </span><span class="n">ListDir</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
@@ -1609,15 +1609,15 @@ $<span class="arithmatex">\(T(N) = O(N)\)</span>$</p>
 </span></code></pre></div></p>
 <hr />
 <p><strong>二叉树的性质（Properties of Binary Trees）</strong>：
-- 第 i 层的最大结点数为 $<span class="arithmatex">\(2^{i-1}\)</span><span class="arithmatex">\(（\)</span><span class="arithmatex">\(i \ge 1\)</span>$）。
-- 深度为 k 的二叉树的最大结点数为 $<span class="arithmatex">\(2^k - 1\)</span><span class="arithmatex">\(（\)</span><span class="arithmatex">\(k \ge 1\)</span><span class="arithmatex">\(）。
-- 对于任何非空二叉树，\)</span><span class="arithmatex">\(n_0 = n_2 + 1\)</span>$，其中 $<span class="arithmatex">\(n_0\)</span>$ 为叶结点数，$<span class="arithmatex">\(n_2\)</span>$ 为度为 2 的结点数。</p>
+- 第 i 层的最大结点数为 <span class="arithmatex">\(2^{i-1}\)</span>（<span class="arithmatex">\(i \ge 1\)</span>）。
+- 深度为 k 的二叉树的最大结点数为 <span class="arithmatex">\(2^k - 1\)</span>（<span class="arithmatex">\(k \ge 1\)</span>）。
+- 对于任何非空二叉树，<span class="arithmatex">\(n_0 = n_2 + 1\)</span>，其中 <span class="arithmatex">\(n_0\)</span> 为叶结点数，<span class="arithmatex">\(n_2\)</span> 为度为 2 的结点数。</p>
 <p><strong>证明</strong>：
-设 $<span class="arithmatex">\(n_1\)</span>$ 为度为 1 的结点数，n 为结点总数。
-$<span class="arithmatex">\(n = n_0 + n_1 + n_2\)</span>$  (1)
-设 B 为分支数，则 $<span class="arithmatex">\(n = B + 1\)</span>$。
-所有分支来自度为 1 或 2 的结点，故 $<span class="arithmatex">\(B = n_1 + 2n_2\)</span>$。
-代入得 $<span class="arithmatex">\(n_0 = n_2 + 1\)</span>$。</p>
+设 <span class="arithmatex">\(n_1\)</span> 为度为 1 的结点数，n 为结点总数。
+<span class="arithmatex">\(n = n_0 + n_1 + n_2\)</span>  (1)
+设 B 为分支数，则 <span class="arithmatex">\(n = B + 1\)</span>。
+所有分支来自度为 1 或 2 的结点，故 <span class="arithmatex">\(B = n_1 + 2n_2\)</span>。
+代入得 <span class="arithmatex">\(n_0 = n_2 + 1\)</span>。</p>
 <p>注意：在一般树中，子结点的顺序无关紧要。但在二叉树中，左子结点和右子结点是不同的。</p>
 <hr />
 <h3 id="3-binary-search-trees">第3章（续） 二叉搜索树（Binary Search Trees）<a class="headerlink" href="#3-binary-search-trees" title="Permanent link">&para;</a></h3>
@@ -1653,7 +1653,7 @@ $<span class="arithmatex">\(n = n_0 + n_1 + n_2\)</span>$  (1)
 </span><span id="__span-18-11"><a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"> </span><span class="cm">/* not found */</span>
 </span><span id="__span-18-12"><a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="p">}</span>
 </span></code></pre></div>
-$<span class="arithmatex">\(T(N) = O(d)\)</span>$，其中 d 为深度。</p>
+<span class="arithmatex">\(T(N) = O(d)\)</span>，其中 d 为深度。</p>
 <p><strong>FindMin</strong>：
 <div class="language-c highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">Position</span><span class="w"> </span><span class="nf">FindMin</span><span class="p">(</span><span class="n">SearchTree</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 </span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">T</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span>
@@ -1724,7 +1724,7 @@ $<span class="arithmatex">\(T(N) = O(d)\)</span>$，其中 d 为深度。</p>
 </span><span id="__span-22-24"><a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">T</span><span class="p">;</span>
 </span><span id="__span-22-25"><a id="__codelineno-22-25" name="__codelineno-22-25" href="#__codelineno-22-25"></a><span class="p">}</span>
 </span></code></pre></div>
-$<span class="arithmatex">\(T(N) = O(h)\)</span>$，其中 h 为树的高度。</p>
+<span class="arithmatex">\(T(N) = O(h)\)</span>，其中 h 为树的高度。</p>
 <p><strong>懒惰删除（Lazy Deletion）</strong>：
 如果删除操作不多，可采用懒惰删除：为每个结点添加一个标志字段，标记该结点是活跃的还是已删除。这样可以不实际释放结点空间。如果已删除的键值被重新插入，无需再次调用 malloc。
 但当已删除结点数与活跃结点数相当时，是否会影响操作效率？</p>
@@ -1749,23 +1749,23 @@ $<span class="arithmatex">\(T(N) = O(h)\)</span>$，其中 h 为树的高度。<
 <hr />
 <h4 id="2">§2 简单实现<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
 <p><strong>数组（Array）</strong>：
-- 插入：在末尾添加一项 $<span class="arithmatex">\(\sim \Theta(1)\)</span>$
-- 删除：查找最大/最小键值 $<span class="arithmatex">\(\sim \Theta(n)\)</span>$，移除元素并移动数组 $<span class="arithmatex">\(\sim O(n)\)</span>$</p>
+- 插入：在末尾添加一项 <span class="arithmatex">\(\sim \Theta(1)\)</span>
+- 删除：查找最大/最小键值 <span class="arithmatex">\(\sim \Theta(n)\)</span>，移除元素并移动数组 <span class="arithmatex">\(\sim O(n)\)</span></p>
 <p><strong>链表（Linked List）</strong>：
-- 插入：添加到链表头部 $<span class="arithmatex">\(\sim \Theta(1)\)</span>$
-- 删除：查找最大/最小键值 $<span class="arithmatex">\(\sim \Theta(n)\)</span>$，移动元素 $<span class="arithmatex">\(\sim \Theta(1)\)</span>$</p>
+- 插入：添加到链表头部 <span class="arithmatex">\(\sim \Theta(1)\)</span>
+- 删除：查找最大/最小键值 <span class="arithmatex">\(\sim \Theta(n)\)</span>，移动元素 <span class="arithmatex">\(\sim \Theta(1)\)</span></p>
 <p><strong>有序数组（Ordered Array）</strong>：
-- 插入：找到合适位置 $<span class="arithmatex">\(\sim O(n)\)</span>$，添加元素 $<span class="arithmatex">\(\sim \Theta(1)\)</span>$
-- 删除：移除第一个/最后一个元素 $<span class="arithmatex">\(\sim \Theta(1)\)</span>$</p>
+- 插入：找到合适位置 <span class="arithmatex">\(\sim O(n)\)</span>，添加元素 <span class="arithmatex">\(\sim \Theta(1)\)</span>
+- 删除：移除第一个/最后一个元素 <span class="arithmatex">\(\sim \Theta(1)\)</span></p>
 <p><strong>有序链表（Ordered Linked List）</strong>：
-- 插入：找到合适位置 $<span class="arithmatex">\(\sim O(n)\)</span>$，添加元素 $<span class="arithmatex">\(\sim \Theta(1)\)</span>$
-- 删除：移除第一个/最后一个元素 $<span class="arithmatex">\(\sim \Theta(1)\)</span>$</p>
+- 插入：找到合适位置 <span class="arithmatex">\(\sim O(n)\)</span>，添加元素 <span class="arithmatex">\(\sim \Theta(1)\)</span>
+- 删除：移除第一个/最后一个元素 <span class="arithmatex">\(\sim \Theta(1)\)</span></p>
 <p>由于删除操作永远不会多于插入操作，有序结构可能更好。</p>
 <hr />
 <h4 id="3-binary-heap">§3 二叉堆（Binary Heap）<a class="headerlink" href="#3-binary-heap" title="Permanent link">&para;</a></h4>
 <p><strong>1. 结构性质（Structure Property）</strong></p>
 <p><strong>定义</strong>：有 n 个结点、高度为 h 的二叉树是完全的（complete），当且仅当其结点对应于高度为 h 的完美二叉树中从 1 到 n 编号的结点。</p>
-<p>高度为 h 的完全二叉树的结点数在 $<span class="arithmatex">\(2^h\)</span>$ 到 $<span class="arithmatex">\(2^{h+1} - 1\)</span>$ 之间。$<span class="arithmatex">\(h = \lfloor \log N \rfloor\)</span>$</p>
+<p>高度为 h 的完全二叉树的结点数在 <span class="arithmatex">\(2^h\)</span> 到 <span class="arithmatex">\(2^{h+1} - 1\)</span> 之间。<span class="arithmatex">\(h = \lfloor \log N \rfloor\)</span></p>
 <p><strong>数组表示</strong>：BT[n+1]（BT[0] 不使用）</p>
 <table>
 <thead>
@@ -1817,8 +1817,8 @@ $<span class="arithmatex">\(T(N) = O(h)\)</span>$，其中 h 为树的高度。<
 </tr>
 </tbody>
 </table>
-<p><strong>引理</strong>：若一棵有 n 个结点的完全二叉树顺序表示，则对于索引为 i（$<span class="arithmatex">\(1 \le i \le n\)</span>$）的任意结点，有：
-(1) parent(i) 的索引 = $<span class="arithmatex">\(\lfloor i/2 \rfloor\)</span>$（若 i ≠ 1）；若 i = 1 则无父结点。
+<p><strong>引理</strong>：若一棵有 n 个结点的完全二叉树顺序表示，则对于索引为 i（<span class="arithmatex">\(1 \le i \le n\)</span>）的任意结点，有：
+(1) parent(i) 的索引 = <span class="arithmatex">\(\lfloor i/2 \rfloor\)</span>（若 i ≠ 1）；若 i = 1 则无父结点。
 (2) left_child(i) 的索引 = 2i（若 2i ≤ n）；若 2i &gt; n 则无左子结点。
 (3) right_child(i) 的索引 = 2i + 1（若 2i + 1 ≤ n）；若 2i + 1 &gt; n 则无右子结点。</p>
 <p><strong>初始化</strong>：
@@ -1858,7 +1858,7 @@ $<span class="arithmatex">\(T(N) = O(h)\)</span>$，其中 h 为树的高度。<
 </span><span id="__span-25-10"><a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="w">    </span><span class="n">H</span><span class="o">-&gt;</span><span class="n">Elements</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X</span><span class="p">;</span>
 </span><span id="__span-25-11"><a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="p">}</span>
 </span></code></pre></div>
-$<span class="arithmatex">\(T(N) = O(\log N)\)</span>$</p>
+<span class="arithmatex">\(T(N) = O(\log N)\)</span></p>
 <p>H-&gt;Element[0] 是哨兵（sentinel），其值不大于堆中最小元素。这种方法比交换（swap）更快。</p>
 <p><strong>删除最小值（DeleteMin）</strong>：
 <div class="language-c highlight"><pre><span></span><code><span id="__span-26-1"><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="n">ElementType</span><span class="w"> </span><span class="nf">DeleteMin</span><span class="p">(</span><span class="n">PriorityQueue</span><span class="w"> </span><span class="n">H</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1884,7 +1884,7 @@ $<span class="arithmatex">\(T(N) = O(\log N)\)</span>$</p>
 </span><span id="__span-26-21"><a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">MinElement</span><span class="p">;</span>
 </span><span id="__span-26-22"><a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a><span class="p">}</span>
 </span></code></pre></div>
-$<span class="arithmatex">\(T(N) = O(\log N)\)</span>$</p>
+<span class="arithmatex">\(T(N) = O(\log N)\)</span></p>
 <hr />
 <p><strong>4. 其他堆操作</strong></p>
 <p>注意：查找除最小值外的任何键值都需要线性扫描整个堆。</p>
@@ -1894,8 +1894,8 @@ $<span class="arithmatex">\(T(N) = O(\log N)\)</span>$</p>
 <li><strong>Delete(P, H)</strong>：先 DecreaseKey(P, ∞, H)，再 DeleteMin(H)。删除被用户（异常）终止的进程。</li>
 </ul>
 <hr />
-<p><strong>定理</strong>：对于高度为 h、包含 $<span class="arithmatex">\(2^{h+1} - 1\)</span>$ 个结点的完美二叉树，所有结点的高度之和为 $<span class="arithmatex">\(2^{h+1} - 1 - (h+1)\)</span>$。
-$<span class="arithmatex">\(T(N) = O(N)\)</span>$（建堆复杂度）</p>
+<p><strong>定理</strong>：对于高度为 h、包含 <span class="arithmatex">\(2^{h+1} - 1\)</span> 个结点的完美二叉树，所有结点的高度之和为 <span class="arithmatex">\(2^{h+1} - 1 - (h+1)\)</span>。
+<span class="arithmatex">\(T(N) = O(N)\)</span>（建堆复杂度）</p>
 <hr />
 <h4 id="4_1">§4 优先队列的应用<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h4>
 <p><strong>示例</strong>：给定 N 个元素的列表和一个整数 k，找出第 k 大的元素。
@@ -1904,18 +1904,18 @@ $<span class="arithmatex">\(T(N) = O(N)\)</span>$（建堆复杂度）</p>
 <h4 id="5-d-d-heaps-d">§5 d-堆（d-Heaps）—— 所有结点都有 d 个子结点<a class="headerlink" href="#5-d-d-heaps-d" title="Permanent link">&para;</a></h4>
 <p><strong>问题</strong>：是否应将 d 设得尽可能大？</p>
 <p>注意：
-① DeleteMin 需要 d-1 次比较来找到最小的子结点。因此总时间复杂度为 $<span class="arithmatex">\(O(d \log_d N)\)</span>$。
+① DeleteMin 需要 d-1 次比较来找到最小的子结点。因此总时间复杂度为 <span class="arithmatex">\(O(d \log_d N)\)</span>。
 ② <em>2 或 /2 只是位移操作，但 </em>d 或 /d 不是。
 ③ 当优先队列太大无法完全放入主存时，d-堆会变得有意义。</p>
 <hr />
 <h3 id="8-union-and-find">第8章 并查集（Union and Find）<a class="headerlink" href="#8-union-and-find" title="Permanent link">&para;</a></h3>
 <h4 id="1-equivalence-relations">1. 等价关系（Equivalence Relations）<a class="headerlink" href="#1-equivalence-relations" title="Permanent link">&para;</a></h4>
 <p><strong>定义</strong>：关系 R 定义在集合 S 上，若对于每对元素 (a, b)（a, b ∈ S），a R b 要么为真要么为假。若 a R b 为真，则称 a 与 b 相关。</p>
-<p><strong>定义</strong>：集合 S 上的关系 $<span class="arithmatex">\(\sim\)</span>$ 称为等价关系，当且仅当它在 S 上满足对称性（symmetric）、自反性（reflexive）和传递性（transitive）。</p>
-<p><strong>定义</strong>：集合 S 的两个成员 x 和 y 属于同一等价类，当且仅当 $<span class="arithmatex">\(x \sim y\)</span>$。</p>
+<p><strong>定义</strong>：集合 S 上的关系 <span class="arithmatex">\(\sim\)</span> 称为等价关系，当且仅当它在 S 上满足对称性（symmetric）、自反性（reflexive）和传递性（transitive）。</p>
+<p><strong>定义</strong>：集合 S 的两个成员 x 和 y 属于同一等价类，当且仅当 <span class="arithmatex">\(x \sim y\)</span>。</p>
 <hr />
 <h4 id="2-the-dynamic-equivalence-problem">2. 动态等价问题（The Dynamic Equivalence Problem）<a class="headerlink" href="#2-the-dynamic-equivalence-problem" title="Permanent link">&para;</a></h4>
-<p>给定等价关系 $<span class="arithmatex">\(\sim\)</span>$，判断任意 a 和 b 是否有 $<span class="arithmatex">\(a \sim b\)</span>$。</p>
+<p>给定等价关系 <span class="arithmatex">\(\sim\)</span>，判断任意 a 和 b 是否有 <span class="arithmatex">\(a \sim b\)</span>。</p>
 <p><strong>示例</strong>：给定 S = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12} 和 9 个关系：
 12 = 4, 3 = 1, 6 = 10, 8 = 9, 7 = 4, 6 = 8, 3 = 5, 2 = 11, 11 = 12。
 等价类为：{2, 4, 7, 11, 12}, {1, 3, 5}, {6, 8, 9, 10}。</p>
@@ -1936,12 +1936,12 @@ $<span class="arithmatex">\(T(N) = O(N)\)</span>$（建堆复杂度）</p>
 <hr />
 <h4 id="3_1">3. 基本数据结构<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
 <p>集合元素：1, 2, 3, ..., N
-集合：$<span class="arithmatex">\(S_1, S_2, \ldots\)</span>$ 且 $<span class="arithmatex">\(S_i \cap S_j = \emptyset\)</span>$（若 i ≠ j）—— 互不相交（disjoint）</p>
-<p>示例：$<span class="arithmatex">\(S_1 = \{6, 7, 8, 10\}, S_2 = \{1, 4, 9\}, S_3 = \{2, 3, 5\}\)</span>$</p>
+集合：<span class="arithmatex">\(S_1, S_2, \ldots\)</span> 且 <span class="arithmatex">\(S_i \cap S_j = \emptyset\)</span>（若 i ≠ j）—— 互不相交（disjoint）</p>
+<p>示例：<span class="arithmatex">\(S_1 = \{6, 7, 8, 10\}, S_2 = \{1, 4, 9\}, S_3 = \{2, 3, 5\}\)</span></p>
 <p><strong>操作</strong>：
-(1) Union(i, j)：将 $<span class="arithmatex">\(S_i\)</span>$ 和 $<span class="arithmatex">\(S_j\)</span>$ 替换为 $<span class="arithmatex">\(S = S_i \cup S_j\)</span>$
-(2) Find(i)：找出包含元素 i 的集合 $<span class="arithmatex">\(S_k\)</span>$</p>
-<p><strong>Union(i, j) 思路</strong>：使 $<span class="arithmatex">\(S_i\)</span>$ 成为 $<span class="arithmatex">\(S_j\)</span>$ 的子树，或反之。即将其中一个根的父指针指向另一个根。</p>
+(1) Union(i, j)：将 <span class="arithmatex">\(S_i\)</span> 和 <span class="arithmatex">\(S_j\)</span> 替换为 <span class="arithmatex">\(S = S_i \cup S_j\)</span>
+(2) Find(i)：找出包含元素 i 的集合 <span class="arithmatex">\(S_k\)</span></p>
+<p><strong>Union(i, j) 思路</strong>：使 <span class="arithmatex">\(S_i\)</span> 成为 <span class="arithmatex">\(S_j\)</span> 的子树，或反之。即将其中一个根的父指针指向另一个根。</p>
 <p><strong>实现1</strong>：S[element] = 该元素的父结点。
 注意：S[root] = 0，集合名 = 根索引。</p>
 <p><strong>Find 实现</strong>：
@@ -1950,7 +1950,7 @@ $<span class="arithmatex">\(T(N) = O(N)\)</span>$（建堆复杂度）</p>
 </span><span id="__span-28-3"><a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">X</span><span class="p">;</span>
 </span><span id="__span-28-4"><a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="p">}</span>
 </span></code></pre></div></p>
-<p><strong>分析</strong>：以下操作序列会导致 $<span class="arithmatex">\(T = \Theta(N^2)\)</span>$：
+<p><strong>分析</strong>：以下操作序列会导致 <span class="arithmatex">\(T = \Theta(N^2)\)</span>：
 union(2, 1), find(1);
 union(3, 2), find(1);
 ...
@@ -1959,7 +1959,7 @@ union(N, N-1), find(1);</p>
 <h4 id="4-smart-union-algorithms">4. 智能合并算法（Smart Union Algorithms）<a class="headerlink" href="#4-smart-union-algorithms" title="Permanent link">&para;</a></h4>
 <p><strong>按大小合并（Union-by-Size）</strong>—— 总是将较小的树挂到较大的树上。
 S[Root] = -size; /<em> 初始化为 -1 </em>/</p>
-<p><strong>引理</strong>：设 T 是由按大小合并创建的具有 N 个结点的树，则树的高度不超过 $<span class="arithmatex">\(\lfloor \log_2 N \rfloor\)</span>$。</p>
+<p><strong>引理</strong>：设 T 是由按大小合并创建的具有 N 个结点的树，则树的高度不超过 <span class="arithmatex">\(\lfloor \log_2 N \rfloor\)</span>。</p>
 
 
 
