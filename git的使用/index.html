@@ -629,6 +629,100 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🍴 Fork 协作全流程笔记
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🍴 Fork 协作全流程笔记">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Fork：建立你自己的“副本”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 同步到本地
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 配置“上游”仓库 (关键步骤)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 保持同步（不让你的副本落后）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-pull-request-pr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 提交贡献 (Pull Request / PR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fork_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Fork 核心逻辑对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 常用操作清单
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -832,6 +926,100 @@
     <span class="md-ellipsis">
       
         📝 常用查阅表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🍴 Fork 协作全流程笔记
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🍴 Fork 协作全流程笔记">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-fork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Fork：建立你自己的“副本”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 同步到本地
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 配置“上游”仓库 (关键步骤)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 保持同步（不让你的副本落后）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-pull-request-pr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 提交贡献 (Pull Request / PR)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fork_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💡 Fork 核心逻辑对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📝 常用操作清单
       
     </span>
   </a>
@@ -1047,6 +1235,98 @@
 </tr>
 </tbody>
 </table>
+<h3 id="fork">🍴 Fork 协作全流程笔记<a class="headerlink" href="#fork" title="Permanent link">&para;</a></h3>
+<h4 id="1-fork">1. Fork：建立你自己的“副本”<a class="headerlink" href="#1-fork" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>操作</strong>：在 GitHub 项目页面的右上角点击 <strong>Fork</strong> 按钮。</p>
+</li>
+<li>
+<p><strong>结果</strong>：你的账号下会出现一个同名的仓库（例如：<code>yourname/original-project</code>）。你对这个副本拥有绝对的控制权。</p>
+</li>
+</ul>
+<h4 id="2_1">2. 同步到本地<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h4>
+<p>你需要把这个属于你的“副本”下载到电脑上开发：</p>
+<p>Bash</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git clone https://github.com/你的用户名/仓库名.git
+</span></code></pre></div>
+<h4 id="3_1">3. 配置“上游”仓库 (关键步骤)<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h4>
+<p>为了能获取原作者（项目方）的最新更新，你需要关联原仓库：</p>
+<ul>
+<li>
+<p><code>git remote add upstream &lt;原作者的仓库地址&gt;</code>：把原作者的仓库命名为 <code>upstream</code>（上游）。</p>
+</li>
+<li>
+<p><code>git remote -v</code>：你应该能看到两个远程地址：<code>origin</code>（你的副本）和 <code>upstream</code>（原作者）。</p>
+</li>
+</ul>
+<h4 id="4_1">4. 保持同步（不让你的副本落后）<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h4>
+<p>如果原作者更新了代码，你的 Fork 副本不会自动更新。你需要手动同步：</p>
+<p>Bash</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git fetch upstream          # 拉取原作者的所有更新
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git checkout main           # 切换到你的主分支
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git merge upstream/main     # 把原作者的改动合并到你的本地
+</span></code></pre></div>
+<h4 id="5-pull-request-pr">5. 提交贡献 (Pull Request / PR)<a class="headerlink" href="#5-pull-request-pr" title="Permanent link">&para;</a></h4>
+<p>当你写好了超棒的功能，想合并进原作者的项目：</p>
+<ol>
+<li>
+<p><strong>Push</strong>：先将本地修改推送到<strong>你的</strong>远程仓库：</p>
+<p><code>git push origin &lt;branch_name&gt;</code></p>
+</li>
+<li>
+<p><strong>PR</strong>：回到 GitHub 网页，你会看到一个按钮 <strong>"Compare &amp; pull request"</strong>。</p>
+</li>
+<li>
+<p><strong>提交</strong>：填写你的修改说明，点击提交。原作者审核通过后，你的代码就会进入原项目。</p>
+</li>
+</ol>
+<hr />
+<h3 id="fork_1">💡 Fork 核心逻辑对比<a class="headerlink" href="#fork_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>维度</strong></th>
+<th><strong>Fork</strong></th>
+<th><strong>Clone</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>位置</strong></td>
+<td>服务器端的仓库复制</td>
+<td>从服务器下载到本地</td>
+</tr>
+<tr>
+<td><strong>权限</strong></td>
+<td>复制后你拥有完整权限</td>
+<td>除非你是成员，否则不能 Push</td>
+</tr>
+<tr>
+<td><strong>关系</strong></td>
+<td>两个仓库互不干扰，但有联系</td>
+<td>本地与远程的一对一关系</td>
+</tr>
+<tr>
+<td><strong>目的</strong></td>
+<td>参与开源项目/自由修改</td>
+<td>个人开发或团队协作</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="_4">📝 常用操作清单<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><code>git remote add upstream &lt;URL&gt;</code>：添加原作者仓库。</p>
+</li>
+<li>
+<p><code>git fetch upstream</code>：获取原作者的新代码。</p>
+</li>
+<li>
+<p><code>git pull upstream &lt;branch&gt;</code>：直接拉取并合并原作者的特定分支。</p>
+</li>
+</ul>
 
 
 
