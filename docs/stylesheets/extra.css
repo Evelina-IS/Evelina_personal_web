@@ -1,0 +1,94 @@
+/* ==================== 阅读次数计数器样式 ==================== */
+
+/* 页面底部阅读计数栏 */
+.reader-counter-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(156, 39, 176, 0.06), rgba(123, 31, 162, 0.10));
+  border: 1px solid rgba(156, 39, 176, 0.15);
+  font-size: 0.85rem;
+  color: var(--md-typeset-color);
+  transition: all 0.3s ease;
+}
+
+.reader-counter-wrapper:hover {
+  background: linear-gradient(135deg, rgba(156, 39, 176, 0.10), rgba(123, 31, 162, 0.15));
+  border-color: rgba(156, 39, 176, 0.30);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(156, 39, 176, 0.10);
+}
+
+/* 阅读次数图标 */
+.reader-counter-wrapper .counter-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* 阅读次数数字 */
+.reader-counter-wrapper .counter-number {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--md-primary-fg-color);
+  min-width: 2ch;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 阅读次数文字 */
+.reader-counter-wrapper .counter-label {
+  opacity: 0.8;
+}
+
+/* ==================== 淡紫色主题额外样式 ==================== */
+
+/* 代码块美化 */
+.md-typeset code {
+  border-radius: 4px;
+}
+
+/* 表格美化 */
+.md-typeset table:not([class]) {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-primary-fg-color);
+  color: white;
+  font-weight: 600;
+}
+
+/* 标题加一点点紫色装饰 */
+.md-typeset h1 {
+  border-bottom: 3px solid rgba(156, 39, 176, 0.20);
+  padding-bottom: 0.3em;
+}
+
+.md-typeset h2 {
+  border-bottom: 2px solid rgba(156, 39, 176, 0.12);
+  padding-bottom: 0.2em;
+}
+
+/* 链接颜色微调 */
+.md-typeset a {
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(156, 39, 176, 0.30);
+}
+
+.md-typeset a:hover {
+  border-bottom-style: solid;
+}
+
+/* 引用块美化 */
+.md-typeset blockquote {
+  border-left: 4px solid var(--md-primary-fg-color);
+  background: rgba(156, 39, 176, 0.03);
+  border-radius: 0 8px 8px 0;
+}

@@ -8,6 +8,7 @@ nav:
   - website_oneinall: oneinall.md
   - FDSNOTE: fds.md
   - git的使用: git的使用.md
+  - risc-v使用指南: risc-v使用指南.md
 
 theme:
   name: material
@@ -26,11 +27,15 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: deep purple
+      accent: purple
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: deep purple
+      accent: purple
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -70,6 +75,8 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
   - javascripts/katex.js
+  - javascripts/reader-counter.js
 
 extra_css:
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
+  - stylesheets/extra.css
