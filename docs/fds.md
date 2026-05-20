@@ -7,6 +7,7 @@
 
 **问题**：给定整数序列 $A_1, A_2, \ldots, A_N$（可能为负数），求 $\sum_{k=i}^{j} A_k$ 的最大值。
 
+
 **算法1**（三重循环，$O(N^3)$）：
 ```c
 int MaxSubsequenceSum (const int A[], int N) {
