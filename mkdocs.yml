@@ -6,11 +6,11 @@ nav:
   - website_oneinall: oneinall.md
   - FDSNOTE: fds.md
   - git的使用: git的使用.md
-  - risc-v使用指南: risc-v使用指南.md
+  
   - SYS1:
       - SYS汇编: sys汇编.md
-      - 指令集:指令集.md
-
+      - 指令集: 指令集.md
+      - risc-v使用指南: risc-v使用指南.md
 theme:
   name: material
   icon:

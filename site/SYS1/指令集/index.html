@@ -1,0 +1,2000 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>System I: The Processor: Basic Principles - Evelina_IS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#system-i-the-processor-basic-principles" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Evelina_IS" class="md-header__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Evelina_IS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              System I: The Processor: Basic Principles
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Evelina_IS" class="md-nav__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Evelina_IS
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oneinall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    website_oneinall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fds.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FDSNOTE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    git的使用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../risc-v%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    risc-v使用指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SYS1
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    SYS1
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../sys汇编.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SYS汇编
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../指令集:指令集.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    None
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、Overview（课程概览）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-architecture-of-computers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、What is the architecture of computers?（计算机的架构）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="二、What is the architecture of computers?（计算机的架构）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        计算机系统的层次结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#von-neumann-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        冯·诺依曼结构（Von Neumann Structure）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-inside-of-processor-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、What is the inside of Processor (CPU)?（处理器内部结构）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="三、What is the inside of Processor (CPU)?（处理器内部结构）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU的核心组成部分
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cpu_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU的基本目的
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CPU的基本目的">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        多核处理器示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2microarchitecture-of-godson-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        龙芯2号微架构（Microarchitecture of Godson-2）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pipelining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        流水线技术（Pipelining）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-cpu-to-solve-problemscpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、How to use CPU to solve problems?（如何使用CPU解决问题）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="四、How to use CPU to solve problems?（如何使用CPU解决问题）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-digital-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设计方法一：Common Digital System（通用数字系统）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="设计方法一：Common Digital System（通用数字系统）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#finite-state-machinefsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Finite State Machine（FSM，有限状态机）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#infinite-state-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Infinite State Machine（无限状态机）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-of-register-transfers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设计方法二：Control of Register Transfers（寄存器传输控制）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="设计方法二：Control of Register Transfers（寄存器传输控制）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#three-essential-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三个基本要素（Three essential elements）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#register-transfer-languagertl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register Transfer Language（RTL，寄存器传输语言）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#0" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        传输状态机处理：检测连续0的个数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hardware-programmable-detection-consecutive-01-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Hardware Programmable: Detection consecutive "0/1" number
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vs-specific-and-general-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        专用系统 vs 通用系统（Specific and general system）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#program-state-machinepsm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        设计方法三：Program State Machine（PSM，程序状态机）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#is-there-a-better-way-universal-turing-machine-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、Is there a better way? — Universal Turing Machine thinking
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="五、Is there a better way? — Universal Turing Machine thinking">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#turing-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turing Machine（图灵机）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Turing Machine（图灵机）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-idea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本思想（Basic idea）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components-of-turing-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图灵机的组成部分（Components of Turing Machine）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instruction-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图灵机的指令结构（Instruction structure）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#program-of-turing-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        图灵机的程序（Program of Turing Machine）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#turing-machine-program-consecutive-1-detection1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Turing Machine Program δ: Consecutive 1 Detection（连续1检测）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#universal-turing-machine-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Universal Turing Machine Implementation（通用图灵机的实现）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Universal Turing Machine Implementation（通用图灵机的实现）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ideal-turing-machine-cannot-be-implemented" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        理想图灵机无法实现（Ideal Turing Machine cannot be implemented）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#universaluniversal-turing-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通用（Universal）图灵机（Universal Turing Machine）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        两个核心问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-turing-machine-a-real-computer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Practical Turing Machine — A Real Computer（实用的图灵机——真正的计算机）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Practical Turing Machine — A Real Computer（实用的图灵机——真正的计算机）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a-large-enough-storage-to-replace-the-tape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用大容量存储替换纸带（A large enough storage to replace the tape）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storing-the-inner-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        存储内部状态（Storing the inner state）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#headcpuenhance-the-processing-capability-of-head-cpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        增强HEAD的处理能力——CPU（Enhance the processing capability of HEAD--CPU）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#programable-register-transfer-technology-to-implement-the-universal-turing-machine" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Programable Register Transfer Technology to Implement the Universal Turing Machine
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conversion-of-thinking-from-digital-systems-turn-to-computer-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conversion of thinking: from digital systems turn to computer systems（思维转换：从数字系统到计算机系统）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Conversion of thinking: from digital systems turn to computer systems（思维转换：从数字系统到计算机系统）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用CPU实现图灵机的基本思想
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#computation-thinking-program-solving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Computation Thinking: Program solving（计算思维：程序求解）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-of-cpucpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、Implementation of CPU（CPU的实现）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="六、Implementation of CPU（CPU的实现）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CPU的本质
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通过寄存器传输控制技术实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#components-in-cpucpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、Components in CPU（CPU中的组件）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#logics-in-cpucpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、Logics in CPU（CPU中的逻辑）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="八、Logics in CPU（CPU中的逻辑）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unlocked-vs-clocked-vs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unlocked vs. Clocked（无时钟 vs. 有时钟）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#state-elements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、State Elements（状态元件）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="九、State Elements（状态元件）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#state-storage-in-cpucpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        State Storage in CPU（CPU中的状态存储）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sequential-logic-in-cpucpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sequential Logic in CPU（CPU中的时序逻辑）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#an-edge-triggered-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        边沿触发方法（An edge triggered methodology）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sequential-logic-in-cpucpu_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十、Sequential Logic in CPU（CPU中的时序逻辑）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十、Sequential Logic in CPU（CPU中的时序逻辑）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#register" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register（寄存器）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cpu-we-will-be-doingcpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十一、CPU we will be doing（我们将实现的CPU）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="十一、CPU we will be doing（我们将实现的CPU）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#risc-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        RISC-V指令集实现
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        十二、What are the steps?（执行步骤）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nextbasic-principles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        next[[Basic Principles]]
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="system-i-the-processor-basic-principles">System I: The Processor: Basic Principles<a class="headerlink" href="#system-i-the-processor-basic-principles" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>作者</strong>: Li Lu (Zhejiang University)</p>
+</blockquote>
+<hr />
+<h2 id="overview">一、Overview（课程概览）<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>本课程探讨以下三个核心问题：</p>
+<ul>
+<li>
+<p><strong>§ What is the architecture of computers?</strong> — 计算机的架构是什么？</p>
+</li>
+<li>
+<p><strong>§ What is the inside of processor (CPU)?</strong> — 处理器（CPU）内部有什么？</p>
+</li>
+<li>
+<p><strong>§ How to use CPU to solve problems?</strong> — 如何使用CPU解决问题？</p>
+</li>
+</ul>
+<hr />
+<h2 id="what-is-the-architecture-of-computers">二、What is the architecture of computers?（计算机的架构）<a class="headerlink" href="#what-is-the-architecture-of-computers" title="Permanent link">&para;</a></h2>
+<h3 id="_1">计算机系统的层次结构<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>计算机体系结构包含从底层到顶层的多个抽象层次：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>problem → algorithm → program → runtime system (VM, OS, MM) → ISA (architecture) → microarchitecture → logic → circuits → electrons
+</span></code></pre></div>
+<ul>
+<li><strong>special system</strong>: num-progeammable system</li>
+<li><strong>general system</strong>: programmable system</li>
+</ul>
+<h3 id="von-neumann-structure">冯·诺依曼结构（Von Neumann Structure）<a class="headerlink" href="#von-neumann-structure" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>"Von Neumann structure: data and programs are in memory."</strong></p>
+</li>
+<li>
+<p><strong>"CPU takes instructions and data from memory for operation and puts the results into memory."</strong></p>
+</li>
+</ul>
+<p>- 冯·诺依曼结构的特点：数据和程序都存储在内存中</p>
+<p>- CPU从内存中取出指令和数据执行操作，并将结果放回内存</p>
+<hr />
+<h2 id="what-is-the-inside-of-processor-cpu">三、What is the inside of Processor (CPU)?（处理器内部结构）<a class="headerlink" href="#what-is-the-inside-of-processor-cpu" title="Permanent link">&para;</a></h2>
+<h3 id="cpu">CPU的核心组成部分<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Datapath（数据通路）</strong>: <strong>"performs operations on data"</strong> — 对数据执行操作</p>
+</li>
+<li>
+<p><strong>Control（控制单元）</strong>: <strong>"sequences datapath, memory, ..."</strong> — 对数据通路、内存等进行排序控制</p>
+</li>
+<li>
+<p><strong>Cache memory（缓存）</strong>: <strong>"Small fast SRAM memory for immediate access to data"</strong> — 小型快速SRAM存储器，用于立即访问数据</p>
+</li>
+</ol>
+<h2 id="cpu_1">CPU的基本目的<a class="headerlink" href="#cpu_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li>
+<p>generate digital system</p>
+</li>
+<li>
+<p>programme solving</p>
+</li>
+</ol>
+<h3 id="_2">多核处理器示例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>"AMD Barcelona: 4 processor cores"</strong> — AMD Barcelona拥有4个处理器核心</li>
+</ul>
+<h3 id="2microarchitecture-of-godson-2">龙芯2号微架构（Microarchitecture of Godson-2）<a class="headerlink" href="#2microarchitecture-of-godson-2" title="Permanent link">&para;</a></h3>
+<p>龙芯2号处理器内部包含以下关键组件：</p>
+<ul>
+<li>
+<p><strong>Reorder Queue</strong>（重排序队列）</p>
+</li>
+<li>
+<p><strong>Branch Bus / BRQ</strong>（分支总线/分支请求队列）</p>
+</li>
+<li>
+<p><strong>Fix RS</strong>（定点保留站）</p>
+</li>
+<li>
+<p><strong>BTB</strong>（分支目标缓冲器）</p>
+</li>
+<li>
+<p><strong>Register Mapper / Decoder</strong>（寄存器映射器/解码器）</p>
+</li>
+<li>
+<p><strong>PC + 16 / PC / IR</strong>（程序计数器/指令寄存器）</p>
+</li>
+<li>
+<p><strong>BHT</strong>（分支历史表）</p>
+</li>
+<li>
+<p><strong>ITLB</strong>（指令转换旁路缓冲器）</p>
+</li>
+<li>
+<p><strong>Float RS</strong>（浮点保留站）</p>
+</li>
+<li>
+<p><strong>ICACHE</strong>（指令缓存）</p>
+</li>
+<li>
+<p><strong>Processor Interface</strong>（处理器接口）</p>
+</li>
+<li>
+<p><strong>ALU1 / ALU2</strong>（算术逻辑单元）</p>
+</li>
+<li>
+<p><strong>General Register File</strong>（通用寄存器文件）</p>
+</li>
+<li>
+<p><strong>CACHE / TAG / CP0</strong>（缓存/标签/系统控制协处理器）</p>
+</li>
+<li>
+<p><strong>MEM / TLB</strong>（内存/转换旁路缓冲器）</p>
+</li>
+<li>
+<p><strong>Floating Point Register File</strong>（浮点寄存器文件）</p>
+</li>
+<li>
+<p><strong>FALU1 / FALU2</strong>（浮点算术逻辑单元）</p>
+</li>
+<li>
+<p><strong>Wtbk Queue</strong>（写回队列）</p>
+</li>
+</ul>
+<h3 id="pipelining">流水线技术（Pipelining）<a class="headerlink" href="#pipelining" title="Permanent link">&para;</a></h3>
+<p><strong>"Datapath with Control — Single cycle instruction execution"</strong></p>
+<p>经典五级流水线：<strong>IF → ID → EX → MEM → WB</strong></p>
+<ul>
+<li>
+<p><strong>IF</strong>: 取指令（Instruction Fetch）</p>
+</li>
+<li>
+<p><strong>ID</strong>: 指令译码（Instruction Decode）</p>
+</li>
+<li>
+<p><strong>EX</strong>: 执行（Execute）</p>
+</li>
+<li>
+<p><strong>MEM</strong>: 内存访问（Memory Access）</p>
+</li>
+<li>
+<p><strong>WB</strong>: 写回（Write Back）</p>
+</li>
+</ul>
+<p><strong>"Pipelining — Divide instruction execution into stages"</strong> — 流水线将指令执行划分为多个阶段</p>
+<h2 id="how-to-use-cpu-to-solve-problemscpu">四、How to use CPU to solve problems?（如何使用CPU解决问题）<a class="headerlink" href="#how-to-use-cpu-to-solve-problemscpu" title="Permanent link">&para;</a></h2>
+<h3 id="common-digital-system">设计方法一：Common Digital System（通用数字系统）<a class="headerlink" href="#common-digital-system" title="Permanent link">&para;</a></h3>
+<h4 id="finite-state-machinefsm">Finite State Machine（FSM，有限状态机）<a class="headerlink" href="#finite-state-machinefsm" title="Permanent link">&para;</a></h4>
+<p><strong>"Finite state machine（FSM）"</strong></p>
+<p>FSM由输入（Input）和输出（Output）组成。</p>
+<p><strong>示例：检测连续出现"1101"的次数</strong></p>
+<ul>
+<li>
+<p>状态转换：A → B → C → D → E</p>
+</li>
+<li>
+<p>X=1 → X=1 → X=0 → X=1</p>
+</li>
+</ul>
+<h4 id="infinite-state-machine">Infinite State Machine（无限状态机）<a class="headerlink" href="#infinite-state-machine" title="Permanent link">&para;</a></h4>
+<p><strong>"Detection consecutive '0' number"</strong> — 检测连续0的个数</p>
+<p>当需要检测的状态数量无法预先确定时，状态机变成无限状态：</p>
+<ul>
+<li>
+<p>A[1] → A[2] → A[3] → ... → A[n-1] → A[n]</p>
+</li>
+<li>
+<p><strong>"Impossible to implement"</strong> — 无法实现</p>
+</li>
+</ul>
+<hr />
+<h3 id="control-of-register-transfers">设计方法二：Control of Register Transfers（寄存器传输控制）<a class="headerlink" href="#control-of-register-transfers" title="Permanent link">&para;</a></h3>
+<p><strong>"Register transfers performed on registers control that supervises the sequencing of the register transfers"</strong></p>
+<h4 id="three-essential-elements">三个基本要素（Three essential elements）<a class="headerlink" href="#three-essential-elements" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p><strong>Set of registers（寄存器集合）</strong>: <strong>"mostly in Datapath with some in Control Unit"</strong></p>
+</li>
+<li>
+<p><strong>Basic operation (micromanipulation)（基本操作/微操作）</strong>: <strong>"Register transfers performed"</strong></p>
+</li>
+<li>
+<p><strong>Control（控制）</strong>: <strong>"that supervises the sequencing of the register transfers"</strong></p>
+</li>
+</ol>
+<h4 id="register-transfer-languagertl">Register Transfer Language（RTL，寄存器传输语言）<a class="headerlink" href="#register-transfer-languagertl" title="Permanent link">&para;</a></h4>
+<h4 id="0">传输状态机处理：检测连续0的个数<a class="headerlink" href="#0" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Reset: L/S:Counter ≤ 0;
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>X=1: L/S:Counter &lt;= Counter; Den : Disp &lt;= Disp
+</span></code></pre></div>
+<h4 id="hardware-programmable-detection-consecutive-01-number">Hardware Programmable: Detection consecutive "0/1" number<a class="headerlink" href="#hardware-programmable-detection-consecutive-01-number" title="Permanent link">&para;</a></h4>
+<p><strong>"问题改变，控制信号序列改变"</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Reset: L/S:Counter ≤ 0; Den: Disp ≤ Counter
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>X=0/1: L/S:Counter &lt;= Counter+1; Den: Disp&lt;= Counter
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>X=1/0: L/S:Counter &lt;= Counter; Den: Disp&lt;= Disp
+</span></code></pre></div>
+<h4 id="vs-specific-and-general-system">专用系统 vs 通用系统（Specific and general system）<a class="headerlink" href="#vs-specific-and-general-system" title="Permanent link">&para;</a></h4>
+<p><strong>Non-programmable System: Specific System（非可编程系统：专用系统）</strong></p>
+<ul>
+<li>
+<p><strong>"The control unit does not deal with fetching and executing instructions"</strong></p>
+</li>
+<li>
+<p><strong>"But contains all of the information for sequencing register transfers based on inputs and on status bits from the datapath"</strong></p>
+</li>
+</ul>
+<p><strong>Programmable System: General system（可编程系统：通用系统）</strong></p>
+<ul>
+<li>
+<p><strong>"A portion of the input consists of a sequence of instructions called a program"</strong></p>
+</li>
+<li>
+<p><strong>"Typically stored in a memory and addressed by a program counter"</strong></p>
+</li>
+<li>
+<p><strong>"The Control Unit is responsible for fetching and executing these instructions"</strong></p>
+</li>
+</ul>
+<hr />
+<h3 id="program-state-machinepsm">设计方法三：Program State Machine（PSM，程序状态机）<a class="headerlink" href="#program-state-machinepsm" title="Permanent link">&para;</a></h3>
+<p><strong>"General system — Program state machine（PSM）"</strong></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Memory</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Control Input</td>
+<td>Control unit</td>
+</tr>
+<tr>
+<td>Data Input</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Control Output</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Datapath</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Control signals</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Status signals</td>
+<td>—</td>
+</tr>
+<tr>
+<td>I/O</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h2 id="is-there-a-better-way-universal-turing-machine-thinking">五、Is there a better way? — Universal Turing Machine thinking<a class="headerlink" href="#is-there-a-better-way-universal-turing-machine-thinking" title="Permanent link">&para;</a></h2>
+<h3 id="turing-machine">Turing Machine（图灵机）<a class="headerlink" href="#turing-machine" title="Permanent link">&para;</a></h3>
+<h4 id="basic-idea">基本思想（Basic idea）<a class="headerlink" href="#basic-idea" title="Permanent link">&para;</a></h4>
+<p><strong>"Use machine to simulate mathematical computation process of humans by paper and pen"</strong></p>
+<p>两个简单操作：</p>
+<ul>
+<li>
+<p><strong>§ Write or delete a symbol from the paper</strong> — 在纸上写入或删除符号</p>
+</li>
+<li>
+<p><strong>§ Move the attention from one position to another of the paper</strong> — 将注意力从纸的一个位置移动到另一个位置</p>
+</li>
+</ul>
+<p>下一个操作取决于：</p>
+<ul>
+<li>
+<p><strong>(a) the symbol in one position of the paper that the person pays attention to</strong></p>
+</li>
+<li>
+<p><strong>(b) the thinking state of the person currently</strong></p>
+</li>
+</ul>
+<p><strong>"Turing constructs a conceptual machine"</strong> — 图灵构建了一个概念机器</p>
+<h4 id="components-of-turing-machine">图灵机的组成部分（Components of Turing Machine）<a class="headerlink" href="#components-of-turing-machine" title="Permanent link">&para;</a></h4>
+<ol>
+<li><strong>An infinitely long paper tape TAPE（无限长的纸带）</strong></li>
+</ol>
+<p>- 纸带被分为多个连续的空白格，每个格子包含一个来自有限集合的符号</p>
+<p>- 字母表包含一个特殊符号 □ 表示空白</p>
+<p>- 纸带上的格子从左到右编号为0, 1, 2, …，右端可无限延伸</p>
+<ol start="2">
+<li><strong>A read/write head HEAD（读写头）</strong></li>
+</ol>
+<p>- 可以在纸带上左右移动</p>
+<p>- 可以读取当前格子的符号</p>
+<p>- 能够修改当前格子的符号</p>
+<ol start="3">
+<li><strong>A set of control rules TABLE（控制规则表）</strong></li>
+</ol>
+<p>- 根据机器当前状态和当前读写头下的符号决定读写头的下一步操作</p>
+<p>- 修改状态寄存器的值，使机器进入新状态</p>
+<ol start="4">
+<li><strong>A state register（状态寄存器）</strong></li>
+</ol>
+<p>- 用于保存图灵机的当前状态</p>
+<blockquote>
+<p>Turing Model：Marvin • Minsky (1967)</p>
+</blockquote>
+<h4 id="instruction-structure">图灵机的指令结构（Instruction structure）<a class="headerlink" href="#instruction-structure" title="Permanent link">&para;</a></h4>
+<p><strong>典型七元组集合（Typical seven-tuples set）</strong></p>
+<ul>
+<li><strong>M = {Q, Σ, Γ, δ, q₀, q_accept, q_reject}</strong></li>
+</ul>
+<p>其中 Q, Σ, Γ 均为有限集合：</p>
+<ol>
+<li>
+<p><strong>Q</strong> — 状态集合（state set）</p>
+</li>
+<li>
+<p><strong>Σ</strong> — 输入字母表（input alphabet），不包含特殊空符号"□"</p>
+</li>
+<li>
+<p><strong>Γ</strong> — 字母表（alphabet），其中 b∈Γ 为空符号，且 Σ∈Γ</p>
+</li>
+<li>
+<p><strong>δ</strong> — 转移函数（transfer function）：Q × Σ → Q × Γ{L,R}，L和R分别表示读写头向左或向右移动</p>
+</li>
+<li>
+<p><strong>q₀∈Q</strong> — 初始状态（beginning state）</p>
+</li>
+<li>
+<p><strong>q_accept</strong> — 接受状态（accept state）</p>
+</li>
+<li>
+<p><strong>q_reject</strong> — 拒绝状态（reject state），且 q_reject ≠ q_accept</p>
+</li>
+</ol>
+<h4 id="program-of-turing-machine">图灵机的程序（Program of Turing Machine）<a class="headerlink" href="#program-of-turing-machine" title="Permanent link">&para;</a></h4>
+<p><strong>状态转移函数（State Transfer Function） = 程序</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>δ = { qi Sj Sk R(L or N) ql }
+</span></code></pre></div>
+<ul>
+<li>
+<p><strong>qi</strong> — 当前状态（current state of the machine）</p>
+</li>
+<li>
+<p><strong>Sj</strong> — 读到的符号（symbol read by the machine）</p>
+</li>
+<li>
+<p><strong>Sk</strong> — 将要写入替换Sj的符号（symbol waiting to be written）</p>
+</li>
+<li>
+<p><strong>R, L, N</strong> — 分别表示右移一步、左移一步或保持不动</p>
+</li>
+<li>
+<p><strong>ql</strong> — 下一状态（next state of the machine）</p>
+</li>
+</ul>
+<p><strong>示例</strong>: δ = {q0 0 0 R q0; q0 1 0 R q0}</p>
+<ul>
+<li>
+<p>向右移动并擦除读写头经过的所有空白格</p>
+</li>
+<li>
+<p>永不停止且不向后移动</p>
+</li>
+</ul>
+<h4 id="turing-machine-program-consecutive-1-detection1">Turing Machine Program δ: Consecutive 1 Detection（连续1检测）<a class="headerlink" href="#turing-machine-program-consecutive-1-detection1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>7个内部状态（除初始状态q₀外）</p>
+</blockquote>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>q0 B B R q1    // 起始状态，读写头指向左边缘，次态为q1
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>q1 1 C L q2    // 状态1，检测到&quot;1&quot;，标记C，开始计数
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>q1 0 C L q7    // 状态1，检测到&quot;0&quot;，标记C，开始清零
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>q1 B B N q1(STOP) // 状态1，检测到右边缘停机，左边是检测结果
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>q2 0 1 L q4    // 状态2，计数。从右（低位）向左（高位）计数
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>q2 1 0 L q2    // 状态2，计数。从右（低位）向左（高位）计数
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>q2 B 1 L q4    // 状态2，到左边缘计数结束，次态是q4
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>q4 1 1 L q4    // 状态4，读写头移到左边缘
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>q4 0 0 L q4    // 状态4，读写头移到左边缘
+</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
+</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>q4 B B R q3    // 读写头到左边缘，开始计数值右移1位
+</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
+</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>q3 1 0 R q5    // 计数值将右移1位，左边填&quot;0&quot;
+</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>
+</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>q3 0 0 R q6    // 计数值将右移1位，左边填&quot;0&quot;
+</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
+</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>q3 C 0 R q1    // 右移结束，清计数标志
+</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
+</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>q5 1 1 R q5    // 状态5，右移&quot;1&quot;
+</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>
+</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>q5 0 1 R q6    // 状态5，右移&quot;1&quot;
+</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>
+</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a>q5 C 1 R q1    // 右移&quot;1&quot;并结束右移，清计数标志
+</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>
+</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>q6 1 0 R q5    // 状态6，右移&quot;0&quot;
+</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>
+</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>q6 0 0 R q6    // 状态6，右移&quot;0&quot;
+</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>
+</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>q6 C 0 R q1    // 右移&quot;0&quot;并结束右移，清计数标志
+</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a>
+</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>q7 1 0 L q7    // 状态7，清零
+</span><span id="__span-4-40"><a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a>
+</span><span id="__span-4-41"><a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a>q7 0 0 L q7    // 状态7，清零
+</span><span id="__span-4-42"><a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>
+</span><span id="__span-4-43"><a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>q7 B B R q3    // 检测到左边缘，清零结束。转到状态3，计数值右移一位
+</span></code></pre></div>
+<h3 id="universal-turing-machine-implementation">Universal Turing Machine Implementation（通用图灵机的实现）<a class="headerlink" href="#universal-turing-machine-implementation" title="Permanent link">&para;</a></h3>
+<h4 id="ideal-turing-machine-cannot-be-implemented">理想图灵机无法实现（Ideal Turing Machine cannot be implemented）<a class="headerlink" href="#ideal-turing-machine-cannot-be-implemented" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>"Cannot find an infinite long tape"</strong> — 找不到无限长的纸带</p>
+</li>
+<li>
+<p><strong>"Not universal computing system neither"</strong></p>
+</li>
+<li>
+<p><strong>"Only fixed and mechanical computing system"</strong></p>
+</li>
+</ul>
+<h4 id="universaluniversal-turing-machine">通用（Universal）图灵机（Universal Turing Machine）<a class="headerlink" href="#universaluniversal-turing-machine" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>"Long enough tape with head and tail connected, to replace the infinite long paper tape"</strong></li>
+</ul>
+<p>- 用首尾相连的足够长的纸带代替无限长的纸带</p>
+<ul>
+<li><strong>"Any Turing machine instruction code"</strong></li>
+</ul>
+<p>- 将任意图灵机指令编码写在纸带的起始部分</p>
+<p>- 在纸带的其余部分操作输入</p>
+<p>- 仍然效率低下（<strong>Still low efficiency</strong>）</p>
+<h4 id="_3">两个核心问题<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Carrier（载体）</strong></p>
+</li>
+<li>
+<p><strong>Efficiency（效率）</strong></p>
+</li>
+</ul>
+<hr />
+<h3 id="practical-turing-machine-a-real-computer">Practical Turing Machine — A Real Computer（实用的图灵机——真正的计算机）<a class="headerlink" href="#practical-turing-machine-a-real-computer" title="Permanent link">&para;</a></h3>
+<h4 id="a-large-enough-storage-to-replace-the-tape">用大容量存储替换纸带（A large enough storage to replace the tape）<a class="headerlink" href="#a-large-enough-storage-to-replace-the-tape" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Magnetic storage for replacement</strong> — 磁存储</p>
+</li>
+<li>
+<p><strong>Semiconductor storage for replacement</strong> — 半导体存储</p>
+</li>
+</ul>
+<h4 id="storing-the-inner-state">存储内部状态（Storing the inner state）<a class="headerlink" href="#storing-the-inner-state" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>"Inner state does not store immediate, downgrading the efficiency"</strong> — 内部状态不立即存储，降低效率</p>
+</li>
+<li>
+<p><strong>"Register to store the immediate (i.e., subset of tape)"</strong> — 用寄存器存储立即数（即纸带的子集）</p>
+</li>
+<li>
+<p><strong>"Can significantly simplify computational structure and improve computing efficiency"</strong> — 可以显著简化计算结构并提高计算效率</p>
+</li>
+</ul>
+<h4 id="headcpuenhance-the-processing-capability-of-head-cpu">增强HEAD的处理能力——CPU（Enhance the processing capability of HEAD--CPU）<a class="headerlink" href="#headcpuenhance-the-processing-capability-of-head-cpu" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>"Require a stronger HEAD"</strong> — 需要更强大的HEAD</p>
+</li>
+<li>
+<p><strong>"Can be implement by Control of Register Transfer Technique: CPU"</strong> — 可以通过寄存器传输控制技术（CPU）实现</p>
+</li>
+<li>
+<p><strong>"Satisfactory Universal Turing Machine"</strong> — 令人满意的通用图灵机</p>
+</li>
+</ul>
+<h3 id="programable-register-transfer-technology-to-implement-the-universal-turing-machine">Programable Register Transfer Technology to Implement the Universal Turing Machine<a class="headerlink" href="#programable-register-transfer-technology-to-implement-the-universal-turing-machine" title="Permanent link">&para;</a></h3>
+<p><strong>"问题改变，程序状态机改变"</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Reset: add R2, R0, R0;
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Input: lw R3, InPort(X);
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>X=0: addi R2, R0, 1;
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>X=1: nop;
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>Disp : sw R2, Disp(R0);
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>Disp : sw R2, Disp(R0);
+</span></code></pre></div>
+<hr />
+<h3 id="conversion-of-thinking-from-digital-systems-turn-to-computer-systems">Conversion of thinking: from digital systems turn to computer systems（思维转换：从数字系统到计算机系统）<a class="headerlink" href="#conversion-of-thinking-from-digital-systems-turn-to-computer-systems" title="Permanent link">&para;</a></h3>
+<h4 id="cpu_2">用CPU实现图灵机的基本思想<a class="headerlink" href="#cpu_2" title="Permanent link">&para;</a></h4>
+<p><strong>"General digital system — A good implementation of Turing Machine"</strong></p>
+<p>关键要素：</p>
+<ul>
+<li>
+<p><strong>§ Storage control sequence: solving the infinite tape</strong> — 存储控制序列：解决无限纸带问题</p>
+</li>
+<li>
+<p><strong>§ Triple let Instruction: Basic operation of HEAD</strong> — 三操作数指令：HEAD的基本操作</p>
+</li>
+<li>
+<p><strong>§ Control flow instructions: More control rules TABLE</strong> — 控制流指令：更多的控制规则表</p>
+</li>
+<li>
+<p><strong>§ Register: More state storage and immediate</strong> — 寄存器：更多的状态存储和立即数</p>
+</li>
+</ul>
+<h4 id="computation-thinking-program-solving">Computation Thinking: Program solving（计算思维：程序求解）<a class="headerlink" href="#computation-thinking-program-solving" title="Permanent link">&para;</a></h4>
+<p>转向使用CPU进行数字信息处理：</p>
+<ul>
+<li>
+<p><strong>§ Algorithm design: Computing thinking</strong> — 算法设计：计算思维</p>
+</li>
+<li>
+<p><strong>§ Program design: Software thinking</strong> — 程序设计：软件思维</p>
+</li>
+<li>
+<p><strong>§ Program rules: Instruction → Rule and processing → Control of instructions</strong></p>
+</li>
+</ul>
+<p>- <strong>Define instruction format: Design DataPath and Controller</strong> — 定义指令格式：设计数据通路和控制器</p>
+<p>- <strong>Define data structure: Allocate storage space (Memory, I/O)</strong> — 定义数据结构：分配存储空间</p>
+<ul>
+<li><strong>Software-Hardware Cooperation Processing Thinking</strong> — 软硬件协同处理思维</li>
+</ul>
+<hr />
+<h2 id="implementation-of-cpucpu">六、Implementation of CPU（CPU的实现）<a class="headerlink" href="#implementation-of-cpucpu" title="Permanent link">&para;</a></h2>
+<h3 id="cpu_3">CPU的本质<a class="headerlink" href="#cpu_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>"General digital system"</strong> — 通用数字系统</p>
+</li>
+<li>
+<p><strong>"A Turing Machine"</strong> — 一台图灵机</p>
+</li>
+</ul>
+<h3 id="_4">通过寄存器传输控制技术实现<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p><strong>Datapath（数据通路）</strong>: <strong>"The component of processor that performs arithmetic operations"</strong> — 执行算术运算的处理器组件</p>
+</li>
+<li>
+<p><strong>Control（控制单元）</strong>: <strong>"The component of processor that commands the datapath, memory, and I/O device according to the instructions of the program"</strong> — 根据程序指令指挥数据通路、内存和I/O设备的处理器组件</p>
+</li>
+</ol>
+<hr />
+<h2 id="components-in-cpucpu">七、Components in CPU（CPU中的组件）<a class="headerlink" href="#components-in-cpucpu" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><strong>Multiplexer（多路选择器）</strong></p>
+</li>
+<li>
+<p><strong>Adder（加法器）</strong></p>
+</li>
+<li>
+<p><strong>ALU（算术逻辑单元）</strong></p>
+</li>
+</ul>
+<hr />
+<h2 id="logics-in-cpucpu">八、Logics in CPU（CPU中的逻辑）<a class="headerlink" href="#logics-in-cpucpu" title="Permanent link">&para;</a></h2>
+<h3 id="unlocked-vs-clocked-vs">Unlocked vs. Clocked（无时钟 vs. 有时钟）<a class="headerlink" href="#unlocked-vs-clocked-vs" title="Permanent link">&para;</a></h3>
+<p><strong>"Clocks used in synchronous logic"</strong> — 时钟用于同步逻辑</p>
+<p>关键概念：</p>
+<ul>
+<li>
+<p><strong>"when should an element that contains state be updated?"</strong> — 包含状态的元件何时应该更新？</p>
+</li>
+<li>
+<p><strong>cycle time（周期时间）</strong></p>
+</li>
+<li>
+<p><strong>rising edge（上升沿）</strong></p>
+</li>
+<li>
+<p><strong>falling edge（下降沿）</strong></p>
+</li>
+</ul>
+<h2 id="state-elements">九、State Elements（状态元件）<a class="headerlink" href="#state-elements" title="Permanent link">&para;</a></h2>
+<h3 id="state-storage-in-cpucpu">State Storage in CPU（CPU中的状态存储）<a class="headerlink" href="#state-storage-in-cpucpu" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>Temporary register（临时寄存器）</strong></p>
+<blockquote>
+<p>WE: write an enable
+data in data out</p>
+</blockquote>
+</li>
+<li>
+<p><strong>General registers（通用寄存器）</strong></p>
+</li>
+</ul>
+<h3 id="sequential-logic-in-cpucpu">Sequential Logic in CPU（CPU中的时序逻辑）<a class="headerlink" href="#sequential-logic-in-cpucpu" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>clk（时钟）</strong></p>
+</li>
+<li>
+<p><strong>D-Flipflop（D触发器）</strong></p>
+</li>
+</ul>
+<p><a href="obsidian://deepseek-ai-assistant?id=1779261256310" title="Open plugin:deepseek-ai-assistant">帮我讲解一下这个的实现模式### Sequential Lo...</a></p>
+<h3 id="an-edge-triggered-methodology">边沿触发方法（An edge triggered methodology）<a class="headerlink" href="#an-edge-triggered-methodology" title="Permanent link">&para;</a></h3>
+<p><strong>典型执行流程：</strong></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>- read contents of some state elements
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>- send values through some combinational logic
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>- write results to one or more state elements
+</span></code></pre></div>
+<ol>
+<li>
+<p>读取某些状态元件的内容</p>
+</li>
+<li>
+<p>通过组合逻辑发送值</p>
+</li>
+<li>
+<p>将结果写回一个或多个状态元件</p>
+</li>
+</ol>
+<hr />
+<h2 id="sequential-logic-in-cpucpu_1">十、Sequential Logic in CPU（CPU中的时序逻辑）<a class="headerlink" href="#sequential-logic-in-cpucpu_1" title="Permanent link">&para;</a></h2>
+<h3 id="register">Register（寄存器）<a class="headerlink" href="#register" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p><strong>"State element"</strong> — 状态元件</p>
+</li>
+<li>
+<p><strong>"Can be controlled by Write signal"</strong> — 可以通过写信号控制</p>
+</li>
+</ul>
+<hr />
+<h2 id="cpu-we-will-be-doingcpu">十一、CPU we will be doing（我们将实现的CPU）<a class="headerlink" href="#cpu-we-will-be-doingcpu" title="Permanent link">&para;</a></h2>
+<h3 id="risc-v">RISC-V指令集实现<a class="headerlink" href="#risc-v" title="Permanent link">&para;</a></h3>
+<p><strong>"We'll look at an implementation of RISC-V"</strong></p>
+<p>简化为仅包含以下指令：</p>
+<ol>
+<li><strong>内存引用指令（memory-reference instructions）</strong>: <strong>lw, sw</strong></li>
+</ol>
+<p>- lw（load word）：从内存加载字</p>
+<p>- sw（store word）：将字存储到内存</p>
+<ol start="2">
+<li><strong>算术逻辑指令（arithmetic-logical instructions）</strong>: <strong>add, sub, and, or, slt</strong></li>
+</ol>
+<p>- add（加法）</p>
+<p>- sub（减法）</p>
+<p>- and（与运算）</p>
+<p>- or（或运算）</p>
+<p>- slt（set less than，小于则置位）</p>
+<ol start="3">
+<li><strong>控制流指令（control flow instructions）</strong>: <strong>beq, jal</strong></li>
+</ol>
+<p>- beq（branch if equal，相等则分支）</p>
+<p>- jal（jump and link，跳转并链接）</p>
+<p>[[sys汇编# 十二、指令编码格式总结]]</p>
+<hr />
+<h2 id="what-are-the-steps">十二、What are the steps?（执行步骤）<a class="headerlink" href="#what-are-the-steps" title="Permanent link">&para;</a></h2>
+<p>对于每条指令，前两步是相同的：</p>
+<ol>
+<li>
+<p><strong>Fetch the instruction from the memory</strong> — 从内存中取出指令</p>
+</li>
+<li>
+<p><strong>Decode and read the registers</strong> — 解码并读取寄存器</p>
+</li>
+</ol>
+<p>后续步骤取决于指令类别：</p>
+<ul>
+<li>
+<p><strong>§ Memory-reference（内存引用类）</strong></p>
+</li>
+<li>
+<p><strong>§ Arithmetic-logical（算术逻辑类）</strong></p>
+</li>
+<li>
+<p><strong>§ branches（分支类）</strong></p>
+</li>
+</ul>
+<h2 id="nextbasic-principles">next[[Basic Principles]]<a class="headerlink" href="#nextbasic-principles" title="Permanent link">&para;</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Evelina_IS
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.code.copy", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../javascripts/reader-counter.js"></script>
+      
+    
+  </body>
+</html>
