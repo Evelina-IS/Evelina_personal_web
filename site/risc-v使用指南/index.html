@@ -1,0 +1,2887 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../git%E7%9A%84%E4%BD%BF%E7%94%A8/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>risc-v使用指南 - Evelina_IS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#risc-v" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Evelina_IS" class="md-header__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Evelina_IS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              risc-v使用指南
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Evelina_IS" class="md-nav__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Evelina_IS
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    fds_project
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    fds_project
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fds_project/project1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    project1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../oneinall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    website_oneinall
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FDSNOTE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    git的使用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    risc-v使用指南
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    risc-v使用指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-risc-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. RISC-V 简介
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. RISC-V 简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-risc-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 什么是 RISC-V？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 特点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 常见扩展
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 寄存器体系
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 寄存器体系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 通用寄存器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 特殊寄存器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 寄存器命名约定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 汇编文件结构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 汇编文件结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 基本结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-directives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 常用汇编指示符 (Directives)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-lab5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 从 lab5 实例看文件结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 指令格式分类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 指令格式分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 六种基本格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 各类格式对应的指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 核心指令详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 核心指令详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 算术运算指令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 算术运算指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        加法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        减法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rv64m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        乘法 (RV64M 扩展)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rv64m_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        除法与取模 (RV64M 扩展)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 逻辑运算指令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 逻辑运算指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位与
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位或
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位异或
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        移位操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 数据传输指令（加载与存储）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 数据传输指令（加载与存储）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        加载指令 (I型)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        存储指令 (S型)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 条件分支指令 (B型)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 条件分支指令 (B型)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        比较并跳转
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 无条件跳转指令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.5 无条件跳转指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#j-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跳转并链接 (J型 / I型)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        函数返回
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无条件跳转（伪指令）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 比较并置位指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 加载立即数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 地址加载伪指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 伪指令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 伪指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 常用伪指令一览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-lab5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 lab5 中使用的伪指令示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 函数调用约定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 函数调用约定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 参数传递规则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 返回值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 寄存器保存约定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 函数调用栈帧模板
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.4 函数调用栈帧模板">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标准函数（需要保存寄存器）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factor_plains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例：factor_plain.s 中的递归函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acc_plains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例：acc_plain.s 中的栈帧使用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        目录
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-risc-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. RISC-V 简介
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. RISC-V 简介">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-risc-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 什么是 RISC-V？
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 特点
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 常见扩展
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 寄存器体系
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 寄存器体系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 通用寄存器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 特殊寄存器
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 寄存器命名约定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 汇编文件结构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 汇编文件结构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 基本结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-directives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 常用汇编指示符 (Directives)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-lab5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 从 lab5 实例看文件结构
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 指令格式分类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 指令格式分类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 六种基本格式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 各类格式对应的指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 核心指令详解
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 核心指令详解">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 算术运算指令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.1 算术运算指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        加法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        减法
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rv64m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        乘法 (RV64M 扩展)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rv64m_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        除法与取模 (RV64M 扩展)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 逻辑运算指令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2 逻辑运算指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位与
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位或
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        按位异或
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        移位操作
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 数据传输指令（加载与存储）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 数据传输指令（加载与存储）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        加载指令 (I型)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        存储指令 (S型)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 条件分支指令 (B型)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4 条件分支指令 (B型)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        比较并跳转
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 无条件跳转指令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.5 无条件跳转指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#j-i" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跳转并链接 (J型 / I型)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        函数返回
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        无条件跳转（伪指令）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 比较并置位指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7 加载立即数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8 地址加载伪指令
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 伪指令
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. 伪指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 常用伪指令一览
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-lab5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 lab5 中使用的伪指令示例
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 函数调用约定
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. 函数调用约定">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 参数传递规则
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 返回值
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 寄存器保存约定
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 函数调用栈帧模板
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7.4 函数调用栈帧模板">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        标准函数（需要保存寄存器）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factor_plains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例：factor_plain.s 中的递归函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acc_plains" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        示例：acc_plain.s 中的栈帧使用
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="risc-v">RISC-V 汇编语言语法参考手册<a class="headerlink" href="#risc-v" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>本手册基于 lab5 课程实验内容编写，涵盖 RISC-V (RV64) 汇编的核心语法、指令集、函数调用约定及实例分析。</p>
+</blockquote>
+<hr />
+<h2 id="_1">目录<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="#1-risc-v-简介">RISC-V 简介</a></li>
+<li><a href="#2-寄存器体系">寄存器体系</a></li>
+<li><a href="#3-汇编文件结构">汇编文件结构</a></li>
+<li><a href="#4-指令格式分类">指令格式分类</a></li>
+<li><a href="#5-核心指令详解">核心指令详解</a></li>
+<li><a href="#6-伪指令">伪指令</a></li>
+<li><a href="#7-函数调用约定">函数调用约定</a></li>
+<li><a href="#8-地址访问模式">地址访问模式</a></li>
+<li><a href="#9-完整实例分析">完整实例分析</a></li>
+<li><a href="#10-编译与模拟运行">编译与模拟运行</a></li>
+</ol>
+<hr />
+<h2 id="1-risc-v">1. RISC-V 简介<a class="headerlink" href="#1-risc-v" title="Permanent link">&para;</a></h2>
+<h3 id="11-risc-v">1.1 什么是 RISC-V？<a class="headerlink" href="#11-risc-v" title="Permanent link">&para;</a></h3>
+<p>RISC-V 是一种基于<strong>精简指令集计算机 (RISC)</strong> 原则设计的<strong>开源指令集架构 (ISA)</strong>。它起源于 2010 年加州大学伯克利分校，采用简洁、模块化的设计理念。</p>
+<h3 id="12">1.2 特点<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>特性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>模块化</strong></td>
+<td>基础指令集 + 可选扩展，灵活组合</td>
+</tr>
+<tr>
+<td><strong>开源</strong></td>
+<td>完全免费，无专利壁垒</td>
+</tr>
+<tr>
+<td><strong>简洁</strong></td>
+<td>指令格式规整，易于实现</td>
+</tr>
+<tr>
+<td><strong>可扩展</strong></td>
+<td>支持自定义指令扩展</td>
+</tr>
+<tr>
+<td><strong>64位支持</strong></td>
+<td>原生支持 RV64，兼容 RV32</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13">1.3 常见扩展<a class="headerlink" href="#13" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>扩展名</th>
+<th>全称</th>
+<th>包含指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RV64I</strong></td>
+<td>64位基础整数指令集</td>
+<td>算术、逻辑、分支、加载/存储等</td>
+</tr>
+<tr>
+<td><strong>M</strong></td>
+<td>乘除法扩展</td>
+<td><code>mul</code>, <code>div</code>, <code>rem</code></td>
+</tr>
+<tr>
+<td><strong>F</strong></td>
+<td>单精度浮点</td>
+<td>浮点运算指令</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>双精度浮点</td>
+<td>双精度浮点运算</td>
+</tr>
+<tr>
+<td><strong>A</strong></td>
+<td>原子操作</td>
+<td>原子读-改-写指令</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>压缩指令</td>
+<td>16位短指令</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>本 lab 主要使用 <strong>RV64IM</strong>（基础整数 + 乘除法扩展）。</p>
+</blockquote>
+<hr />
+<h2 id="2">2. 寄存器体系<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h3 id="21">2.1 通用寄存器<a class="headerlink" href="#21" title="Permanent link">&para;</a></h3>
+<p>RISC-V 有 <strong>32 个通用寄存器</strong> (<code>x0</code> ~ <code>x31</code>)，每个 64 位宽 (RV64)。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">寄存器</th>
+<th style="text-align: center;">ABI 名称</th>
+<th>用途说明</th>
+<th style="text-align: center;">调用约定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><code>x0</code></td>
+<td style="text-align: center;"><code>zero</code></td>
+<td>硬连线为常数 0，写入无效</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x1</code></td>
+<td style="text-align: center;"><code>ra</code></td>
+<td><strong>返回地址</strong> (Return Address)</td>
+<td style="text-align: center;">调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x2</code></td>
+<td style="text-align: center;"><code>sp</code></td>
+<td><strong>栈指针</strong> (Stack Pointer)</td>
+<td style="text-align: center;">被调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x3</code></td>
+<td style="text-align: center;"><code>gp</code></td>
+<td><strong>全局指针</strong> (Global Pointer)</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x4</code></td>
+<td style="text-align: center;"><code>tp</code></td>
+<td><strong>线程指针</strong> (Thread Pointer)</td>
+<td style="text-align: center;">—</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x5</code></td>
+<td style="text-align: center;"><code>t0</code></td>
+<td>临时寄存器/链接寄存器</td>
+<td style="text-align: center;">调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x6</code>~<code>x7</code></td>
+<td style="text-align: center;"><code>t1</code>~<code>t2</code></td>
+<td>临时寄存器</td>
+<td style="text-align: center;">调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x8</code></td>
+<td style="text-align: center;"><code>s0</code> / <code>fp</code></td>
+<td>保存寄存器 / 帧指针</td>
+<td style="text-align: center;">被调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x9</code></td>
+<td style="text-align: center;"><code>s1</code></td>
+<td>保存寄存器</td>
+<td style="text-align: center;">被调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x10</code>~<code>x11</code></td>
+<td style="text-align: center;"><code>a0</code>~<code>a1</code></td>
+<td><strong>函数参数</strong> / <strong>返回值</strong></td>
+<td style="text-align: center;">调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x12</code>~<code>x17</code></td>
+<td style="text-align: center;"><code>a2</code>~<code>a7</code></td>
+<td><strong>函数参数</strong></td>
+<td style="text-align: center;">调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x18</code>~<code>x27</code></td>
+<td style="text-align: center;"><code>s2</code>~<code>s11</code></td>
+<td>保存寄存器</td>
+<td style="text-align: center;">被调用者保存</td>
+</tr>
+<tr>
+<td style="text-align: center;"><code>x28</code>~<code>x31</code></td>
+<td style="text-align: center;"><code>t3</code>~<code>t6</code></td>
+<td>临时寄存器</td>
+<td style="text-align: center;">调用者保存</td>
+</tr>
+</tbody>
+</table>
+<h3 id="22">2.2 特殊寄存器<a class="headerlink" href="#22" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pc</code></td>
+<td>程序计数器 (Program Counter)，指向当前指令地址</td>
+</tr>
+<tr>
+<td><code>fflags</code></td>
+<td>浮点异常标志 (F 扩展)</td>
+</tr>
+<tr>
+<td><code>frm</code></td>
+<td>浮点舍入模式 (F 扩展)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23">2.3 寄存器命名约定<a class="headerlink" href="#23" title="Permanent link">&para;</a></h3>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 两种命名方式完全等价，ABI 名称更具可读性</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">add</span><span class="w"> </span><span class="no">x10</span><span class="p">,</span><span class="w"> </span><span class="no">x11</span><span class="p">,</span><span class="w"> </span><span class="no">x12</span><span class="w">    </span><span class="c1"># 等同 add a0, a1, a2</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nf">add</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="no">a2</span><span class="w">       </span><span class="c1"># 更推荐</span>
+</span></code></pre></div>
+<hr />
+<h2 id="3">3. 汇编文件结构<a class="headerlink" href="#3" title="Permanent link">&para;</a></h2>
+<h3 id="31">3.1 基本结构<a class="headerlink" href="#31" title="Permanent link">&para;</a></h3>
+<p>一个 RISC-V 汇编文件通常包含以下部分：</p>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="na">.section</span><span class="w"> </span><span class="no">.text</span><span class="w">          </span><span class="c1"># 代码段</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">.globl</span><span class="w">  </span><span class="no">function_name</span><span class="w">   </span><span class="c1"># 声明为全局可见</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="na">.type</span><span class="w">   </span><span class="no">function_name</span><span class="p">,</span><span class="w"> </span><span class="na">@function</span><span class="w">   </span><span class="c1"># 声明为函数类型</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nl">function_name:</span><span class="w">          </span><span class="c1"># 函数标签</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="c1"># 指令代码 ...</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="na">.section</span><span class="w"> </span><span class="no">.rodata</span><span class="w">        </span><span class="c1"># 只读数据段 (Read-Only Data)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nl">msg:</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="na">.string</span><span class="w"> </span><span class="s">&quot;Hello!\n&quot;</span><span class="w">  </span><span class="c1"># 定义字符串</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="na">.word</span><span class="w">   </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w">     </span><span class="c1"># 定义 32 位整数数组</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="na">.data</span><span class="w">                   </span><span class="c1"># 可读写数据段</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nl">var:</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="na">.quad</span><span class="w">  </span><span class="mi">0x1234</span><span class="w">       </span><span class="c1"># 定义 64 位变量</span>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="nl">buffer:</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span><span class="na">.space</span><span class="w"> </span><span class="mi">256</span><span class="w">          </span><span class="c1"># 分配 256 字节空间，未初始化</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="na">.bss</span><span class="w">                    </span><span class="c1"># 未初始化数据段</span>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="na">.comm</span><span class="w">  </span><span class="no">large_buf</span><span class="p">,</span><span class="w"> </span><span class="mi">4096</span><span class="w">  </span><span class="c1"># 声明 4096 字节全局缓冲区</span>
+</span></code></pre></div>
+<h3 id="32-directives">3.2 常用汇编指示符 (Directives)<a class="headerlink" href="#32-directives" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>指示符</th>
+<th>含义</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.text</code></td>
+<td>后续内容属于代码段</td>
+<td><code>.text</code></td>
+</tr>
+<tr>
+<td><code>.data</code></td>
+<td>后续内容属于数据段</td>
+<td><code>.data</code></td>
+</tr>
+<tr>
+<td><code>.rodata</code></td>
+<td>后续内容属于只读数据段</td>
+<td><code>.section .rodata</code></td>
+</tr>
+<tr>
+<td><code>.bss</code></td>
+<td>后续内容属于未初始化数据段</td>
+<td><code>.bss</code></td>
+</tr>
+<tr>
+<td><code>.globl</code></td>
+<td>声明符号为全局可见</td>
+<td><code>.globl my_func</code></td>
+</tr>
+<tr>
+<td><code>.type</code></td>
+<td>声明符号类型</td>
+<td><code>.type my_func, @function</code></td>
+</tr>
+<tr>
+<td><code>.size</code></td>
+<td>声明符号大小</td>
+<td><code>.size my_func, .-my_func</code></td>
+</tr>
+<tr>
+<td><code>.align</code></td>
+<td>对齐到 2^n 字节边界</td>
+<td><code>.align 3</code> (对齐到 8 字节)</td>
+</tr>
+<tr>
+<td><code>.word</code></td>
+<td>定义 32 位数据</td>
+<td><code>.word 0x12345678</code></td>
+</tr>
+<tr>
+<td><code>.quad</code></td>
+<td>定义 64 位数据</td>
+<td><code>.quad 0x123456789ABCDEF0</code></td>
+</tr>
+<tr>
+<td><code>.byte</code></td>
+<td>定义 8 位数据</td>
+<td><code>.byte 0xAB</code></td>
+</tr>
+<tr>
+<td><code>.string</code></td>
+<td>定义字符串 (自动加 <code>\0</code>)</td>
+<td><code>.string "hello"</code></td>
+</tr>
+<tr>
+<td><code>.asciz</code></td>
+<td>同上，定义以 null 结尾的字符串</td>
+<td><code>.asciz "world"</code></td>
+</tr>
+<tr>
+<td><code>.space</code></td>
+<td>分配空间（字节数）</td>
+<td><code>.space 100</code></td>
+</tr>
+<tr>
+<td><code>.option pic</code></td>
+<td>启用位置无关代码</td>
+<td><code>.option pic</code></td>
+</tr>
+<tr>
+<td><code>.file</code></td>
+<td>指定源文件名（编译器生成）</td>
+<td><code>.file "acc.c"</code></td>
+</tr>
+<tr>
+<td><code>.ident</code></td>
+<td>编译器标识信息</td>
+<td><code>.ident "GCC: (Ubuntu)..."</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="33-lab5">3.3 从 lab5 实例看文件结构<a class="headerlink" href="#33-lab5" title="Permanent link">&para;</a></h3>
+<p><strong><code>acc_plain.s</code>（编译器生成的未优化版本）</strong>：
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">    </span><span class="na">.file</span><span class="w">   </span><span class="s">&quot;acc.c&quot;</span><span class="w">             </span><span class="c1"># 源文件信息</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="na">.option</span><span class="w"> </span><span class="no">pic</span><span class="w">                 </span><span class="c1"># 位置无关代码</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="na">.text</span><span class="w">                       </span><span class="c1"># 代码段</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="na">.align</span><span class="w">  </span><span class="mi">1</span><span class="w">                   </span><span class="c1"># 2 字节对齐</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="na">.globl</span><span class="w">  </span><span class="no">acc</span><span class="w">                 </span><span class="c1"># 全局可见</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="na">.type</span><span class="w">   </span><span class="no">acc</span><span class="p">,</span><span class="w"> </span><span class="na">@function</span><span class="w">      </span><span class="c1"># 声明为函数</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nl">acc:</span>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="c1"># ... 函数体 ...</span>
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="na">.size</span><span class="w">   </span><span class="no">acc</span><span class="p">,</span><span class="w"> </span><span class="no">.-acc</span><span class="w">          </span><span class="c1"># 计算函数大小</span>
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span><span class="na">.ident</span><span class="w">  </span><span class="s">&quot;GCC: ...&quot;</span><span class="w">          </span><span class="c1"># 编译器信息</span>
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="na">.section</span><span class="w">    </span><span class="no">.note.GNU-stack</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="na">@progbits</span><span class="w">   </span><span class="c1"># 栈不可执行标记</span>
+</span></code></pre></div></p>
+<p><strong><code>switch.s</code>（含跳转表）</strong>：
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="na">.text</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="na">.globl</span><span class="w">  </span><span class="no">switch_eg</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nl">switch_eg:</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="c1"># ... 指令代码 ...</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="na">.section</span><span class="w">    </span><span class="no">.rodata</span><span class="w">         </span><span class="c1"># 跳转表放在只读数据段</span>
+</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="na">.align</span><span class="w">  </span><span class="mi">2</span><span class="w">                   </span><span class="c1"># 4 字节对齐</span>
+</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nl">.L4:</span>
+</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="na">.word</span><span class="w">   </span><span class="no">.L7-.L4</span><span class="w">             </span><span class="c1"># 相对偏移（PC 相对）</span>
+</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="na">.word</span><span class="w">   </span><span class="no">.L6-.L4</span>
+</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="c1"># ...</span>
+</span></code></pre></div></p>
+<hr />
+<h2 id="4">4. 指令格式分类<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h3 id="41">4.1 六种基本格式<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<p>RISC-V 所有指令都遵循规整的编码格式，这是其简洁性的核心：</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>R-type:  [funct7][rs2][rs1][funct3][rd][opcode]
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>         31-25   24-20 19-15 14-12  11-7 6-0
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>I-type:  [imm[11:0]][rs1][funct3][rd][opcode]
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>          31-20     19-15 14-12 11-7 6-0
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>S-type:  [imm[11:5]][rs2][rs1][funct3][imm[4:0]][opcode]
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>          31-25     24-20 19-15 14-12 11-7    6-0
+</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
+</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>B-type:  [imm[12|10:5]][rs2][rs1][funct3][imm[4:1|11]][opcode]
+</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>          31-25          24-20 19-15 14-12 11-7         6-0
+</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>U-type:  [imm[31:12]][rd][opcode]
+</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>          31-12     11-7 6-0
+</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>J-type:  [imm[20|10:1|11|19:12]][rd][opcode]
+</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>          31-12                  11-7 6-0
+</span></code></pre></div>
+<h3 id="42">4.2 各类格式对应的指令<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">格式</th>
+<th>指令类型</th>
+<th>示例指令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>R</strong></td>
+<td>寄存器-寄存器运算</td>
+<td><code>add</code>, <code>sub</code>, <code>sll</code>, <code>mul</code>, <code>div</code>, <code>and</code>, <code>or</code>, <code>xor</code>, <code>slt</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>I</strong></td>
+<td>立即数运算 / 加载</td>
+<td><code>addi</code>, <code>slli</code>, <code>andi</code>, <code>ori</code>, <code>xori</code>, <code>slti</code>, <code>ld</code>, <code>lw</code>, <code>lbu</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>S</strong></td>
+<td>存储</td>
+<td><code>sd</code>, <code>sw</code>, <code>sh</code>, <code>sb</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>B</strong></td>
+<td>条件分支</td>
+<td><code>beq</code>, <code>bne</code>, <code>blt</code>, <code>bge</code>, <code>bltu</code>, <code>bgeu</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>U</strong></td>
+<td>长立即数（高20位）</td>
+<td><code>lui</code>, <code>auipc</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>J</strong></td>
+<td>无条件跳转</td>
+<td><code>jal</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5">5. 核心指令详解<a class="headerlink" href="#5" title="Permanent link">&para;</a></h2>
+<h3 id="51">5.1 算术运算指令<a class="headerlink" href="#51" title="Permanent link">&para;</a></h3>
+<h4 id="_2">加法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># ---- 寄存器加法 (R型) ----</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nf">add</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = rs1 + rs2</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 示例</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nf">add</span><span class="w">  </span><span class="no">t0</span><span class="p">,</span><span class="w"> </span><span class="no">t1</span><span class="p">,</span><span class="w"> </span><span class="no">t2</span><span class="w">         </span><span class="c1"># t0 = t1 + t2</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="nf">add</span><span class="w">  </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a5</span><span class="w">         </span><span class="c1"># a0 += a5  （累加）</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># ---- 立即数加法 (I型) ----</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="nf">addi</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="w">       </span><span class="c1"># rd = rs1 + sign_ext(imm)</span>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># 示例</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">-48</span><span class="w">        </span><span class="c1"># sp = sp - 48   （分配栈空间）</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nf">addi</span><span class="w"> </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">          </span><span class="c1"># a5 = a5 + 1    （a5++）</span>
+</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nf">addi</span><span class="w"> </span><span class="no">t2</span><span class="p">,</span><span class="w"> </span><span class="no">t2</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="w">         </span><span class="c1"># t2 = t2 - 1    （递减）</span>
+</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="nf">addi</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">          </span><span class="c1"># a1 = a1 + 1    （递增）</span>
+</span></code></pre></div>
+<h4 id="_3">减法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># ---- 寄存器减法 (R型) ----</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nf">sub</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = rs1 - rs2</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 示例</span>
+</span><span id="__span-6-5"><a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="nf">sub</span><span class="w">  </span><span class="no">t0</span><span class="p">,</span><span class="w"> </span><span class="no">t1</span><span class="p">,</span><span class="w"> </span><span class="no">t2</span><span class="w">         </span><span class="c1"># t0 = t1 - t2</span>
+</span><span id="__span-6-6"><a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nf">sub</span><span class="w">  </span><span class="no">t0</span><span class="p">,</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="no">s0</span><span class="w">         </span><span class="c1"># t0 = a1 - s0</span>
+</span></code></pre></div>
+<h4 id="rv64m">乘法 (RV64M 扩展)<a class="headerlink" href="#rv64m" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ---- 乘法 (R型) ----</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nf">mul</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = (rs1 * rs2)[63:0]（结果的低64位）</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># 示例</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="nf">mul</span><span class="w">  </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a4</span><span class="w">         </span><span class="c1"># a0 = a0 * a4</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="nf">mul</span><span class="w">  </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="no">a4</span><span class="p">,</span><span class="w"> </span><span class="no">a5</span><span class="w">         </span><span class="c1"># a5 = a4 * a5</span>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="c1"># 其他乘法指令</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="nf">mulh</span><span class="w">    </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">    </span><span class="c1"># rd = (rs1 * rs2)[127:64]（有符号高位）</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nf">mulhu</span><span class="w">   </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">    </span><span class="c1"># rd = (rs1 * rs2)[127:64]（无符号高位）</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="nf">mulhsu</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">    </span><span class="c1"># rd = (rs1 * rs2)[127:64]（有符号×无符号高位）</span>
+</span></code></pre></div>
+<h4 id="rv64m_1">除法与取模 (RV64M 扩展)<a class="headerlink" href="#rv64m_1" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># ---- 除法 ----</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nf">div</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = rs1 / rs2 （有符号整数除法）</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nf">divu</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = rs1 / rs2 （无符号整数除法）</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="c1"># ---- 取模 ----</span>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="nf">rem</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = rs1 % rs2 （有符号取模）</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="nf">remu</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = rs1 % rs2 （无符号取模）</span>
+</span></code></pre></div>
+<h3 id="52">5.2 逻辑运算指令<a class="headerlink" href="#52" title="Permanent link">&para;</a></h3>
+<h4 id="_4">按位与<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># ---- 寄存器与 ----</span>
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nf">and</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = rs1 &amp; rs2</span>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># ---- 立即数与 ----</span>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nf">andi</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="w">       </span><span class="c1"># rd = rs1 &amp; sign_ext(imm)</span>
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># 示例</span>
+</span><span id="__span-9-8"><a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="nf">andi</span><span class="w"> </span><span class="no">t3</span><span class="p">,</span><span class="w"> </span><span class="no">t0</span><span class="p">,</span><span class="w"> </span><span class="mi">15</span><span class="w">         </span><span class="c1"># t3 = t0 &amp; 0x0F （取低4位）</span>
+</span><span id="__span-9-9"><a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="nf">andi</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">          </span><span class="c1"># a1 = a0 &amp; 1   （判断奇偶）</span>
+</span></code></pre></div>
+<h4 id="_5">按位或<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># ---- 寄存器或 ----</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nf">or</span><span class="w">   </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = rs1 | rs2</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+</span><span id="__span-10-4"><a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># ---- 立即数或 ----</span>
+</span><span id="__span-10-5"><a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nf">ori</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="w">       </span><span class="c1"># rd = rs1 | sign_ext(imm)</span>
+</span></code></pre></div>
+<h4 id="_6">按位异或<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># ---- 寄存器异或 ----</span>
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nf">xor</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = rs1 ^ rs2</span>
+</span><span id="__span-11-3"><a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+</span><span id="__span-11-4"><a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># ---- 立即数异或 ----</span>
+</span><span id="__span-11-5"><a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="nf">xori</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="w">       </span><span class="c1"># rd = rs1 ^ sign_ext(imm)</span>
+</span><span id="__span-11-6"><a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
+</span><span id="__span-11-7"><a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># 示例</span>
+</span><span id="__span-11-8"><a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="nf">xor</span><span class="w">  </span><span class="no">t0</span><span class="p">,</span><span class="w"> </span><span class="no">t0</span><span class="p">,</span><span class="w"> </span><span class="no">t2</span><span class="w">         </span><span class="c1"># t0 ^= t2   （phase_2 中的异或累加）</span>
+</span><span id="__span-11-9"><a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a><span class="nf">xori</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="w">         </span><span class="c1"># a0 ^= 13   （phase_3 中的异或操作）</span>
+</span></code></pre></div>
+<h4 id="_7">移位操作<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># ---- 逻辑左移 ----</span>
+</span><span id="__span-12-2"><a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nf">sll</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = rs1 &lt;&lt; rs2   （寄存器左移）</span>
+</span><span id="__span-12-3"><a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="nf">slli</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="w">       </span><span class="c1"># rd = rs1 &lt;&lt; imm   （立即数左移）</span>
+</span><span id="__span-12-4"><a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+</span><span id="__span-12-5"><a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># ---- 逻辑右移 ----</span>
+</span><span id="__span-12-6"><a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="nf">srl</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = rs1 &gt;&gt; rs2   （高位补0）</span>
+</span><span id="__span-12-7"><a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="nf">srli</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="w">       </span><span class="c1"># rd = rs1 &gt;&gt; imm</span>
+</span><span id="__span-12-8"><a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>
+</span><span id="__span-12-9"><a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="c1"># ---- 算术右移 ----</span>
+</span><span id="__span-12-10"><a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="nf">sra</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = rs1 &gt;&gt; rs2   （高位补符号位）</span>
+</span><span id="__span-12-11"><a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="nf">srai</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="w">       </span><span class="c1"># rd = rs1 &gt;&gt; imm</span>
+</span><span id="__span-12-12"><a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a>
+</span><span id="__span-12-13"><a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="c1"># 示例</span>
+</span><span id="__span-12-14"><a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="nf">slli</span><span class="w"> </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">          </span><span class="c1"># a5 = a5 &lt;&lt; 2   （乘以4，用于字对齐地址计算）</span>
+</span><span id="__span-12-15"><a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="nf">slli</span><span class="w"> </span><span class="no">t0</span><span class="p">,</span><span class="w"> </span><span class="no">s2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w">          </span><span class="c1"># t0 = s2 * 4    （数组索引转字节偏移）</span>
+</span><span id="__span-12-16"><a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="nf">srli</span><span class="w"> </span><span class="no">t1</span><span class="p">,</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w">          </span><span class="c1"># a0 右移 3 位    （phase_3 中的位操作）</span>
+</span><span id="__span-12-17"><a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="nf">slli</span><span class="w"> </span><span class="no">t0</span><span class="p">,</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="w">          </span><span class="c1"># a0 左移 7 位    （phase_3 中的位操作）</span>
+</span></code></pre></div>
+<h3 id="53">5.3 数据传输指令（加载与存储）<a class="headerlink" href="#53" title="Permanent link">&para;</a></h3>
+<h4 id="i">加载指令 (I型)<a class="headerlink" href="#i" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-13-1"><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># RV64 下的加载指令（所有加载到 rd 的都是 I 型）</span>
+</span><span id="__span-13-2"><a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nf">ld</span><span class="w">   </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w">    </span><span class="c1"># 加载 64 位双字 (Doubleword)</span>
+</span><span id="__span-13-3"><a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="nf">lw</span><span class="w">   </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w">    </span><span class="c1"># 加载 32 位字，符号扩展至 64 位 (Word)</span>
+</span><span id="__span-13-4"><a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nf">lwu</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w">    </span><span class="c1"># 加载 32 位字，零扩展至 64 位</span>
+</span><span id="__span-13-5"><a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nf">lh</span><span class="w">   </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w">    </span><span class="c1"># 加载 16 位半字，符号扩展 (Halfword)</span>
+</span><span id="__span-13-6"><a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nf">lhu</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w">    </span><span class="c1"># 加载 16 位半字，零扩展</span>
+</span><span id="__span-13-7"><a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="nf">lb</span><span class="w">   </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w">    </span><span class="c1"># 加载 8 位字节，符号扩展 (Byte)</span>
+</span><span id="__span-13-8"><a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="nf">lbu</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w">    </span><span class="c1"># 加载 8 位字节，零扩展</span>
+</span><span id="__span-13-9"><a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+</span><span id="__span-13-10"><a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="c1"># 示例 (来自 lab5)：</span>
+</span><span id="__span-13-11"><a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="nf">lw</span><span class="w">   </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">a5</span><span class="p">)</span><span class="w">          </span><span class="c1"># 从跳转表加载 32 位值：a5 = *(int*)(a5)</span>
+</span><span id="__span-13-12"><a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="nf">ld</span><span class="w">   </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="mi">-40</span><span class="p">(</span><span class="no">s0</span><span class="p">)</span><span class="w">        </span><span class="c1"># 从栈上加载 64 位值：a5 = *(long long*)(s0-40)</span>
+</span><span id="__span-13-13"><a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a><span class="nf">ld</span><span class="w">   </span><span class="no">a4</span><span class="p">,</span><span class="w"> </span><span class="mi">-32</span><span class="p">(</span><span class="no">s0</span><span class="p">)</span><span class="w">        </span><span class="c1"># 从栈上加载累加结果</span>
+</span><span id="__span-13-14"><a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="nf">lbu</span><span class="w">  </span><span class="no">t2</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">(</span><span class="no">t1</span><span class="p">)</span><span class="w">          </span><span class="c1"># 加载 1 字节（无符号）：t2 = *(unsigned char*)(t1)</span>
+</span></code></pre></div>
+<h4 id="s">存储指令 (S型)<a class="headerlink" href="#s" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-14-1"><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># RV64 下的存储指令</span>
+</span><span id="__span-14-2"><a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nf">sd</span><span class="w">   </span><span class="no">rs2</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w">   </span><span class="c1"># 存储 64 位双字</span>
+</span><span id="__span-14-3"><a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nf">sw</span><span class="w">   </span><span class="no">rs2</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w">   </span><span class="c1"># 存储 32 位字</span>
+</span><span id="__span-14-4"><a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nf">sh</span><span class="w">   </span><span class="no">rs2</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w">   </span><span class="c1"># 存储 16 位半字</span>
+</span><span id="__span-14-5"><a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nf">sb</span><span class="w">   </span><span class="no">rs2</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w">   </span><span class="c1"># 存储 8 位字节</span>
+</span><span id="__span-14-6"><a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+</span><span id="__span-14-7"><a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># 示例 (来自 lab5)：</span>
+</span><span id="__span-14-8"><a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nf">sd</span><span class="w">   </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">-40</span><span class="p">(</span><span class="no">s0</span><span class="p">)</span><span class="w">        </span><span class="c1"># 将参数 a0 保存到栈上偏移 -40 处</span>
+</span><span id="__span-14-9"><a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="nf">sd</span><span class="w">   </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="mi">-48</span><span class="p">(</span><span class="no">s0</span><span class="p">)</span><span class="w">        </span><span class="c1"># 将参数 a1 保存到栈上偏移 -48 处</span>
+</span><span id="__span-14-10"><a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="nf">sd</span><span class="w">   </span><span class="no">zero</span><span class="p">,</span><span class="w"> </span><span class="mi">-32</span><span class="p">(</span><span class="no">s0</span><span class="p">)</span><span class="w">      </span><span class="c1"># 将 0 保存到栈上 (res = 0)</span>
+</span><span id="__span-14-11"><a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a><span class="nf">sd</span><span class="w">   </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="mi">-24</span><span class="p">(</span><span class="no">s0</span><span class="p">)</span><span class="w">        </span><span class="c1"># 将循环变量保存到栈上</span>
+</span></code></pre></div>
+<h3 id="54-b">5.4 条件分支指令 (B型)<a class="headerlink" href="#54-b" title="Permanent link">&para;</a></h3>
+<h4 id="_8">比较并跳转<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-15-1"><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># ---- 相等 / 不等 ----</span>
+</span><span id="__span-15-2"><a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nf">beq</span><span class="w">  </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="p">,</span><span class="w"> </span><span class="no">label</span><span class="w">    </span><span class="c1"># if (rs1 == rs2) goto label</span>
+</span><span id="__span-15-3"><a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nf">bne</span><span class="w">  </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="p">,</span><span class="w"> </span><span class="no">label</span><span class="w">    </span><span class="c1"># if (rs1 != rs2) goto label</span>
+</span><span id="__span-15-4"><a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>
+</span><span id="__span-15-5"><a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="c1"># ---- 小于（有符号）----</span>
+</span><span id="__span-15-6"><a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="nf">blt</span><span class="w">  </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="p">,</span><span class="w"> </span><span class="no">label</span><span class="w">    </span><span class="c1"># if (rs1 &lt; rs2) goto label</span>
+</span><span id="__span-15-7"><a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>
+</span><span id="__span-15-8"><a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="c1"># ---- 小于（无符号）----</span>
+</span><span id="__span-15-9"><a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="nf">bltu</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="p">,</span><span class="w"> </span><span class="no">label</span><span class="w">    </span><span class="c1"># if (rs1 &lt; rs2) goto label （无符号比较）</span>
+</span><span id="__span-15-10"><a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+</span><span id="__span-15-11"><a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="c1"># ---- 大于等于（有符号）----</span>
+</span><span id="__span-15-12"><a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="nf">bge</span><span class="w">  </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="p">,</span><span class="w"> </span><span class="no">label</span><span class="w">    </span><span class="c1"># if (rs1 &gt;= rs2) goto label</span>
+</span><span id="__span-15-13"><a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="nf">bgeu</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="p">,</span><span class="w"> </span><span class="no">label</span><span class="w">    </span><span class="c1"># if (rs1 &gt;= rs2) goto label （无符号比较）</span>
+</span><span id="__span-15-14"><a id="__codelineno-15-14" name="__codelineno-15-14" href="#__codelineno-15-14"></a>
+</span><span id="__span-15-15"><a id="__codelineno-15-15" name="__codelineno-15-15" href="#__codelineno-15-15"></a><span class="c1"># 示例 (来自 lab5)：</span>
+</span><span id="__span-15-16"><a id="__codelineno-15-16" name="__codelineno-15-16" href="#__codelineno-15-16"></a><span class="nf">ble</span><span class="w">   </span><span class="no">a4</span><span class="p">,</span><span class="w"> </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="no">.L3</span><span class="w">       </span><span class="c1"># if (a4 &lt;= a5) goto .L3   （循环条件判断）</span>
+</span><span id="__span-15-17"><a id="__codelineno-15-17" name="__codelineno-15-17" href="#__codelineno-15-17"></a><span class="nf">bne</span><span class="w">   </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="no">zero</span><span class="p">,</span><span class="w"> </span><span class="no">.L2</span><span class="w">     </span><span class="c1"># if (a5 != 0) goto .L2    （if 分支）</span>
+</span><span id="__span-15-18"><a id="__codelineno-15-18" name="__codelineno-15-18" href="#__codelineno-15-18"></a><span class="nf">bne</span><span class="w">   </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="no">.L3</span><span class="w">       </span><span class="c1"># if (a5 != a1) goto .L3   （循环末尾判断）</span>
+</span><span id="__span-15-19"><a id="__codelineno-15-19" name="__codelineno-15-19" href="#__codelineno-15-19"></a><span class="nf">beq</span><span class="w">   </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="no">zero</span><span class="p">,</span><span class="w"> </span><span class="no">.L1</span><span class="w">     </span><span class="c1"># if (a5 == 0) goto .L1    （基础情况）</span>
+</span><span id="__span-15-20"><a id="__codelineno-15-20" name="__codelineno-15-20" href="#__codelineno-15-20"></a><span class="nf">bgt</span><span class="w">   </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="no">.L4</span><span class="w">       </span><span class="c1"># if (a0 &gt; a1) goto .L4    （acc 优化版中的边界检查）</span>
+</span><span id="__span-15-21"><a id="__codelineno-15-21" name="__codelineno-15-21" href="#__codelineno-15-21"></a><span class="nf">bgtu</span><span class="w">  </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="no">a4</span><span class="p">,</span><span class="w"> </span><span class="no">.L8</span><span class="w">       </span><span class="c1"># if (a5 &gt; a4) goto .L8    （switch 中的范围检查，无符号）</span>
+</span><span id="__span-15-22"><a id="__codelineno-15-22" name="__codelineno-15-22" href="#__codelineno-15-22"></a><span class="nf">bne</span><span class="w">   </span><span class="no">t3</span><span class="p">,</span><span class="w"> </span><span class="no">t4</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="no">f</span><span class="w">        </span><span class="c1"># if (t3 != t4) goto 2f    （字符串比较）</span>
+</span></code></pre></div>
+<h3 id="55">5.5 无条件跳转指令<a class="headerlink" href="#55" title="Permanent link">&para;</a></h3>
+<h4 id="j-i">跳转并链接 (J型 / I型)<a class="headerlink" href="#j-i" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-16-1"><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># ---- 跳转并链接 (J型，PC相对) ----</span>
+</span><span id="__span-16-2"><a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nf">jal</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">label</span><span class="w">           </span><span class="c1"># rd = PC+4; goto label</span>
+</span><span id="__span-16-3"><a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">                          </span><span class="c1"># 通常 rd = ra (x1) 用于函数调用</span>
+</span><span id="__span-16-4"><a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>
+</span><span id="__span-16-5"><a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="c1"># ---- 跳转并链接寄存器 (I型，寄存器相对) ----</span>
+</span><span id="__span-16-6"><a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="nf">jalr</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="p">(</span><span class="no">rs1</span><span class="p">)</span><span class="w">     </span><span class="c1"># rd = PC+4; goto rs1 + offset</span>
+</span><span id="__span-16-7"><a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>
+</span><span id="__span-16-8"><a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="c1"># 示例：</span>
+</span><span id="__span-16-9"><a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="nf">jal</span><span class="w">  </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="no">factor</span><span class="w">          </span><span class="c1"># 调用 factor 函数</span>
+</span><span id="__span-16-10"><a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="nf">jal</span><span class="w">  </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="no">fibonacci</span><span class="w">       </span><span class="c1"># 调用 fibonacci 函数</span>
+</span><span id="__span-16-11"><a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="nf">jal</span><span class="w">  </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="no">acc</span><span class="w">             </span><span class="c1"># 调用 acc 函数</span>
+</span></code></pre></div>
+<h4 id="_9">函数返回<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-17-1"><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># ---- 返回 (伪指令 ret 等价于 jalr zero, ra, 0) ----</span>
+</span><span id="__span-17-2"><a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nf">ret</span><span class="w">                      </span><span class="c1"># goto ra (函数返回)</span>
+</span><span id="__span-17-3"><a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="c1"># 等价于</span>
+</span><span id="__span-17-4"><a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="nf">jalr</span><span class="w"> </span><span class="no">zero</span><span class="p">,</span><span class="w"> </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">         </span><span class="c1"># 不保存返回地址，直接跳转到 ra</span>
+</span><span id="__span-17-5"><a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+</span><span id="__span-17-6"><a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="c1"># 或者使用 jr（也是伪指令）</span>
+</span><span id="__span-17-7"><a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="nf">jr</span><span class="w">   </span><span class="no">ra</span><span class="w">                  </span><span class="c1"># goto ra</span>
+</span><span id="__span-17-8"><a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>
+</span><span id="__span-17-9"><a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="c1"># 示例 (来自 lab5)：</span>
+</span><span id="__span-17-10"><a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a><span class="nf">ret</span><span class="w">                      </span><span class="c1"># 函数末尾返回</span>
+</span><span id="__span-17-11"><a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="nf">jr</span><span class="w">   </span><span class="no">ra</span><span class="w">                  </span><span class="c1"># 另一种写法</span>
+</span></code></pre></div>
+<h4 id="_10">无条件跳转（伪指令）<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-18-1"><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># ---- 无条件跳转 (伪指令 j 等价于 jal zero, label) ----</span>
+</span><span id="__span-18-2"><a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nf">j</span><span class="w">    </span><span class="no">label</span><span class="w">               </span><span class="c1"># goto label</span>
+</span><span id="__span-18-3"><a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="c1"># 等价于</span>
+</span><span id="__span-18-4"><a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="nf">jal</span><span class="w">  </span><span class="no">zero</span><span class="p">,</span><span class="w"> </span><span class="no">label</span>
+</span><span id="__span-18-5"><a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
+</span><span id="__span-18-6"><a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># 示例 (来自 lab5)：</span>
+</span><span id="__span-18-7"><a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="nf">j</span><span class="w">    </span><span class="no">.L2</span><span class="w">                 </span><span class="c1"># 跳转到 .L2 标签</span>
+</span><span id="__span-18-8"><a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="nf">j</span><span class="w">    </span><span class="no">.L3</span><span class="w">                 </span><span class="c1"># 跳转到 .L3 标签</span>
+</span><span id="__span-18-9"><a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="nf">j</span><span class="w">    </span><span class="mi">3</span><span class="no">f</span><span class="w">                  </span><span class="c1"># 跳转到前向标签 3</span>
+</span></code></pre></div>
+<h3 id="56">5.6 比较并置位指令<a class="headerlink" href="#56" title="Permanent link">&para;</a></h3>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-19-1"><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># ---- 有符号小于置位 (R型) ----</span>
+</span><span id="__span-19-2"><a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="nf">slt</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = (rs1 &lt; rs2) ? 1 : 0</span>
+</span><span id="__span-19-3"><a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+</span><span id="__span-19-4"><a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># ---- 无符号小于置位 ----</span>
+</span><span id="__span-19-5"><a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="nf">sltu</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">rs2</span><span class="w">       </span><span class="c1"># rd = (rs1 &lt; rs2) ? 1 : 0 （无符号）</span>
+</span><span id="__span-19-6"><a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a>
+</span><span id="__span-19-7"><a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="c1"># ---- 立即数版本 (I型) ----</span>
+</span><span id="__span-19-8"><a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="nf">slti</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="w">       </span><span class="c1"># rd = (rs1 &lt; imm) ? 1 : 0</span>
+</span><span id="__span-19-9"><a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="nf">sltiu</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">rs1</span><span class="p">,</span><span class="w"> </span><span class="no">imm</span><span class="w">      </span><span class="c1"># rd = (rs1 &lt; imm) ? 1 : 0 （无符号）</span>
+</span></code></pre></div>
+<h3 id="57">5.7 加载立即数<a class="headerlink" href="#57" title="Permanent link">&para;</a></h3>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-20-1"><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># ---- 加载高位立即数 (U型) ----</span>
+</span><span id="__span-20-2"><a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nf">lui</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">imm20</span><span class="w">          </span><span class="c1"># rd = imm20 &lt;&lt; 12 （加载高 20 位，低 12 位为 0）</span>
+</span><span id="__span-20-3"><a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+</span><span id="__span-20-4"><a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># ---- 加载 PC 相对地址 (U型) ----</span>
+</span><span id="__span-20-5"><a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="nf">auipc</span><span class="w"> </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">imm20</span><span class="w">         </span><span class="c1"># rd = PC + (imm20 &lt;&lt; 12)</span>
+</span><span id="__span-20-6"><a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>
+</span><span id="__span-20-7"><a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="c1"># ---- 伪指令 li (load immediate) ----</span>
+</span><span id="__span-20-8"><a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="nf">li</span><span class="w">   </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">immediate</span><span class="w">      </span><span class="c1"># 加载任意 64 位立即数</span>
+</span><span id="__span-20-9"><a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">                        </span><span class="c1"># 汇编器自动拆分为多条指令</span>
+</span><span id="__span-20-10"><a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>
+</span><span id="__span-20-11"><a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="c1"># 示例 (来自 lab5)：</span>
+</span><span id="__span-20-12"><a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="nf">li</span><span class="w">   </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">              </span><span class="c1"># a0 = 1</span>
+</span><span id="__span-20-13"><a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="nf">li</span><span class="w">   </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">              </span><span class="c1"># a0 = 0</span>
+</span><span id="__span-20-14"><a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="nf">li</span><span class="w">   </span><span class="no">a4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="w">              </span><span class="c1"># a4 = 6 （switch 范围上限）</span>
+</span><span id="__span-20-15"><a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="nf">li</span><span class="w">   </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">              </span><span class="c1"># a5 = 1</span>
+</span></code></pre></div>
+<h3 id="58">5.8 地址加载伪指令<a class="headerlink" href="#58" title="Permanent link">&para;</a></h3>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># ---- 加载地址 (伪指令) ----</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nf">la</span><span class="w">   </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">label</span><span class="w">          </span><span class="c1"># rd = label 的地址</span>
+</span><span id="__span-21-3"><a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+</span><span id="__span-21-4"><a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># ---- 加载 PC 相对地址 (伪指令) ----</span>
+</span><span id="__span-21-5"><a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="nf">lla</span><span class="w">  </span><span class="no">rd</span><span class="p">,</span><span class="w"> </span><span class="no">label</span><span class="w">          </span><span class="c1"># rd = label 的地址（使用 PC 相对寻址）</span>
+</span><span id="__span-21-6"><a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">                        </span><span class="c1"># 等价于 auipc + addi</span>
+</span><span id="__span-21-7"><a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+</span><span id="__span-21-8"><a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="c1"># 示例 (来自 lab5)：</span>
+</span><span id="__span-21-9"><a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="nf">lla</span><span class="w">  </span><span class="no">a4</span><span class="p">,</span><span class="w"> </span><span class="no">.L4</span><span class="w">            </span><span class="c1"># a4 = 跳转表 .L4 的地址 （用于 switch 跳转表）</span>
+</span><span id="__span-21-10"><a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="nf">la</span><span class="w">   </span><span class="no">t1</span><span class="p">,</span><span class="w"> </span><span class="no">expect</span><span class="w">         </span><span class="c1"># t1 = expect 数组的首地址 （phase_3 中的字符串比较）</span>
+</span></code></pre></div>
+<hr />
+<h2 id="6">6. 伪指令<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<p>伪指令是汇编器提供的"语法糖"，会被自动翻译成一条或多条真实指令。</p>
+<h3 id="61">6.1 常用伪指令一览<a class="headerlink" href="#61" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>伪指令</th>
+<th>等价指令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>nop</code></td>
+<td><code>addi x0, x0, 0</code></td>
+<td>空操作</td>
+</tr>
+<tr>
+<td><code>li rd, imm</code></td>
+<td>多条指令组合</td>
+<td>加载任意立即数</td>
+</tr>
+<tr>
+<td><code>la rd, label</code></td>
+<td><code>auipc rd, ...</code> + 其他</td>
+<td>加载符号地址</td>
+</tr>
+<tr>
+<td><code>lla rd, label</code></td>
+<td><code>auipc rd, ...</code> + <code>addi</code></td>
+<td>加载 PC 相对地址</td>
+</tr>
+<tr>
+<td><code>mv rd, rs</code></td>
+<td><code>addi rd, rs, 0</code></td>
+<td>寄存器复制</td>
+</tr>
+<tr>
+<td><code>neg rd, rs</code></td>
+<td><code>sub rd, x0, rs</code></td>
+<td>取负</td>
+</tr>
+<tr>
+<td><code>negw rd, rs</code></td>
+<td><code>subw rd, x0, rs</code></td>
+<td>字取负 (RV64)</td>
+</tr>
+<tr>
+<td><code>not rd, rs</code></td>
+<td><code>xori rd, rs, -1</code></td>
+<td>按位取反</td>
+</tr>
+<tr>
+<td><code>seqz rd, rs</code></td>
+<td><code>sltiu rd, rs, 1</code></td>
+<td>判断是否等于零</td>
+</tr>
+<tr>
+<td><code>snez rd, rs</code></td>
+<td><code>sltu rd, x0, rs</code></td>
+<td>判断是否不等于零</td>
+</tr>
+<tr>
+<td><code>sltz rd, rs</code></td>
+<td><code>slt rd, rs, x0</code></td>
+<td>判断是否小于零</td>
+</tr>
+<tr>
+<td><code>sgtz rd, rs</code></td>
+<td><code>slt rd, x0, rs</code></td>
+<td>判断是否大于零</td>
+</tr>
+<tr>
+<td><code>bnez rs, label</code></td>
+<td><code>bne rs, x0, label</code></td>
+<td>不等于零跳转</td>
+</tr>
+<tr>
+<td><code>beqz rs, label</code></td>
+<td><code>beq rs, x0, label</code></td>
+<td>等于零跳转</td>
+</tr>
+<tr>
+<td><code>blez rs, label</code></td>
+<td><code>ble rs, x0, label</code></td>
+<td>≤ 0 跳转</td>
+</tr>
+<tr>
+<td><code>bgez rs, label</code></td>
+<td><code>bge rs, x0, label</code></td>
+<td>≥ 0 跳转</td>
+</tr>
+<tr>
+<td><code>bltz rs, label</code></td>
+<td><code>blt rs, x0, label</code></td>
+<td>&lt; 0 跳转</td>
+</tr>
+<tr>
+<td><code>bgtz rs, label</code></td>
+<td><code>bgt rs, x0, label</code></td>
+<td>&gt; 0 跳转</td>
+</tr>
+<tr>
+<td><code>bgt rs1, rs2, label</code></td>
+<td><code>blt rs2, rs1, label</code></td>
+<td>大于跳转</td>
+</tr>
+<tr>
+<td><code>ble rs1, rs2, label</code></td>
+<td><code>bge rs2, rs1, label</code></td>
+<td>小于等于跳转</td>
+</tr>
+<tr>
+<td><code>bgtu rs1, rs2, label</code></td>
+<td><code>bltu rs2, rs1, label</code></td>
+<td>无符号大于跳转</td>
+</tr>
+<tr>
+<td><code>bleu rs1, rs2, label</code></td>
+<td><code>bgeu rs2, rs1, label</code></td>
+<td>无符号小于等于跳转</td>
+</tr>
+<tr>
+<td><code>j label</code></td>
+<td><code>jal x0, label</code></td>
+<td>无条件跳转</td>
+</tr>
+<tr>
+<td><code>jal label</code></td>
+<td><code>jal x1, label</code></td>
+<td>函数调用（隐式 ra）</td>
+</tr>
+<tr>
+<td><code>call label</code></td>
+<td><code>jal ra, label</code></td>
+<td>函数调用（远程）</td>
+</tr>
+<tr>
+<td><code>ret</code></td>
+<td><code>jalr x0, ra, 0</code></td>
+<td>函数返回</td>
+</tr>
+<tr>
+<td><code>jr rs</code></td>
+<td><code>jalr x0, rs, 0</code></td>
+<td>跳转到寄存器地址</td>
+</tr>
+<tr>
+<td><code>jalr rs</code></td>
+<td><code>jalr x1, rs, 0</code></td>
+<td>间接调用</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-lab5">6.2 lab5 中使用的伪指令示例<a class="headerlink" href="#62-lab5" title="Permanent link">&para;</a></h3>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># mv — 寄存器复制</span>
+</span><span id="__span-22-2"><a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="nf">mv</span><span class="w">   </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="no">a0</span><span class="w">             </span><span class="c1"># a5 = a0  （保存参数）</span>
+</span><span id="__span-22-3"><a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="nf">mv</span><span class="w">   </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a5</span><span class="w">             </span><span class="c1"># a0 = a5  （设置返回值）</span>
+</span><span id="__span-22-4"><a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="nf">mv</span><span class="w">   </span><span class="no">s1</span><span class="p">,</span><span class="w"> </span><span class="no">a0</span><span class="w">             </span><span class="c1"># s1 = a0  （保存 fib(n-1) 的结果）</span>
+</span><span id="__span-22-5"><a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>
+</span><span id="__span-22-6"><a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="c1"># li — 加载立即数</span>
+</span><span id="__span-22-7"><a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="nf">li</span><span class="w">   </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w">              </span><span class="c1"># a0 = 0   （设置返回值 0）</span>
+</span><span id="__span-22-8"><a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a><span class="nf">li</span><span class="w">   </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">              </span><span class="c1"># a5 = 1   （加载常数 1）</span>
+</span><span id="__span-22-9"><a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a><span class="nf">li</span><span class="w">   </span><span class="no">a4</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="w">              </span><span class="c1"># a4 = 6   （加载常数 6）</span>
+</span><span id="__span-22-10"><a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>
+</span><span id="__span-22-11"><a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="c1"># ret — 函数返回</span>
+</span><span id="__span-22-12"><a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="nf">ret</span><span class="w">                      </span><span class="c1"># 从函数返回</span>
+</span><span id="__span-22-13"><a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>
+</span><span id="__span-22-14"><a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a><span class="c1"># j — 无条件跳转</span>
+</span><span id="__span-22-15"><a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="nf">j</span><span class="w">    </span><span class="no">.L2</span><span class="w">                 </span><span class="c1"># 跳转到标签 .L2</span>
+</span><span id="__span-22-16"><a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a><span class="nf">j</span><span class="w">    </span><span class="no">.L3</span><span class="w">                 </span><span class="c1"># 跳转到标签 .L3</span>
+</span><span id="__span-22-17"><a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>
+</span><span id="__span-22-18"><a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="c1"># lla — 加载 PC 相对地址</span>
+</span><span id="__span-22-19"><a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="nf">lla</span><span class="w">  </span><span class="no">a4</span><span class="p">,</span><span class="w"> </span><span class="no">.L4</span><span class="w">            </span><span class="c1"># 加载跳转表地址</span>
+</span></code></pre></div>
+<hr />
+<h2 id="7">7. 函数调用约定<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h3 id="71">7.1 参数传递规则<a class="headerlink" href="#71" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">参数位置</th>
+<th style="text-align: center;">寄存器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">第1个参数</td>
+<td style="text-align: center;"><code>a0</code> (x10)</td>
+<td>整数/指针</td>
+</tr>
+<tr>
+<td style="text-align: center;">第2个参数</td>
+<td style="text-align: center;"><code>a1</code> (x11)</td>
+<td>整数/指针</td>
+</tr>
+<tr>
+<td style="text-align: center;">第3个参数</td>
+<td style="text-align: center;"><code>a2</code> (x12)</td>
+<td>整数/指针</td>
+</tr>
+<tr>
+<td style="text-align: center;">第4个参数</td>
+<td style="text-align: center;"><code>a3</code> (x13)</td>
+<td>整数/指针</td>
+</tr>
+<tr>
+<td style="text-align: center;">第5个参数</td>
+<td style="text-align: center;"><code>a4</code> (x14)</td>
+<td>整数/指针</td>
+</tr>
+<tr>
+<td style="text-align: center;">第6个参数</td>
+<td style="text-align: center;"><code>a5</code> (x15)</td>
+<td>整数/指针</td>
+</tr>
+<tr>
+<td style="text-align: center;">第7个参数</td>
+<td style="text-align: center;"><code>a6</code> (x16)</td>
+<td>整数/指针</td>
+</tr>
+<tr>
+<td style="text-align: center;">第8个参数</td>
+<td style="text-align: center;"><code>a7</code> (x17)</td>
+<td>整数/指针</td>
+</tr>
+<tr>
+<td style="text-align: center;">更多参数</td>
+<td style="text-align: center;">栈上传递</td>
+<td>从右到左压栈</td>
+</tr>
+</tbody>
+</table>
+<h3 id="72">7.2 返回值<a class="headerlink" href="#72" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">返回值大小</th>
+<th style="text-align: center;">寄存器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">≤ 64 位</td>
+<td style="text-align: center;"><code>a0</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">128 位</td>
+<td style="text-align: center;"><code>a0</code> (低64位) + <code>a1</code> (高64位)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="73">7.3 寄存器保存约定<a class="headerlink" href="#73" title="Permanent link">&para;</a></h3>
+<p><strong>调用者保存 (Caller-saved)</strong> — 调用前若值还要用，需自行保存到栈上：
+- <code>ra</code> (x1) — 返回地址
+- <code>t0</code>~<code>t6</code> (x5~x7, x28~x31) — 临时寄存器
+- <code>a0</code>~<code>a7</code> (x10~x17) — 参数寄存器</p>
+<p><strong>被调用者保存 (Callee-saved)</strong> — 被调函数若使用，必须保存并恢复：
+- <code>sp</code> (x2) — 栈指针
+- <code>s0</code>~<code>s11</code> (x8~x9, x18~x27) — 保存寄存器</p>
+<h3 id="74">7.4 函数调用栈帧模板<a class="headerlink" href="#74" title="Permanent link">&para;</a></h3>
+<h4 id="_11">标准函数（需要保存寄存器）<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-23-1"><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># === 函数序言 (Prologue) ===</span>
+</span><span id="__span-23-2"><a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="nl">func_name:</span>
+</span><span id="__span-23-3"><a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="p">-</span><span class="no">FRAMESIZE</span><span class="w">    </span><span class="c1"># 分配栈帧空间（FRAMESIZE = 保存的寄存器数 × 8 + 局部变量大小）</span>
+</span><span id="__span-23-4"><a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">    </span><span class="nf">sd</span><span class="w">      </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET_RA</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w">     </span><span class="c1"># 保存返回地址</span>
+</span><span id="__span-23-5"><a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">    </span><span class="nf">sd</span><span class="w">      </span><span class="no">s0</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET_S0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w">     </span><span class="c1"># 保存被调用者保存寄存器</span>
+</span><span id="__span-23-6"><a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">    </span><span class="nf">sd</span><span class="w">      </span><span class="no">s1</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET_S1</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w">     </span><span class="c1"># （根据需要使用）</span>
+</span><span id="__span-23-7"><a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="w">    </span><span class="c1"># ... 可选的更多 sd ...</span>
+</span><span id="__span-23-8"><a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>
+</span><span id="__span-23-9"><a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="w">    </span><span class="c1"># === 函数体 ===</span>
+</span><span id="__span-23-10"><a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="w">    </span><span class="c1"># ... 实际功能代码 ...</span>
+</span><span id="__span-23-11"><a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
+</span><span id="__span-23-12"><a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="w">    </span><span class="c1"># === 函数尾声 (Epilogue) ===</span>
+</span><span id="__span-23-13"><a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="w">    </span><span class="nf">ld</span><span class="w">      </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET_RA</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w">     </span><span class="c1"># 恢复返回地址</span>
+</span><span id="__span-23-14"><a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="w">    </span><span class="nf">ld</span><span class="w">      </span><span class="no">s0</span><span class="p">,</span><span class="w"> </span><span class="no">OFFSET_S0</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w">     </span><span class="c1"># 恢复寄存器</span>
+</span><span id="__span-23-15"><a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="w">    </span><span class="c1"># ... 保存了多少 sd，就用多少 ld 恢复 ...</span>
+</span><span id="__span-23-16"><a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">FRAMESIZE</span><span class="w">      </span><span class="c1"># 回收栈帧</span>
+</span><span id="__span-23-17"><a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="w">    </span><span class="nf">ret</span><span class="w">                           </span><span class="c1"># 返回</span>
+</span></code></pre></div>
+<h4 id="factor_plains">示例：<code>factor_plain.s</code> 中的递归函数<a class="headerlink" href="#factor_plains" title="Permanent link">&para;</a></h4>
+<div class="language-asm highlight"><pre><span></span><code><span id="__span-24-1"><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nl">factor:</span>
+</span><span id="__span-24-2"><a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">-32</span><span class="w">           </span><span class="c1"># 分配 32 字节栈帧</span>
+</span><span id="__span-24-3"><a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="w">    </span><span class="nf">sd</span><span class="w">      </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w">            </span><span class="c1"># 保存返回地址</span>
+</span><span id="__span-24-4"><a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="w">    </span><span class="nf">sd</span><span class="w">      </span><span class="no">s0</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w">            </span><span class="c1"># 保存 s0</span>
+</span><span id="__span-24-5"><a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">s0</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="w">            </span><span class="c1"># 设置帧指针 s0 = old sp</span>
+</span><span id="__span-24-6"><a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="w">    </span><span class="nf">sd</span><span class="w">      </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">-24</span><span class="p">(</span><span class="no">s0</span><span class="p">)</span><span class="w">           </span><span class="c1"># 将参数 n 保存到栈上</span>
+</span><span id="__span-24-7"><a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a>
+</span><span id="__span-24-8"><a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="w">    </span><span class="nf">ld</span><span class="w">      </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="mi">-24</span><span class="p">(</span><span class="no">s0</span><span class="p">)</span><span class="w">           </span><span class="c1"># 加载 n</span>
+</span><span id="__span-24-9"><a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="w">    </span><span class="nf">bne</span><span class="w">     </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="no">zero</span><span class="p">,</span><span class="w"> </span><span class="no">.L2</span><span class="w">         </span><span class="c1"># if (n != 0) goto 递归分支</span>
+</span><span id="__span-24-10"><a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="w">    </span><span class="nf">li</span><span class="w">      </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w">                 </span><span class="c1"># else return 1</span>
+</span><span id="__span-24-11"><a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="w">    </span><span class="nf">j</span><span class="w">       </span><span class="no">.L3</span>
+</span><span id="__span-24-12"><a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>
+</span><span id="__span-24-13"><a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="nl">.L2:</span>
+</span><span id="__span-24-14"><a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="w">    </span><span class="nf">ld</span><span class="w">      </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="mi">-24</span><span class="p">(</span><span class="no">s0</span><span class="p">)</span><span class="w">           </span><span class="c1"># 加载 n</span>
+</span><span id="__span-24-15"><a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="w">            </span><span class="c1"># a5 = n - 1</span>
+</span><span id="__span-24-16"><a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a><span class="w">    </span><span class="nf">mv</span><span class="w">      </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a5</span><span class="w">                </span><span class="c1"># 设置参数 a0 = n-1</span>
+</span><span id="__span-24-17"><a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="w">    </span><span class="nf">call</span><span class="w">    </span><span class="no">factor</span><span class="w">                </span><span class="c1"># 递归调用 factor(n-1)</span>
+</span><span id="__span-24-18"><a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="w">    </span><span class="nf">mv</span><span class="w">      </span><span class="no">a4</span><span class="p">,</span><span class="w"> </span><span class="no">a0</span><span class="w">                </span><span class="c1"># a4 = factor(n-1)</span>
+</span><span id="__span-24-19"><a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a><span class="w">    </span><span class="nf">ld</span><span class="w">      </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="mi">-24</span><span class="p">(</span><span class="no">s0</span><span class="p">)</span><span class="w">           </span><span class="c1"># 加载 n</span>
+</span><span id="__span-24-20"><a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a><span class="w">    </span><span class="nf">mul</span><span class="w">     </span><span class="no">a5</span><span class="p">,</span><span class="w"> </span><span class="no">a4</span><span class="p">,</span><span class="w"> </span><span class="no">a5</span><span class="w">            </span><span class="c1"># a5 = factor(n-1) * n</span>
+</span><span id="__span-24-21"><a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>
+</span><span id="__span-24-22"><a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a><span class="nl">.L3:</span>
+</span><span id="__span-24-23"><a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a><span class="w">    </span><span class="nf">mv</span><span class="w">      </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a5</span><span class="w">                </span><span class="c1"># 设置返回值</span>
+</span><span id="__span-24-24"><a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a><span class="w">    </span><span class="nf">ld</span><span class="w">      </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w">            </span><span class="c1"># 恢复返回地址</span>
+</span><span id="__span-24-25"><a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a><span class="w">    </span><span class="nf">ld</span><span class="w">      </span><span class="no">s0</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w">            </span><span class="c1"># 恢复 s0</span>
+</span><span id="__span-24-26"><a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="w">            </span><span class="c1"># 回收栈帧</span>
+</span><span id="__span-24-27"><a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a><span class="w">    </span><span class="nf">jr</span><span class="w">      </span><span class="no">ra</span><span class="w">                    </span><span class="c1"># 返回</span>
+</span></code></pre></div>
+<h4 id="acc_plains">示例：<code>acc_plain.s</code> 中的栈帧使用<a class="headerlink" href="#acc_plains" title="Permanent link">&para;</a></h4>
+<p>```asm
+acc:
+    addi    sp, sp, -48           # 分配 48 字节栈帧
+    sd      s0, 40(sp)            # 保存 s0
+    addi    s0, sp, 48            # 帧指针指向栈顶</p>
+<div class="language-text highlight"><pre><span></span><code>sd      a0, -40(s0)           # 栈上保存参数 a (a0)
+sd      a1, -48(s0)           # 栈上保存参数 b (a1)
+sd      zero, -32(s0)         # res = 0 （存栈上）
+ld      a5, -40(s0)           # a5 = a
+sd      a5, -24(s0)           # i = a （存栈上）
+j       .L2                   # 跳转到条件判断
+</code></pre></div>
+<p>.L3:                              # 循环体
+    ld      a4, -32(s0)           # a4 = res
+    ld      a5, -24(s0)           # a5 = i
+    add     a5, a4, a5            # a5 = res + i
+    sd      a5, -32(s0)           # res = res + i
+    ld      a5, -24(s0)           # a5 = i
+    addi    a5, a5,</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-footer__link md-footer__link--prev" aria-label="Previous: git的使用">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                git的使用
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Evelina_IS
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.action.edit", "content.code.copy", "navigation.tracking", "navigation.expand", "navigation.top", "navigation.footer"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../javascripts/katex.js"></script>
+      
+        <script src="../javascripts/reader-counter.js"></script>
+      
+    
+  </body>
+</html>
