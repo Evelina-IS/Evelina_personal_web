@@ -1,4 +1,4 @@
-site_name: Evelina_IS
+﻿site_name: Evelina_IS
 copyright: "Copyright © 2026 Evelina_IS"
 
 nav:
@@ -8,9 +8,9 @@ nav:
   - git的使用: git的使用.md
   
   - SYS1:
-      - SYS汇编: sys汇编.md
-      - 指令集: 指令集.md
-      - risc-v使用指南: risc-v使用指南.md
+      - SYS汇编: SYS1/sys汇编.md
+      - 指令集: SYS1/指令集.md
+      - risc-v使用指南: SYS1/risc-v使用指南.md
 theme:
   name: material
   icon:
