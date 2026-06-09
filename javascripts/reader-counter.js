@@ -1,152 +1,184 @@
 /**
- * 阅读次数计数器
- * 
- * 功能：在每个页面的底部显示阅读次数
- * 原理：使用 localStorage 存储每个页面的访问计数
- * 特点：同一页面刷新不重复计数（按会话session去重）
+ * 页面互动组件：阅读次数 + 点赞按钮
+ *
+ * 功能：
+ *   1. 阅读计数器 — localStorage 持久化，30分钟窗口内同页不重复计数
+ *   2. 点赞按钮 — localStorage 持久化，每个页面独立计数，可切换
+ *
+ * 修复：
+ *   - 移除未使用变量 sessionData
+ *   - 用 localStorage + 时间窗口替代 sessionStorage（避免跨标签页重复计数）
+ *   - 新增点赞功能
  */
 
 (function () {
   "use strict";
 
   // ==================== 配置 ====================
-  const STORAGE_KEY = "reader_counter_data"; // localStorage 键名
-  const SESSION_KEY = "reader_counter_session"; // 会话标记键名
+  const STORAGE_KEY_VIEWS = "reader_counter_data";   // 阅读计数数据
+  const STORAGE_KEY_LIKES = "page_likes_data";       // 点赞数据
+  const STORAGE_KEY_VISIT = "reader_counter_visit";  // 访问时间记录
+  const DEDUP_WINDOW_MS = 30 * 60 * 1000;            // 30分钟去重窗口
 
   // ==================== 初始化 ====================
   document.addEventListener("DOMContentLoaded", function () {
-    // 等待页面内容完全加载后添加计数器
-    setTimeout(addReaderCounter, 300);
+    setTimeout(buildInteractionBar, 300);
   });
 
-  // ==================== 核心功能 ====================
+  // ==================== 工具函数 ====================
 
-  /**
-   * 获取当前页面的路径（用作唯一标识）
-   */
   function getPagePath() {
     return window.location.pathname;
   }
 
-  /**
-   * 从 localStorage 读取计数数据
-   */
-  function getCounterData() {
+  function safeGetJSON(key) {
     try {
-      const data = localStorage.getItem(STORAGE_KEY);
-      return data ? JSON.parse(data) : {};
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : {};
     } catch (e) {
-      console.warn("读取阅读次数失败:", e);
       return {};
     }
   }
 
-  /**
-   * 将计数数据写入 localStorage
-   */
-  function saveCounterData(data) {
+  function safeSetJSON(key, data) {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      localStorage.setItem(key, JSON.stringify(data));
     } catch (e) {
-      console.warn("保存阅读次数失败:", e);
+      console.warn("localStorage 写入失败:", e);
     }
   }
 
-  /**
-   * 获取当前页面的阅读次数，并递增
-   * 同一会话中刷新页面不重复计数
-   */
-  function getAndIncrementCount() {
+  // ==================== 阅读计数 ====================
+
+  function getViewCount() {
     const pagePath = getPagePath();
-    const data = getCounterData();
-    const sessionData = getCounterData(); // 用于会话检查
+    const data = safeGetJSON(STORAGE_KEY_VIEWS);
+    const visitData = safeGetJSON(STORAGE_KEY_VISIT);
 
-    // 生成当前页面的会话 ID
-    const pageSessionId = pagePath + "_" + getSessionId();
+    const now = Date.now();
+    const lastVisit = visitData[pagePath] || 0;
+    const isNewVisit = (now - lastVisit) > DEDUP_WINDOW_MS;
 
-    // 检查是否已经在本次会话中访问过
-    const sessionVisited = isSessionVisited(pageSessionId);
-
-    // 获取当前计数
     let count = data[pagePath] || 0;
 
-    if (!sessionVisited) {
-      // 首次访问（新会话），计数 +1
+    if (isNewVisit) {
       count += 1;
       data[pagePath] = count;
-      saveCounterData(data);
-
-      // 标记会话已访问
-      markSessionVisited(pageSessionId);
+      visitData[pagePath] = now;
+      safeSetJSON(STORAGE_KEY_VIEWS, data);
+      safeSetJSON(STORAGE_KEY_VISIT, visitData);
     }
 
     return count;
   }
 
-  /**
-   * 获取会话 ID（浏览器会话级别的唯一标识）
-   */
-  function getSessionId() {
-    let sessionId = sessionStorage.getItem(SESSION_KEY);
-    if (!sessionId) {
-      sessionId = "session_" + Date.now() + "_" + Math.random().toString(36).substr(2, 9);
-      sessionStorage.setItem(SESSION_KEY, sessionId);
-    }
-    return sessionId;
+  // ==================== 点赞功能 ====================
+
+  function getLikeData() {
+    const pagePath = getPagePath();
+    const data = safeGetJSON(STORAGE_KEY_LIKES);
+    return {
+      count: data[pagePath + "_count"] || 0,
+      liked: data[pagePath + "_liked"] || false
+    };
   }
 
-  /**
-   * 检查当前页面是否已在本次会话中被访问过
-   * 使用会话级 localStorage 键
-   */
-  function isSessionVisited(pageSessionId) {
-    try {
-      const visitedData = sessionStorage.getItem("reader_counter_visited");
-      if (!visitedData) return false;
-      const visited = JSON.parse(visitedData);
-      return visited[pageSessionId] === true;
-    } catch (e) {
-      return false;
+  function toggleLike() {
+    const pagePath = getPagePath();
+    const data = safeGetJSON(STORAGE_KEY_LIKES);
+    const countKey = pagePath + "_count";
+    const likedKey = pagePath + "_liked";
+
+    let count = data[countKey] || 0;
+    const liked = data[likedKey] || false;
+
+    if (liked) {
+      // 取消点赞
+      count = Math.max(0, count - 1);
+      data[likedKey] = false;
+    } else {
+      // 点赞
+      count += 1;
+      data[likedKey] = true;
     }
+
+    data[countKey] = count;
+    safeSetJSON(STORAGE_KEY_LIKES, data);
+
+    return { count, liked: !liked };
   }
 
-  /**
-   * 标记当前页面在本次会话中已访问
-   */
-  function markSessionVisited(pageSessionId) {
-    try {
-      const visitedData = sessionStorage.getItem("reader_counter_visited");
-      const visited = visitedData ? JSON.parse(visitedData) : {};
-      visited[pageSessionId] = true;
-      sessionStorage.setItem("reader_counter_visited", JSON.stringify(visited));
-    } catch (e) {
-      // 静默失败
-    }
-  }
+  // ==================== 构建 UI ====================
 
-  /**
-   * 在页面底部添加阅读次数显示
-   */
-  function addReaderCounter() {
-    // 获取计数（会自动递增）
-    const count = getAndIncrementCount();
-
-    // 查找文章内容容器
+  function buildInteractionBar() {
     const article = document.querySelector("article.md-content__inner");
     if (!article) return;
 
-    // 创建计数器元素
-    const counterWrapper = document.createElement("div");
-    counterWrapper.className = "reader-counter-wrapper";
-    counterWrapper.innerHTML =
-      '<span class="counter-icon">👁️</span>' +
-      '<span class="counter-label">本文已被阅读</span>' +
-      '<span class="counter-number" id="reader-count-number">' +
-      count +
-      "</span>" +
-      '<span class="counter-label">次</span>';
+    // --- 阅读计数 ---
+    const viewCount = getViewCount();
 
-    // 插入到文章底部
-    article.appendChild(counterWrapper);
+    // --- 点赞数据 ---
+    const likeData = getLikeData();
+
+    // --- 创建容器 ---
+    const wrapper = document.createElement("div");
+    wrapper.className = "interaction-bar";
+
+    // 阅读计数部分
+    const viewsEl = document.createElement("div");
+    viewsEl.className = "interaction-item interaction-views";
+    viewsEl.innerHTML =
+      '<span class="interaction-icon">👁️</span>' +
+      '<span class="interaction-label">阅读</span>' +
+      '<span class="interaction-number" id="view-count-number">' +
+      viewCount +
+      "</span>";
+
+    // 点赞按钮部分
+    const likesEl = document.createElement("div");
+    likesEl.className = "interaction-item interaction-likes";
+    likesEl.id = "like-button-container";
+    likesEl.innerHTML =
+      '<span class="interaction-icon" id="like-icon">' +
+      (likeData.liked ? "❤️" : "🤍") +
+      "</span>" +
+      '<span class="interaction-label">点赞</span>' +
+      '<span class="interaction-number" id="like-count-number">' +
+      likeData.count +
+      "</span>";
+
+    wrapper.appendChild(viewsEl);
+    wrapper.appendChild(likesEl);
+
+    // --- 点赞点击事件 ---
+    likesEl.addEventListener("click", function () {
+      const result = toggleLike();
+      const likeIcon = document.getElementById("like-icon");
+      const likeCount = document.getElementById("like-count-number");
+
+      if (likeIcon) {
+        likeIcon.textContent = result.liked ? "❤️" : "🤍";
+        // 点赞动画
+        likeIcon.style.transform = "scale(1.4)";
+        setTimeout(function () {
+          likeIcon.style.transform = "scale(1)";
+        }, 200);
+      }
+      if (likeCount) {
+        likeCount.textContent = result.count;
+      }
+
+      // 容器闪烁反馈
+      likesEl.classList.add("liked-flash");
+      setTimeout(function () {
+        likesEl.classList.remove("liked-flash");
+      }, 400);
+    });
+
+    // 光标指示可点击
+    likesEl.style.cursor = "pointer";
+    likesEl.title = likeData.liked ? "取消点赞" : "点赞支持";
+
+    article.appendChild(wrapper);
   }
 })();
