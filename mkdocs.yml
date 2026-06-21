@@ -7,6 +7,16 @@ nav:
   - FDSNOTE: fds.md
   - git的使用: git的使用.md
   
+  - Probability Theory:
+      - 概率论笔记（全英）: probability/index.md
+  - 离散数学:
+      - 前置知识: discrete-math/index.md
+      - 逻辑等价、蕴涵与范式: discrete-math/logical-equivalence.md
+      - 谓词逻辑: discrete-math/predicate-logic.md
+      - 集合论: discrete-math/set-theory.md
+      - 图论: discrete-math/graph-theory.md
+      - 抽象代数: discrete-math/abstract-algebra.md
+      - 语言分析与图灵机: discrete-math/language-automata.md
   - SYS1:
       - SYS汇编: SYS1/sys汇编.md
       - 指令集: SYS1/指令集.md
