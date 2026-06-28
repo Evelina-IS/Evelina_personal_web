@@ -17,6 +17,21 @@ nav:
       - 图论: discrete-math/graph-theory.md
       - 抽象代数: discrete-math/abstract-algebra.md
       - 语言分析与图灵机: discrete-math/language-automata.md
+      - PPT笔记:
+          - 第3课 离散数学引言: discrete-math/ppt-notes/第三课_离散数学引言.md
+          - 第4课 排中律、命题公式、重言式: discrete-math/ppt-notes/第四课_排中律_联结词_命题公式_重言式.md
+          - 第5课 逻辑等价、蕴涵、范式: discrete-math/ppt-notes/第五课_逻辑等价_蕴涵_范式.md
+          - 第6课 联结词完备性、形式系统: discrete-math/ppt-notes/第六课_联结词完备性_形式系统_PC.md
+          - 第7课 谓词逻辑、FC、ND: discrete-math/ppt-notes/第七课_谓词逻辑_FC_ND.md
+          - 第8课 集合论、集合运算: discrete-math/ppt-notes/第八课_集合论_集合运算.md
+          - 第9课 归纳定义、数学归纳法、关系: discrete-math/ppt-notes/第九课_归纳定义_数学归纳法_有序组_笛卡尔积_关系.md
+          - 第10课 关系性质、等价、划分: discrete-math/ppt-notes/第十课_关系性质_等价_划分.md
+          - 第11课 序关系、函数、图论: discrete-math/ppt-notes/第十一课_序关系_函数_图论.md
+          - 第12课 图论、树: discrete-math/ppt-notes/第十二课_图论_树.md
+          - 第13课 代数结构、形式语言: discrete-math/ppt-notes/第十三课_代数结构_同态映射_形式语言.md
+          - 第14课 语言分析、自动机: discrete-math/ppt-notes/第十四课_语言分析_自动机.md
+          - 第15课 语言识别、图灵机: discrete-math/ppt-notes/第十五课_语言识别_图灵机_哥德尔.md
+
   - SYS1:
       - SYS汇编: SYS1/sys汇编.md
       - 指令集: SYS1/指令集.md
