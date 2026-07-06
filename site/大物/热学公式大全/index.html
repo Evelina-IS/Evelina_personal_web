@@ -1,0 +1,1921 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Evelina 的个人学习笔记站 — 浙江大学信息安全 / 课程笔记与知识整理">
+      
+      
+        <meta name="author" content="Evelina_IS">
+      
+      
+        <link rel="canonical" href="https://evelina-is.github.io/Evelina_personal_web/%E5%A4%A7%E7%89%A9/%E7%83%AD%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8/">
+      
+      
+        <link rel="prev" href="../%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>热学公式大全 - Evelina_IS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#i" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Evelina_IS" class="md-header__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Evelina_IS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              热学公式大全
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Evelina-IS/Evelina_personal_web" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Evelina-IS/Evelina_personal_web
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Evelina_IS" class="md-nav__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
+
+    </a>
+    Evelina_IS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Evelina-IS/Evelina_personal_web
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oneinall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网站大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FDSNOTE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    git 的使用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../probability/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../discrete-math/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    离散数学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../SYS1/sys%E6%B1%87%E7%BC%96/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SYS 体系结构
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大学物理
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    大学物理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8A%9B%E5%AD%A6%E4%B8%8E%E6%8C%AF%E5%8A%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    力学与振动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%B0%94%E4%BD%93%E5%8A%A8%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    气体动理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    热力学基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    热学公式大全
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    热学公式大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第10章 气体动理论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第10章 气体动理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、基本常数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、理想气体状态方程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、理想气体压强公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、温度公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、自由度与能量均分定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、理想气体的内能（热力学能）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、麦克斯韦速率分布律
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、玻尔兹曼分布律（等温气压公式）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、平均碰撞频率与平均自由程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第10章小结（一页纸）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第11章 热力学基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第11章 热力学基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、热力学第一定律
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、热容量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_v-c_p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、定体摩尔热容 \(C_V\) 与定压摩尔热容 \(C_p\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、四种典型准静态过程（必须全部背熟！）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、绝热过程的泊松公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、多方过程 *
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、循环过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、全章核心公式速查（一页纸）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、解题通用方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第10章 气体动理论
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第10章 气体动理论">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、基本常数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、理想气体状态方程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、理想气体压强公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、温度公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、自由度与能量均分定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、理想气体的内能（热力学能）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、麦克斯韦速率分布律
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、玻尔兹曼分布律（等温气压公式）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、平均碰撞频率与平均自由程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第10章小结（一页纸）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第11章 热力学基础
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第11章 热力学基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、热力学第一定律
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、热容量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c_v-c_p" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、定体摩尔热容 \(C_V\) 与定压摩尔热容 \(C_p\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、四种典型准静态过程（必须全部背熟！）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、绝热过程的泊松公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        六、多方过程 *
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        七、循环过程
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        八、全章核心公式速查（一页纸）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        九、解题通用方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Evelina-IS/Evelina_personal_web/edit/main/docs/大物/热学公式大全.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/Evelina-IS/Evelina_personal_web/raw/main/docs/大物/热学公式大全.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="i">大学物理（乙）Ⅰ 公式大全<a class="headerlink" href="#i" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>涵盖：第10章 气体动理论 + 第11章 热力学基础</p>
+</blockquote>
+<hr />
+<h2 id="10">第10章 气体动理论<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
+<h3 id="_1">一、基本常数<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>数值</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(k_B\)</span></td>
+<td><span class="arithmatex">\(1.38 \times 10^{-23} \text{ J/K}\)</span></td>
+<td>玻尔兹曼常数</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(R\)</span></td>
+<td><span class="arithmatex">\(8.31 \text{ J/(mol·K)}\)</span></td>
+<td>摩尔气体常量</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(N_A\)</span></td>
+<td><span class="arithmatex">\(6.02 \times 10^{23} \text{ mol}^{-1}\)</span></td>
+<td>阿伏伽德罗常数</td>
+</tr>
+</tbody>
+</table>
+<div class="arithmatex">\[
+k_B = \frac{R}{N_A}
+\]</div>
+<hr />
+<h3 id="_2">二、理想气体状态方程<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p><strong>核心公式（两种形式）：</strong></p>
+<div class="arithmatex">\[
+pV = \nu RT = \frac{M}{\mu}RT
+\]</div>
+<div class="arithmatex">\[
+p = n k_B T
+\]</div>
+<ul>
+<li><span class="arithmatex">\(p\)</span> — 压强 (N/m²)</li>
+<li><span class="arithmatex">\(V\)</span> — 体积 (m³)</li>
+<li><span class="arithmatex">\(\nu\)</span> — 摩尔数</li>
+<li><span class="arithmatex">\(n = N/V\)</span> — 分子数密度</li>
+<li><span class="arithmatex">\(T\)</span> — 热力学温度 (K)</li>
+</ul>
+<p><strong>常考气体摩尔质量 <span class="arithmatex">\(\mu\)</span> (g/mol)</strong>：H₂: 2, He: 4, N₂: 28, O₂: 32</p>
+<hr />
+<h3 id="_3">三、理想气体压强公式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+p = \frac{1}{3} n m \overline{v^2} = \frac{2}{3} n \bar{\varepsilon}_t
+\]</div>
+<p>其中 <span class="arithmatex">\(\bar{\varepsilon}_t = \frac{1}{2}m\overline{v^2}\)</span> 为分子<strong>平均平动动能</strong>。</p>
+<p><strong>统计假设</strong>：
+$$
+\overline{v_x^2} = \overline{v_y^2} = \overline{v_z^2} = \frac{1}{3}\overline{v^2}
+$$</p>
+<hr />
+<h3 id="_4">四、温度公式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>温度是分子平均平动动能的量度：</p>
+<div class="arithmatex">\[
+\boxed{\bar{\varepsilon}_t = \frac{3}{2}k_B T}
+\]</div>
+<p><strong>方均根速率</strong>：
+$$
+\sqrt{\overline{v^2}} = \sqrt{\frac{3kT}{m}} = \sqrt{\frac{3RT}{\mu}}
+$$</p>
+<hr />
+<h3 id="_5">五、自由度与能量均分定理<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>自由度 <span class="arithmatex">\(i\)</span></strong>：</p>
+<table>
+<thead>
+<tr>
+<th>分子类型</th>
+<th>平动</th>
+<th>转动</th>
+<th>振动</th>
+<th>总 <span class="arithmatex">\(i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单原子分子</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td>刚性双原子分子</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td>非刚性双原子分子</td>
+<td>3</td>
+<td>2</td>
+<td>1</td>
+<td><strong>6</strong>（振动×2）</td>
+</tr>
+<tr>
+<td>刚性多原子分子</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td><strong>6</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>能量均分定理</strong>：温度为 <span class="arithmatex">\(T\)</span> 的平衡态下，分子每个自由度的平均动能都等于 <span class="arithmatex">\(\frac{1}{2}k_B T\)</span>。</p>
+<p><strong>一个分子的平均能量</strong>：
+$$
+\bar{\varepsilon} = \frac{i}{2}k_B T
+$$</p>
+<p>对于非刚性分子（含振动，振动有动能+势能，贡献 <span class="arithmatex">\(2 \times \frac{1}{2}kT\)</span>）：
+$$
+\bar{\varepsilon} = \frac{1}{2}(t + r + 2s)k_B T
+$$</p>
+<hr />
+<h3 id="_6">六、理想气体的内能（热力学能）<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><strong>核心结论</strong>：理想气体内能只是温度的单值函数，与 <span class="arithmatex">\(p\)</span>、<span class="arithmatex">\(V\)</span> 无关！</p>
+</blockquote>
+<div class="arithmatex">\[
+\boxed{E = \nu \cdot \frac{i}{2}RT = \frac{i}{2}pV}
+\]</div>
+<p>增量形式：
+$$
+\Delta E = \nu \cdot \frac{i}{2}R \cdot \Delta T
+$$</p>
+<hr />
+<h3 id="_7">七、麦克斯韦速率分布律<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p><strong>速率分布函数</strong>：
+$$
+f(v) = 4\pi\left(\frac{m}{2\pi kT}\right)^{3/2} e^{-\frac{mv^2}{2kT}} v^2
+$$</p>
+<p>归一化条件：
+$$
+\int_0^\infty f(v) dv = 1
+$$</p>
+<p><strong>三种统计速率</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>速率</th>
+<th>公式</th>
+<th>比值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最概然速率 <span class="arithmatex">\(v_p\)</span></td>
+<td><span class="arithmatex">\(v_p = \sqrt{\frac{2kT}{m}} = \sqrt{\frac{2RT}{\mu}}\)</span></td>
+<td></td>
+</tr>
+<tr>
+<td>平均速率 <span class="arithmatex">\(\bar{v}\)</span></td>
+<td><span class="arithmatex">\(\bar{v} = \sqrt{\frac{8kT}{\pi m}} = \sqrt{\frac{8RT}{\pi\mu}}\)</span></td>
+<td><span class="arithmatex">\(v_p : \bar{v} : \sqrt{\overline{v^2}}\)</span></td>
+</tr>
+<tr>
+<td>方均根速率 <span class="arithmatex">\(\sqrt{\overline{v^2}}\)</span></td>
+<td><span class="arithmatex">\(\sqrt{\overline{v^2}} = \sqrt{\frac{3kT}{m}} = \sqrt{\frac{3RT}{\mu}}\)</span></td>
+<td><span class="arithmatex">\(= \sqrt{2} : \sqrt{8/\pi} : \sqrt{3}\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="_8">八、玻尔兹曼分布律（等温气压公式）<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p><strong>等温气压公式</strong>：
+$$
+p = p_0 e^{-\frac{\mu g h}{RT}}
+$$</p>
+<p><strong>分子数密度按高度分布</strong>：
+$$
+n = n_0 e^{-\frac{mgh}{k_B T}} = n_0 e^{-\frac{\varepsilon_p}{k_B T}}
+$$</p>
+<p>玻尔兹曼因子：<span class="arithmatex">\(e^{-\varepsilon / kT}\)</span></p>
+<p><strong>玻尔兹曼分布（一般形式）</strong>：
+$$
+N_i = A e^{-\varepsilon_i / kT}
+$$</p>
+<hr />
+<h3 id="_9">九、平均碰撞频率与平均自由程<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p><strong>平均碰撞频率</strong>：
+$$
+\bar{Z} = \sqrt{2}\pi d^2 \bar{v} n
+$$</p>
+<p><strong>平均自由程</strong>：
+$$
+\boxed{\bar{\lambda} = \frac{\bar{v}}{\bar{Z}} = \frac{1}{\sqrt{2}\pi d^2 n} = \frac{k_B T}{\sqrt{2}\pi d^2 p}}
+$$</p>
+<ul>
+<li><span class="arithmatex">\(d\)</span> — 分子有效直径</li>
+<li><span class="arithmatex">\(\sigma = \pi d^2\)</span> — 碰撞截面</li>
+</ul>
+<p><strong>推论</strong>：恒压下 <span class="arithmatex">\(T \uparrow \rightarrow n \downarrow \rightarrow \bar{\lambda} \uparrow\)</span></p>
+<hr />
+<h3 id="10_1">第10章小结（一页纸）<a class="headerlink" href="#10_1" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\boxed{
+\begin{aligned}
+&amp; pV = \nu RT = n k_B T \\[4pt]
+&amp; p = \frac{1}{3}nm\overline{v^2} = \frac{2}{3}n\bar{\varepsilon}_t \\[4pt]
+&amp; \bar{\varepsilon}_t = \frac{3}{2}k_B T \\[4pt]
+&amp; \bar{\varepsilon} = \frac{i}{2}k_B T \\[4pt]
+&amp; E = \nu \cdot \frac{i}{2}RT = \frac{i}{2}pV \\[4pt]
+&amp; v_p = \sqrt{\frac{2kT}{m}},\quad \bar{v} = \sqrt{\frac{8kT}{\pi m}},\quad \sqrt{\overline{v^2}} = \sqrt{\frac{3kT}{m}} \\[4pt]
+&amp; \bar{\lambda} = \frac{1}{\sqrt{2}\pi d^2 n} = \frac{k_B T}{\sqrt{2}\pi d^2 p}
+\end{aligned}
+}
+\]</div>
+<hr />
+<h2 id="11">第11章 热力学基础<a class="headerlink" href="#11" title="Permanent link">&para;</a></h2>
+<h3 id="_10">一、热力学第一定律<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>系统从外界吸收的热量 = 内能增量 + 系统对外作功</p>
+</blockquote>
+<div class="arithmatex">\[
+\boxed{Q = \Delta E + W}
+\]</div>
+<p>微分形式：
+$$
+dQ = dE + dW
+$$</p>
+<p><strong>正负号约定</strong>：
+- 系统对外界作功 <span class="arithmatex">\(W &gt; 0\)</span>，外界对系统作功 <span class="arithmatex">\(W &lt; 0\)</span>
+- 系统从外界吸热 <span class="arithmatex">\(Q &gt; 0\)</span>，系统向外界放热 <span class="arithmatex">\(Q &lt; 0\)</span></p>
+<p><strong>准静态过程的功</strong>：
+$$
+dW = pdV \quad\Rightarrow\quad W = \int_{V_1}^{V_2} p\,dV
+$$</p>
+<hr />
+<h3 id="_11">二、热容量<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>定义</th>
+<th>公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>热容</td>
+<td><span class="arithmatex">\(C = \frac{dQ}{dT}\)</span></td>
+<td></td>
+</tr>
+<tr>
+<td>比热</td>
+<td><span class="arithmatex">\(c = C/m\)</span></td>
+<td></td>
+</tr>
+<tr>
+<td>摩尔热容</td>
+<td><span class="arithmatex">\(C_m = \frac{dQ}{\nu dT}\)</span></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="c_v-c_p">三、定体摩尔热容 <span class="arithmatex">\(C_V\)</span> 与定压摩尔热容 <span class="arithmatex">\(C_p\)</span><a class="headerlink" href="#c_v-c_p" title="Permanent link">&para;</a></h3>
+<p><strong>定体摩尔热容</strong>（<span class="arithmatex">\(V\)</span> = 常量）：
+$$
+\boxed{C_V = \frac{i}{2}R}
+$$</p>
+<p><strong>定压摩尔热容</strong>（<span class="arithmatex">\(p\)</span> = 常量）：
+$$
+\boxed{C_p = C_V + R = \frac{i+2}{2}R}
+$$</p>
+<p><strong>迈耶 (Mayer) 公式</strong>：
+$$
+C_p = C_V + R
+$$</p>
+<p><strong>热容比（绝热指数）</strong>：
+$$
+\boxed{\gamma = \frac{C_p}{C_V} = \frac{i+2}{i}}
+$$</p>
+<table>
+<thead>
+<tr>
+<th>分子类型</th>
+<th><span class="arithmatex">\(i\)</span></th>
+<th><span class="arithmatex">\(C_V\)</span></th>
+<th><span class="arithmatex">\(C_p\)</span></th>
+<th><span class="arithmatex">\(\gamma\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单原子</td>
+<td>3</td>
+<td><span class="arithmatex">\(\frac{3}{2}R\)</span></td>
+<td><span class="arithmatex">\(\frac{5}{2}R\)</span></td>
+<td><span class="arithmatex">\(\frac{5}{3} \approx 1.67\)</span></td>
+</tr>
+<tr>
+<td>刚性双原子</td>
+<td>5</td>
+<td><span class="arithmatex">\(\frac{5}{2}R\)</span></td>
+<td><span class="arithmatex">\(\frac{7}{2}R\)</span></td>
+<td><span class="arithmatex">\(\frac{7}{5} = 1.4\)</span></td>
+</tr>
+<tr>
+<td>刚性多原子</td>
+<td>6</td>
+<td><span class="arithmatex">\(3R\)</span></td>
+<td><span class="arithmatex">\(4R\)</span></td>
+<td><span class="arithmatex">\(\frac{4}{3} \approx 1.33\)</span></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="_12">四、四种典型准静态过程（<strong>必须全部背熟！</strong>）<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>过程</th>
+<th>特征</th>
+<th>过程方程</th>
+<th><span class="arithmatex">\(\Delta E\)</span></th>
+<th><span class="arithmatex">\(W\)</span></th>
+<th><span class="arithmatex">\(Q\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>等体</strong></td>
+<td><span class="arithmatex">\(V\)</span> = 常量</td>
+<td><span class="arithmatex">\(\frac{p}{T}\)</span> = 常量</td>
+<td><span class="arithmatex">\(\nu C_V \Delta T\)</span></td>
+<td><strong>0</strong></td>
+<td><span class="arithmatex">\(\nu C_V \Delta T\)</span></td>
+</tr>
+<tr>
+<td><strong>等压</strong></td>
+<td><span class="arithmatex">\(p\)</span> = 常量</td>
+<td><span class="arithmatex">\(\frac{V}{T}\)</span> = 常量</td>
+<td><span class="arithmatex">\(\nu C_V \Delta T\)</span></td>
+<td><span class="arithmatex">\(p\Delta V = \nu R\Delta T\)</span></td>
+<td><span class="arithmatex">\(\nu C_p \Delta T\)</span></td>
+</tr>
+<tr>
+<td><strong>等温</strong></td>
+<td><span class="arithmatex">\(T\)</span> = 常量</td>
+<td><span class="arithmatex">\(pV\)</span> = 常量</td>
+<td><strong>0</strong></td>
+<td><span class="arithmatex">\(\nu RT\ln\frac{V_2}{V_1} = \nu RT\ln\frac{p_1}{p_2}\)</span></td>
+<td><span class="arithmatex">\(=W\)</span></td>
+</tr>
+<tr>
+<td><strong>绝热</strong></td>
+<td><span class="arithmatex">\(Q = 0\)</span></td>
+<td><span class="arithmatex">\(pV^\gamma\)</span> = 常量</td>
+<td><span class="arithmatex">\(\nu C_V \Delta T\)</span></td>
+<td><span class="arithmatex">\(= -\Delta E\)</span></td>
+<td><strong>0</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="_13">五、绝热过程的泊松公式<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\boxed{pV^\gamma = C_1}
+\]</div>
+<p>等价形式：
+$$
+T V^{\gamma-1} = C_2
+$$</p>
+<div class="arithmatex">\[
+p^{\gamma-1} T^{-\gamma} = C_3
+\]</div>
+<p><strong>绝热过程的功</strong>：
+$$
+W = \frac{p_1 V_1 - p_2 V_2}{\gamma - 1} = \frac{\nu R(T_1 - T_2)}{\gamma - 1}
+$$</p>
+<p><strong>绝热线 vs 等温线</strong>：绝热线比等温线<strong>更陡</strong>（因为 <span class="arithmatex">\(\gamma &gt; 1\)</span>）。</p>
+<hr />
+<h3 id="_14">六、多方过程 *<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+pV^n = \text{常量}
+\]</div>
+<table>
+<thead>
+<tr>
+<th><span class="arithmatex">\(n\)</span></th>
+<th>对应过程</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(n = 0\)</span></td>
+<td>等压过程</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n = 1\)</span></td>
+<td>等温过程</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n = \gamma\)</span></td>
+<td>绝热过程</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(n = \infty\)</span></td>
+<td>等体过程</td>
+</tr>
+</tbody>
+</table>
+<p>多方摩尔热容：
+$$
+C_n = C_V + \frac{R}{1-n}
+$$</p>
+<p>多方过程的功：
+$$
+W = \frac{p_1 V_1 - p_2 V_2}{n - 1}
+$$</p>
+<hr />
+<h3 id="_15">七、循环过程<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p><strong>正循环（热机循环）</strong>— 顺时针，吸热对外作功
+<strong>逆循环（制冷循环）</strong>— 逆时针，外界作功从低温吸热</p>
+<p>循环特征：<span class="arithmatex">\(\Delta E = 0\)</span>（回到初态）</p>
+<p><strong>热机效率</strong>：
+$$
+\boxed{\eta = \frac{W}{Q_1} = \frac{Q_1 - Q_2}{Q_1} = 1 - \frac{Q_2}{Q_1}}
+$$</p>
+<p><strong>制冷系数</strong>：
+$$
+\boxed{\omega = \frac{Q_2}{|W|} = \frac{Q_2}{Q_1 - Q_2}}
+$$</p>
+<ul>
+<li><span class="arithmatex">\(Q_1\)</span> — 从高温热源吸收的热量</li>
+<li><span class="arithmatex">\(Q_2\)</span> — 向低温热源放出的热量</li>
+<li><span class="arithmatex">\(W = Q_1 - Q_2\)</span> — 净功</li>
+</ul>
+<hr />
+<h3 id="_16">八、全章核心公式速查（一页纸）<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<div class="arithmatex">\[
+\boxed{
+\begin{aligned}
+&amp;\text{热一律：} Q = \Delta E + W,\quad dW = pdV \\[8pt]
+&amp;C_V = \frac{i}{2}R,\quad C_p = C_V + R,\quad \gamma = \frac{C_p}{C_V} = \frac{i+2}{i} \\[8pt]
+&amp;\Delta E = \nu C_V \Delta T \quad\text{(适用于任何过程！)} \\[8pt]
+&amp;\text{等体：} W=0,\; Q = \Delta E = \nu C_V \Delta T \\[4pt]
+&amp;\text{等压：} W=p\Delta V,\; Q = \nu C_p \Delta T \\[4pt]
+&amp;\text{等温：} \Delta E=0,\; Q=W=\nu RT\ln\frac{V_2}{V_1} \\[4pt]
+&amp;\text{绝热：} Q=0,\; pV^\gamma=C,\; W=-\Delta E \\[8pt]
+&amp;\eta = 1 - \frac{Q_2}{Q_1},\quad \omega = \frac{Q_2}{Q_1-Q_2}
+\end{aligned}
+}
+\]</div>
+<hr />
+<h3 id="_17">九、解题通用方法<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>先画 <span class="arithmatex">\(p\)</span>-<span class="arithmatex">\(V\)</span> 图</strong>，标出过程方向</li>
+<li>利用状态方程或过程方程求出未知态参量</li>
+<li><strong>先算 <span class="arithmatex">\(\Delta E\)</span> 和 <span class="arithmatex">\(W\)</span></strong>，再用热一律求 <span class="arithmatex">\(Q\)</span>（或反过来）</li>
+<li>注意：<span class="arithmatex">\(\Delta E = \nu C_V \Delta T\)</span> <strong>适用于任何过程的理想气体</strong></li>
+</ol>
+<hr />
+<blockquote>
+<p>整理自：大学物理（乙）Ⅰ — 第10章 气体动理论、第11章 热力学基础</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 热力学基础">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                热力学基础
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Evelina_IS
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/Evelina-IS" target="_blank" rel="noopener" title="Evelina-IS on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.select", "content.tabs.link", "navigation.tracking", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "search.highlight", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../javascripts/reader-counter.js"></script>
+      
+        <script src="../../javascripts/comments.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

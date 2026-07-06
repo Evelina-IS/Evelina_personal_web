@@ -1,14 +1,22 @@
-﻿site_name: Evelina_IS
+site_name: Evelina_IS
+site_url: https://evelina-is.github.io/Evelina_personal_web/
+site_description: Evelina 的个人学习笔记站 — 浙江大学信息安全 / 课程笔记与知识整理
+site_author: Evelina_IS
 copyright: "Copyright © 2026 Evelina_IS"
+
+repo_url: https://github.com/Evelina-IS/Evelina_personal_web
+repo_name: Evelina-IS/Evelina_personal_web
+edit_uri: edit/main/docs/
 
 nav:
   - 首页: index.md
-  - website_oneinall: oneinall.md
+  - 网站大全: oneinall.md
   - FDSNOTE: fds.md
-  - git的使用: git的使用.md
-  
-  - Probability Theory:
+  - git 的使用: git的使用.md
+
+  - 概率论:
       - 概率论笔记（全英）: probability/index.md
+
   - 离散数学:
       - 前置知识: discrete-math/index.md
       - 逻辑等价、蕴涵与范式: discrete-math/logical-equivalence.md
@@ -32,24 +40,52 @@ nav:
           - 第14课 语言分析、自动机: discrete-math/ppt-notes/第十四课_语言分析_自动机.md
           - 第15课 语言识别、图灵机: discrete-math/ppt-notes/第十五课_语言识别_图灵机_哥德尔.md
 
-  - SYS1:
-      - SYS汇编: SYS1/sys汇编.md
+  - SYS 体系结构:
+      - sys 汇编: SYS1/sys汇编.md
       - 指令集: SYS1/指令集.md
-      - risc-v使用指南: SYS1/risc-v使用指南.md
+      - risc-v 使用指南: SYS1/risc-v使用指南.md
+      - 处理器设计 (Datapath): SYS1/processor-design.md
+      - 多周期 CPU: SYS1/多周期CPU.md
+      - 控制信号速查表: SYS1/control-signals.md
+      - 单周期 CPU 实验报告: SYS1/单周期CPU实验报告.md
+      - lab4 — 卷积与串口: SYS1/lab4-卷积与串口.md
+      - lab5 — RISC-V 与 qemu 破解: SYS1/lab5-RISCV与qemu破解.md
+      - 理论习题:
+          - 习题 1 — 数制与 IEEE 754: SYS1/sys理论1-习题.md
+          - 习题 2 — 布尔函数与组合电路: SYS1/sys理论2-习题.md
+          - 习题 3 — RISC-V 指令分析: SYS1/sys理论3-习题.md
+
+  - 大学物理:
+      - 力学与振动: 大物/力学与振动.md
+      - 气体动理论: 大物/气体动理论.md
+      - 热力学基础: 大物/热力学基础.md
+      - 热学公式大全: 大物/热学公式大全.md
+
 theme:
   name: material
+  language: zh
   icon:
     edit: material/pencil
+    logo: material/book-education-outline
   features:
     - content.action.edit
+    - content.action.view
     - content.code.copy
+    - content.code.select
+    - content.tabs.link
     - navigation.tracking
     - navigation.expand
+    - navigation.indexes
     - navigation.top
     - navigation.footer
+    - navigation.prune
+    - search.suggest
+    - search.highlight
+    - search.share
+    - toc.follow
   font:
     code: JetBrains Mono
-    text: JetBrains Mono
+    text: Noto Sans SC
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -57,14 +93,14 @@ theme:
       accent: purple
       toggle:
         icon: material/brightness-7
-        name: Switch to dark mode
+        name: 切换到深色模式
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: deep purple
       accent: purple
       toggle:
         icon: material/brightness-4
-        name: Switch to light mode
+        name: 切换到浅色模式
 
 markdown_extensions:
   - toc:
@@ -97,12 +133,20 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
+plugins:
+  - search:
+      lang:
+        - en
+        - ja
+  - tags
+
 extra_javascript:
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js
   - javascripts/katex.js
   - javascripts/reader-counter.js
   - javascripts/comments.js
+  - javascripts/extra.js
 
 extra_css:
   - https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css
@@ -116,3 +160,8 @@ extra:
       repo_id: R_kgDORx941w
       category: General
       category_id: DIC_kwDORx94184C-y0r
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/Evelina-IS
+      name: Evelina-IS on GitHub
+  generator: false

@@ -1,0 +1,2184 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Evelina 的个人学习笔记站 — 浙江大学信息安全 / 课程笔记与知识整理">
+      
+      
+        <meta name="author" content="Evelina_IS">
+      
+      
+        <link rel="canonical" href="https://evelina-is.github.io/Evelina_personal_web/%E5%A4%A7%E7%89%A9/%E6%B0%94%E4%BD%93%E5%8A%A8%E7%90%86%E8%AE%BA/">
+      
+      
+        <link rel="prev" href="../%E5%8A%9B%E5%AD%A6%E4%B8%8E%E6%8C%AF%E5%8A%A8/">
+      
+      
+        <link rel="next" href="../%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>气体动理论 - Evelina_IS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#10" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="Evelina_IS" class="md-header__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Evelina_IS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              气体动理论
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Evelina-IS/Evelina_personal_web" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Evelina-IS/Evelina_personal_web
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Evelina_IS" class="md-nav__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
+
+    </a>
+    Evelina_IS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Evelina-IS/Evelina_personal_web
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../oneinall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网站大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../fds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FDSNOTE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    git 的使用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../probability/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../discrete-math/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    离散数学
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../SYS1/sys%E6%B1%87%E7%BC%96/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SYS 体系结构
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大学物理
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    大学物理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%8A%9B%E5%AD%A6%E4%B8%8E%E6%8C%AF%E5%8A%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    力学与振动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    气体动理论
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    气体动理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌡️ 热学是什么？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        §10.1 热力学系统 · 平衡态 · 状态参量 · 理想气体
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§10.1 热力学系统 · 平衡态 · 状态参量 · 理想气体">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、热力学系统的分类
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、平衡态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、状态参量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、理想气体状态方程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        §10.2 理想气体的压强和温度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§10.2 理想气体的压强和温度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、理想气体的微观模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、统计假设
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、压强公式的推导逻辑
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、温度公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、方均根速率
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        §10.3 能量均分定理 · 理想气体的热力学能
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§10.3 能量均分定理 · 理想气体的热力学能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#degrees-of-freedom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、自由度（degrees of freedom）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、能量均分定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、理想气体的内能（热力学能）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        §10.4 麦克斯韦速率分布律
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§10.4 麦克斯韦速率分布律">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、速率分布函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、麦克斯韦速率分布函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、三种统计速率（考试重点！）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、分布曲线的变化规律
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        §10.5 等温气压公式 · 玻尔兹曼分布律
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§10.5 等温气压公式 · 玻尔兹曼分布律">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、等温气压公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、玻尔兹曼分布律
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、对能级的推广
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#106" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        §10.6 气体分子的碰撞频率与平均自由程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§10.6 气体分子的碰撞频率与平均自由程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、物理图像
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlinez" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、平均碰撞频率 \(\overline{Z}\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlinelambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、平均自由程 \(\overline{\lambda}\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、典型问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 本章公式速查表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 常见气体摩尔质量（常考）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    热力学基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%83%AD%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    热学公式大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌡️ 热学是什么？
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        §10.1 热力学系统 · 平衡态 · 状态参量 · 理想气体
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§10.1 热力学系统 · 平衡态 · 状态参量 · 理想气体">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、热力学系统的分类
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、平衡态
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、状态参量
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、理想气体状态方程
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        §10.2 理想气体的压强和温度
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§10.2 理想气体的压强和温度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、理想气体的微观模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、统计假设
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、压强公式的推导逻辑
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、温度公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        五、方均根速率
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#103" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        §10.3 能量均分定理 · 理想气体的热力学能
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§10.3 能量均分定理 · 理想气体的热力学能">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#degrees-of-freedom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、自由度（degrees of freedom）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、能量均分定理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、理想气体的内能（热力学能）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#104" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        §10.4 麦克斯韦速率分布律
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§10.4 麦克斯韦速率分布律">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、速率分布函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、麦克斯韦速率分布函数
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、三种统计速率（考试重点！）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、分布曲线的变化规律
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#105" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        §10.5 等温气压公式 · 玻尔兹曼分布律
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§10.5 等温气压公式 · 玻尔兹曼分布律">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、等温气压公式
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、玻尔兹曼分布律
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、对能级的推广
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#106" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        §10.6 气体分子的碰撞频率与平均自由程
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="§10.6 气体分子的碰撞频率与平均自由程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        一、物理图像
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlinez" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        二、平均碰撞频率 \(\overline{Z}\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#overlinelambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        三、平均自由程 \(\overline{\lambda}\)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        四、典型问题
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 本章公式速查表
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📌 常见气体摩尔质量（常考）
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Evelina-IS/Evelina_personal_web/edit/main/docs/大物/气体动理论.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/Evelina-IS/Evelina_personal_web/raw/main/docs/大物/气体动理论.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="10">大学物理（乙）第10章 气体动理论<a class="headerlink" href="#10" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>📘 基于课堂讲义整理 | 初学友好版</p>
+</blockquote>
+<hr />
+<h2 id="_1">🌡️ 热学是什么？<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><strong>热学</strong> 研究热运动的规律及其对物质宏观性质的影响。</p>
+<ul>
+<li><strong>热运动</strong> = 构成物体的大量微观粒子永不停息的无规则运动</li>
+<li>两大分支学科：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>分支</th>
+<th>角度</th>
+<th>方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>热力学</strong></td>
+<td>宏观</td>
+<td>从实验定律出发，逻辑推理</td>
+</tr>
+<tr>
+<td><strong>统计力学</strong></td>
+<td>微观</td>
+<td>从微观结构出发，统计平均</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>打个比方：热力学像是看"GDP"这样的宏观指标来研究经济；统计力学像是研究每个个体的消费行为然后统计出整体规律。</p>
+</blockquote>
+<hr />
+<h2 id="101">§10.1 热力学系统 · 平衡态 · 状态参量 · 理想气体<a class="headerlink" href="#101" title="Permanent link">&para;</a></h2>
+<h3 id="_2">一、热力学系统的分类<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>物质交换</th>
+<th>能量交换</th>
+<th>大白话</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>孤立系统</strong></td>
+<td>❌</td>
+<td>❌</td>
+<td>完全密封的保温杯</td>
+</tr>
+<tr>
+<td><strong>封闭系统</strong></td>
+<td>❌</td>
+<td>✅</td>
+<td>密封但不保温的瓶子</td>
+</tr>
+<tr>
+<td><strong>开放系统</strong></td>
+<td>✅</td>
+<td>✅</td>
+<td>开口的杯子</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>本章主要讨论<strong>封闭系统</strong>。</p>
+</blockquote>
+<h3 id="_3">二、平衡态<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p><strong>定义</strong>：系统的宏观性质（温度、压强等）不随时间改变的状态。</p>
+<p>关键理解：
+- 宏观上 "静止"，微观上分子仍在疯狂运动
+- 是一种<strong>热动平衡</strong>（动态平衡）
+- 需要同时满足：热平衡（温度均匀）+ 力学平衡（压强均匀）+ 化学平衡（成分均匀）</p>
+<h3 id="_4">三、状态参量<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>描述平衡态的独立宏观量：</p>
+<ul>
+<li>对于气体：<span class="arithmatex">\(p\)</span>（压强）、<span class="arithmatex">\(V\)</span>（体积）、<span class="arithmatex">\(T\)</span>（温度）中<strong>任意两个</strong>就够了</li>
+<li>以状态参量为坐标作的图叫<strong>状态图</strong></li>
+</ul>
+<h3 id="_5">四、理想气体状态方程<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><strong>理想气体</strong> = 忽略分子间相互作用的气体模型。</p>
+<p>实验定律：
+- 波义耳-马略特定律：<span class="arithmatex">\(T\)</span> 不变时，<span class="arithmatex">\(pV = C\)</span>
+- 查理定律：<span class="arithmatex">\(V\)</span> 不变时，<span class="arithmatex">\(p \propto T\)</span>
+- 盖-吕萨克定律：<span class="arithmatex">\(p\)</span> 不变时，<span class="arithmatex">\(V \propto T\)</span></p>
+<p><strong>状态方程（核心公式）</strong>：</p>
+<div class="arithmatex">\[pV = \nu RT\]</div>
+<p>或者：</p>
+<div class="arithmatex">\[p = n k_B T\]</div>
+<p>其中：
+- <span class="arithmatex">\(p\)</span> — 压强 (Pa)
+- <span class="arithmatex">\(V\)</span> — 体积 (m³)
+- <span class="arithmatex">\(\nu\)</span> — 摩尔数 (mol)
+- <span class="arithmatex">\(R = 8.31 \text{ J/(mol·K)}\)</span> — 摩尔气体常数
+- <span class="arithmatex">\(n = N/V\)</span> — 分子数密度 (个/m³)
+- <span class="arithmatex">\(k_B = 1.38 \times 10^{-23} \text{ J/K}\)</span> — 玻尔兹曼常数
+- <span class="arithmatex">\(N_A = 6.02 \times 10^{23} \text{ mol}^{-1}\)</span> — 阿伏伽德罗常数</p>
+<blockquote>
+<p><span class="arithmatex">\(k_B = R / N_A\)</span></p>
+<p><strong>什么时候可以看成理想气体？</strong> 压强→0 时，气体分子间距大，相互作用可以忽略。</p>
+</blockquote>
+<hr />
+<h2 id="102">§10.2 理想气体的压强和温度<a class="headerlink" href="#102" title="Permanent link">&para;</a></h2>
+<h3 id="_6">一、理想气体的微观模型<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>三个假设：
+1. 分子本身大小 &lt;&lt; 分子间距 → 视为质点
+2. 除碰撞瞬间外，分子间无相互作用力 → 匀速直线运动
+3. 碰撞是<strong>完全弹性碰撞</strong> → 能量守恒</p>
+<blockquote>
+<p>一句话：理想气体 = 自由地无规则运动着的弹性小球的集合。</p>
+</blockquote>
+<h3 id="_7">二、统计假设<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<ol>
+<li>平衡态下，分子空间分布均匀：<span class="arithmatex">\(n = N/V\)</span> 处处相等</li>
+<li>平衡态下，各方向运动概率相等：</li>
+</ol>
+<div class="arithmatex">\[\overline{v_x^2} = \overline{v_y^2} = \overline{v_z^2} = \frac{1}{3}\overline{v^2}\]</div>
+<blockquote>
+<p><strong>注意</strong>：<span class="arithmatex">\(\overline{v_x} = \overline{v_y} = \overline{v_z} = 0\)</span>（速度分量正负抵消），但<strong>平方平均值</strong>相等，因为压强涉及 <span class="arithmatex">\(v_x^2\)</span>。</p>
+</blockquote>
+<h3 id="_8">三、压强公式的推导逻辑<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>想象密集的雨点打在伞面上 → 气体分子不断撞击器壁 → 产生压强。</p>
+<p><strong>推导思路</strong>：
+1. 一个分子撞击一次器壁，动量变化：<span class="arithmatex">\(\Delta p_x = -2mv_x\)</span>
+2. 往返一次时间：<span class="arithmatex">\(\Delta t = 2x/v_x\)</span>
+3. 一个分子对器壁的平均力：<span class="arithmatex">\(f = \frac{2mv_x}{2x/v_x} = \frac{mv_x^2}{x}\)</span>
+4. <span class="arithmatex">\(N\)</span> 个分子总力：<span class="arithmatex">\(F = \sum \frac{mv_{ix}^2}{x}\)</span>
+5. 压强：<span class="arithmatex">\(p = \frac{F}{yz} = \frac{1}{xyz} \sum mv_{ix}^2 = \frac{N}{V} \cdot m\overline{v_x^2}\)</span>
+6. 用 <span class="arithmatex">\(n = N/V\)</span> 和 <span class="arithmatex">\(\overline{v_x^2} = \frac{1}{3}\overline{v^2}\)</span> 代入：</p>
+<p><strong>压强公式</strong>：</p>
+<div class="arithmatex">\[p = \frac{1}{3} n m \overline{v^2} = \frac{2}{3} n \overline{\varepsilon_t}\]</div>
+<p>其中 <span class="arithmatex">\(\overline{\varepsilon_t} = \frac{1}{2}m\overline{v^2}\)</span> 是分子的<strong>平均平动动能</strong>。</p>
+<blockquote>
+<p><strong>关键理解</strong>：压强是<strong>大量分子碰撞的统计平均结果</strong>，不是单个分子造成的。</p>
+</blockquote>
+<h3 id="_9">四、温度公式<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>联立压强公式 <span class="arithmatex">\(p = \frac{2}{3}n\overline{\varepsilon_t}\)</span> 和状态方程 <span class="arithmatex">\(p = nk_B T\)</span>：</p>
+<div class="arithmatex">\[\frac{2}{3}n\overline{\varepsilon_t} = nk_B T\]</div>
+<div class="arithmatex">\[\boxed{\overline{\varepsilon_t} = \frac{3}{2}k_B T}\]</div>
+<blockquote>
+<p><strong>温度的本质</strong>：温度是分子<strong>平均平动动能</strong>的量度！</p>
+<ul>
+<li>温度越高 → 分子运动越剧烈</li>
+<li>温度是统计量，对<strong>个别分子没有意义</strong></li>
+</ul>
+</blockquote>
+<h3 id="_10">五、方均根速率<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>由 <span class="arithmatex">\(\frac{1}{2}m\overline{v^2} = \frac{3}{2}k_B T\)</span> 直接推出：</p>
+<div class="arithmatex">\[\sqrt{\overline{v^2}} = \sqrt{\frac{3kT}{m}} = \sqrt{\frac{3RT}{\mu}}\]</div>
+<blockquote>
+<p><span class="arithmatex">\(R = N_A k_B\)</span>，<span class="arithmatex">\(\mu = N_A m\)</span>（摩尔质量）</p>
+<p>规律：
+- 同温度下，分子质量越大，方均根速率越小
+- 同种分子，温度越高，方均根速率越大</p>
+</blockquote>
+<hr />
+<h2 id="103">§10.3 能量均分定理 · 理想气体的热力学能<a class="headerlink" href="#103" title="Permanent link">&para;</a></h2>
+<h3 id="degrees-of-freedom">一、自由度（degrees of freedom）<a class="headerlink" href="#degrees-of-freedom" title="Permanent link">&para;</a></h3>
+<p><strong>定义</strong>：决定一个物体空间位置所需的<strong>独立坐标数</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>分子类型</th>
+<th>平动自由度</th>
+<th>转动自由度</th>
+<th>振动自由度</th>
+<th>总自由度 <span class="arithmatex">\(i\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>单原子分子</strong>（He, Ne）</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td><strong>3</strong></td>
+</tr>
+<tr>
+<td><strong>刚性双原子分子</strong>（O₂, N₂）</td>
+<td>3</td>
+<td>2</td>
+<td>0</td>
+<td><strong>5</strong></td>
+</tr>
+<tr>
+<td><strong>刚性多原子分子</strong>（H₂O, CO₂）</td>
+<td>3</td>
+<td>3</td>
+<td>0</td>
+<td><strong>6</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>刚性 = 不考虑振动（室温下通常可以忽略振动）</p>
+</blockquote>
+<h3 id="_11">二、能量均分定理<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p><strong>核心思想</strong>：在平衡态下，每种运动形式的<strong>每个自由度</strong>平均分到 <span class="arithmatex">\(\frac{1}{2}k_B T\)</span> 的能量。</p>
+<p>推导来源（平动）：
+- 平动有三个自由度，总平均平动动能 <span class="arithmatex">\(\frac{3}{2}k_B T\)</span>
+- 每个平动自由度：<span class="arithmatex">\(\frac{1}{2}kT\)</span>
+- 推广到转动 → 每个转动自由度也是 <span class="arithmatex">\(\frac{1}{2}kT\)</span></p>
+<p><strong>一个分子的平均动能</strong>：</p>
+<div class="arithmatex">\[\overline{\varepsilon} = \frac{i}{2}k_B T\]</div>
+<h3 id="_12">三、理想气体的内能（热力学能）<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>理想气体分子间无相互作用 → 无势能 → 内能 = 所有分子的动能之和。</p>
+<p><span class="arithmatex">\(E = \nu N_A \cdot \frac{i}{2}k_B T = \nu \cdot \frac{i}{2}RT\)</span></p>
+<div class="arithmatex">\[\boxed{E = \frac{i}{2}\nu RT = \frac{i}{2}pV}\]</div>
+<blockquote>
+<p><strong>重要结论</strong>：理想气体的内能<strong>只取决于温度和自由度</strong>，与压强、体积无关。</p>
+<p>内能是温度的单值函数：<span class="arithmatex">\(E = E(T)\)</span></p>
+</blockquote>
+<hr />
+<h2 id="104">§10.4 麦克斯韦速率分布律<a class="headerlink" href="#104" title="Permanent link">&para;</a></h2>
+<h3 id="_13">一、速率分布函数<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p><strong>问题</strong>：<span class="arithmatex">\(N\)</span> 个分子在平衡态下，速率是如何分布的？</p>
+<p><strong>定义</strong>：速率分布函数 <span class="arithmatex">\(f(v)\)</span></p>
+<div class="arithmatex">\[f(v) = \lim_{\Delta v \to 0} \frac{\Delta N}{N \Delta v} = \frac{dN}{N dv}\]</div>
+<p>物理意义：
+- <span class="arithmatex">\(f(v)dv\)</span> = 速率在 <span class="arithmatex">\(v \sim v+dv\)</span> 区间的分子数占比
+- <span class="arithmatex">\(Nf(v)dv\)</span> = 速率在该区间的分子数
+- <span class="arithmatex">\(\int_{v_1}^{v_2} f(v)dv\)</span> = 速率在 <span class="arithmatex">\(v_1 \sim v_2\)</span> 区间的分子数占比
+- <strong>归一化条件</strong>：<span class="arithmatex">\(\int_0^\infty f(v)dv = 1\)</span>（总面积 = 100%）</p>
+<h3 id="_14">二、麦克斯韦速率分布函数<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>麦克斯韦1859年从理论上导出的分布函数：</p>
+<div class="arithmatex">\[\boxed{f(v) = 4\pi \left(\frac{m}{2\pi kT}\right)^{3/2} e^{-mv^2/(2kT)} \cdot v^2}\]</div>
+<p>或者写成：<span class="arithmatex">\(f(v) = 4\pi \left(\frac{b}{\pi}\right)^{3/2} e^{-bv^2} v^2\)</span>，其中 <span class="arithmatex">\(b = \frac{m}{2kT}\)</span></p>
+<h3 id="_15">三、三种统计速率（考试重点！）<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>速率</th>
+<th>公式</th>
+<th>用途</th>
+<th>根号里的"特征数"</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>最概然速率</strong> <span class="arithmatex">\(v_p\)</span></td>
+<td><span class="arithmatex">\(\sqrt{\frac{2kT}{m}} = \sqrt{\frac{2RT}{\mu}}\)</span></td>
+<td>分布曲线峰值位置</td>
+<td><strong>2</strong></td>
+</tr>
+<tr>
+<td><strong>平均速率</strong> <span class="arithmatex">\(\bar{v}\)</span></td>
+<td><span class="arithmatex">\(\sqrt{\frac{8kT}{\pi m}} = \sqrt{\frac{8RT}{\pi\mu}}\)</span></td>
+<td>计算平均自由程</td>
+<td><strong>8/π ≈ 2.55</strong></td>
+</tr>
+<tr>
+<td><strong>方均根速率</strong> <span class="arithmatex">\(\sqrt{\overline{v^2}}\)</span></td>
+<td><span class="arithmatex">\(\sqrt{\frac{3kT}{m}} = \sqrt{\frac{3RT}{\mu}}\)</span></td>
+<td>计算压强和平均动能</td>
+<td><strong>3</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📏 <strong>大小关系（必记）</strong>：</p>
+<div class="arithmatex">\[\sqrt{\overline{v^2}} &gt; \bar{v} &gt; v_p\]</div>
+<p>比例关系：<span class="arithmatex">\(\sqrt{\overline{v^2}} : \bar{v} : v_p = \sqrt{3} : \sqrt{8/\pi} : \sqrt{2}\)</span></p>
+<p>口诀：<strong>方均根 &gt; 平均 &gt; 最概然</strong>（根号里的数：3 &gt; 2.55 &gt; 2）</p>
+</blockquote>
+<h3 id="_16">四、分布曲线的变化规律<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>温度升高</strong>（同种气体）→ 曲线变宽变平，峰值右移 → 高速分子比例增大</li>
+<li><strong>分子质量减小</strong>（同温度）→ 曲线变宽变平，峰值右移 → 高速分子比例增大</li>
+</ul>
+<blockquote>
+<p>总面积始终 = 1（归一化）</p>
+</blockquote>
+<hr />
+<h2 id="105">§10.5 等温气压公式 · 玻尔兹曼分布律<a class="headerlink" href="#105" title="Permanent link">&para;</a></h2>
+<h3 id="_17">一、等温气压公式<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>考虑重力场中气柱的受力平衡 → 压强随高度指数衰减：</p>
+<div class="arithmatex">\[\boxed{p = p_0 e^{-\frac{\mu g h}{RT}}}\]</div>
+<p>分子数密度随高度分布：</p>
+<div class="arithmatex">\[\boxed{n = n_0 e^{-\frac{mgh}{kT}} = n_0 e^{-\frac{\varepsilon_p}{kT}}}\]</div>
+<blockquote>
+<p><strong>大白话</strong>：海拔越高，空气越稀薄，气压越低。高度每升高一定距离，气压按指数衰减。</p>
+</blockquote>
+<h3 id="_18">二、玻尔兹曼分布律<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<p><strong>玻尔兹曼因子</strong>：<span class="arithmatex">\(e^{-\varepsilon/(kT)}\)</span></p>
+<p>一般形式：处于能量为 <span class="arithmatex">\(\varepsilon\)</span> 的状态的粒子数 <span class="arithmatex">\(\propto e^{-\varepsilon/(kT)}\)</span></p>
+<div class="arithmatex">\[\boxed{N_i = A e^{-\varepsilon_i/(kT)}}\]</div>
+<ul>
+<li>适用于任何保守力场中的经典系统</li>
+<li>温度越高 → 分布越均匀</li>
+<li>粒子质量越大 → 越向低处聚集</li>
+</ul>
+<h3 id="_19">三、对能级的推广<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>量子物理中粒子只能处于分立能级 <span class="arithmatex">\(\varepsilon_0, \varepsilon_1, \varepsilon_2, ...\)</span>，每个能级上的粒子数仍满足：</p>
+<div class="arithmatex">\[N_i = A e^{-\varepsilon_i/(kT)}\]</div>
+<hr />
+<h2 id="106">§10.6 气体分子的碰撞频率与平均自由程<a class="headerlink" href="#106" title="Permanent link">&para;</a></h2>
+<h3 id="_20">一、物理图像<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>分子在气体中不断碰撞，路径是迂回曲折的折线。</p>
+<h3 id="overlinez">二、平均碰撞频率 <span class="arithmatex">\(\overline{Z}\)</span><a class="headerlink" href="#overlinez" title="Permanent link">&para;</a></h3>
+<p><strong>定义</strong>：一个分子在单位时间内与其他分子碰撞的平均次数。</p>
+<p>推导思路：分子以相对速率运动，碰撞截面为 <span class="arithmatex">\(\sigma = \pi d^2\)</span> 的圆柱体内的分子都会被撞到：</p>
+<div class="arithmatex">\[\boxed{\overline{Z} = \sqrt{2}\pi d^2 \bar{v} n}\]</div>
+<ul>
+<li><span class="arithmatex">\(d\)</span>：分子有效直径</li>
+<li><span class="arithmatex">\(\bar{v}\)</span>：平均速率</li>
+<li><span class="arithmatex">\(n\)</span>：分子数密度</li>
+</ul>
+<blockquote>
+<p><strong>规律</strong>：分子越大（<span class="arithmatex">\(d\)</span> 大）、越挤（<span class="arithmatex">\(n\)</span> 大）、跑得越快（<span class="arithmatex">\(\bar{v}\)</span> 大）→ 碰撞越频繁。</p>
+</blockquote>
+<h3 id="overlinelambda">三、平均自由程 <span class="arithmatex">\(\overline{\lambda}\)</span><a class="headerlink" href="#overlinelambda" title="Permanent link">&para;</a></h3>
+<p><strong>定义</strong>：分子在连续两次碰撞之间走过的平均距离。</p>
+<div class="arithmatex">\[\boxed{\overline{\lambda} = \frac{\bar{v}}{\overline{Z}} = \frac{1}{\sqrt{2}\pi d^2 n} = \frac{kT}{\sqrt{2}\pi d^2 p}}\]</div>
+<blockquote>
+<p><strong>规律</strong>：越拥挤（<span class="arithmatex">\(n\)</span> 或 <span class="arithmatex">\(p\)</span> 大）→ 没走几步就撞 → 自由程短。</p>
+<p>标准状况下空气分子：<span class="arithmatex">\(\overline{\lambda} \approx 6.9 \times 10^{-8}\)</span> m，<span class="arithmatex">\(\overline{Z} \approx 6.5 \times 10^9\)</span> /s</p>
+</blockquote>
+<h3 id="_21">四、典型问题<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p><strong>Q：恒压下加热理想气体，<span class="arithmatex">\(\overline{\lambda}\)</span> 和 <span class="arithmatex">\(\overline{Z}\)</span> 如何变化？</strong></p>
+<ul>
+<li><span class="arithmatex">\(\overline{Z} \propto \frac{1}{\sqrt{T}}\)</span> → <strong>减小</strong>（<span class="arithmatex">\(n\)</span> 减小的影响 &gt; <span class="arithmatex">\(\bar{v}\)</span> 增大的影响）</li>
+<li><span class="arithmatex">\(\overline{\lambda} \propto T\)</span> → <strong>增大</strong></li>
+</ul>
+<p><strong>Q：容器线度 &lt; <span class="arithmatex">\(\overline{\lambda}\)</span>（理论值）时？</strong>
+- 实际 <span class="arithmatex">\(\overline{\lambda}\)</span> = 容器线度
+- 分子更多与器壁碰撞而非分子间碰撞</p>
+<hr />
+<h2 id="_22">📋 本章公式速查表<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>公式</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(pV = \nu RT = \frac{M}{\mu}RT\)</span></td>
+<td>理想气体状态方程</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(p = nk_B T\)</span></td>
+<td>状态方程（微观形式）</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(p = \frac{1}{3}nm\overline{v^2} = \frac{2}{3}n\overline{\varepsilon_t}\)</span></td>
+<td>压强公式</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\overline{\varepsilon_t} = \frac{3}{2}k_B T\)</span></td>
+<td>温度公式（平均平动动能）</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\overline{\varepsilon} = \frac{i}{2}k_B T\)</span></td>
+<td>分子平均动能（含转动）</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(E = \frac{i}{2}\nu RT = \frac{i}{2}pV\)</span></td>
+<td>理想气体内能</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(f(v) = 4\pi(\frac{m}{2\pi kT})^{3/2} e^{-mv^2/(2kT)} v^2\)</span></td>
+<td>麦克斯韦速率分布</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(v_p = \sqrt{2kT/m}\)</span></td>
+<td>最概然速率</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\bar{v} = \sqrt{8kT/(\pi m)}\)</span></td>
+<td>平均速率</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\sqrt{\overline{v^2}} = \sqrt{3kT/m}\)</span></td>
+<td>方均根速率</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(p = p_0 e^{-\mu gh/(RT)}\)</span></td>
+<td>等温气压公式</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\overline{Z} = \sqrt{2}\pi d^2 \bar{v} n\)</span></td>
+<td>平均碰撞频率</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\overline{\lambda} = 1/(\sqrt{2}\pi d^2 n)\)</span></td>
+<td>平均自由程</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_23">📌 常见气体摩尔质量（常考）<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>气体</th>
+<th><span class="arithmatex">\(\mu\)</span> (g/mol)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H₂</td>
+<td>2</td>
+</tr>
+<tr>
+<td>He</td>
+<td>4</td>
+</tr>
+<tr>
+<td>N₂</td>
+<td>28</td>
+</tr>
+<tr>
+<td>O₂</td>
+<td>32</td>
+</tr>
+<tr>
+<td>空气</td>
+<td>29</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E5%8A%9B%E5%AD%A6%E4%B8%8E%E6%8C%AF%E5%8A%A8/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 力学与振动">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                力学与振动
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E7%83%AD%E5%8A%9B%E5%AD%A6%E5%9F%BA%E7%A1%80/" class="md-footer__link md-footer__link--next" aria-label="下一页: 热力学基础">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                热力学基础
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Evelina_IS
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/Evelina-IS" target="_blank" rel="noopener" title="Evelina-IS on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.select", "content.tabs.link", "navigation.tracking", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "search.highlight", "search.share", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="../../javascripts/reader-counter.js"></script>
+      
+        <script src="../../javascripts/comments.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
