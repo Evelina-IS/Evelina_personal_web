@@ -647,10 +647,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#cloudflare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        部署方式一：Cloudflare 网页后台
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        部署
+        部署方式二：命令行
       
     </span>
   </a>
@@ -703,14 +714,33 @@
 
 <h1 id="api">访客信息收集 API<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
 <p>本站是 GitHub Pages 静态站，页面本身不能保存访客数据。<code>visitor-worker/</code> 里提供了一个 Cloudflare Worker 接收端：前端把浏览器基础信息 POST 给 Worker，Worker 再转发到你配置的 webhook。</p>
-<h2 id="_1">部署<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="cloudflare">部署方式一：Cloudflare 网页后台<a class="headerlink" href="#cloudflare" title="Permanent link">&para;</a></h2>
+<p>不用在本机下载工具也可以部署：</p>
+<ol>
+<li>打开 Cloudflare Dashboard。</li>
+<li>进入 Workers &amp; Pages。</li>
+<li>创建 Worker。</li>
+<li>把 <code>visitor-worker/worker.js</code> 的内容复制进去。</li>
+<li>在 Worker 的 Settings / Variables 里添加 secret：<code>VISITOR_WEBHOOK_URL</code>。</li>
+<li>保存并部署。</li>
+</ol>
+<p><code>VISITOR_WEBHOOK_URL</code> 可以先用 Formspree、Discord webhook、飞书机器人或你自己的 API。Worker 不请求精确定位、摄像头、麦克风、文件等权限，只接收浏览器主动暴露的基础信息。</p>
+<p>Worker 可以从请求头里看到访客 IP，并会记录：</p>
+<ul>
+<li>IP</li>
+<li>国家/地区</li>
+<li>城市和时区（Cloudflare 能解析到时才有）</li>
+<li>ASN / 运营商组织</li>
+<li>浏览器 User-Agent</li>
+<li>页面、来源、屏幕、语言等基础信息</li>
+</ul>
+<h2 id="_1">部署方式二：命令行<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>visitor-worker
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>wrangler
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>wrangler<span class="w"> </span>login
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>wrangler<span class="w"> </span>secret<span class="w"> </span>put<span class="w"> </span>VISITOR_WEBHOOK_URL
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>wrangler<span class="w"> </span>deploy
 </span></code></pre></div>
-<p><code>VISITOR_WEBHOOK_URL</code> 可以先用 Formspree、Discord webhook、飞书机器人或你自己的 API。Worker 不请求精确定位、摄像头、麦克风、文件等权限，只接收浏览器主动暴露的基础信息。</p>
 <h2 id="_2">连接前端<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>部署后会得到类似这样的地址：</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>https://evelina-visitor-api.&lt;你的账号&gt;.workers.dev
