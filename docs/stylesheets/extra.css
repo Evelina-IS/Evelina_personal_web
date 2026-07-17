@@ -218,6 +218,56 @@
   width: 10px;
   height: 10px;
 }
+
+/* ==================== PDF 预览 ==================== */
+.evelina-pdf-preview {
+  margin: 1.25rem 0;
+  overflow: hidden;
+  border: 1px solid rgba(124, 58, 237, 0.14);
+  border-radius: var(--evelina-radius);
+  background: var(--md-default-bg-color);
+  box-shadow: var(--evelina-shadow-sm);
+}
+
+.evelina-pdf-preview__frame {
+  display: block;
+  width: 100%;
+  height: min(76vh, 48rem);
+  min-height: 28rem;
+  border: 0;
+  background: #fff;
+}
+
+.evelina-pdf-preview__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0.75rem;
+  border-top: 1px solid rgba(124, 58, 237, 0.12);
+  background: var(--evelina-grad-soft);
+}
+
+.evelina-pdf-preview__actions a {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.4rem 0.65rem;
+  background: var(--evelina-purple);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.evelina-pdf-preview__actions a:hover {
+  color: #fff;
+  filter: brightness(1.06);
+}
+
+@media screen and (max-width: 44.9375em) {
+  .evelina-pdf-preview__frame {
+    height: 70vh;
+    min-height: 22rem;
+  }
+}
 ::-webkit-scrollbar-track {
   background: transparent;
 }

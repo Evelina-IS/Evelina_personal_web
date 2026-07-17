@@ -11,6 +11,7 @@ edit_uri: edit/main/docs/
 nav:
   - 首页: index.md
   - 网站大全: oneinall.md
+  - 手写笔记: handwritten-notes.md
   - FDSNOTE: fds.md
   - git 的使用: git的使用.md
 

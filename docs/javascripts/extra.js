@@ -1,6 +1,6 @@
 /**
  * Evelina's Personal Web — 额外交互脚本
- * 功能：阅读进度条 + 卡片入场动画 + 返回顶部平滑滚动
+ * 功能：阅读进度条 + 卡片入场动画 + PDF 预览
  */
 (function () {
   "use strict";
@@ -49,10 +49,46 @@
     els.forEach(function (el) { io.observe(el); });
   }
 
+  // ==================== PDF 预览 ====================
+  function setupPdfPreviews() {
+    var previews = document.querySelectorAll(".evelina-pdf-preview[data-src]");
+    previews.forEach(function (preview) {
+      if (preview.dataset.ready === "1") return;
+      var src = preview.getAttribute("data-src");
+      var title = preview.getAttribute("data-title") || "PDF 预览";
+      var download = preview.getAttribute("data-download") || src;
+      var iframe = document.createElement("iframe");
+      var actions = document.createElement("div");
+      var openLink = document.createElement("a");
+      var downloadLink = document.createElement("a");
+
+      iframe.src = src + "#toolbar=1&navpanes=0";
+      iframe.title = title;
+      iframe.loading = "lazy";
+      iframe.className = "evelina-pdf-preview__frame";
+
+      actions.className = "evelina-pdf-preview__actions";
+      openLink.href = src;
+      openLink.target = "_blank";
+      openLink.rel = "noopener";
+      openLink.textContent = "新窗口打开";
+      downloadLink.href = download;
+      downloadLink.download = "";
+      downloadLink.textContent = "下载 PDF";
+
+      actions.appendChild(openLink);
+      actions.appendChild(downloadLink);
+      preview.appendChild(iframe);
+      preview.appendChild(actions);
+      preview.dataset.ready = "1";
+    });
+  }
+
   // ==================== 启动 ====================
   document.addEventListener("DOMContentLoaded", function () {
     updateProgress();
     setupReveal();
+    setupPdfPreviews();
   });
 
   window.addEventListener("scroll", updateProgress, { passive: true });

@@ -40,46 +40,52 @@ hide:
 <!-- ===================== 课程卡片导航 ===================== -->
 <div class="evelina-cards" markdown>
 
-<a class="evelina-card" href="fds.md">
+<a class="evelina-card" href="fds/">
   <span class="evelina-card__icon">🌳</span>
   <div class="evelina-card__title">数据结构 (FDS)</div>
   <div class="evelina-card__desc">树、堆、排序、哈希 · ZJU 全英考试复习</div>
 </a>
 
-<a class="evelina-card" href="discrete-math/index.md">
+<a class="evelina-card" href="discrete-math/">
   <span class="evelina-card__icon">🧩</span>
   <div class="evelina-card__title">离散数学</div>
   <div class="evelina-card__desc">逻辑、集合、图论、自动机与图灵机</div>
 </a>
 
-<a class="evelina-card" href="SYS1/指令集.md">
+<a class="evelina-card" href="SYS1/指令集/">
   <span class="evelina-card__icon">⚙️</span>
   <div class="evelina-card__title">SYS 体系结构</div>
   <div class="evelina-card__desc">RISC-V 指令集、单/多周期 CPU、实验报告</div>
 </a>
 
-<a class="evelina-card" href="大物/力学与振动.md">
+<a class="evelina-card" href="大物/力学与振动/">
   <span class="evelina-card__icon">🔭</span>
   <div class="evelina-card__title">大学物理</div>
   <div class="evelina-card__desc">力学与振动、气体动理论、热力学</div>
 </a>
 
-<a class="evelina-card" href="probability/index.md">
+<a class="evelina-card" href="probability/">
   <span class="evelina-card__icon">🎲</span>
   <div class="evelina-card__title">概率论</div>
   <div class="evelina-card__desc">全英笔记 · 概率与统计基础</div>
 </a>
 
-<a class="evelina-card" href="git的使用.md">
+<a class="evelina-card" href="git的使用/">
   <span class="evelina-card__icon">🔧</span>
   <div class="evelina-card__title">Git 使用</div>
   <div class="evelina-card__desc">版本控制基础与常用命令速查</div>
 </a>
 
-<a class="evelina-card" href="oneinall.md">
+<a class="evelina-card" href="oneinall/">
   <span class="evelina-card__icon">🧭</span>
   <div class="evelina-card__title">网站大全</div>
   <div class="evelina-card__desc">学习平台、AI 助手与常用工具导航</div>
+</a>
+
+<a class="evelina-card" href="handwritten-notes/">
+  <span class="evelina-card__icon">📝</span>
+  <div class="evelina-card__title">手写笔记</div>
+  <div class="evelina-card__desc">PDF 在线预览 · 适合上传课堂手写稿</div>
 </a>
 
 <a class="evelina-card" href="https://github.com/Evelina-IS/Evelina_personal_web">
