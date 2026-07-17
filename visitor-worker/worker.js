@@ -29,22 +29,11 @@ function trimString(value, limit) {
   return value.length > limit ? value.slice(0, limit) : value;
 }
 
-function sanitizePayload(payload, request) {
+function sanitizePayload(payload) {
   const visitor = payload && payload.visitor ? payload.visitor : {};
-  const cf = request.cf || {};
   return {
     site: trimString(payload && payload.site ? payload.site : "Evelina_personal_web", 80),
     receivedAt: new Date().toISOString(),
-    network: {
-      ip: trimString(request.headers.get("CF-Connecting-IP") || "", 80),
-      country: trimString(cf.country || "", 20),
-      city: trimString(cf.city || "", 120),
-      region: trimString(cf.region || "", 120),
-      timezone: trimString(cf.timezone || "", 120),
-      colo: trimString(cf.colo || "", 20),
-      asn: cf.asn || "",
-      asOrganization: trimString(cf.asOrganization || "", 180)
-    },
     visitor: {
       page: trimString(visitor.page || "", 600),
       referrer: trimString(visitor.referrer || "", 600),
@@ -102,7 +91,7 @@ export default {
       return json({ error: "Invalid JSON" }, 400, origin);
     }
 
-    const record = sanitizePayload(payload, request);
+    const record = sanitizePayload(payload);
     const forward = await forwardToWebhook(env, record);
     return json({ ok: true, forward }, 200, origin);
   }
