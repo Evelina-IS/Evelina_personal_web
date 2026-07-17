@@ -1,0 +1,6 @@
+name = "evelina-visitor-api"
+main = "worker.js"
+compatibility_date = "2026-07-17"
+
+# Set this secret before deploy:
+# wrangler secret put VISITOR_WEBHOOK_URL
