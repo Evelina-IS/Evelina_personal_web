@@ -25,44 +25,45 @@
       <article id="content" class="content"></article>
     </section>
   </main>
+  <footer class="site-footer">Copyright © 2026 Evelina_IS</footer>
 
   <script>
     const SOURCES = [
-      { group: "主页", title: "Reports", path: "docs/reports.md" },
-      { group: "主页", title: "大物乙1", path: "docs/大物乙1/大学物理公式大全_副本.md" },
-      { group: "主页", title: "git 的使用", path: "docs/git的使用.md" },
-      { group: "概率论", title: "概率论笔记（全英）", path: "docs/probability/index.md" },
-      { group: "离散数学", title: "前置知识", path: "docs/discrete-math/index.md" },
-      { group: "离散数学", title: "逻辑等价、蕴涵与范式", path: "docs/discrete-math/logical-equivalence.md" },
-      { group: "离散数学", title: "谓词逻辑", path: "docs/discrete-math/predicate-logic.md" },
-      { group: "离散数学", title: "集合论", path: "docs/discrete-math/set-theory.md" },
-      { group: "离散数学", title: "图论", path: "docs/discrete-math/graph-theory.md" },
-      { group: "离散数学", title: "抽象代数", path: "docs/discrete-math/abstract-algebra.md" },
-      { group: "离散数学", title: "语言分析与图灵机", path: "docs/discrete-math/language-automata.md" },
-      { group: "SYS 体系结构", title: "sys 汇编", path: "docs/SYS1/sys汇编.md" },
-      { group: "SYS 体系结构", title: "指令集", path: "docs/SYS1/指令集.md" },
-      { group: "SYS 体系结构", title: "risc-v 使用指南", path: "docs/SYS1/risc-v使用指南.md" },
-      { group: "SYS 体系结构", title: "处理器设计 (Datapath)", path: "docs/SYS1/processor-design.md" },
-      { group: "SYS 体系结构", title: "多周期 CPU", path: "docs/SYS1/多周期CPU.md" },
-      { group: "SYS 体系结构", title: "控制信号速查表", path: "docs/SYS1/control-signals.md" },
-      { group: "SYS 体系结构", title: "单周期 CPU 实验报告", path: "docs/SYS1/单周期CPU实验报告.md" },
-      { group: "大学物理", title: "力学与振动", path: "docs/大物/力学与振动.md" },
-      { group: "大学物理", title: "气体动理论", path: "docs/大物/气体动理论.md" },
-      { group: "大学物理", title: "热力学基础", path: "docs/大物/热力学基础.md" },
-      { group: "大学物理", title: "热学公式大全", path: "docs/大物/热学公式大全.md" }
+      { group: "主页", title: "Reports", path: "reports/index.html" },
+      { group: "主页", title: "大物乙1", path: "大物乙1/大学物理公式大全_副本.md" },
+      { group: "主页", title: "git 的使用", path: "git的使用.md" },
+      { group: "概率论", title: "概率论笔记（全英）", path: "probability/index.html" },
+      { group: "离散数学", title: "前置知识", path: "discrete-math/index.html" },
+      { group: "离散数学", title: "逻辑等价、蕴涵与范式", path: "discrete-math/logical-equivalence.md" },
+      { group: "离散数学", title: "谓词逻辑", path: "discrete-math/predicate-logic.md" },
+      { group: "离散数学", title: "集合论", path: "discrete-math/set-theory.md" },
+      { group: "离散数学", title: "图论", path: "discrete-math/graph-theory.md" },
+      { group: "离散数学", title: "抽象代数", path: "discrete-math/abstract-algebra.md" },
+      { group: "离散数学", title: "语言分析与图灵机", path: "discrete-math/language-automata.md" },
+      { group: "SYS 体系结构", title: "sys 汇编", path: "SYS1/sys汇编.md" },
+      { group: "SYS 体系结构", title: "指令集", path: "SYS1/指令集.md" },
+      { group: "SYS 体系结构", title: "risc-v 使用指南", path: "SYS1/risc-v使用指南.md" },
+      { group: "SYS 体系结构", title: "处理器设计 (Datapath)", path: "SYS1/processor-design.md" },
+      { group: "SYS 体系结构", title: "多周期 CPU", path: "SYS1/多周期CPU.md" },
+      { group: "SYS 体系结构", title: "控制信号速查表", path: "SYS1/control-signals.md" },
+      { group: "SYS 体系结构", title: "单周期 CPU 实验报告", path: "SYS1/单周期CPU实验报告.md" },
+      { group: "大学物理", title: "力学与振动", path: "大物/力学与振动.md" },
+      { group: "大学物理", title: "气体动理论", path: "大物/气体动理论.md" },
+      { group: "大学物理", title: "热力学基础", path: "大物/热力学基础.md" },
+      { group: "大学物理", title: "热学公式大全", path: "大物/热学公式大全.md" }
     ];
 
     const PDFS = [
-      { group: "PDF", title: "FDS Project 1 Essay", path: "docs/reports/FDS/SongLi2026_3250104303_project1_essay.pdf" },
-      { group: "PDF", title: "FDS Project 2", path: "docs/reports/FDS/project2.pdf" },
-      { group: "PDF", title: "FDS Report 3", path: "docs/reports/FDS/report3.pdf" },
-      { group: "PDF", title: "SYS1 LAB5", path: "docs/reports/SYS1/3250104303_LAB5.pdf" },
-      { group: "PDF", title: "SYS1 Lab2", path: "docs/reports/SYS1/3250104303_lab2.pdf" },
-      { group: "PDF", title: "SYS1 Lab3", path: "docs/reports/SYS1/3250104303_lab3.pdf" },
-      { group: "PDF", title: "SYS1 Lab4", path: "docs/reports/SYS1/3250104303_lab4 (2).pdf" },
-      { group: "PDF", title: "SYS1 Sys Project", path: "docs/reports/SYS1/3250104303_sysproject.pdf" },
-      { group: "PDF", title: "SYS1 Lab1", path: "docs/reports/SYS1/Lab1-report.pdf" },
-      { group: "PDF", title: "SYS1 Lab0", path: "docs/reports/SYS1/lab0-report.pdf" }
+      { group: "PDF", title: "FDS Project 1 Essay", path: "reports/FDS/SongLi2026_3250104303_project1_essay.pdf" },
+      { group: "PDF", title: "FDS Project 2", path: "reports/FDS/project2.pdf" },
+      { group: "PDF", title: "FDS Report 3", path: "reports/FDS/report3.pdf" },
+      { group: "PDF", title: "SYS1 LAB5", path: "reports/SYS1/3250104303_LAB5.pdf" },
+      { group: "PDF", title: "SYS1 Lab2", path: "reports/SYS1/3250104303_lab2.pdf" },
+      { group: "PDF", title: "SYS1 Lab3", path: "reports/SYS1/3250104303_lab3.pdf" },
+      { group: "PDF", title: "SYS1 Lab4", path: "reports/SYS1/3250104303_lab4 (2).pdf" },
+      { group: "PDF", title: "SYS1 Sys Project", path: "reports/SYS1/3250104303_sysproject.pdf" },
+      { group: "PDF", title: "SYS1 Lab1", path: "reports/SYS1/Lab1-report.pdf" },
+      { group: "PDF", title: "SYS1 Lab0", path: "reports/SYS1/lab0-report.pdf" }
     ];
 
     const tree = document.getElementById('tree');

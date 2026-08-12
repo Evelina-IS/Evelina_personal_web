@@ -122,6 +122,19 @@ summary::-webkit-details-marker { display: none; }
   border: 1px solid var(--line);
   background: #000;
 }
+.site-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 8px 16px;
+  border-top: 1px solid var(--line);
+  background: rgba(20,22,24,.96);
+  color: var(--muted);
+  font-size: 12px;
+  text-align: center;
+  pointer-events: none;
+}
 @media (max-width: 900px) {
   .app { grid-template-columns: 1fr; }
   .sidebar { height: 36vh; border-right: 0; border-bottom: 1px solid var(--line); }
