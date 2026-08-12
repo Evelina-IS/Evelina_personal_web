@@ -75,35 +75,20 @@ theme:
     - content.action.view
     - content.code.copy
     - content.code.select
-    - content.tabs.link
     - navigation.tracking
     - navigation.expand
     - navigation.indexes
     - navigation.top
-    - navigation.footer
-    - navigation.prune
     - search.suggest
     - search.highlight
-    - search.share
     - toc.follow
   font:
     code: JetBrains Mono
     text: Noto Sans SC
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: deep purple
-      accent: purple
-      toggle:
-        icon: material/brightness-7
-        name: 切换到深色模式
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: deep purple
-      accent: purple
-      toggle:
-        icon: material/brightness-4
-        name: 切换到浅色模式
+    scheme: slate
+    primary: black
+    accent: green
 
 markdown_extensions:
   - toc:
