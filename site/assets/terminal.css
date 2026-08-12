@@ -2,17 +2,17 @@
   color-scheme: dark;
   --bg: #030503;
   --panel: #071007;
-  --line: #123525;
-  --green: #6fd48b;
-  --green2: #a7dcb6;
-  --text: #c9ead1;
-  --muted: #6fa17d;
+  --line: #173a28;
+  --green: #97c8a3;
+  --green2: #bed5c4;
+  --text: #d4e3d7;
+  --muted: #84978a;
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
 body {
   background:
-    linear-gradient(rgba(111,212,139,.025) 1px, transparent 1px),
+    linear-gradient(rgba(151,200,163,.016) 1px, transparent 1px),
     var(--bg);
   background-size: 100% 22px;
   color: var(--green);
@@ -29,7 +29,7 @@ button, a { font: inherit; color: inherit; }
 }
 .sidebar {
   border-right: 1px solid var(--line);
-  background: rgba(7,16,7,.88);
+  background: rgba(7,16,7,.8);
   overflow: auto;
 }
 .brand {
@@ -75,7 +75,7 @@ summary::-webkit-details-marker { display: none; }
   cursor: pointer;
 }
 .file:hover, .file.active {
-  background: rgba(111,212,139,.08);
+  background: rgba(151,200,163,.05);
   color: var(--green2);
 }
 .viewer {
