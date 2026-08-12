@@ -28,9 +28,6 @@
 
   <script>
     const SOURCES = [
-      { group: "主页", title: "网站大全", path: "docs/oneinall.md" },
-      { group: "主页", title: "手写笔记", path: "docs/handwritten-notes.md" },
-      { group: "主页", title: "FDSNOTE", path: "docs/fds.md" },
       { group: "主页", title: "Reports", path: "docs/reports.md" },
       { group: "主页", title: "大物乙1", path: "docs/大物乙1/大学物理公式大全_副本.md" },
       { group: "主页", title: "git 的使用", path: "docs/git的使用.md" },
@@ -79,7 +76,7 @@
     }, {});
 
     tree.innerHTML = Object.entries(groups).map(([group, items]) => `
-      <details open>
+      <details>
         <summary>${group}</summary>
         ${items.map(item => `<button class="file" data-path="${item.path}" data-title="${item.title}">${item.title}</button>`).join('')}
       </details>
@@ -151,7 +148,7 @@
         status.textContent = 'ready';
         return;
       }
-      const res = await fetch(path);
+      const res = await fetch(path, { cache: 'force-cache' });
       const text = await res.text();
       content.innerHTML = `<h1>${title}</h1><div class="doc">${markdownToHtml(text)}</div>`;
       status.textContent = 'ready';
