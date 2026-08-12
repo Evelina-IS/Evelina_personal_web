@@ -1,0 +1,2197 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Evelina 的个人学习笔记站 — 浙江大学信息安全 / 课程笔记与知识整理">
+      
+      
+        <meta name="author" content="Evelina_IS">
+      
+      
+        <link rel="canonical" href="https://evelina-is.github.io/Evelina_personal_web/discrete-math/ppt-notes/%E7%AC%AC%E4%BA%94%E8%AF%BE_%E9%80%BB%E8%BE%91%E7%AD%89%E4%BB%B7_%E8%95%B4%E6%B6%B5_%E8%8C%83%E5%BC%8F/">
+      
+      
+        <link rel="prev" href="../%E7%AC%AC%E5%9B%9B%E8%AF%BE_%E6%8E%92%E4%B8%AD%E5%BE%8B_%E8%81%94%E7%BB%93%E8%AF%8D_%E5%91%BD%E9%A2%98%E5%85%AC%E5%BC%8F_%E9%87%8D%E8%A8%80%E5%BC%8F/">
+      
+      
+        <link rel="next" href="../%E7%AC%AC%E5%85%AD%E8%AF%BE_%E8%81%94%E7%BB%93%E8%AF%8D%E5%AE%8C%E5%A4%87%E6%80%A7_%E5%BD%A2%E5%BC%8F%E7%B3%BB%E7%BB%9F_PC/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>第5课 逻辑等价、蕴涵、范式 - Evelina_IS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="Evelina_IS" class="md-header__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Evelina_IS
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第5课 逻辑等价、蕴涵、范式
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="切换到深色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到深色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="purple"  aria-label="切换到浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到浅色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Evelina-IS/Evelina_personal_web" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Evelina-IS/Evelina_personal_web
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Evelina_IS" class="md-nav__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
+
+    </a>
+    Evelina_IS
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Evelina-IS/Evelina_personal_web
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../oneinall/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    网站大全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../handwritten-notes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    手写笔记
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../fds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FDSNOTE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reports
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E5%A4%A7%E7%89%A9%E4%B9%991/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8_%E5%89%AF%E6%9C%AC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大物乙1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    git 的使用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../probability/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    概率论
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    离散数学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    离散数学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../logical-equivalence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    逻辑等价、蕴涵与范式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../predicate-logic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    谓词逻辑
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../set-theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    集合论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../graph-theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../abstract-algebra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    抽象代数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../language-automata/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    语言分析与图灵机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_8" id="__nav_9_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PPT笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    PPT笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E4%B8%89%E8%AF%BE_%E7%A6%BB%E6%95%A3%E6%95%B0%E5%AD%A6%E5%BC%95%E8%A8%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第3课 离散数学引言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%9B%9B%E8%AF%BE_%E6%8E%92%E4%B8%AD%E5%BE%8B_%E8%81%94%E7%BB%93%E8%AF%8D_%E5%91%BD%E9%A2%98%E5%85%AC%E5%BC%8F_%E9%87%8D%E8%A8%80%E5%BC%8F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第4课 排中律、命题公式、重言式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5课 逻辑等价、蕴涵、范式
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第5课 逻辑等价、蕴涵、范式
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#page-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 2 — 逻辑等价
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-3-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 3-4 — 重要逻辑等价式（⭐必记）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-5-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 5-6 — 逻辑蕴涵式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 7 — 逻辑结果
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 8 — 性质总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-9-rs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 9 — 代入原理（RS）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-10-rr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 10 — 替换原理（RR）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-11-rsrr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 11 — RS与RR的区别
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 12 — 证明逻辑等价/蕴涵
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-16-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 16-20 — 析取范式与合取范式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-26-27-min-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 26-27 — 极小项（min term）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-28-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 28-29 — 主析取范式的存在性和唯一性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 30 — 等值类的数量 ⭐考试重点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 31 — 主合取范式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-32-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 32-33 — 真值函数与功能完备集
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%85%AD%E8%AF%BE_%E8%81%94%E7%BB%93%E8%AF%8D%E5%AE%8C%E5%A4%87%E6%80%A7_%E5%BD%A2%E5%BC%8F%E7%B3%BB%E7%BB%9F_PC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第6课 联结词完备性、形式系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E4%B8%83%E8%AF%BE_%E8%B0%93%E8%AF%8D%E9%80%BB%E8%BE%91_FC_ND/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第7课 谓词逻辑、FC、ND
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%85%AB%E8%AF%BE_%E9%9B%86%E5%90%88%E8%AE%BA_%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第8课 集合论、集合运算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E4%B9%9D%E8%AF%BE_%E5%BD%92%E7%BA%B3%E5%AE%9A%E4%B9%89_%E6%95%B0%E5%AD%A6%E5%BD%92%E7%BA%B3%E6%B3%95_%E6%9C%89%E5%BA%8F%E7%BB%84_%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF_%E5%85%B3%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第9课 归纳定义、数学归纳法、关系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%8D%81%E8%AF%BE_%E5%85%B3%E7%B3%BB%E6%80%A7%E8%B4%A8_%E7%AD%89%E4%BB%B7_%E5%88%92%E5%88%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第10课 关系性质、等价、划分
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%8D%81%E4%B8%80%E8%AF%BE_%E5%BA%8F%E5%85%B3%E7%B3%BB_%E5%87%BD%E6%95%B0_%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第11课 序关系、函数、图论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%8D%81%E4%BA%8C%E8%AF%BE_%E5%9B%BE%E8%AE%BA_%E6%A0%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第12课 图论、树
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%8D%81%E4%B8%89%E8%AF%BE_%E4%BB%A3%E6%95%B0%E7%BB%93%E6%9E%84_%E5%90%8C%E6%80%81%E6%98%A0%E5%B0%84_%E5%BD%A2%E5%BC%8F%E8%AF%AD%E8%A8%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第13课 代数结构、形式语言
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%8D%81%E5%9B%9B%E8%AF%BE_%E8%AF%AD%E8%A8%80%E5%88%86%E6%9E%90_%E8%87%AA%E5%8A%A8%E6%9C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第14课 语言分析、自动机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E5%8D%81%E4%BA%94%E8%AF%BE_%E8%AF%AD%E8%A8%80%E8%AF%86%E5%88%AB_%E5%9B%BE%E7%81%B5%E6%9C%BA_%E5%93%A5%E5%BE%B7%E5%B0%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    第15课 语言识别、图灵机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../SYS1/sys%E6%B1%87%E7%BC%96/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SYS 体系结构
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+      
+        
+  
+  
+  
+    <a href="../../../%E5%A4%A7%E7%89%A9/%E5%8A%9B%E5%AD%A6%E4%B8%8E%E6%8C%AF%E5%8A%A8/" class="md-nav__link">
+      
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大学物理
+  
+
+    
+  </span>
+  
+  
+
+      
+        <span class="md-nav__icon md-icon"></span>
+      
+    </a>
+  
+
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#page-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 2 — 逻辑等价
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-3-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 3-4 — 重要逻辑等价式（⭐必记）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-5-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 5-6 — 逻辑蕴涵式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 7 — 逻辑结果
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 8 — 性质总结
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-9-rs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 9 — 代入原理（RS）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-10-rr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 10 — 替换原理（RR）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-11-rsrr" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 11 — RS与RR的区别
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 12 — 证明逻辑等价/蕴涵
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-16-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 16-20 — 析取范式与合取范式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-26-27-min-term" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 26-27 — 极小项（min term）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-28-29" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 28-29 — 主析取范式的存在性和唯一性
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-30" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 30 — 等值类的数量 ⭐考试重点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-31" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 31 — 主合取范式
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-32-33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Page 32-33 — 真值函数与功能完备集
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/Evelina-IS/Evelina_personal_web/edit/main/docs/discrete-math/ppt-notes/第五课_逻辑等价_蕴涵_范式.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/Evelina-IS/Evelina_personal_web/raw/main/docs/discrete-math/ppt-notes/第五课_逻辑等价_蕴涵_范式.md" title="查看本页的源代码" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="_1">第五课：逻辑等价、蕴涵、范式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="page-2">Page 2 — 逻辑等价<a class="headerlink" href="#page-2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>当A↔B是重言式时，称A<strong>逻辑等价</strong>于B——记作<strong>A≡B</strong></li>
+<li>在任何赋值状况下A和B都等值</li>
+<li>如果说A≡B，"证明A↔B每一列都是T"</li>
+</ul>
+<h2 id="page-3-4">Page 3-4 — 重要逻辑等价式（⭐必记）<a class="headerlink" href="#page-3-4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>公式</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E1</td>
+<td>¬¬A ≡ A</td>
+<td>双重否定律</td>
+</tr>
+<tr>
+<td>E2</td>
+<td>A∨A≡A, A∧A≡A</td>
+<td>幂等律</td>
+</tr>
+<tr>
+<td>E3</td>
+<td>A∨B≡B∨A, A∧B≡B∧A</td>
+<td>交换律</td>
+</tr>
+<tr>
+<td>E4</td>
+<td>(A∨B)∨C≡A∨(B∨C), (A∧B)∧C≡A∧(B∧C)</td>
+<td>结合律</td>
+</tr>
+<tr>
+<td>E5</td>
+<td>A∧(B∨C)≡(A∧B)∨(A∧C), A∨(B∧C)≡(A∨B)∧(A∨C)</td>
+<td><strong>分配律</strong></td>
+</tr>
+<tr>
+<td>E6</td>
+<td>¬(A∨B)≡¬A∧¬B, ¬(A∧B)≡¬A∨¬B</td>
+<td><strong>德摩根律</strong></td>
+</tr>
+<tr>
+<td>E7</td>
+<td>A∨(A∧B)≡A, A∧(A∨B)≡A</td>
+<td>吸收律</td>
+</tr>
+<tr>
+<td>E8</td>
+<td>A→B ≡ ¬A∨B</td>
+<td><strong>蕴涵等值式</strong></td>
+</tr>
+<tr>
+<td>E9</td>
+<td>A↔B ≡ (A→B)∧(B→A)</td>
+<td>等价等值式</td>
+</tr>
+<tr>
+<td>E10</td>
+<td>A∨T≡T, A∧F≡F</td>
+<td>零律</td>
+</tr>
+<tr>
+<td>E11</td>
+<td>A∨F≡A, A∧T≡A</td>
+<td>同一律</td>
+</tr>
+<tr>
+<td>E12</td>
+<td>A∨¬A≡T, A∧¬A≡F</td>
+<td>排中律和矛盾律</td>
+</tr>
+<tr>
+<td>E13</td>
+<td>¬T≡F, ¬F≡T</td>
+<td></td>
+</tr>
+<tr>
+<td>E14</td>
+<td>(A∧B)→C ≡ A→(B→C)</td>
+<td>输出律</td>
+</tr>
+<tr>
+<td>E15</td>
+<td>A→B ≡ ¬B→¬A</td>
+<td><strong>假言易位</strong></td>
+</tr>
+<tr>
+<td>E16</td>
+<td>(A→B)∧(A→¬B)≡¬A</td>
+<td>归谬论</td>
+</tr>
+<tr>
+<td>E17</td>
+<td>A↔B ≡ (A∧B)∨(¬A∧¬B)</td>
+<td>等价等值式2</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <strong>人话</strong>：这些是逻辑运算的"代数法则"，就像算术里的交换律结合律分配律一样。做题时可以用它们把复杂公式化简。</p>
+</blockquote>
+<h2 id="page-5-6">Page 5-6 — 逻辑蕴涵式<a class="headerlink" href="#page-5-6" title="Permanent link">&para;</a></h2>
+<ul>
+<li>当A→B是重言式时，称A<strong>逻辑蕴涵</strong>B——记作<strong>A⊨B</strong></li>
+<li>A的所有成真赋值都是B的成真赋值</li>
+<li>每个逻辑等价可以看作两个逻辑蕴涵式：A≡B既是A⊨B也是B⊨A</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>编号</th>
+<th>公式</th>
+<th>名称</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I1</td>
+<td>A ⊨ A∨B</td>
+<td>析取引入</td>
+</tr>
+<tr>
+<td>I2</td>
+<td>A∧B ⊨ A</td>
+<td>合取消去</td>
+</tr>
+<tr>
+<td>I3</td>
+<td>A∧(A→B) ⊨ B</td>
+<td><strong>假言推理</strong>（Modus Ponens）</td>
+</tr>
+<tr>
+<td>I4</td>
+<td>(A→B)∧¬B ⊨ ¬A</td>
+<td><strong>归谬推理</strong>（Modus Tollens）</td>
+</tr>
+<tr>
+<td>I5</td>
+<td>¬A∧(A∨B) ⊨ B</td>
+<td><strong>析取三段论</strong></td>
+</tr>
+<tr>
+<td>I6</td>
+<td>(A→B)∧(B→C) ⊨ A→C</td>
+<td>传递律（三段论）</td>
+</tr>
+<tr>
+<td>I7</td>
+<td>(A→B)∧(C→D) ⊨ (A∧C)→(B∧D)</td>
+<td></td>
+</tr>
+<tr>
+<td>I8</td>
+<td>(A↔B)∧(B↔C) ⊨ A↔C</td>
+<td>等价传递</td>
+</tr>
+</tbody>
+</table>
+<h2 id="page-7">Page 7 — 逻辑结果<a class="headerlink" href="#page-7" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Γ⊨B</strong>：使Γ中每一个公式成真的赋值，都是公式B的成真赋值</li>
+<li>Γ中所有公式的合取逻辑蕴涵B</li>
+<li>⊨B：Γ为空集，B永真</li>
+</ul>
+<h2 id="page-8">Page 8 — 性质总结<a class="headerlink" href="#page-8" title="Permanent link">&para;</a></h2>
+<ul>
+<li>A≡B ⟺ ⊨A↔B</li>
+<li>A⊨B ⟺ ⊨A→B</li>
+<li>若A⊨B，则¬B⊨¬A（逆否）</li>
+<li>若A⊨B，B⊨C，则A⊨C（传递）</li>
+</ul>
+<h2 id="page-9-rs">Page 9 — 代入原理（RS）<a class="headerlink" href="#page-9-rs" title="Permanent link">&para;</a></h2>
+<ul>
+<li>将重言式A中的某个命题变元p的<strong>所有出现</strong>都代换为命题公式B</li>
+<li>得到的A(B/p)也是重言式</li>
+<li><strong>注意</strong>：只代换部分出现不成立！</li>
+<li>思考：若B包含p或A中的其它变元，还成立吗？</li>
+</ul>
+<h2 id="page-10-rr">Page 10 — 替换原理（RR）<a class="headerlink" href="#page-10-rr" title="Permanent link">&para;</a></h2>
+<ul>
+<li>将命题公式A中的子公式C的<strong>部分出现</strong>替换为和C逻辑等价的公式D（C≡D）</li>
+<li>得到的B与原公式等价（A≡B）</li>
+<li><strong>注意</strong>：不要求全部出现都替换</li>
+</ul>
+<h2 id="page-11-rsrr">Page 11 — RS与RR的区别<a class="headerlink" href="#page-11-rsrr" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>代入原理RS</th>
+<th>替换原理RR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>使用对象</td>
+<td>任意永真式</td>
+<td>任意命题公式</td>
+</tr>
+<tr>
+<td>代换对象</td>
+<td>任意命题变元</td>
+<td>任意子公式</td>
+</tr>
+<tr>
+<td>代换物</td>
+<td>任意命题公式</td>
+<td>与替换对象等价的公式</td>
+</tr>
+<tr>
+<td>代换方式</td>
+<td>同一变元的所有出现</td>
+<td>子公式的部分出现</td>
+</tr>
+<tr>
+<td>结果</td>
+<td>仍为永真式</td>
+<td>与原公式等价</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>💡 <strong>人话</strong>：
+- 代入：把重言式里的一个变元通通换成别的公式，结果还是重言式
+- 替换：把公式中的某部分换成逻辑等价的东西，整体还是等价的</p>
+</blockquote>
+<h2 id="page-12">Page 12 — 证明逻辑等价/蕴涵<a class="headerlink" href="#page-12" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>真值表法</strong>：分别列出A↔B和A→B的真值表，看最后一列</li>
+<li><strong>对赋值讨论</strong>：证明A⊨B，只需证A的任意成真赋值也是B的成真赋值</li>
+<li><strong>推演法</strong>：用已知等价式一步步变形</li>
+</ul>
+<h2 id="page-16-20">Page 16-20 — 析取范式与合取范式<a class="headerlink" href="#page-16-20" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>文字</strong>（literal）：命题变元p（正文字）或¬p（负文字）</li>
+<li><strong>合取子句</strong>：文字的合取，如 p∧¬q∧r</li>
+<li><strong>析取子句</strong>：文字的析取，如 p∨¬q∨r</li>
+<li><strong>析取范式（DNF）</strong>：合取子句的析取</li>
+<li>例：(p∧q)∨(¬p∧r)</li>
+<li><strong>合取范式（CNF）</strong>：析取子句的合取</li>
+<li>例：(p∨q)∧(¬p∨r)</li>
+</ul>
+<h2 id="page-26-27-min-term">Page 26-27 — 极小项（min term）<a class="headerlink" href="#page-26-27-min-term" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>极小项mᵢ</strong>：包含所有n个变元的合取子句，每个变元恰好出现一次（正或负）</li>
+<li>i的n位二进制表示决定每个变元的否定状态：</li>
+<li>该位=0 → 负文字（¬），=1 → 正文字</li>
+<li>例：m₇ = p₁∧p₂∧p₃（7=111）</li>
+<li>例：m₄ = p₁∧¬p₂∧¬p₃（4=100）</li>
+<li><strong>每个极小项有且仅有一个成真赋值</strong>（对应下标i的二进制值）</li>
+<li><strong>主析取范式</strong>：极小项按下标从小到大排列的析取</li>
+</ul>
+<h2 id="page-28-29">Page 28-29 — 主析取范式的存在性和唯一性<a class="headerlink" href="#page-28-29" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>存在性</strong>：任何命题公式都可以化成主析取范式（用分配律、补全变元）</li>
+<li><strong>唯一性</strong>：反证法，若有不同的主析取范式则存在某个极小项不同，导致真值不同</li>
+</ul>
+<h2 id="page-30">Page 30 — 等值类的数量 ⭐考试重点<a class="headerlink" href="#page-30" title="Permanent link">&para;</a></h2>
+<ul>
+<li>n个变元 → 极小项数量 <strong>N = 2ⁿ</strong></li>
+<li>主析取范式数量 = <strong>2ᴺ = 2^(2ⁿ)</strong></li>
+<li><strong>等值类的数量 = 主析取范式的数量</strong></li>
+</ul>
+<blockquote>
+<p>💡 <strong>人话（核心）</strong>：n=3时，N=2³=8个极小项。每个极小项可以选择"出现在主析取范式中"或"不出现在主析取范式中"，所以有2⁸=256种不同的主析取范式，对应256个等价类（真值函数）。</p>
+</blockquote>
+<h2 id="page-31">Page 31 — 主合取范式<a class="headerlink" href="#page-31" title="Permanent link">&para;</a></h2>
+<ul>
+<li>与主析取范式对称</li>
+<li>使用<strong>极大项</strong>和成假赋值</li>
+<li>等值类数量相同：2ᴺ</li>
+</ul>
+<h2 id="page-32-33">Page 32-33 — 真值函数与功能完备集<a class="headerlink" href="#page-32-33" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>真值函数</strong>F(p₁,...,pₙ)：每个变元定义域{0,1}，值域{0,1}</li>
+<li>真值函数与等值类<strong>一一对应</strong></li>
+<li>每个等值类对应唯一的真值函数</li>
+<li><strong>功能完备集</strong>：任意真值函数都能用该联结词集中的联结词表示</li>
+<li>{¬,∧,∨,→,↔}是功能完备集</li>
+<li>{¬,∧,∨}是功能完备集（因为主析取范式只用这三个）</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E7%AC%AC%E5%9B%9B%E8%AF%BE_%E6%8E%92%E4%B8%AD%E5%BE%8B_%E8%81%94%E7%BB%93%E8%AF%8D_%E5%91%BD%E9%A2%98%E5%85%AC%E5%BC%8F_%E9%87%8D%E8%A8%80%E5%BC%8F/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第4课 排中律、命题公式、重言式">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第4课 排中律、命题公式、重言式
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E7%AC%AC%E5%85%AD%E8%AF%BE_%E8%81%94%E7%BB%93%E8%AF%8D%E5%AE%8C%E5%A4%87%E6%80%A7_%E5%BD%A2%E5%BC%8F%E7%B3%BB%E7%BB%9F_PC/" class="md-footer__link md-footer__link--next" aria-label="下一页: 第6课 联结词完备性、形式系统">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第6课 联结词完备性、形式系统
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 Evelina_IS
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/Evelina-IS" target="_blank" rel="noopener" title="Evelina-IS on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.select", "content.tabs.link", "navigation.tracking", "navigation.expand", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.prune", "search.suggest", "search.highlight", "search.share", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="../../../javascripts/reader-counter.js"></script>
+      
+        <script src="../../../javascripts/comments.js"></script>
+      
+        <script src="../../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

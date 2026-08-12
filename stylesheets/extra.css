@@ -1,6 +1,458 @@
-/* ==================== 页面互动栏（阅读计数 + 点赞） ==================== */
+/* =====================================================================
+   Evelina's Personal Web — 主题样式增强
+   基色 deep purple，配合紫粉渐变与柔光，深浅色自适应
+   ===================================================================== */
 
-/* 互动栏容器 */
+/* ==================== CSS 变量：品牌色系 ==================== */
+:root {
+  --evelina-purple:    #7c3aed;
+  --evelina-purple-2:  #9333ea;
+  --evelina-pink:      #ec4899;
+  --evelina-indigo:    #6366f1;
+  --evelina-grad:      linear-gradient(135deg, #7c3aed 0%, #9333ea 45%, #ec4899 100%);
+  --evelina-grad-soft: linear-gradient(135deg, rgba(124,58,237,.10), rgba(236,72,153,.10));
+  --evelina-shadow:   0 8px 30px rgba(124, 58, 237, 0.12);
+  --evelina-shadow-sm: 0 2px 10px rgba(124, 58, 237, 0.08);
+  --evelina-radius:    14px;
+}
+
+[data-md-color-scheme="slate"] {
+  --evelina-grad-soft: linear-gradient(135deg, rgba(124,58,237,.18), rgba(236,72,153,.14));
+  --evelina-shadow:    0 8px 30px rgba(0, 0, 0, 0.35);
+  --evelina-shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.30);
+}
+
+/* ==================== 顶部标题栏：渐变品牌色 ==================== */
+.md-header {
+  background: var(--evelina-grad);
+  box-shadow: 0 2px 14px rgba(124, 58, 237, 0.25);
+}
+.md-header__title {
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.md-header__topic:first-child {
+  font-weight: 700;
+}
+
+/* 顶部 header 的"编辑本页"等按钮 hover */
+.md-header__button:hover {
+  opacity: 0.85;
+}
+
+/* ==================== 侧边栏导航 ==================== */
+.md-nav {
+  font-size: 0.78rem;
+}
+.md-nav__item {
+  margin: 1px 0;
+}
+.md-nav__link {
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
+  margin: 0 6px;
+  padding: 6px 12px;
+}
+.md-nav__link:hover,
+.md-nav__link--active {
+  background: var(--evelina-grad-soft);
+}
+.md-nav__link--active {
+  font-weight: 600;
+  color: var(--evelina-purple);
+}
+[data-md-color-scheme="slate"] .md-nav__link--active {
+  color: #c4b5fd;
+}
+
+/* 折叠小三角的过渡 */
+.md-nav__toggle ~ .md-nav .md-nav__item {
+  transition: opacity 0.25s ease;
+}
+
+/* ==================== 正文区域：标题装饰 ==================== */
+.md-typeset h1 {
+  border-bottom: 3px solid transparent;
+  border-image: var(--evelina-grad) 1;
+  padding-bottom: 0.4em;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.md-typeset h2 {
+  position: relative;
+  padding-bottom: 0.25em;
+  padding-left: 0.2em;
+  border-bottom: 2px solid rgba(124, 58, 237, 0.14);
+  font-weight: 700;
+}
+.md-typeset h2::before {
+  content: "";
+  position: absolute;
+  left: -0.55em;
+  top: 0.15em;
+  width: 5px;
+  height: 1.1em;
+  border-radius: 3px;
+  background: var(--evelina-grad);
+}
+.md-typeset h3 {
+  font-weight: 700;
+  color: var(--evelina-purple);
+}
+[data-md-color-scheme="slate"] .md-typeset h3 {
+  color: #c4b5fd;
+}
+
+/* 链接 */
+.md-typeset a {
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(124, 58, 237, 0.35);
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+.md-typeset a:hover {
+  color: var(--evelina-pink);
+  border-bottom: 1px solid var(--evelina-pink);
+}
+
+/* ==================== 引用块 / 提示框 ==================== */
+.md-typeset blockquote {
+  border-left: 4px solid var(--evelina-purple);
+  background: var(--evelina-grad-soft);
+  border-radius: 0 12px 12px 0;
+  padding: 0.6em 1em;
+  box-shadow: var(--evelina-shadow-sm);
+}
+
+/* admonition 提示框标题渐变 */
+.md-typeset .admonition {
+  border-radius: var(--evelina-radius);
+  box-shadow: var(--evelina-shadow-sm);
+  border: none;
+  border-left: 4px solid var(--evelina-purple);
+}
+.md-typeset .admonition-title {
+  background: var(--evelina-grad-soft);
+  border-radius: var(--evelina-radius) var(--evelina-radius) 0 0;
+  font-weight: 700;
+}
+
+/* ==================== 代码块美化 ==================== */
+.md-typeset code {
+  border-radius: 6px;
+  padding: 0.1em 0.4em;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.10);
+}
+[data-md-color-scheme="slate"] .md-typeset code {
+  background: rgba(196, 181, 253, 0.10);
+  border-color: rgba(196, 181, 253, 0.12);
+}
+
+/* 代码块容器 */
+.md-typeset pre > code {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+.md-typeset pre {
+  border-radius: var(--evelina-radius);
+  box-shadow: var(--evelina-shadow);
+  border: 1px solid rgba(124, 58, 237, 0.08);
+}
+/* 行号列 */
+.md-typeset pre > code .linenos {
+  color: rgba(124, 58, 237, 0.45);
+  border-right: 1px solid rgba(124, 58, 237, 0.12);
+  padding-right: 0.8em;
+}
+
+/* 复制按钮 hover */
+.md-clipboard {
+  color: rgba(124, 58, 237, 0.55);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+.md-clipboard:hover {
+  color: var(--evelina-pink);
+  transform: scale(1.1);
+}
+
+/* ==================== 表格美化 ==================== */
+.md-typeset table:not([class]) {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--evelina-shadow-sm);
+  border: 1px solid rgba(124, 58, 237, 0.10);
+}
+.md-typeset table:not([class]) th {
+  background: var(--evelina-grad);
+  color: #fff;
+  font-weight: 700;
+  border: none;
+}
+.md-typeset table:not([class]) td {
+  border-top: 1px solid rgba(124, 58, 237, 0.08);
+}
+.md-typeset table:not([class]) tr:hover td {
+  background: var(--evelina-grad-soft);
+  transition: background 0.2s ease;
+}
+
+/* ==================== 图片美化 ==================== */
+.md-typeset img {
+  border-radius: 10px;
+  box-shadow: var(--evelina-shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.md-typeset img:hover {
+  transform: scale(1.01);
+  box-shadow: var(--evelina-shadow);
+}
+
+/* ==================== 滚动条美化 ==================== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124, 58, 237, 0.4) transparent;
+}
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* ==================== PDF 预览 ==================== */
+.evelina-pdf-preview {
+  margin: 1.25rem 0;
+  overflow: hidden;
+  border: 1px solid rgba(124, 58, 237, 0.14);
+  border-radius: var(--evelina-radius);
+  background: var(--md-default-bg-color);
+  box-shadow: var(--evelina-shadow-sm);
+}
+
+.evelina-pdf-preview__frame {
+  display: block;
+  width: 100%;
+  height: min(76vh, 48rem);
+  min-height: 28rem;
+  border: 0;
+  background: #fff;
+}
+
+.evelina-pdf-preview__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 0.75rem;
+  border-top: 1px solid rgba(124, 58, 237, 0.12);
+  background: var(--evelina-grad-soft);
+}
+
+.evelina-pdf-preview__actions a {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.4rem 0.65rem;
+  background: var(--evelina-purple);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.evelina-pdf-preview__actions a:hover {
+  color: #fff;
+  filter: brightness(1.06);
+}
+
+@media screen and (max-width: 44.9375em) {
+  .evelina-pdf-preview__frame {
+    height: 70vh;
+    min-height: 22rem;
+  }
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--evelina-purple), var(--evelina-pink));
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--evelina-purple-2), var(--evelina-pink));
+  background-clip: padding-box;
+}
+
+/* ==================== 选中文字 ==================== */
+::selection {
+  background: rgba(236, 72, 153, 0.25);
+  color: inherit;
+}
+
+/* ==================== 返回顶部按钮 ==================== */
+.md-top {
+  background: var(--evelina-grad);
+  box-shadow: var(--evelina-shadow);
+  border-radius: 50px;
+}
+
+/* ==================== 页脚 ==================== */
+.md-footer {
+  background: var(--evelina-grad);
+}
+.md-footer-meta {
+  background: rgba(0, 0, 0, 0.15);
+}
+.md-footer__link:hover {
+  opacity: 0.85;
+}
+
+/* ==================== 首页专用：Hero & 卡片 ==================== */
+.evelina-hero {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  margin-bottom: 2rem;
+}
+.evelina-hero__avatar {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 1.2rem;
+  border-radius: 50%;
+  background: var(--evelina-grad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6rem;
+  color: #fff;
+  box-shadow: var(--evelina-shadow);
+  animation: evelina-float 4s ease-in-out infinite;
+}
+.evelina-hero__title {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin: 0.2em 0;
+  background: var(--evelina-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+}
+.evelina-hero__subtitle {
+  font-size: 1.05rem;
+  opacity: 0.75;
+  margin: 0.3em auto 1.4rem;
+  max-width: 38em;
+  line-height: 1.7;
+}
+.evelina-hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+.evelina-tag {
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: var(--evelina-grad-soft);
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  color: var(--evelina-purple);
+}
+[data-md-color-scheme="slate"] .evelina-tag {
+  color: #d8b4fe;
+}
+
+/* 课程卡片网格 */
+.evelina-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 2rem 0;
+}
+.evelina-card {
+  display: block;
+  text-decoration: none !important;
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  border-radius: var(--evelina-radius);
+  padding: 1.2rem 1.1rem;
+  background: var(--evelina-grad-soft);
+  box-shadow: var(--evelina-shadow-sm);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+.evelina-card::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -30%;
+  width: 120px;
+  height: 120px;
+  background: var(--evelina-grad);
+  opacity: 0.10;
+  border-radius: 50%;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.evelina-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--evelina-shadow);
+  border-color: rgba(124, 58, 237, 0.30);
+}
+.evelina-card:hover::after {
+  transform: scale(1.6);
+  opacity: 0.16;
+}
+.evelina-card__icon {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.evelina-card__title {
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin: 0 0 0.3em;
+  color: var(--md-typeset-color) !important;
+  border: none !important;
+}
+.evelina-card__desc {
+  font-size: 0.85rem;
+  opacity: 0.65;
+  line-height: 1.5;
+  border: none !important;
+}
+
+/* 信息条 */
+.evelina-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  justify-content: center;
+  margin: 1.5rem 0;
+  padding: 1rem 1.4rem;
+  border-radius: var(--evelina-radius);
+  background: var(--evelina-grad-soft);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+}
+.evelina-info__item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+.evelina-info__item b {
+  color: var(--evelina-purple);
+}
+[data-md-color-scheme="slate"] .evelina-info__item b {
+  color: #d8b4fe;
+}
+
+/* 浮动动画 */
+@keyframes evelina-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* ==================== 页面互动栏（阅读计数 + 点赞） ==================== */
 .interaction-bar {
   display: flex;
   align-items: center;
@@ -9,19 +461,15 @@
   margin-top: 3rem;
   margin-bottom: 1rem;
   padding: 14px 24px;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(156, 39, 176, 0.06), rgba(123, 31, 162, 0.10));
-  border: 1px solid rgba(156, 39, 176, 0.15);
+  border-radius: var(--evelina-radius);
+  background: var(--evelina-grad-soft);
+  border: 1px solid rgba(124, 58, 237, 0.15);
   transition: all 0.3s ease;
 }
-
 .interaction-bar:hover {
-  background: linear-gradient(135deg, rgba(156, 39, 176, 0.10), rgba(123, 31, 162, 0.15));
-  border-color: rgba(156, 39, 176, 0.30);
-  box-shadow: 0 4px 12px rgba(156, 39, 176, 0.10);
+  border-color: rgba(124, 58, 237, 0.30);
+  box-shadow: var(--evelina-shadow-sm);
 }
-
-/* 每个互动项 */
 .interaction-item {
   display: flex;
   align-items: center;
@@ -33,118 +481,53 @@
   color: var(--md-typeset-color);
   user-select: none;
 }
-
-/* 点赞按钮悬停效果 */
-.interaction-likes:hover {
-  background: rgba(156, 39, 176, 0.08);
-}
-
-/* 点赞按钮按下效果 */
-.interaction-likes:active {
-  transform: scale(0.92);
-}
-
-/* 点赞闪光动画 */
-.interaction-likes.liked-flash {
-  background: rgba(233, 30, 99, 0.12);
-  border-radius: 10px;
-}
-
-/* 图标样式 */
-.interaction-icon {
-  font-size: 1.1rem;
-  line-height: 1;
-  transition: transform 0.2s ease;
-  display: inline-block;
-}
-
-/* 文字标签 */
-.interaction-label {
-  opacity: 0.75;
-  font-size: 0.82rem;
-}
-
-/* 数字 */
+.interaction-likes:hover { background: rgba(124, 58, 237, 0.08); }
+.interaction-likes:active { transform: scale(0.92); }
+.interaction-likes.liked-flash { background: rgba(236, 72, 153, 0.14); }
+.interaction-icon { font-size: 1.1rem; line-height: 1; transition: transform 0.2s ease; display: inline-block; }
+.interaction-label { opacity: 0.75; font-size: 0.82rem; }
 .interaction-number {
   font-weight: 700;
   font-size: 0.95rem;
-  color: var(--md-primary-fg-color);
+  color: var(--evelina-purple);
   min-width: 2ch;
   text-align: center;
   font-variant-numeric: tabular-nums;
 }
+[data-md-color-scheme="slate"] .interaction-number { color: #c4b5fd; }
 
-/* ==================== Giscus 评论区样式 ==================== */
-
-/* 评论区容器 */
+/* ==================== Giscus 评论区 ==================== */
 #giscus-comments {
   margin-top: 2.5rem;
   margin-bottom: 1.5rem;
   padding-top: 1.5rem;
-  border-top: 2px solid rgba(156, 39, 176, 0.12);
+  border-top: 2px solid rgba(124, 58, 237, 0.14);
 }
-
-/* giscus iframe 自适应 */
 .giscus,
 .giscus-frame {
   width: 100% !important;
   max-width: 100% !important;
 }
 
-/* ==================== 代码块美化 ==================== */
-
-/* 代码块美化 */
-.md-typeset code {
-  border-radius: 4px;
-}
-
-/* 表格美化 */
-.md-typeset table:not([class]) {
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-}
-
-.md-typeset table:not([class]) th {
-  background-color: var(--md-primary-fg-color);
-  color: white;
-  font-weight: 600;
-}
-
-/* 标题加一点点紫色装饰 */
-.md-typeset h1 {
-  border-bottom: 3px solid rgba(156, 39, 176, 0.20);
-  padding-bottom: 0.3em;
-}
-
-.md-typeset h2 {
-  border-bottom: 2px solid rgba(156, 39, 176, 0.12);
-  padding-bottom: 0.2em;
-}
-
-/* 链接颜色微调 */
-.md-typeset a {
-  text-decoration: none;
-  border-bottom: 1px dotted rgba(156, 39, 176, 0.30);
-}
-
-.md-typeset a:hover {
-  border-bottom-style: solid;
-}
-
-/* 引用块美化 */
-.md-typeset blockquote {
-  border-left: 4px solid var(--md-primary-fg-color);
-  background: rgba(156, 39, 176, 0.03);
-  border-radius: 0 8px 8px 0;
+/* ==================== 阅读进度条（顶部） ==================== */
+.evelina-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0%;
+  z-index: 1000;
+  background: var(--evelina-grad);
+  box-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
+  transition: width 0.1s linear;
 }
 
 /* ==================== 响应式 ==================== */
-
+@media (max-width: 768px) {
+  .evelina-hero__title { font-size: 1.8rem; }
+  .evelina-hero__avatar { width: 76px; height: 76px; font-size: 2rem; }
+}
 @media (max-width: 500px) {
-  .interaction-bar {
-    flex-direction: column;
-    gap: 8px;
-    padding: 10px 18px;
-  }
+  .interaction-bar { flex-direction: column; gap: 8px; padding: 10px 18px; }
+  .evelina-info { flex-direction: column; gap: 6px; }
 }
