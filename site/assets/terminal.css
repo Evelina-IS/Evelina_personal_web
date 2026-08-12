@@ -1,18 +1,18 @@
 :root {
   color-scheme: dark;
-  --bg: #030503;
-  --panel: #071007;
-  --line: #173a28;
-  --green: #97c8a3;
-  --green2: #bed5c4;
-  --text: #d4e3d7;
-  --muted: #84978a;
+  --bg: #141618;
+  --panel: #1b1f22;
+  --line: #31373c;
+  --green: #a8c2ad;
+  --green2: #c9d5cc;
+  --text: #dde4de;
+  --muted: #8f9b93;
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; margin: 0; }
 body {
   background:
-    linear-gradient(rgba(151,200,163,.016) 1px, transparent 1px),
+    linear-gradient(rgba(168,194,173,.012) 1px, transparent 1px),
     var(--bg);
   background-size: 100% 22px;
   color: var(--green);
@@ -29,7 +29,7 @@ button, a { font: inherit; color: inherit; }
 }
 .sidebar {
   border-right: 1px solid var(--line);
-  background: rgba(7,16,7,.8);
+  background: rgba(27,31,34,.86);
   overflow: auto;
 }
 .brand {
@@ -39,7 +39,7 @@ button, a { font: inherit; color: inherit; }
 .prompt {
   display: inline-block;
   padding: 4px 10px;
-  background: #041004;
+  background: #1a1e21;
   border: 1px solid var(--line);
   color: var(--green2);
   font-size: 12px;
@@ -52,7 +52,7 @@ button, a { font: inherit; color: inherit; }
 .brand p { margin: 0; color: var(--muted); }
 .tree { padding: 10px 0 20px; }
 details {
-  border-bottom: 1px solid rgba(13,64,32,.7);
+  border-bottom: 1px solid rgba(49,55,60,.8);
 }
 summary {
   cursor: pointer;
@@ -69,13 +69,13 @@ summary::-webkit-details-marker { display: none; }
   text-align: left;
   padding: 10px 22px;
   border: 0;
-  border-top: 1px dotted rgba(13,64,32,.45);
+  border-top: 1px dotted rgba(49,55,60,.45);
   background: transparent;
   color: var(--text);
   cursor: pointer;
 }
 .file:hover, .file.active {
-  background: rgba(151,200,163,.05);
+  background: rgba(168,194,173,.06);
   color: var(--green2);
 }
 .viewer {
@@ -89,7 +89,7 @@ summary::-webkit-details-marker { display: none; }
   gap: 12px;
   padding: 12px 16px;
   border-bottom: 1px solid var(--line);
-  background: rgba(2,4,2,.9);
+  background: rgba(20,22,24,.94);
   color: var(--green2);
 }
 .content {
@@ -108,7 +108,7 @@ summary::-webkit-details-marker { display: none; }
 .doc a { color: var(--green2); }
 .doc code {
   padding: 0 4px;
-  background: #061006;
+  background: #1a1e21;
   border: 1px solid var(--line);
 }
 .doc--pdf {
