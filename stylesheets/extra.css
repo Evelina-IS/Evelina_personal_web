@@ -1,232 +1,295 @@
-/* =====================================================================
-   Evelina's Personal Web — 主题样式增强
-   基色 deep purple，配合紫粉渐变与柔光，深浅色自适应
-   ===================================================================== */
-
-/* ==================== CSS 变量：品牌色系 ==================== */
-:root {
-  --evelina-purple:    #7c3aed;
-  --evelina-purple-2:  #9333ea;
-  --evelina-pink:      #ec4899;
-  --evelina-indigo:    #6366f1;
-  --evelina-grad:      linear-gradient(135deg, #7c3aed 0%, #9333ea 45%, #ec4899 100%);
-  --evelina-grad-soft: linear-gradient(135deg, rgba(124,58,237,.10), rgba(236,72,153,.10));
-  --evelina-shadow:   0 8px 30px rgba(124, 58, 237, 0.12);
-  --evelina-shadow-sm: 0 2px 10px rgba(124, 58, 237, 0.08);
-  --evelina-radius:    14px;
-}
-
+:root,
+[data-md-color-scheme="default"],
 [data-md-color-scheme="slate"] {
-  --evelina-grad-soft: linear-gradient(135deg, rgba(124,58,237,.18), rgba(236,72,153,.14));
-  --evelina-shadow:    0 8px 30px rgba(0, 0, 0, 0.35);
-  --evelina-shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.30);
+  --md-default-bg-color: #050805;
+  --md-default-fg-color: #00ff66;
+  --md-default-fg-color--light: #38d878;
+  --md-default-fg-color--lighter: #1f9d55;
+  --md-primary-fg-color: #050805;
+  --md-primary-bg-color: #00ff66;
+  --md-accent-fg-color: #7cff9e;
+  --md-typeset-color: #00ff66;
+  --md-typeset-a-color: #7cff9e;
+  --md-code-bg-color: #071107;
+  --md-code-fg-color: #b5ffca;
+  --md-footer-bg-color: #050805;
+  --md-footer-bg-color--dark: #020402;
 }
 
-/* ==================== 顶部标题栏：渐变品牌色 ==================== */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00aa44 #050805;
+}
+
+::selection {
+  background: #00ff66;
+  color: #050805;
+}
+
+body {
+  background:
+    linear-gradient(rgba(0, 255, 102, 0.035) 1px, transparent 1px),
+    #050805;
+  background-size: 100% 1.45rem;
+  color: #00ff66;
+}
+
+body,
+input,
+.md-typeset,
+.md-nav,
+.md-search__input {
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+.md-header,
+.md-tabs,
+.md-footer {
+  background: #020402;
+  color: #00ff66;
+  border-color: #00aa44;
+  box-shadow: none;
+}
+
 .md-header {
-  background: var(--evelina-grad);
-  box-shadow: 0 2px 14px rgba(124, 58, 237, 0.25);
-}
-.md-header__title {
-  font-weight: 700;
-  letter-spacing: 0.3px;
-}
-.md-header__topic:first-child {
-  font-weight: 700;
+  border-bottom: 1px solid #00aa44;
 }
 
-/* 顶部 header 的"编辑本页"等按钮 hover */
-.md-header__button:hover {
-  opacity: 0.85;
+.md-header__title,
+.md-tabs__link,
+.md-footer,
+.md-footer-meta {
+  color: #00ff66;
 }
 
-/* ==================== 侧边栏导航 ==================== */
+.md-header__button,
+.md-search__icon,
+.md-source,
+.md-nav__icon {
+  color: #00ff66;
+}
+
+.md-search__form {
+  background: #071107;
+  border: 1px solid #00aa44;
+  border-radius: 0;
+}
+
+.md-search__input {
+  color: #00ff66;
+}
+
+.md-main__inner {
+  margin-top: 0;
+}
+
+.md-content {
+  background: transparent;
+}
+
+.md-content__inner {
+  padding-top: 1.2rem;
+}
+
+.md-sidebar {
+  color: #00cc55;
+}
+
 .md-nav {
-  font-size: 0.78rem;
+  font-size: 0.74rem;
+  line-height: 1.45;
 }
-.md-nav__item {
-  margin: 1px 0;
+
+.md-nav__title {
+  background: #050805;
+  color: #7cff9e;
+  box-shadow: none;
+  border-bottom: 1px solid #004d22;
 }
+
 .md-nav__link {
-  border-radius: 8px;
-  transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease;
-  margin: 0 6px;
-  padding: 6px 12px;
+  color: #00cc55;
+  border-radius: 0;
+  padding: 0.1rem 0;
 }
+
 .md-nav__link:hover,
 .md-nav__link--active {
-  background: var(--evelina-grad-soft);
+  color: #b5ffca;
+  background: transparent;
 }
-.md-nav__link--active {
+
+.md-nav__link--active::before,
+.md-typeset .folder-index a::before {
+  content: "> ";
+  color: #00ff66;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4 {
+  color: #7cff9e;
   font-weight: 600;
-  color: var(--evelina-purple);
-}
-[data-md-color-scheme="slate"] .md-nav__link--active {
-  color: #c4b5fd;
+  letter-spacing: 0;
 }
 
-/* 折叠小三角的过渡 */
-.md-nav__toggle ~ .md-nav .md-nav__item {
-  transition: opacity 0.25s ease;
-}
-
-/* ==================== 正文区域：标题装饰 ==================== */
 .md-typeset h1 {
-  border-bottom: 3px solid transparent;
-  border-image: var(--evelina-grad) 1;
-  padding-bottom: 0.4em;
-  font-weight: 800;
-  letter-spacing: 0.2px;
+  margin: 0 0 1rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid #00aa44;
+  font-size: 1.55rem;
+}
+
+.md-typeset h1::before {
+  content: "$ ";
+  color: #00ff66;
 }
 
 .md-typeset h2 {
-  position: relative;
-  padding-bottom: 0.25em;
-  padding-left: 0.2em;
-  border-bottom: 2px solid rgba(124, 58, 237, 0.14);
-  font-weight: 700;
+  margin-top: 1.6rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px dashed #006b2f;
+  font-size: 1.05rem;
 }
+
 .md-typeset h2::before {
-  content: "";
-  position: absolute;
-  left: -0.55em;
-  top: 0.15em;
-  width: 5px;
-  height: 1.1em;
-  border-radius: 3px;
-  background: var(--evelina-grad);
+  content: "./";
+  color: #00ff66;
 }
+
 .md-typeset h3 {
-  font-weight: 700;
-  color: var(--evelina-purple);
-}
-[data-md-color-scheme="slate"] .md-typeset h3 {
-  color: #c4b5fd;
+  font-size: 0.9rem;
 }
 
-/* 链接 */
 .md-typeset a {
+  color: #7cff9e;
+  border-bottom: 1px dotted #00aa44;
   text-decoration: none;
-  border-bottom: 1px dashed rgba(124, 58, 237, 0.35);
-  transition: color 0.2s ease, border-bottom-color 0.2s ease;
 }
+
 .md-typeset a:hover {
-  color: var(--evelina-pink);
-  border-bottom: 1px solid var(--evelina-pink);
+  color: #050805;
+  background: #00ff66;
+  border-bottom-color: #00ff66;
 }
 
-/* ==================== 引用块 / 提示框 ==================== */
-.md-typeset blockquote {
-  border-left: 4px solid var(--evelina-purple);
-  background: var(--evelina-grad-soft);
-  border-radius: 0 12px 12px 0;
-  padding: 0.6em 1em;
-  box-shadow: var(--evelina-shadow-sm);
+.md-typeset p,
+.md-typeset li {
+  color: #00dd5d;
 }
 
-/* admonition 提示框标题渐变 */
-.md-typeset .admonition {
-  border-radius: var(--evelina-radius);
-  box-shadow: var(--evelina-shadow-sm);
-  border: none;
-  border-left: 4px solid var(--evelina-purple);
-}
-.md-typeset .admonition-title {
-  background: var(--evelina-grad-soft);
-  border-radius: var(--evelina-radius) var(--evelina-radius) 0 0;
-  font-weight: 700;
+.md-typeset ul {
+  margin-left: 0;
+  list-style: none;
 }
 
-/* ==================== 代码块美化 ==================== */
-.md-typeset code {
-  border-radius: 6px;
-  padding: 0.1em 0.4em;
-  background: rgba(124, 58, 237, 0.08);
-  border: 1px solid rgba(124, 58, 237, 0.10);
-}
-[data-md-color-scheme="slate"] .md-typeset code {
-  background: rgba(196, 181, 253, 0.10);
-  border-color: rgba(196, 181, 253, 0.12);
+.md-typeset li {
+  margin: 0.18rem 0;
 }
 
-/* 代码块容器 */
+.md-typeset li::marker {
+  color: #00ff66;
+}
+
+.md-typeset code,
+.md-typeset pre,
 .md-typeset pre > code {
-  background: transparent;
-  border: none;
+  background: #071107;
+  color: #b5ffca;
+  border: 1px solid #005f2a;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.md-typeset code {
+  padding: 0.05rem 0.25rem;
+}
+
+.md-typeset table:not([class]) {
+  background: #050805;
+  border: 1px solid #00aa44;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.md-typeset table:not([class]) th,
+.md-typeset table:not([class]) td {
+  border-color: #005f2a;
+}
+
+.md-typeset table:not([class]) th {
+  background: #071107;
+  color: #7cff9e;
+}
+
+.md-typeset blockquote,
+.md-typeset .admonition {
+  background: #071107;
+  border: 1px solid #005f2a;
+  border-left: 3px solid #00ff66;
+  border-radius: 0;
+  box-shadow: none;
+  color: #00dd5d;
+}
+
+.md-typeset .admonition-title {
+  background: #0a160a;
+  color: #7cff9e;
+}
+
+.md-typeset img {
+  border: 1px solid #005f2a;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.md-top {
+  background: #071107;
+  color: #00ff66;
+  border: 1px solid #00aa44;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.folder-index {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #071107;
+  border: 1px solid #00aa44;
+}
+
+.folder-index p {
+  margin: 0 0 0.5rem;
+  color: #7cff9e;
+}
+
+.folder-index ul {
+  margin: 0;
   padding: 0;
 }
-.md-typeset pre {
-  border-radius: var(--evelina-radius);
-  box-shadow: var(--evelina-shadow);
-  border: 1px solid rgba(124, 58, 237, 0.08);
-}
-/* 行号列 */
-.md-typeset pre > code .linenos {
-  color: rgba(124, 58, 237, 0.45);
-  border-right: 1px solid rgba(124, 58, 237, 0.12);
-  padding-right: 0.8em;
+
+.folder-index li {
+  margin: 0.25rem 0;
+  padding: 0;
 }
 
-/* 复制按钮 hover */
-.md-clipboard {
-  color: rgba(124, 58, 237, 0.55);
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-.md-clipboard:hover {
-  color: var(--evelina-pink);
-  transform: scale(1.1);
+.folder-index .dir a::after {
+  content: "/";
 }
 
-/* ==================== 表格美化 ==================== */
-.md-typeset table:not([class]) {
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: var(--evelina-shadow-sm);
-  border: 1px solid rgba(124, 58, 237, 0.10);
-}
-.md-typeset table:not([class]) th {
-  background: var(--evelina-grad);
-  color: #fff;
-  font-weight: 700;
-  border: none;
-}
-.md-typeset table:not([class]) td {
-  border-top: 1px solid rgba(124, 58, 237, 0.08);
-}
-.md-typeset table:not([class]) tr:hover td {
-  background: var(--evelina-grad-soft);
-  transition: background 0.2s ease;
+.terminal-note {
+  color: #1f9d55;
+  font-size: 0.78rem;
 }
 
-/* ==================== 图片美化 ==================== */
-.md-typeset img {
-  border-radius: 10px;
-  box-shadow: var(--evelina-shadow-sm);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.md-typeset img:hover {
-  transform: scale(1.01);
-  box-shadow: var(--evelina-shadow);
-}
-
-/* ==================== 滚动条美化 ==================== */
-* {
-  scrollbar-width: thin;
-  scrollbar-color: rgba(124, 58, 237, 0.4) transparent;
-}
-::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
-}
-
-/* ==================== PDF 预览 ==================== */
 .evelina-pdf-preview {
-  margin: 1.25rem 0;
+  margin: 1rem 0;
   overflow: hidden;
-  border: 1px solid rgba(124, 58, 237, 0.14);
-  border-radius: var(--evelina-radius);
-  background: var(--md-default-bg-color);
-  box-shadow: var(--evelina-shadow-sm);
+  border: 1px solid #00aa44;
+  border-radius: 0;
+  background: #071107;
+  box-shadow: none;
 }
 
 .evelina-pdf-preview__frame {
@@ -235,299 +298,43 @@
   height: min(76vh, 48rem);
   min-height: 28rem;
   border: 0;
-  background: #fff;
+  background: #ffffff;
 }
 
 .evelina-pdf-preview__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.6rem;
-  padding: 0.75rem;
-  border-top: 1px solid rgba(124, 58, 237, 0.12);
-  background: var(--evelina-grad-soft);
+  gap: 0.5rem;
+  padding: 0.6rem;
+  border-top: 1px solid #00aa44;
+  background: #050805;
 }
 
 .evelina-pdf-preview__actions a {
-  border: 0;
-  border-radius: 8px;
-  padding: 0.4rem 0.65rem;
-  background: var(--evelina-purple);
-  color: #fff;
+  border: 1px solid #00aa44;
+  padding: 0.25rem 0.5rem;
+  background: #071107;
+  color: #7cff9e;
   font-size: 0.72rem;
-  font-weight: 700;
 }
 
-.evelina-pdf-preview__actions a:hover {
-  color: #fff;
-  filter: brightness(1.06);
+.interaction-bar,
+#giscus-comments {
+  border-color: #005f2a;
+  background: transparent;
 }
 
 @media screen and (max-width: 44.9375em) {
+  .md-typeset h1 {
+    font-size: 1.25rem;
+  }
+
+  .folder-index {
+    padding: 0.7rem;
+  }
+
   .evelina-pdf-preview__frame {
     height: 70vh;
     min-height: 22rem;
   }
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, var(--evelina-purple), var(--evelina-pink));
-  border-radius: 10px;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, var(--evelina-purple-2), var(--evelina-pink));
-  background-clip: padding-box;
-}
-
-/* ==================== 选中文字 ==================== */
-::selection {
-  background: rgba(236, 72, 153, 0.25);
-  color: inherit;
-}
-
-/* ==================== 返回顶部按钮 ==================== */
-.md-top {
-  background: var(--evelina-grad);
-  box-shadow: var(--evelina-shadow);
-  border-radius: 50px;
-}
-
-/* ==================== 页脚 ==================== */
-.md-footer {
-  background: var(--evelina-grad);
-}
-.md-footer-meta {
-  background: rgba(0, 0, 0, 0.15);
-}
-.md-footer__link:hover {
-  opacity: 0.85;
-}
-
-/* ==================== 首页专用：Hero & 卡片 ==================== */
-.evelina-hero {
-  text-align: center;
-  padding: 3rem 1rem 2rem;
-  margin-bottom: 2rem;
-}
-.evelina-hero__avatar {
-  width: 96px;
-  height: 96px;
-  margin: 0 auto 1.2rem;
-  border-radius: 50%;
-  background: var(--evelina-grad);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.6rem;
-  color: #fff;
-  box-shadow: var(--evelina-shadow);
-  animation: evelina-float 4s ease-in-out infinite;
-}
-.evelina-hero__title {
-  font-size: 2.4rem;
-  font-weight: 800;
-  margin: 0.2em 0;
-  background: var(--evelina-grad);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: 1px;
-}
-.evelina-hero__subtitle {
-  font-size: 1.05rem;
-  opacity: 0.75;
-  margin: 0.3em auto 1.4rem;
-  max-width: 38em;
-  line-height: 1.7;
-}
-.evelina-hero__tags {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-}
-.evelina-tag {
-  padding: 4px 14px;
-  border-radius: 50px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  background: var(--evelina-grad-soft);
-  border: 1px solid rgba(124, 58, 237, 0.18);
-  color: var(--evelina-purple);
-}
-[data-md-color-scheme="slate"] .evelina-tag {
-  color: #d8b4fe;
-}
-
-/* 课程卡片网格 */
-.evelina-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
-  margin: 2rem 0;
-}
-.evelina-card {
-  display: block;
-  text-decoration: none !important;
-  border: 1px solid rgba(124, 58, 237, 0.12);
-  border-radius: var(--evelina-radius);
-  padding: 1.2rem 1.1rem;
-  background: var(--evelina-grad-soft);
-  box-shadow: var(--evelina-shadow-sm);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-  position: relative;
-  overflow: hidden;
-}
-.evelina-card::after {
-  content: "";
-  position: absolute;
-  top: -40%;
-  right: -30%;
-  width: 120px;
-  height: 120px;
-  background: var(--evelina-grad);
-  opacity: 0.10;
-  border-radius: 50%;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-.evelina-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--evelina-shadow);
-  border-color: rgba(124, 58, 237, 0.30);
-}
-.evelina-card:hover::after {
-  transform: scale(1.6);
-  opacity: 0.16;
-}
-.evelina-card__icon {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-  display: block;
-}
-.evelina-card__title {
-  font-size: 1.08rem;
-  font-weight: 700;
-  margin: 0 0 0.3em;
-  color: var(--md-typeset-color) !important;
-  border: none !important;
-}
-.evelina-card__desc {
-  font-size: 0.85rem;
-  opacity: 0.65;
-  line-height: 1.5;
-  border: none !important;
-}
-
-/* 信息条 */
-.evelina-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 28px;
-  justify-content: center;
-  margin: 1.5rem 0;
-  padding: 1rem 1.4rem;
-  border-radius: var(--evelina-radius);
-  background: var(--evelina-grad-soft);
-  border: 1px solid rgba(124, 58, 237, 0.12);
-}
-.evelina-info__item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.9rem;
-}
-.evelina-info__item b {
-  color: var(--evelina-purple);
-}
-[data-md-color-scheme="slate"] .evelina-info__item b {
-  color: #d8b4fe;
-}
-
-/* 浮动动画 */
-@keyframes evelina-float {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
-}
-
-/* ==================== 页面互动栏（阅读计数 + 点赞） ==================== */
-.interaction-bar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 3rem;
-  margin-bottom: 1rem;
-  padding: 14px 24px;
-  border-radius: var(--evelina-radius);
-  background: var(--evelina-grad-soft);
-  border: 1px solid rgba(124, 58, 237, 0.15);
-  transition: all 0.3s ease;
-}
-.interaction-bar:hover {
-  border-color: rgba(124, 58, 237, 0.30);
-  box-shadow: var(--evelina-shadow-sm);
-}
-.interaction-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 14px;
-  border-radius: 10px;
-  transition: all 0.25s ease;
-  font-size: 0.9rem;
-  color: var(--md-typeset-color);
-  user-select: none;
-}
-.interaction-likes:hover { background: rgba(124, 58, 237, 0.08); }
-.interaction-likes:active { transform: scale(0.92); }
-.interaction-likes.liked-flash { background: rgba(236, 72, 153, 0.14); }
-.interaction-icon { font-size: 1.1rem; line-height: 1; transition: transform 0.2s ease; display: inline-block; }
-.interaction-label { opacity: 0.75; font-size: 0.82rem; }
-.interaction-number {
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--evelina-purple);
-  min-width: 2ch;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
-}
-[data-md-color-scheme="slate"] .interaction-number { color: #c4b5fd; }
-
-/* ==================== Giscus 评论区 ==================== */
-#giscus-comments {
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 2px solid rgba(124, 58, 237, 0.14);
-}
-.giscus,
-.giscus-frame {
-  width: 100% !important;
-  max-width: 100% !important;
-}
-
-/* ==================== 阅读进度条（顶部） ==================== */
-.evelina-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  width: 0%;
-  z-index: 1000;
-  background: var(--evelina-grad);
-  box-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
-  transition: width 0.1s linear;
-}
-
-/* ==================== 响应式 ==================== */
-@media (max-width: 768px) {
-  .evelina-hero__title { font-size: 1.8rem; }
-  .evelina-hero__avatar { width: 76px; height: 76px; font-size: 2rem; }
-}
-@media (max-width: 500px) {
-  .interaction-bar { flex-direction: column; gap: 8px; padding: 10px 18px; }
-  .evelina-info { flex-direction: column; gap: 6px; }
 }
