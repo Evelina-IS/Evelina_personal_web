@@ -1,0 +1,109 @@
+:root {
+  color-scheme: dark;
+  --bg: #030503;
+  --bg2: #071007;
+  --line: #0a3d1f;
+  --green: #00ff66;
+  --green2: #8fffb0;
+  --text: #b5ffca;
+  --muted: #42b66a;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0;
+  background:
+    linear-gradient(rgba(0, 255, 102, 0.04) 1px, transparent 1px),
+    var(--bg);
+  background-size: 100% 22px;
+  color: var(--green);
+  font: 14px/1.6 "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+a { color: inherit; text-decoration: none; }
+body::selection { background: var(--green); color: var(--bg); }
+
+.shell {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.hero {
+  padding: 20px 0 28px;
+  border-bottom: 1px solid var(--line);
+}
+
+.prompt {
+  display: inline-block;
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  background: var(--bg2);
+  color: var(--green2);
+  font-size: 12px;
+}
+
+.hero h1 {
+  margin: 16px 0 8px;
+  font-size: clamp(28px, 5vw, 52px);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.panel {
+  margin-top: 28px;
+  border: 1px solid var(--line);
+  background: rgba(7, 16, 7, 0.72);
+}
+
+.panel__title {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--green2);
+  text-transform: lowercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.entry {
+  display: grid;
+  gap: 4px;
+  padding: 16px 14px;
+  border-right: 1px solid rgba(10, 61, 31, 0.65);
+  border-bottom: 1px solid rgba(10, 61, 31, 0.65);
+  min-height: 108px;
+}
+
+.entry:hover {
+  background: rgba(0, 255, 102, 0.08);
+}
+
+.entry__section {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.entry__name {
+  color: var(--green2);
+  font-size: 16px;
+}
+
+.entry__desc {
+  color: var(--text);
+  opacity: 0.88;
+}
+
+@media (max-width: 640px) {
+  .shell { padding: 18px 12px 28px; }
+  .grid { grid-template-columns: 1fr; }
+  .entry { border-right: 0; }
+}

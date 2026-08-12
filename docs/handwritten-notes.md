@@ -10,5 +10,5 @@
 
 ```bash
 python3 scripts/generate_pdf_index.py
-mkdocs gh-deploy --force
+python3 scripts/build_site.py
 ```

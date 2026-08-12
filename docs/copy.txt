@@ -1,4 +1,4 @@
 git add .
 git commit -m "1"
 git push
-python -m mkdocs gh-deploy
+python3 scripts/build_site.py
