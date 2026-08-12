@@ -143,9 +143,12 @@
         content.innerHTML = `
           <div class="doc doc--pdf">
             <h1>${title}</h1>
-            <iframe class="pdf-frame" src="${path}" title="${title}"></iframe>
+            <p class="pdf-note">PDF 预览在浏览器新标签打开。</p>
+            <a class="pdf-open" href="${path}" target="_blank" rel="noopener">Open PDF</a>
           </div>
         `;
+        const link = content.querySelector('.pdf-open');
+        if (link) link.click();
         status.textContent = 'ready';
         return;
       }
