@@ -24,7 +24,7 @@
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../../theme/assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -50,14 +50,18 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+      <link rel="stylesheet" href="../../../theme/css/variables.css">
     
-      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../theme/css/main.css">
+    
+      <link rel="stylesheet" href="../../../theme/css/features.css">
+    
+      <link rel="stylesheet" href="../../../theme/css/home.css">
     
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -65,15 +69,50 @@
 
     
     
+  
+  <script>
+    (function () {
+      try {
+        var dark = matchMedia("(prefers-color-scheme: dark)").matches;
+        var scheme = dark ? "slate" : "default";
+        document.documentElement.setAttribute("data-md-color-scheme", scheme);
+        var link = document.createElement("link");
+        link.id = "hljs-theme";
+        link.rel = "stylesheet";
+        link.href = dark
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+        document.head.appendChild(link);
+        // body 加载后同步 attribute（bundle 切换主题时写 body，这里保证 html 跟随）
+        var attach = function () {
+          document.body.setAttribute("data-md-color-scheme", scheme);
+          new MutationObserver(function () {
+            var s = document.body.getAttribute("data-md-color-scheme");
+            if (s) document.documentElement.setAttribute("data-md-color-scheme", s);
+          }).observe(document.body, {
+            attributes: true,
+            attributeFilter: ["data-md-color-scheme"],
+          });
+        };
+        if (document.body) attach();
+        else new MutationObserver(function (_, obs) {
+          if (document.body) { attach(); obs.disconnect(); }
+        }).observe(document.documentElement, { childList: true });
+      } catch (e) {}
+    })();
+  </script>
+
   </head>
   
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="green">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -82,7 +121,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#pc" class="md-skip">
+        <a href="#第六课联结词集完备性形式系统pc" class="md-skip">
           跳转至
         </a>
       
@@ -94,15 +133,16 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../../.." title="Evelina_IS" class="md-header__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
-
+      <!-- Logo：复用 favicon.svg 的方角图标 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="bf-logo" role="img" aria-label="Evelina" width="64" height="64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#409ba5"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Courier New, Courier, monospace"
+        font-size="42" font-weight="700" fill="#ffffff">E</text>
+</svg>
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
@@ -126,7 +166,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="跟随系统"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="跟随系统" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07zm-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13zm-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87zM19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35zm4.33-2.7 1.15-2.77 2.2 2.54zm1.15-4.96-1.14-2.78 3.34.24zM9.63 18.93l2.77 1.15-2.53 2.19z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="深色模式"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="深色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -148,6 +224,11 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
         
         <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
@@ -194,6 +275,238 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../oneinall/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  网站大全
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../handwritten-notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  手写笔记
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../fds/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FDSNOTE
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../reports/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Reports
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../%E5%A4%A7%E7%89%A9%E4%B9%991/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8_%E5%89%AF%E6%9C%AC/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  大物乙1
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  git 的使用
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../probability/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  概率论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  离散数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../SYS1/sys%E6%B1%87%E7%BC%96/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SYS 体系结构
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../%E5%A4%A7%E7%89%A9/%E5%8A%9B%E5%AD%A6%E4%B8%8E%E6%8C%AF%E5%8A%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  大学物理
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -207,14 +520,19 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../../.." title="Evelina_IS" class="md-nav__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
-
+      <!-- Logo：复用 favicon.svg 的方角图标 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="bf-logo" role="img" aria-label="Evelina" width="64" height="64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#409ba5"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Courier New, Courier, monospace"
+        font-size="42" font-weight="700" fill="#ffffff">E</text>
+</svg>
     </a>
     Evelina_IS
   </label>
@@ -438,14 +756,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -520,8 +839,14 @@
     
     
     
+      
+        
+        
+      
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
@@ -547,7 +872,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -774,6 +1099,9 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
@@ -962,7 +1290,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#page-2" class="md-nav__link">
+  <a href="#page-2--功能完备集" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 2 — 功能完备集
@@ -973,7 +1301,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-3" class="md-nav__link">
+  <a href="#page-3--冗余联结词" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 3 — 冗余联结词
@@ -984,7 +1312,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-4" class="md-nav__link">
+  <a href="#page-4--极小功能完备集" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 4 — 极小功能完备集
@@ -995,7 +1323,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-5" class="md-nav__link">
+  <a href="#page-5--单联结词功能完备集" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 5 — 单联结词功能完备集
@@ -1006,7 +1334,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-6" class="md-nav__link">
+  <a href="#page-6--非功能完备集证明" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 6 — 非功能完备集证明
@@ -1017,7 +1345,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-7-8" class="md-nav__link">
+  <a href="#page-7-8--形式系统概述" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 7-8 — 形式系统概述
@@ -1028,7 +1356,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-9-proof" class="md-nav__link">
+  <a href="#page-9--证明proof" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 9 — 证明（Proof）
@@ -1039,7 +1367,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-10-deduction" class="md-nav__link">
+  <a href="#page-10--演绎deduction" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 10 — 演绎（Deduction）
@@ -1050,7 +1378,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-11-12-pc" class="md-nav__link">
+  <a href="#page-11-12--命题演算形式系统pc" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 11-12 — 命题演算形式系统PC
@@ -1061,7 +1389,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-13-16-pc" class="md-nav__link">
+  <a href="#page-13-16--pc的性质" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 13-16 — PC的性质
@@ -1072,7 +1400,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-30-pc" class="md-nav__link">
+  <a href="#page-30--pc定理的判定" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 30 — PC定理的判定
@@ -1083,7 +1411,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-31" class="md-nav__link">
+  <a href="#page-31--命题逻辑的局限" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 31 — 命题逻辑的局限
@@ -1094,7 +1422,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-32-33" class="md-nav__link">
+  <a href="#page-32-33--从命题逻辑到谓词逻辑" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 32-33 — 从命题逻辑到谓词逻辑
@@ -1105,7 +1433,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-34-37" class="md-nav__link">
+  <a href="#page-34-37--谓词逻辑基础概念" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 34-37 — 谓词逻辑基础概念
@@ -1116,7 +1444,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-38-39" class="md-nav__link">
+  <a href="#page-38-39--量词" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 38-39 — 量词
@@ -1434,14 +1762,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -1743,14 +2072,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_10" >
         
           
           <label class="md-nav__link" for="__nav_10_10" id="__nav_10_10_label" tabindex="0">
@@ -1901,14 +2231,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
         
           
           <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
@@ -2086,7 +2417,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#page-2" class="md-nav__link">
+  <a href="#page-2--功能完备集" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 2 — 功能完备集
@@ -2097,7 +2428,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-3" class="md-nav__link">
+  <a href="#page-3--冗余联结词" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 3 — 冗余联结词
@@ -2108,7 +2439,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-4" class="md-nav__link">
+  <a href="#page-4--极小功能完备集" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 4 — 极小功能完备集
@@ -2119,7 +2450,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-5" class="md-nav__link">
+  <a href="#page-5--单联结词功能完备集" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 5 — 单联结词功能完备集
@@ -2130,7 +2461,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-6" class="md-nav__link">
+  <a href="#page-6--非功能完备集证明" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 6 — 非功能完备集证明
@@ -2141,7 +2472,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-7-8" class="md-nav__link">
+  <a href="#page-7-8--形式系统概述" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 7-8 — 形式系统概述
@@ -2152,7 +2483,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-9-proof" class="md-nav__link">
+  <a href="#page-9--证明proof" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 9 — 证明（Proof）
@@ -2163,7 +2494,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-10-deduction" class="md-nav__link">
+  <a href="#page-10--演绎deduction" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 10 — 演绎（Deduction）
@@ -2174,7 +2505,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-11-12-pc" class="md-nav__link">
+  <a href="#page-11-12--命题演算形式系统pc" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 11-12 — 命题演算形式系统PC
@@ -2185,7 +2516,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-13-16-pc" class="md-nav__link">
+  <a href="#page-13-16--pc的性质" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 13-16 — PC的性质
@@ -2196,7 +2527,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-30-pc" class="md-nav__link">
+  <a href="#page-30--pc定理的判定" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 30 — PC定理的判定
@@ -2207,7 +2538,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-31" class="md-nav__link">
+  <a href="#page-31--命题逻辑的局限" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 31 — 命题逻辑的局限
@@ -2218,7 +2549,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-32-33" class="md-nav__link">
+  <a href="#page-32-33--从命题逻辑到谓词逻辑" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 32-33 — 从命题逻辑到谓词逻辑
@@ -2229,7 +2560,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-34-37" class="md-nav__link">
+  <a href="#page-34-37--谓词逻辑基础概念" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 34-37 — 谓词逻辑基础概念
@@ -2240,7 +2571,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#page-38-39" class="md-nav__link">
+  <a href="#page-38-39--量词" class="md-nav__link">
     <span class="md-ellipsis">
       
         Page 38-39 — 量词
@@ -2263,9 +2594,9 @@
               
               <article class="md-content__inner md-typeset">
                 
+  
+  
                   
-
-
   
     <a href="https://github.com/Evelina-IS/Evelina_personal_web/edit/main/docs/discrete-math/ppt-notes/第六课_联结词完备性_形式系统_PC.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
       
@@ -2283,22 +2614,28 @@
   
 
 
-<h1 id="pc">第六课：联结词集完备性、形式系统、PC<a class="headerlink" href="#pc" title="Permanent link">&para;</a></h1>
-<h2 id="page-2">Page 2 — 功能完备集<a class="headerlink" href="#page-2" title="Permanent link">&para;</a></h2>
+
+
+
+
+
+
+<h1 id="第六课联结词集完备性形式系统pc">第六课：联结词集完备性、形式系统、PC<a class="headerlink" href="#第六课联结词集完备性形式系统pc" title="Permanent link"></a></h1>
+<h2 id="page-2--功能完备集">Page 2 — 功能完备集<a class="headerlink" href="#page-2--功能完备集" title="Permanent link"></a></h2>
 <ul>
 <li>{¬,∧,∨,→,↔}是功能完备集</li>
 <li>任意真值函数都可以用主析取范式表示</li>
 <li>主析取范式中只用到了¬,∧,∨</li>
 <li>∴ <strong>{¬,∧,∨} 是功能完备集</strong></li>
 </ul>
-<h2 id="page-3">Page 3 — 冗余联结词<a class="headerlink" href="#page-3" title="Permanent link">&para;</a></h2>
+<h2 id="page-3--冗余联结词">Page 3 — 冗余联结词<a class="headerlink" href="#page-3--冗余联结词" title="Permanent link"></a></h2>
 <ul>
 <li>若某联结词可用集合中其他联结词定义，称它为<strong>冗余联结词</strong></li>
 <li>A→B ≡ ¬A∨B → →是冗余联结词</li>
 <li>{¬,∧,∨,↔}是否有冗余联结词？</li>
 <li>{¬,∧,∨}是否有冗余联结词？</li>
 </ul>
-<h2 id="page-4">Page 4 — 极小功能完备集<a class="headerlink" href="#page-4" title="Permanent link">&para;</a></h2>
+<h2 id="page-4--极小功能完备集">Page 4 — 极小功能完备集<a class="headerlink" href="#page-4--极小功能完备集" title="Permanent link"></a></h2>
 <ul>
 <li>不含冗余联结词的功能完备集叫<strong>极小的</strong>功能完备集</li>
 <li><strong>{¬,→}</strong>、<strong>{¬,∨}</strong>、<strong>{¬,∧}</strong> 都是极小功能完备集</li>
@@ -2306,7 +2643,7 @@
 <blockquote>
 <p>💡 <strong>人话</strong>：功能完备集就是"够用"的联结词集合，极小功能完备集就是"刚好够用，一个都不能少"。</p>
 </blockquote>
-<h2 id="page-5">Page 5 — 单联结词功能完备集<a class="headerlink" href="#page-5" title="Permanent link">&para;</a></h2>
+<h2 id="page-5--单联结词功能完备集">Page 5 — 单联结词功能完备集<a class="headerlink" href="#page-5--单联结词功能完备集" title="Permanent link"></a></h2>
 <ul>
 <li>定义<strong>↓</strong>（Peirce记号）：p↓q ≡ ¬(p∨q)</li>
 <li><strong>{↓} 是功能完备集</strong>！</li>
@@ -2314,7 +2651,7 @@
 <li>¬p ≡ ¬(p∨p) ≡ p↓p</li>
 <li>p∨q ≡ ¬¬(p∨q) ≡ ¬(p↓q) ≡ (p↓q)↓(p↓q)</li>
 </ul>
-<h2 id="page-6">Page 6 — 非功能完备集证明<a class="headerlink" href="#page-6" title="Permanent link">&para;</a></h2>
+<h2 id="page-6--非功能完备集证明">Page 6 — 非功能完备集证明<a class="headerlink" href="#page-6--非功能完备集证明" title="Permanent link"></a></h2>
 <ul>
 <li><strong>{∧}</strong>不是功能完备集——不能构成矛盾式</li>
 <li><strong>{¬,↔}</strong>不是功能完备集——用它们组成的公式，成真赋值个数总是偶数</li>
@@ -2323,7 +2660,7 @@
 <blockquote>
 <p>💡 <strong>人话</strong>：有些联结词集合不够"强大"，表达不了所有真值函数。比如只用∧，你搞不出永假式；只用{¬,↔}，你搞不出奇数个真值的函数。</p>
 </blockquote>
-<h2 id="page-7-8">Page 7-8 — 形式系统概述<a class="headerlink" href="#page-7-8" title="Permanent link">&para;</a></h2>
+<h2 id="page-7-8--形式系统概述">Page 7-8 — 形式系统概述<a class="headerlink" href="#page-7-8--形式系统概述" title="Permanent link"></a></h2>
 <ul>
 <li>重言式反映人类逻辑思维基本规律：</li>
 <li>排中律、矛盾律、假言推理、归谬推理、穷举推理</li>
@@ -2334,14 +2671,14 @@
 <blockquote>
 <p>💡 <strong>人话</strong>：形式系统就像一种"符号游戏"——给定一些初始符号（公理）和变换规则（推理规则），可以推导出新的符号串（定理）。</p>
 </blockquote>
-<h2 id="page-9-proof">Page 9 — 证明（Proof）<a class="headerlink" href="#page-9-proof" title="Permanent link">&para;</a></h2>
+<h2 id="page-9--证明proof">Page 9 — 证明（Proof）<a class="headerlink" href="#page-9--证明proof" title="Permanent link"></a></h2>
 <ul>
 <li>公式序列A₁,A₂,...,Aₘ称作Aₘ的一个<strong>证明</strong>，若每个Aᵢ：</li>
 <li>是公理，或</li>
 <li>由之前的公式用推理规则推得</li>
 <li>此时称Aₘ为系统的<strong>定理</strong>，记作 ⊢Aₘ</li>
 </ul>
-<h2 id="page-10-deduction">Page 10 — 演绎（Deduction）<a class="headerlink" href="#page-10-deduction" title="Permanent link">&para;</a></h2>
+<h2 id="page-10--演绎deduction">Page 10 — 演绎（Deduction）<a class="headerlink" href="#page-10--演绎deduction" title="Permanent link"></a></h2>
 <ul>
 <li>设Γ为公式集合，公式序列A₁,...,Aₘ称作以Γ为前提的<strong>演绎</strong>，若每个Aᵢ：</li>
 <li>是Γ中的公式，或</li>
@@ -2350,7 +2687,7 @@
 <li>记作 <strong>Γ ⊢ Aₘ</strong></li>
 <li>证明是演绎在Γ为空集时的特例</li>
 </ul>
-<h2 id="page-11-12-pc">Page 11-12 — 命题演算形式系统PC<a class="headerlink" href="#page-11-12-pc" title="Permanent link">&para;</a></h2>
+<h2 id="page-11-12--命题演算形式系统pc">Page 11-12 — 命题演算形式系统PC<a class="headerlink" href="#page-11-12--命题演算形式系统pc" title="Permanent link"></a></h2>
 <ul>
 <li><strong>符号系统</strong>：</li>
 <li>命题变元：p,q,r,s,p₁,q₁,r₁,s₁</li>
@@ -2367,18 +2704,18 @@
 <blockquote>
 <p>💡 <strong>人话</strong>：PC系统只用¬和→两个联结词，三条公理，一条规则。虽然简单，但它是完备的——所有重言式都能证出来。</p>
 </blockquote>
-<h2 id="page-13-16-pc">Page 13-16 — PC的性质<a class="headerlink" href="#page-13-16-pc" title="Permanent link">&para;</a></h2>
+<h2 id="page-13-16--pc的性质">Page 13-16 — PC的性质<a class="headerlink" href="#page-13-16--pc的性质" title="Permanent link"></a></h2>
 <ul>
 <li><strong>合理性（Soundness）</strong>：如果⊢A，则⊨A（证明的都是对的）</li>
 <li><strong>一致性（Consistency）</strong>：不存在A使得⊢A且⊢¬A（不自相矛盾）</li>
 <li><strong>完备性（Completeness）</strong>：如果⊨A，则⊢A（所有对的都能证明）</li>
 </ul>
-<h2 id="page-30-pc">Page 30 — PC定理的判定<a class="headerlink" href="#page-30-pc" title="Permanent link">&para;</a></h2>
+<h2 id="page-30--pc定理的判定">Page 30 — PC定理的判定<a class="headerlink" href="#page-30--pc定理的判定" title="Permanent link"></a></h2>
 <ul>
 <li>虽然PC中证明很繁琐，但可以借助<strong>真值表</strong>判定一个公式是否重言式（即是否PC定理）</li>
 <li>真值表不是PC中的成分，但它是外部的有效判定方法</li>
 </ul>
-<h2 id="page-31">Page 31 — 命题逻辑的局限<a class="headerlink" href="#page-31" title="Permanent link">&para;</a></h2>
+<h2 id="page-31--命题逻辑的局限">Page 31 — 命题逻辑的局限<a class="headerlink" href="#page-31--命题逻辑的局限" title="Permanent link"></a></h2>
 <ul>
 <li>命题逻辑的最小研究单位是原子命题，没有内部结构</li>
 <li>命题之间相互独立，没有内在联系</li>
@@ -2388,7 +2725,7 @@
 <li>结论r：浙大有学生</li>
 <li>(p∧q)→r 不是永真式（除非把内部结构展开）</li>
 </ul>
-<h2 id="page-32-33">Page 32-33 — 从命题逻辑到谓词逻辑<a class="headerlink" href="#page-32-33" title="Permanent link">&para;</a></h2>
+<h2 id="page-32-33--从命题逻辑到谓词逻辑">Page 32-33 — 从命题逻辑到谓词逻辑<a class="headerlink" href="#page-32-33--从命题逻辑到谓词逻辑" title="Permanent link"></a></h2>
 <ul>
 <li>需要分析命题的内部结构</li>
 <li><strong>个体</strong>：被判断的对象</li>
@@ -2396,7 +2733,7 @@
 <li><strong>量词</strong>：个体的数量（所有、有一些）</li>
 <li><strong>谓词逻辑</strong>（一阶逻辑）将量词作用于个体</li>
 </ul>
-<h2 id="page-34-37">Page 34-37 — 谓词逻辑基础概念<a class="headerlink" href="#page-34-37" title="Permanent link">&para;</a></h2>
+<h2 id="page-34-37--谓词逻辑基础概念">Page 34-37 — 谓词逻辑基础概念<a class="headerlink" href="#page-34-37--谓词逻辑基础概念" title="Permanent link"></a></h2>
 <ul>
 <li><strong>个体常元</strong>：a,b,c（确定的个体）</li>
 <li><strong>个体变元</strong>：x,y,z（不确定的个体）</li>
@@ -2409,7 +2746,7 @@
 <li><strong>谓词命名式</strong>：占位符，如SCHOOL(x)</li>
 <li><strong>谓词填式</strong>：实实在在填入个体，如SCHOOL(浙江大学)</li>
 </ul>
-<h2 id="page-38-39">Page 38-39 — 量词<a class="headerlink" href="#page-38-39" title="Permanent link">&para;</a></h2>
+<h2 id="page-38-39--量词">Page 38-39 — 量词<a class="headerlink" href="#page-38-39--量词" title="Permanent link"></a></h2>
 <ul>
 <li><strong>全称量词</strong> ∀：所有</li>
 <li><strong>存在量词</strong> ∃：有一些</li>
@@ -2435,7 +2772,40 @@
 
 
 
+
+
                 
+  
+<div class="page-info">
+  <span class="page-info__item page-info__stars">
+    <span class="page-info__label">
+      有用的话请给我个
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web/stargazers">star</a>
+      =&gt;
+    </span>
+    <span class="page-info__value">
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web/stargazers" aria-label="GitHub Stars">
+        <img
+          alt="Stars"
+          src="https://img.shields.io/github/stars/Evelina-IS/Evelina_personal_web?label=Stars&amp;style=flat"
+        >
+      </a>
+    </span>
+  </span>
+  <span class="page-info__item" id="busuanzi_container_site_pv">
+    <span class="page-info__label">本站总浏览</span>
+    <span class="page-info__value"><span id="busuanzi_value_site_pv"></span></span>
+  </span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <!-- Giscus 评论区（加载与主题同步逻辑见 features/enhancements.js 的 Giscus 模块）
+     本文件只负责在需要评论的页面放置容器并声明 giscus 配置。 -->
+
+<div class="giscus"></div>
+
+
               </article>
             </div>
           
@@ -2452,6 +2822,46 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E7%AC%AC%E4%BA%94%E8%AF%BE_%E9%80%BB%E8%BE%91%E7%AD%89%E4%BB%B7_%E8%95%B4%E6%B6%B5_%E8%8C%83%E5%BC%8F/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第5课 逻辑等价、蕴涵、范式">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                第5课 逻辑等价、蕴涵、范式
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E7%AC%AC%E4%B8%83%E8%AF%BE_%E8%B0%93%E8%AF%8D%E9%80%BB%E8%BE%91_FC_ND/" class="md-footer__link md-footer__link--next" aria-label="下一页: 第7课 谓词逻辑、FC、ND">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                第7课 谓词逻辑、FC、ND
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -2486,26 +2896,36 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.select", "navigation.tracking", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script src="../../../theme/js/core.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script src="../../../theme/js/mathjax.js"></script>
       
-        <script src="../../../javascripts/katex.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
       
-        <script src="../../../javascripts/reader-counter.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/x86asm.min.js"></script>
       
-        <script src="../../../javascripts/comments.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cmake.min.js"></script>
       
-        <script src="../../../javascripts/extra.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/http.min.js"></script>
+      
+        <script src="../../../theme/js/highlight.js"></script>
+      
+        <script src="../../../theme/js/features/content.js"></script>
+      
+        <script src="../../../theme/js/features/pdf.js"></script>
+      
+        <script src="../../../theme/js/features/enhancements.js"></script>
       
     
   </body>

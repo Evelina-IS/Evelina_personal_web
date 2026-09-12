@@ -1,0 +1,819 @@
+/* ============================================================================
+   main.css —— Zensical 核心界面调整
+   ----------------------------------------------------------------------------
+   仅调整 Zensical / Material 已提供的页面结构与组件；新增功能位于 features.css，
+   首页特化位于 home.css。正文观感对齐 github-markdown-css。
+
+   目录
+   01. 基础主题
+       字体资源、字体栈、站点基准与 GitHub 兼容主题变量
+   02. 文档排版与阅读节奏
+       正文、列表、表格、引用、块级间距与展示公式
+   03. 代码、公式与技术内容
+       代码块、行内代码、复制提示、highlight.js 与脚注
+   04. 标题结构与锚点
+       标题编号、permalink 与定位状态
+   05. 内容交互组件
+       Admonition、Details 与 Tabs
+   06. 导航与阅读定位
+       顶部导航、站点宽度、侧栏与 TOC
+
+   可调参数见 variables.css（加载于本文件之前）。
+   跨页面新增功能见 features.css，主页定制见 home.css（均加载于其后）。
+   结合 sindresorhus/github-markdown-css 观感：
+   https://github.com/sindresorhus/github-markdown-css
+   ============================================================================ */
+
+/* ============================================================================
+   01. 基础主题：字体、站点基准与主题变量（@import 必须位于所有 CSS 规则之前）
+   ============================================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Serif+SC:wght@600;700;800&display=swap");
+
+/* 代码语法高亮由 highlight.js 运行时处理（见 theme/js/highlight.js 与 zensical.toml），
+   GitHub 配色由 CDN 的 github/github-dark 主题 CSS 提供，此处无需额外 CSS。 */
+
+/* ---- 字体栈与站点基础（属于 01） -------------------------------- */
+
+/* 顶部导航标题：衬线字体 */
+.md-header__title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+}
+/* 正文：采用 github-markdown-css 风格的系统无衬线栈；H1 保留自定义衬线标题。 */
+body, .md-typeset, .md-typeset h2, .md-typeset h3, .md-typeset h4,
+.md-typeset h5, .md-typeset h6, .md-nav {
+  font-family: var(--font-text);
+}
+/* 搜索面板（输入框 + 结果列表）渲染在 Shadow DOM 里，外部选择器进不去。
+   其内部样式读 --md-text-font-family 变量，而 CSS 变量能穿透 shadow 边界。
+   注意必须写在 body 上覆盖主题 body 里的同名默认声明（写在 :root 上会被 body 覆盖）。
+   使用 !important 确保覆盖 Material 主题的 body font-family 声明。
+   同时将 font-smoothing / letter-spacing / font-feature-settings 对齐 GitHub 默认值。 */
+body {
+  --md-text-font-family: var(--font-text) !important;
+  font-family: var(--font-text) !important;
+  -webkit-font-smoothing: auto !important;
+  -moz-osx-font-smoothing: auto !important;
+  letter-spacing: normal !important;
+  font-feature-settings: normal !important;
+}
+
+/* 暗色模式：全局背景统一为暗色基准（GitHub #0d1117，见 variables.css --dark-bg） */
+[data-md-color-scheme="slate"] body {
+  background-color: var(--dark-bg) !important;
+}
+/* 暗色模式：sidebar / content / footer / nav-title 保持不透明暗色背景 */
+[data-md-color-scheme="slate"] .md-sidebar__inner,
+[data-md-color-scheme="slate"] .md-content,
+[data-md-color-scheme="slate"] .md-footer,
+[data-md-color-scheme="slate"] .md-nav__title {
+  background-color: var(--dark-bg) !important;
+}
+
+/* 等宽字体：代码 / 键盘 / 终端数字统一 */
+code, kbd, pre, .md-typeset code, .md-typeset pre {
+  font-family: var(--font-mono);
+}
+
+/* ---- GitHub 兼容主题变量（属于 01） ------------------------------ */
+[data-md-color-scheme="default"] .md-typeset {
+  color-scheme: light;
+  --fgColor-default: #1f2328;
+  --fgColor-muted: #59636e;
+  --fgColor-accent: #0969da;
+  --bgColor-default: #ffffff;
+  --bgColor-muted: #f6f8fa;
+  --bgColor-neutral-muted: rgba(129, 139, 152, 0.12);
+  --borderColor-default: #d1d9e0;
+  --borderColor-muted: rgba(209, 217, 224, 0.7);
+  --borderColor-neutral-muted: rgba(175, 184, 193, 0.2);
+  --base-size-4: 4px;
+  --base-size-16: 16px;
+  --base-size-24: 24px;
+  --base-text-weight-normal: 400;
+  --base-text-weight-semibold: 600;
+}
+
+[data-md-color-scheme="slate"] .md-typeset {
+  color-scheme: dark;
+  --fgColor-default: #f0f6fc;
+  --fgColor-muted: #9198a1;
+  --fgColor-accent: #4493f8;
+  --bgColor-default: #0d1117;
+  --bgColor-muted: #151b23;
+  --bgColor-neutral-muted: rgba(101, 108, 118, 0.2);
+  --borderColor-default: #3d444d;
+  --borderColor-muted: rgba(61, 68, 77, 0.7);
+  --borderColor-neutral-muted: rgba(101, 108, 118, 0.2);
+  --base-size-4: 4px;
+  --base-size-16: 16px;
+  --base-size-24: 24px;
+  --base-text-weight-normal: 400;
+  --base-text-weight-semibold: 600;
+}
+
+/* ============================================================================
+   02. 文档排版与阅读节奏
+   ----------------------------------------------------------------------------
+   作用域到 .md-typeset，覆盖 Material 默认。
+   正文字号对齐 GitHub 基准 16px，行高 1.5，间距变量 --base-size-* 同为 16px 系，
+   使观感与 github-markdown-css 完全一致（不受站点 root 20px 放大影响）。
+   子段：标题 → 列表 → 表格 → 引用 → 分隔线 → 强调/删除线/上下标 → 键盘 → 链接
+   ============================================================================ */
+.md-typeset {
+  font-size: var(--font-base);
+  --md-typeset-color: var(--fgColor-default);
+  color: var(--fgColor-default);
+  background-color: var(--bgColor-default);
+  font-weight: var(--base-text-weight-normal, 400);
+  line-height: 1.5;
+  word-wrap: break-word;
+  letter-spacing: normal;
+  font-feature-settings: normal;
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
+/* 标题（H1 衬线 700 字重，H2–H6 用 GitHub 默认 600 字重）
+   取消 Material 的负 letter-spacing，对齐 GitHub 的 normal 字间距。 */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  margin-top: var(--base-size-24, 1.5rem);
+  margin-bottom: var(--base-size-16, 1rem);
+  line-height: 1.25;
+  letter-spacing: normal;
+}
+.md-typeset h1 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  padding-bottom: 0.55em;
+  margin-top: 0;
+  margin-bottom: 0.8rem;
+  border-bottom: 1px solid var(--borderColor-muted);
+}
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  font-weight: var(--base-text-weight-semibold, 600);
+}
+.md-typeset h2 {
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--borderColor-muted);
+  font-size: 1.5em;
+}
+.md-typeset h3 { font-size: 1.25em; }
+.md-typeset h4 { font-size: 1em; }
+.md-typeset h5 { font-size: 0.875em; }
+.md-typeset h6 {
+  font-size: 0.85em;
+  color: var(--fgColor-muted);
+}
+
+/* 列表：对齐 GitHub（padding-left: 2em，只取消 Material 的多余左缩进） */
+[dir="ltr"] .md-typeset ul,
+[dir="ltr"] .md-typeset ol {
+  margin-left: 0;
+  padding-left: 2em;
+}
+[dir="ltr"] .md-typeset ul li,
+[dir="ltr"] .md-typeset ol li {
+  margin-left: 0;
+}
+.md-typeset ol > li {
+  padding-left: 0.15em;
+  list-style-position: outside;
+}
+.md-typeset li + li {
+  margin-top: 0.25em;
+}
+.md-typeset li > p {
+  margin-top: var(--base-size-16, 1rem);
+}
+.md-typeset ul ul,
+.md-typeset ul ol,
+.md-typeset ol ol,
+.md-typeset ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.md-typeset ol ol,
+.md-typeset ul ol {
+  list-style-type: lower-roman;
+}
+.md-typeset ol ol ol,
+.md-typeset ul ol ol,
+.md-typeset ol ul ol,
+.md-typeset ul ul ol {
+  list-style-type: lower-alpha;
+}
+
+/* 表格（排除 GitHub 贡献图表格 .ContributionCalendar-grid，保持组件原样）
+   宽表自动收紧：容器被限制在内容区宽度内，超宽表格在其内部横向滚动，
+   不溢出页面；窄表仍按内容贴合。单元格长内容可断行，避免撑破。 */
+.md-typeset .md-typeset__scrollwrap {
+  margin-top: 0;
+  margin-bottom: var(--base-size-16, 1rem);
+}
+.md-typeset .md-typeset__table {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-bottom: 0;
+  vertical-align: bottom;
+}
+.md-typeset table:not(.ContributionCalendar-grid) {
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  font-variant: tabular-nums;
+}
+.md-typeset .md-typeset__table > table:not(.ContributionCalendar-grid) {
+  margin-bottom: 0;
+}
+.md-typeset table:not(.ContributionCalendar-grid) th {
+  font-weight: var(--base-text-weight-semibold, 600);
+}
+.md-typeset table:not(.ContributionCalendar-grid) th,
+.md-typeset table:not(.ContributionCalendar-grid) td {
+  padding: 6px 13px;
+  border: 1px solid var(--borderColor-default);
+  overflow-wrap: anywhere;
+}
+.md-typeset table:not(.ContributionCalendar-grid) tr {
+  background-color: var(--bgColor-default);
+  border-top: 1px solid var(--borderColor-muted);
+}
+.md-typeset table:not(.ContributionCalendar-grid) tr:nth-child(2n) {
+  background-color: var(--bgColor-muted);
+}
+
+/* 引用（top/bottom 边距由 section 06 统一管理） */
+.md-typeset blockquote {
+  margin-inline: 0;
+  padding: 0 1em;
+  color: var(--fgColor-muted);
+  border-left: 0.25em solid var(--borderColor-default);
+}
+.md-typeset blockquote > :first-child {
+  margin-top: 0;
+}
+.md-typeset blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+/* 分隔线（比 GitHub 默认更细：1px，避免章节末尾显得过粗） */
+.md-typeset hr {
+  box-sizing: content-box;
+  overflow: hidden;
+  height: 1px;
+  padding: 0;
+  margin: var(--base-size-24, 1.5rem) 0;
+  background-color: var(--borderColor-muted);
+  border: 0;
+}
+
+/* 强调 / 删除线 / 上下标 */
+.md-typeset strong {
+  font-weight: var(--base-text-weight-semibold, 600);
+}
+.md-typeset del {
+  color: var(--fgColor-muted);
+}
+.md-typeset sub,
+.md-typeset sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.md-typeset sub { bottom: -0.25em; }
+.md-typeset sup { top: -0.5em; }
+
+/* 键盘按键 */
+.md-typeset kbd {
+  display: inline-block;
+  padding: var(--base-size-4, 0.25rem);
+  font-size: var(--font-kbd);
+  /* line-height 取 10px：github-markdown-css 原值，与 11px 字号配合
+     让单行按键垂直居中（rem 会随 html 缩放波动，px 固定更稳）。 */
+  line-height: 10px;
+  color: var(--fgColor-default);
+  vertical-align: middle;
+  background-color: var(--bgColor-muted);
+  border: solid 1px var(--borderColor-neutral-muted);
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 -1px 0 var(--borderColor-neutral-muted);
+}
+
+/* 链接（GitHub 悬停下划线） */
+.md-typeset a {
+  color: var(--fgColor-accent);
+  text-decoration: none;
+}
+.md-typeset a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+/* ============================================================================
+   03. 代码、公式与技术内容
+   ----------------------------------------------------------------------------
+   代码块对齐 github-markdown-css：13.6px 字号、GitHub 背景色、不描边。
+   行内代码用 GitHub 风格浅底色胶囊。复制提示只保留文字。
+   行间距统一块级元素底边距为 1rem，嵌套列表保持 0。
+   ============================================================================ */
+
+/* ---- 代码块（GitHub 风格 + 站点行号特性） ---- */
+.md-typeset pre {
+  padding: 0;
+  overflow: visible;
+  font-size: var(--font-code);
+  line-height: 1.45;
+  color: var(--fgColor-default);
+  background-color: var(--bgColor-muted);
+}
+.md-typeset pre > code {
+  font-size: inherit;
+  line-height: 1.45;
+  color: var(--fgColor-default);
+}
+.md-typeset .highlight pre {
+  border: 0;
+  padding: 0;
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.md-typeset pre code,
+.md-typeset pre tt {
+  display: block;
+  margin: 0;
+  line-height: inherit;
+  word-wrap: normal;
+  border: 0;
+}
+
+/* ---- 行内代码（GitHub 风格） ---- */
+.md-typeset code:not(pre code) {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  white-space: break-spaces;
+  background-color: var(--bgColor-neutral-muted);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  color: var(--fgColor-default);
+  font-weight: 500;
+}
+
+/* 复制成功提示：去掉 Material 默认的彩色胶囊背景，只保留文字。 */
+[data-md-color-scheme] .md-dialog {
+  background-color: transparent;
+  box-shadow: none;
+}
+.md-dialog__inner {
+  color: var(--fgColor-muted);
+  font-size: var(--font-meta);
+  line-height: 1.4;
+}
+/* 标题内的行内代码：随标题字号 */
+.md-typeset h1 code,
+.md-typeset h2 code,
+.md-typeset h3 code,
+.md-typeset h4 code,
+.md-typeset h5 code,
+.md-typeset h6 code {
+  padding: 0 0.2em;
+  font-size: inherit;
+}
+
+/* ---- highlight.js 与 Material 布局兼容 ----
+   github.min.css 会给 .hljs 加自身背景与 padding，导致与 pre 的
+   内边距/背景叠加冲突。这里让 .hljs 回归透明背景且无 padding，
+   仅保留 github 的 token 配色，padding 由 pre 统一管理。 */
+.md-typeset pre .hljs {
+  background: transparent;
+  border-radius: 0;
+  line-height: 1.45;
+}
+
+.md-typeset pre.highlight,
+.md-typeset pre,
+.md-typeset pre>code {
+  border-radius: 0;
+}
+
+/* ---- 脚注（GitHub 观感补足） ---- */
+/* 脚注 HTML 自带 <hr>；这里用容器边线替代它，避免出现两条横线。 */
+.md-typeset .footnote {
+  margin-top: var(--base-size-24, 1.5rem);
+  padding-top: var(--base-size-16, 1rem);
+  border-top: 1px solid var(--borderColor-default);
+  font-size: var(--font-footnote);
+  color: var(--fgColor-muted);
+}
+.md-typeset .footnote > hr {
+  display: none;
+}
+.md-typeset .footnote ol {
+  padding-left: var(--base-size-16, 1rem);
+}
+
+/* 脚注内嵌套列表：保持正文列表的 2em 缩进，
+   并取消 Material 额外附加的 .625em 左偏移。 */
+.md-typeset .footnote ol > li > ul,
+.md-typeset .footnote ol > li > ol {
+  margin-left: 0;
+}
+
+/* ---- 文档块级节奏与展示公式间距（属于 02） ---------------------- */
+
+/* 统一块级元素 top/bottom 边距。
+   嵌套列表（ul ul 等） specificity 更高，保持 0 不受影响。
+   tabbed-set/admonition 边距见 main.css。 */
+.md-typeset p,
+.md-typeset blockquote,
+.md-typeset ul,
+.md-typeset ol,
+.md-typeset dl,
+.md-typeset table:not(.ContributionCalendar-grid),
+.md-typeset pre,
+.md-typeset details,
+.md-typeset div.arithmatex {
+  margin-top: 0;
+  margin-bottom: var(--base-size-16, 1rem);
+  letter-spacing: normal;
+}
+
+/* MathJax 独立公式：取消外层容器底部边距，*/
+.md-typeset div.arithmatex {
+  margin-bottom: 0;
+}
+
+/* 保留 MathJax 自身底部/顶部间距，避免横向滚动条贴住公式。*/
+.md-typeset div.arithmatex > mjx-container[display] {
+  margin-top: 6px;
+  margin-bottom: 18px;
+  margin-bottom: calc(var(--base-size-16, 1rem) + 6px);
+}
+
+
+/* ============================================================================
+   04. 标题结构与锚点
+   ----------------------------------------------------------------------------
+   标题自动编号使用站点专用 counter 名称，避免与主题冲突。
+   permalink 保留生成器 HTML 结构，由 CSS 移到标题左侧；SVG 背景图绘制图标。
+   交互逻辑（opacity/hover/focus）复用 zensical 自带规则，此处只覆盖定位、
+   图标和 :target 行为（zensical 默认 :target 显示，此处改为隐藏）。
+   ============================================================================ */
+
+body[data-page-counter="true"] .md-content__inner { counter-reset: section-counter; }
+body[data-page-counter="true"] .md-content__inner h2:not(#__comments):not(.ghc-title) {
+  counter-increment: section-counter;
+  counter-reset: subsection-counter;
+}
+body[data-page-counter="true"] .md-content__inner h2:not(#__comments):not(.ghc-title)::before {
+  content: counter(section-counter);
+}
+body[data-page-counter="true"] .md-content__inner h3 {
+  counter-increment: subsection-counter;
+  counter-reset: subsubsection-counter;
+}
+body[data-page-counter="true"] .md-content__inner h3::before {
+  content: counter(section-counter) "." counter(subsection-counter);
+}
+body[data-page-counter="true"] .md-content__inner h4 {
+  counter-increment: subsubsection-counter;
+}
+body[data-page-counter="true"] .md-content__inner h4::before {
+  content: counter(section-counter) "." counter(subsection-counter) "." counter(subsubsection-counter);
+}
+
+.md-typeset :is(h1, h2, h3, h4, h5, h6) {
+  position: relative;
+}
+.md-typeset :is(h1, h2, h3, h4, h5, h6) > .headerlink {
+  position: absolute;
+  left: -40px;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 1.25em;
+  margin: 0;
+  font-size: inherit;
+  line-height: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='currentColor' d='m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+}
+/* 暗色模式：headerlink 图标改浅色。
+   注意：background-image 里的 SVG data URI 是独立资源，fill='currentColor'
+   不会解析成宿主元素的 color（落回默认黑），故必须在此重写 SVG 并硬编码 fill。 */
+[data-md-color-scheme="slate"] .md-typeset :is(h1, h2, h3, h4, h5, h6) > .headerlink,
+[data-md-color-scheme="slate"] .md-typeset :is(h1, h2, h3, h4, h5, h6) > .headerlink:hover {
+  color: #f0f6fc;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23f0f6fc' d='m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z'/%3E%3C/svg%3E");
+}
+
+/* :target 行为：zensical 默认显示，此处覆盖为隐藏（仅悬停/聚焦时显示）。 */
+.md-typeset :is(h1, h2, h3, h4, h5, h6):target:not(:hover) > .headerlink:not(:hover):not(:focus) {
+  opacity: 0;
+}
+
+/* 提示块有 overflow:hidden，内部标题的左侧 headerlink 会被裁掉，直接隐藏。 */
+.md-typeset .admonition :is(h1, h2, h3, h4, h5, h6) > .headerlink,
+.md-typeset details :is(h1, h2, h3, h4, h5, h6) > .headerlink {
+  display: none;
+}
+
+/* ---- 标题编号 ::before 样式 ----
+   counter 逻辑在下方，此处是编号的字体/颜色/间距。
+   font/weight/gap 定义在 variables.css（--heading-number-*）；颜色则因依赖
+   .md-typeset 作用域里的 --fgColor-default，故在此作用域定义，保证能解析。 */
+[data-md-color-scheme="default"] .md-typeset {
+  --heading-number-color: rgba(31, 35, 40, 0.7);
+}
+[data-md-color-scheme="slate"] .md-typeset {
+  --heading-number-color: rgba(240, 246, 252, 0.7);
+}
+/* 现代浏览器：用 color-mix 跟随 --fgColor-default 微调（老 iPad 不认，回退到上方 rgba）。 */
+.md-typeset {
+  --heading-number-color: color-mix(in srgb, var(--fgColor-default) 70%, transparent);
+}
+.md-typeset h1::before,
+.md-typeset h2::before,
+.md-typeset h3::before,
+.md-typeset h4::before,
+.md-typeset h5::before,
+.md-typeset h6::before {
+  font-family: var(--heading-number-font);
+  font-weight: var(--heading-number-weight);
+  margin-right: var(--heading-number-gap);
+  letter-spacing: var(--heading-number-letter-spacing);
+  color: var(--heading-number-color);
+}
+
+/* ---- Tabbed / Admonition 边距 ----
+   zensical 默认组件，保留 margin:1em 0（不归零 top）。
+   tabbed-content 是 display:contents/block，标签行与内容之间无间距，
+   补 padding-top 修复（main.css 行高收紧后需要补偿）。 */
+.md-typeset .tabbed-set,
+.md-typeset .admonition {
+  margin: 1em 0;
+  letter-spacing: normal;
+}
+.md-typeset .tabbed-content {
+  margin-top: 0;
+  padding-top: 0.75rem;
+}
+.md-typeset .tabbed-labels {
+  margin-bottom: 0;
+}
+
+/* ============================================================================
+   05. 内容交互组件
+   ----------------------------------------------------------------------------
+   标题保留类型色，正文区域透明，贴近 Material 默认文档页的提示块风格。
+   ============================================================================ */
+.md-typeset .admonition,
+.md-typeset details {
+  --admonition-color: #2563eb;
+  --admonition-accent: #06b6d4;
+  --admonition-spectrum: #22c55e;
+}
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  --admonition-color: #2563eb;
+  --admonition-accent: #06b6d4;
+  --admonition-spectrum: #14b8a6;
+}
+.md-typeset .admonition.abstract,
+.md-typeset details.abstract {
+  --admonition-color: #7c3aed;
+  --admonition-accent: #2563eb;
+  --admonition-spectrum: #06b6d4;
+}
+.md-typeset .admonition.info,
+.md-typeset details.info {
+  --admonition-color: #2563eb;
+  --admonition-accent: #8bd5e5;
+  --admonition-spectrum: #dad883;
+}
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  --admonition-color: #06b6d4;
+  --admonition-accent: #22c55e;
+  --admonition-spectrum: #facc15;
+}
+.md-typeset .admonition.success,
+.md-typeset details.success {
+  --admonition-color: #16a34a;
+  --admonition-accent: #22c55e;
+  --admonition-spectrum: #4ade80;
+}
+.md-typeset .admonition.question,
+.md-typeset details.question {
+  --admonition-color: #06b6d4;
+  --admonition-accent: #14b8a6;
+  --admonition-spectrum: #22c55e;
+}
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  --admonition-color: #eab308;
+  --admonition-accent: #f97316;
+  --admonition-spectrum: #dc2626;
+}
+.md-typeset .admonition.failure,
+.md-typeset details.failure {
+  --admonition-color: #dc2626;
+  --admonition-accent: #ef4444;
+  --admonition-spectrum: #f87171;
+}
+.md-typeset .admonition.danger,
+.md-typeset details.danger {
+  --admonition-color: #b91c1c;
+  --admonition-accent: #f97316;
+  --admonition-spectrum: #facc15;
+}
+.md-typeset .admonition.bug,
+.md-typeset details.bug {
+  --admonition-color: #d946ef;
+  --admonition-accent: #7c3aed;
+  --admonition-spectrum: #2563eb;
+}
+.md-typeset .admonition.example,
+.md-typeset details.example {
+  --admonition-color: #06b6d4;
+  --admonition-accent: #06d4d0;
+  --admonition-spectrum: #06d458;
+}
+.md-typeset .admonition.quote,
+.md-typeset details.quote {
+  --admonition-color: #475569;
+  --admonition-accent: #64748b;
+  --admonition-spectrum: #94a3b8;
+}
+/* 以上全局仅定义类型色变量（--admonition-*），不覆盖任何提示块属性，
+   因此不触发 @supports 时提示块完全走官方默认，此处不再有任何影响提示块的规则。
+   所有自定义（边框/背景/标题栏 padding 与渐变/图标箭头定位颜色）统一在下方 @supports 块内。 */
+
+/* 退化后的标题行高恢复：main.css 的 .md-typeset { line-height:1.5 } 会连带压低提示块标题，
+   使图标 top:.125em 相对标题行中心偏下。此处仅对标题行恢复官方行高，
+   不影响提示块正文与其他正文的 GitHub 1.5 行高。 */
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
+  line-height: var(--admonition-title-lh);
+}
+
+/* 标题中的行内 MathJax 不参与正文公式的块级外边距计算。 */
+.md-typeset .admonition-title mjx-container,
+.md-typeset details > summary mjx-container {
+  display: inline-block !important;
+  margin: 0 !important;
+  line-height: 1;
+  vertical-align: -0.08em;
+}
+
+/* ---- Admonition 自定义（置于所有提示块定义下方）----
+   仅支持 color-mix 的现代浏览器通过；不支持者 @supports 不通过 → 提示块完全官方。 */
+
+@supports (color: color-mix(in srgb, red 50%, blue)) {
+  /* 容器保持原生 flow-root 文档流；渐变直接画在标题本身，标题换行时背景自然同步。 */
+  .md-typeset .admonition,
+  .md-typeset details {
+    position: relative;
+    background-color: transparent !important;
+    border: var(--admonition-border-w) solid color-mix(in srgb, var(--admonition-color) 36%, var(--borderColor-muted));
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    padding: 0 var(--admonition-pad-inline);
+    font-size: var(--font-code);
+  }
+  .md-typeset .admonition-title,
+  .md-typeset summary {
+    /* 覆盖主题 summary:last-child 的底边距；标题自身 padding 已提供留白。 */
+    margin: 0 calc(-1 * var(--admonition-pad-inline)) !important;
+    padding-block: var(--admonition-title-margin);
+    padding-inline-start: calc(1.6rem + var(--admonition-pad-inline)) !important;
+    padding-inline-end: calc(0.8rem + var(--admonition-pad-inline)) !important;
+    white-space: normal;
+    overflow: visible;
+    overflow-wrap: anywhere;
+    text-overflow: clip;
+    background:
+      linear-gradient(
+        105deg,
+        color-mix(in srgb, var(--admonition-color) 12%, transparent),
+        color-mix(in srgb, var(--admonition-color) 11%, transparent) 50%,
+        color-mix(in srgb, var(--admonition-accent) 10%, transparent) 70%,
+        color-mix(in srgb, var(--admonition-spectrum) 8%, transparent) 86%,
+        color-mix(in srgb, var(--admonition-spectrum) 7%, transparent)
+      );
+  }
+  .md-typeset summary {
+    padding-inline-end: calc(2rem + var(--admonition-pad-inline)) !important;
+  }
+  /* 标题与正文是同级流内元素，统一以 margin 表达两者之间的外部间距。 */
+  .md-typeset .admonition-title + *,
+  .md-typeset summary + * {
+    padding-top: 0;
+    margin-top: var(--admonition-body-margin);
+  }
+  .md-typeset .admonition > :last-child,
+  .md-typeset details > :last-child {
+    margin-bottom: var(--admonition-body-margin);
+  }
+  .md-typeset .admonition-title::before,
+  .md-typeset summary::before {
+    top: calc(var(--admonition-title-margin) + 0.125em) !important;
+    inset-inline-start: var(--admonition-pad-inline) !important;
+    background-color: var(--admonition-color) !important;
+  }
+  .md-typeset summary::after {
+    top: calc(var(--admonition-title-margin) + 0.125em) !important;
+    inset-inline-end: var(--admonition-pad-inline) !important;
+    color: var(--admonition-color) !important;
+  }
+}
+
+/* ============================================================================
+   06. 导航与阅读定位
+   ----------------------------------------------------------------------------
+   Logo、导航栏毛玻璃(.md-header/.md-tabs)、站点宽度(.md-grid)。
+   ============================================================================ */
+
+/* ---- Logo ---- */
+.bf-logo {
+  display: block;
+  height: 1.45rem;
+  width: auto;
+}
+
+/* 页面位于最顶部时不显示 header 底边框；
+   向下滚动后恢复主题默认 shadow。 */
+body[data-md-at-top="true"] .md-header--shadow {
+  box-shadow: none;
+}
+
+/* ---- 导航栏毛玻璃 ---- */
+.md-header,
+.md-tabs {
+  background-color: var(--header-bg);
+  backdrop-filter: blur(var(--blur-radius));
+  -webkit-backdrop-filter: blur(var(--blur-radius));
+}
+[data-md-color-scheme="slate"] .md-header,
+[data-md-color-scheme="slate"] .md-tabs {
+  background-color: var(--header-bg) !important;
+}
+
+.md-tabs__list {
+  padding-left: 0;
+}
+
+/* ---- 站点宽度 ---- */
+.md-grid {
+  max-width: var(--page-max-width);
+}
+
+/* ---- 侧栏导航与 TOC 阅读状态（属于 06） ------------------------- */
+
+/* ---- 左侧导航选中态：文字默认色 + 灰色背景 ---- */
+.md-sidebar--primary .md-nav__link--active,
+.md-sidebar--primary .md-nav__item--active > .md-nav__link--active,
+.md-sidebar--primary .md-nav__item--active > .md-nav__container > .md-nav__link {
+  color: var(--md-default-fg-color);
+  background-color: var(--md-default-fg-color--lightest);
+}
+
+/* ---- 右侧 TOC 阅读进度 ---- */
+.md-nav--secondary [data-md-component="toc"] .md-nav__link {
+  position: relative;
+  color: var(--md-default-fg-color);
+}
+
+.md-nav--secondary [data-md-component="toc"] .md-nav__link .md-typeset {
+  color: inherit;
+  background-color: transparent;
+}
+
+.md-nav--secondary [data-md-component="toc"] .md-nav__link--passed {
+  color: var(--md-default-fg-color--light);
+  opacity: 0.86;
+}
+
+.md-nav--secondary [data-md-component="toc"] .md-nav__link--active {
+  color: var(--md-accent-fg-color);
+  opacity: 1;
+}

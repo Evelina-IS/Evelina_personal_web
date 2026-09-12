@@ -24,7 +24,7 @@
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../theme/assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -50,14 +50,18 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+      <link rel="stylesheet" href="../../theme/css/variables.css">
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../theme/css/main.css">
+    
+      <link rel="stylesheet" href="../../theme/css/features.css">
+    
+      <link rel="stylesheet" href="../../theme/css/home.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -65,15 +69,50 @@
 
     
     
+  
+  <script>
+    (function () {
+      try {
+        var dark = matchMedia("(prefers-color-scheme: dark)").matches;
+        var scheme = dark ? "slate" : "default";
+        document.documentElement.setAttribute("data-md-color-scheme", scheme);
+        var link = document.createElement("link");
+        link.id = "hljs-theme";
+        link.rel = "stylesheet";
+        link.href = dark
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+        document.head.appendChild(link);
+        // body 加载后同步 attribute（bundle 切换主题时写 body，这里保证 html 跟随）
+        var attach = function () {
+          document.body.setAttribute("data-md-color-scheme", scheme);
+          new MutationObserver(function () {
+            var s = document.body.getAttribute("data-md-color-scheme");
+            if (s) document.documentElement.setAttribute("data-md-color-scheme", s);
+          }).observe(document.body, {
+            attributes: true,
+            attributeFilter: ["data-md-color-scheme"],
+          });
+        };
+        if (document.body) attach();
+        else new MutationObserver(function (_, obs) {
+          if (document.body) { attach(); obs.disconnect(); }
+        }).observe(document.documentElement, { childList: true });
+      } catch (e) {}
+    })();
+  </script>
+
   </head>
   
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="green">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -94,15 +133,16 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Evelina_IS" class="md-header__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
-
+      <!-- Logo：复用 favicon.svg 的方角图标 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="bf-logo" role="img" aria-label="Evelina" width="64" height="64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#409ba5"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Courier New, Courier, monospace"
+        font-size="42" font-weight="700" fill="#ffffff">E</text>
+</svg>
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
@@ -126,7 +166,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="跟随系统"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="跟随系统" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07zm-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13zm-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87zM19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35zm4.33-2.7 1.15-2.77 2.2 2.54zm1.15-4.96-1.14-2.78 3.34.24zM9.63 18.93l2.77 1.15-2.53 2.19z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="深色模式"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="深色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -148,6 +224,11 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
         
         <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
@@ -194,6 +275,238 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../oneinall/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  网站大全
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../handwritten-notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  手写笔记
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../fds/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FDSNOTE
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../reports/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Reports
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%A4%A7%E7%89%A9%E4%B9%991/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8_%E5%89%AF%E6%9C%AC/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  大物乙1
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  git 的使用
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../probability/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  概率论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../discrete-math/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  离散数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../sys%E6%B1%87%E7%BC%96/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SYS 体系结构
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%A4%A7%E7%89%A9/%E5%8A%9B%E5%AD%A6%E4%B8%8E%E6%8C%AF%E5%8A%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  大学物理
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -207,14 +520,19 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Evelina_IS" class="md-nav__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
-
+      <!-- Logo：复用 favicon.svg 的方角图标 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="bf-logo" role="img" aria-label="Evelina" width="64" height="64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#409ba5"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Courier New, Courier, monospace"
+        font-size="42" font-weight="700" fill="#ffffff">E</text>
+</svg>
     </a>
     Evelina_IS
   </label>
@@ -438,14 +756,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -518,14 +837,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -772,14 +1092,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_8" >
         
           
           <label class="md-nav__link" for="__nav_9_8" id="__nav_9_8_label" tabindex="0">
@@ -1224,15 +1545,21 @@
     
     
     
+      
+        
+        
+      
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
         
           
-          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="">
             
   
   
@@ -1552,7 +1879,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#risc-v-10" class="md-nav__link">
+  <a href="#理解简单-risc-v-程序-10" class="md-nav__link">
     <span class="md-ellipsis">
       
         理解简单 RISC-V 程序 10%
@@ -1563,7 +1890,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#srclab5-1acc_plains" class="md-nav__link">
+  <a href="#请阅读-srclab5-1acc_plains-回答以下问题-" class="md-nav__link">
     <span class="md-ellipsis">
       
         请阅读 src/lab5-1/acc_plain.s 回答以下问题 :
@@ -1575,7 +1902,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#acc-2" class="md-nav__link">
+  <a href="#acc-是如何获得函数参数的又是如何返回函数返回值的2" class="md-nav__link">
     <span class="md-ellipsis">
       
         acc 是如何获得函数参数的，又是如何返回函数返回值的？2%
@@ -1586,7 +1913,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#acc-s0-sd-s0-40sp-addi-s0-sp-48-2" class="md-nav__link">
+  <a href="#acc-函数中-s0-寄存器的作用是什么为什么在函数入口处需要执行-sd-s0-40sp-这条指令而在这条指令之后的-addi-s0-sp-48-这条指令的目的是什么2" class="md-nav__link">
     <span class="md-ellipsis">
       
         acc 函数中 s0 寄存器的作用是什么，为什么在函数入口处需要执行 sd s0, 40(sp) 这条指令，而在这条指令之后的 addi s0, sp, 48 这条指令的目的是什么？2%
@@ -1597,7 +1924,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#acc-stack-frame-1" class="md-nav__link">
+  <a href="#acc-函数的栈帧-stack-frame-的大小是多少1" class="md-nav__link">
     <span class="md-ellipsis">
       
         acc 函数的栈帧 (stack frame) 的大小是多少？1%
@@ -1608,7 +1935,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#acc-sp-s0-2" class="md-nav__link">
+  <a href="#acc-函数栈帧中存储的值有哪些它们分别存储在哪相对于-sp-或-s0-来说2" class="md-nav__link">
     <span class="md-ellipsis">
       
         acc 函数栈帧中存储的值有哪些，它们分别存储在哪（相对于 sp 或 s0 来说）？2%
@@ -1619,7 +1946,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#acc-for-1" class="md-nav__link">
+  <a href="#请简要解释-acc-函数中的-for-循环是如何在汇编代码中实现的1" class="md-nav__link">
     <span class="md-ellipsis">
       
         请简要解释 acc 函数中的 for 循环是如何在汇编代码中实现的。1%
@@ -1635,7 +1962,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#srclab5-1acc_opts-srclab5-1accc" class="md-nav__link">
+  <a href="#srclab5-1acc_opts-也是-srclab5-1accc-对应的一种汇编程序它由另一种命令生成" class="md-nav__link">
     <span class="md-ellipsis">
       
         src/lab5-1/acc_opt.s 也是 src/lab5-1/acc.c 对应的一种汇编程序，它由另一种命令生成：
@@ -1647,7 +1974,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#srclab5-1acc_opts" class="md-nav__link">
+  <a href="#请阅读-srclab5-1acc_opts-回答以下问题" class="md-nav__link">
     <span class="md-ellipsis">
       
         请阅读 src/lab5-1/acc_opt.s 回答以下问题：
@@ -1658,7 +1985,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#15" class="md-nav__link">
+  <a href="#理解递归汇编程序-15" class="md-nav__link">
     <span class="md-ellipsis">
       
         理解递归汇编程序 15%
@@ -1669,7 +1996,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#switch-5" class="md-nav__link">
+  <a href="#理解-switch-语句产生的跳转表-5" class="md-nav__link">
     <span class="md-ellipsis">
       
         理解 switch 语句产生的跳转表 5%¶
@@ -1711,14 +2038,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_10" >
         
           
           <label class="md-nav__link" for="__nav_10_10" id="__nav_10_10_label" tabindex="0">
@@ -1869,14 +2197,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
         
           
           <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
@@ -2054,7 +2383,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#risc-v-10" class="md-nav__link">
+  <a href="#理解简单-risc-v-程序-10" class="md-nav__link">
     <span class="md-ellipsis">
       
         理解简单 RISC-V 程序 10%
@@ -2065,7 +2394,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#srclab5-1acc_plains" class="md-nav__link">
+  <a href="#请阅读-srclab5-1acc_plains-回答以下问题-" class="md-nav__link">
     <span class="md-ellipsis">
       
         请阅读 src/lab5-1/acc_plain.s 回答以下问题 :
@@ -2077,7 +2406,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#acc-2" class="md-nav__link">
+  <a href="#acc-是如何获得函数参数的又是如何返回函数返回值的2" class="md-nav__link">
     <span class="md-ellipsis">
       
         acc 是如何获得函数参数的，又是如何返回函数返回值的？2%
@@ -2088,7 +2417,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#acc-s0-sd-s0-40sp-addi-s0-sp-48-2" class="md-nav__link">
+  <a href="#acc-函数中-s0-寄存器的作用是什么为什么在函数入口处需要执行-sd-s0-40sp-这条指令而在这条指令之后的-addi-s0-sp-48-这条指令的目的是什么2" class="md-nav__link">
     <span class="md-ellipsis">
       
         acc 函数中 s0 寄存器的作用是什么，为什么在函数入口处需要执行 sd s0, 40(sp) 这条指令，而在这条指令之后的 addi s0, sp, 48 这条指令的目的是什么？2%
@@ -2099,7 +2428,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#acc-stack-frame-1" class="md-nav__link">
+  <a href="#acc-函数的栈帧-stack-frame-的大小是多少1" class="md-nav__link">
     <span class="md-ellipsis">
       
         acc 函数的栈帧 (stack frame) 的大小是多少？1%
@@ -2110,7 +2439,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#acc-sp-s0-2" class="md-nav__link">
+  <a href="#acc-函数栈帧中存储的值有哪些它们分别存储在哪相对于-sp-或-s0-来说2" class="md-nav__link">
     <span class="md-ellipsis">
       
         acc 函数栈帧中存储的值有哪些，它们分别存储在哪（相对于 sp 或 s0 来说）？2%
@@ -2121,7 +2450,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#acc-for-1" class="md-nav__link">
+  <a href="#请简要解释-acc-函数中的-for-循环是如何在汇编代码中实现的1" class="md-nav__link">
     <span class="md-ellipsis">
       
         请简要解释 acc 函数中的 for 循环是如何在汇编代码中实现的。1%
@@ -2137,7 +2466,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#srclab5-1acc_opts-srclab5-1accc" class="md-nav__link">
+  <a href="#srclab5-1acc_opts-也是-srclab5-1accc-对应的一种汇编程序它由另一种命令生成" class="md-nav__link">
     <span class="md-ellipsis">
       
         src/lab5-1/acc_opt.s 也是 src/lab5-1/acc.c 对应的一种汇编程序，它由另一种命令生成：
@@ -2149,7 +2478,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#srclab5-1acc_opts" class="md-nav__link">
+  <a href="#请阅读-srclab5-1acc_opts-回答以下问题" class="md-nav__link">
     <span class="md-ellipsis">
       
         请阅读 src/lab5-1/acc_opt.s 回答以下问题：
@@ -2160,7 +2489,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#15" class="md-nav__link">
+  <a href="#理解递归汇编程序-15" class="md-nav__link">
     <span class="md-ellipsis">
       
         理解递归汇编程序 15%
@@ -2171,7 +2500,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#switch-5" class="md-nav__link">
+  <a href="#理解-switch-语句产生的跳转表-5" class="md-nav__link">
     <span class="md-ellipsis">
       
         理解 switch 语句产生的跳转表 5%¶
@@ -2199,9 +2528,9 @@
               
               <article class="md-content__inner md-typeset">
                 
+  
+  
                   
-
-
   
     <a href="https://github.com/Evelina-IS/Evelina_personal_web/edit/main/docs/SYS1/lab5-RISCV与qemu破解.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
       
@@ -2219,103 +2548,107 @@
   
 
 
-<h1 id="lab5-1">lab5-1<a class="headerlink" href="#lab5-1" title="Permanent link">&para;</a></h1>
-<h3 id="risc-v-10">理解简单 RISC-V 程序 10%<a class="headerlink" href="#risc-v-10" title="Permanent link">&para;</a></h3>
-<h2 id="srclab5-1acc_plains">请阅读 <code>src/lab5-1/acc_plain.s</code> 回答以下问题 :<a class="headerlink" href="#srclab5-1acc_plains" title="Permanent link">&para;</a></h2>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="w">    </span><span class="n">.file</span><span class="w">   </span><span class="s">&quot;acc.c&quot;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="n">.option</span><span class="w"> </span><span class="n">pic</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="n">.text</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="n">.align</span><span class="w">  </span><span class="m">1</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="n">.globl</span><span class="w">  </span><span class="n">acc</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="n">.type</span><span class="w">   </span><span class="n">acc</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="kr">function</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">acc</span><span class="o">:</span>
-</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span><span class="n">addi</span><span class="w">    </span><span class="n">sp</span><span class="p">,</span><span class="n">sp</span><span class="p">,</span><span class="m">-48</span>
-</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
-</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span><span class="n">sd</span><span class="w">  </span><span class="n">s0</span><span class="p">,</span><span class="m">40</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span><span class="n">addi</span><span class="w">    </span><span class="n">s0</span><span class="p">,</span><span class="n">sp</span><span class="p">,</span><span class="m">48</span>
-</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span><span class="n">sd</span><span class="w">  </span><span class="n">a0</span><span class="p">,</span><span class="m">-40</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="n">sd</span><span class="w">  </span><span class="n">a1</span><span class="p">,</span><span class="m">-48</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span><span class="n">sd</span><span class="w">  </span><span class="n">zero</span><span class="p">,</span><span class="m">-32</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
-</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="n">ld</span><span class="w">  </span><span class="n">a5</span><span class="p">,</span><span class="m">-40</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
-</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">    </span><span class="n">sd</span><span class="w">  </span><span class="n">a5</span><span class="p">,</span><span class="m">-24</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
-</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span><span class="n">j</span><span class="w">   </span><span class="n">.L2</span>
-</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
-</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="n">.L3</span><span class="o">:</span>
-</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
-</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">    </span><span class="n">ld</span><span class="w">  </span><span class="n">a4</span><span class="p">,</span><span class="m">-32</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
-</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="n">ld</span><span class="w">  </span><span class="n">a5</span><span class="p">,</span><span class="m">-24</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
-</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="n">add</span><span class="w"> </span><span class="n">a5</span><span class="p">,</span><span class="n">a4</span><span class="p">,</span><span class="n">a5</span>
-</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
-</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">    </span><span class="n">sd</span><span class="w">  </span><span class="n">a5</span><span class="p">,</span><span class="m">-32</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>
-</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">    </span><span class="n">ld</span><span class="w">  </span><span class="n">a5</span><span class="p">,</span><span class="m">-24</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
-</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">    </span><span class="n">addi</span><span class="w">    </span><span class="n">a5</span><span class="p">,</span><span class="n">a5</span><span class="p">,</span><span class="m">1</span>
-</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>
-</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">    </span><span class="n">sd</span><span class="w">  </span><span class="n">a5</span><span class="p">,</span><span class="m">-24</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>
-</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="n">.L2</span><span class="o">:</span>
-</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>
-</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">    </span><span class="n">ld</span><span class="w">  </span><span class="n">a4</span><span class="p">,</span><span class="m">-24</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>
-</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">    </span><span class="n">ld</span><span class="w">  </span><span class="n">a5</span><span class="p">,</span><span class="m">-48</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>
-</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">    </span><span class="n">ble</span><span class="w"> </span><span class="n">a4</span><span class="p">,</span><span class="n">a5</span><span class="p">,</span><span class="n">.L3</span>
-</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
-</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">    </span><span class="n">ld</span><span class="w">  </span><span class="n">a5</span><span class="p">,</span><span class="m">-32</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>
-</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">    </span><span class="n">mv</span><span class="w">  </span><span class="n">a0</span><span class="p">,</span><span class="n">a5</span>
-</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
-</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">    </span><span class="n">ld</span><span class="w">  </span><span class="n">s0</span><span class="p">,</span><span class="m">40</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
-</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>
-</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">    </span><span class="n">addi</span><span class="w">    </span><span class="n">sp</span><span class="p">,</span><span class="n">sp</span><span class="p">,</span><span class="m">48</span>
-</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>
-</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">    </span><span class="n">jr</span><span class="w">  </span><span class="n">ra</span>
-</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>
-</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">    </span><span class="n">.size</span><span class="w">   </span><span class="n">acc</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="o">-</span><span class="n">acc</span>
-</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>
-</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="w">    </span><span class="n">.ident</span><span class="w">  </span><span class="s">&quot;GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0&quot;</span>
-</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>
-</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="w">    </span><span class="n">.section</span><span class="w">    </span><span class="n">.note.GNU</span><span class="o">-</span><span class="n">stack</span><span class="p">,</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="o">@</span><span class="n">progbits</span>
-</span></code></pre></div>
-<h3 id="acc-2"><code>acc</code> 是如何获得函数参数的，又是如何返回函数返回值的？2%<a class="headerlink" href="#acc-2" title="Permanent link">&para;</a></h3>
-<div class="language-text highlight"><pre><span></span><code>前两个参数a,b分别通过 `a0` 和 `a1` 寄存器传入。
-  返回值通过`a0`寄存器来返回。
-</code></pre></div>
-<h3 id="acc-s0-sd-s0-40sp-addi-s0-sp-48-2"><code>acc</code> 函数中 <code>s0</code> 寄存器的作用是什么，为什么在函数入口处需要执行 <code>sd s0, 40(sp)</code> 这条指令，而在这条指令之后的 <code>addi s0, sp, 48</code> 这条指令的目的是什么？2%<a class="headerlink" href="#acc-s0-sd-s0-40sp-addi-s0-sp-48-2" title="Permanent link">&para;</a></h3>
+
+
+
+
+
+
+<h1 id="lab5-1">lab5-1<a class="headerlink" href="#lab5-1" title="Permanent link"></a></h1>
+<h3 id="理解简单-risc-v-程序-10">理解简单 RISC-V 程序 10%<a class="headerlink" href="#理解简单-risc-v-程序-10" title="Permanent link"></a></h3>
+<h2 id="请阅读-srclab5-1acc_plains-回答以下问题-">请阅读 <code>src/lab5-1/acc_plain.s</code> 回答以下问题 :<a class="headerlink" href="#请阅读-srclab5-1acc_plains-回答以下问题-" title="Permanent link"></a></h2>
+<pre class="highlight"><code class="language-r">    .file   "acc.c"
+
+    .option pic
+
+    .text
+
+    .align  1
+
+    .globl  acc
+
+    .type   acc, @function
+
+acc:
+
+    addi    sp,sp,-48
+
+    sd  s0,40(sp)
+
+    addi    s0,sp,48
+
+    sd  a0,-40(s0)
+
+    sd  a1,-48(s0)
+
+    sd  zero,-32(s0)
+
+    ld  a5,-40(s0)
+
+    sd  a5,-24(s0)
+
+    j   .L2
+
+.L3:
+
+    ld  a4,-32(s0)
+
+    ld  a5,-24(s0)
+
+    add a5,a4,a5
+
+    sd  a5,-32(s0)
+
+    ld  a5,-24(s0)
+
+    addi    a5,a5,1
+
+    sd  a5,-24(s0)
+
+.L2:
+
+    ld  a4,-24(s0)
+
+    ld  a5,-48(s0)
+
+    ble a4,a5,.L3
+
+    ld  a5,-32(s0)
+
+    mv  a0,a5
+
+    ld  s0,40(sp)
+
+    addi    sp,sp,48
+
+    jr  ra
+
+    .size   acc, .-acc
+
+    .ident  "GCC: (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0"
+
+    .section    .note.GNU-stack,"",@progbits</code></pre>
+<h3 id="acc-是如何获得函数参数的又是如何返回函数返回值的2"><code>acc</code> 是如何获得函数参数的，又是如何返回函数返回值的？2%<a class="headerlink" href="#acc-是如何获得函数参数的又是如何返回函数返回值的2" title="Permanent link"></a></h3>
+<pre class="highlight"><code>前两个参数a,b分别通过 `a0` 和 `a1` 寄存器传入。
+  返回值通过`a0`寄存器来返回。</code></pre>
+<h3 id="acc-函数中-s0-寄存器的作用是什么为什么在函数入口处需要执行-sd-s0-40sp-这条指令而在这条指令之后的-addi-s0-sp-48-这条指令的目的是什么2"><code>acc</code> 函数中 <code>s0</code> 寄存器的作用是什么，为什么在函数入口处需要执行 <code>sd s0, 40(sp)</code> 这条指令，而在这条指令之后的 <code>addi s0, sp, 48</code> 这条指令的目的是什么？2%<a class="headerlink" href="#acc-函数中-s0-寄存器的作用是什么为什么在函数入口处需要执行-sd-s0-40sp-这条指令而在这条指令之后的-addi-s0-sp-48-这条指令的目的是什么2" title="Permanent link"></a></h3>
 <ul>
 <li>S0是帧指针，在栈指针在这个程序中起到了指示栈顶的作用。</li>
 <li>在执行 <code>sd s0, 40(sp)</code>中是将S0的数据暂时存到40(sp)中，防止acc的函数将S0的数值改动</li>
 <li>在执行<code>addi s0, sp, 48</code> 的时候是初始化当前的帧指针，使得S0的帧指针更新为新的指针</li>
 </ul>
-<h3 id="acc-stack-frame-1"><code>acc</code> 函数的栈帧 (stack frame) 的大小是多少？1%<a class="headerlink" href="#acc-stack-frame-1" title="Permanent link">&para;</a></h3>
+<h3 id="acc-函数的栈帧-stack-frame-的大小是多少1"><code>acc</code> 函数的栈帧 (stack frame) 的大小是多少？1%<a class="headerlink" href="#acc-函数的栈帧-stack-frame-的大小是多少1" title="Permanent link"></a></h3>
 <ul>
 <li>栈帧的大小是48字节</li>
 </ul>
-<h3 id="acc-sp-s0-2"><code>acc</code> 函数栈帧中存储的值有哪些，它们分别存储在哪（相对于 <code>sp</code> 或 <code>s0</code> 来说）？2%<a class="headerlink" href="#acc-sp-s0-2" title="Permanent link">&para;</a></h3>
+<h3 id="acc-函数栈帧中存储的值有哪些它们分别存储在哪相对于-sp-或-s0-来说2"><code>acc</code> 函数栈帧中存储的值有哪些，它们分别存储在哪（相对于 <code>sp</code> 或 <code>s0</code> 来说）？2%<a class="headerlink" href="#acc-函数栈帧中存储的值有哪些它们分别存储在哪相对于-sp-或-s0-来说2" title="Permanent link"></a></h3>
 <ul>
 <li>S0旧的s0是存放在0（sp)中</li>
 <li>a0是存放在8(sp)中</li>
 <li>a1是存放在0(sp)中</li>
 <li>循环控制变量i是存放在24(sp)中</li>
 </ul>
-<h3 id="acc-for-1">请简要解释 <code>acc</code> 函数中的 for 循环是如何在汇编代码中实现的。1%<a class="headerlink" href="#acc-for-1" title="Permanent link">&para;</a></h3>
+<h3 id="请简要解释-acc-函数中的-for-循环是如何在汇编代码中实现的1">请简要解释 <code>acc</code> 函数中的 for 循环是如何在汇编代码中实现的。1%<a class="headerlink" href="#请简要解释-acc-函数中的-for-循环是如何在汇编代码中实现的1" title="Permanent link"></a></h3>
 <ul>
 <li>初始化：在进入循环前，将零值写入 <code>-32(s0)</code>（初始化 <code>res = 0</code>），将参数 <code>a</code> 的值写入 <code>-24(s0)</code>。随后执行 <code>j .L2</code> 无条件跳转到条件检查部分。</li>
 <li>条件检查 (<code>.L2</code>)：<ul>
@@ -2331,9 +2664,9 @@
 </ul>
 </li>
 </ul>
-<h2 id="srclab5-1acc_opts-srclab5-1accc"><code>src/lab5-1/acc_opt.s</code> 也是 <code>src/lab5-1/acc.c</code> 对应的一种汇编程序，它由另一种命令生成：<a class="headerlink" href="#srclab5-1acc_opts-srclab5-1accc" title="Permanent link">&para;</a></h2>
+<h2 id="srclab5-1acc_opts-也是-srclab5-1accc-对应的一种汇编程序它由另一种命令生成"><code>src/lab5-1/acc_opt.s</code> 也是 <code>src/lab5-1/acc.c</code> 对应的一种汇编程序，它由另一种命令生成：<a class="headerlink" href="#srclab5-1acc_opts-也是-srclab5-1accc-对应的一种汇编程序它由另一种命令生成" title="Permanent link"></a></h2>
 <p>|<code>riscv64-linux-gnu-gcc -S acc.c -O2 -o acc_opt.s</code>|</p>
-<h3 id="srclab5-1acc_opts">请阅读 <code>src/lab5-1/acc_opt.s</code> 回答以下问题：<a class="headerlink" href="#srclab5-1acc_opts" title="Permanent link">&para;</a></h3>
+<h3 id="请阅读-srclab5-1acc_opts-回答以下问题">请阅读 <code>src/lab5-1/acc_opt.s</code> 回答以下问题：<a class="headerlink" href="#请阅读-srclab5-1acc_opts-回答以下问题" title="Permanent link"></a></h3>
 <ol>
 <li>
 <p>请查阅资料简要描述编译选项 <code>-O0</code> 和 <code>-O2</code> 的区别。1%
@@ -2353,34 +2686,33 @@
   - acc_opts.s的缺点：调试困难，编译略慢</p>
 </li>
 </ol>
-<h3 id="15">理解递归汇编程序 15%<a class="headerlink" href="#15" title="Permanent link">&para;</a></h3>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="w">        </span><span class="n">.text</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">        </span><span class="n">.globl</span><span class="w">  </span><span class="n">factor</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">factor</span><span class="o">:</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="n">addi</span><span class="w">    </span><span class="n">sp</span><span class="p">,</span><span class="n">sp</span><span class="p">,</span><span class="m">-32</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">        </span><span class="n">sd</span><span class="w">      </span><span class="n">ra</span><span class="p">,</span><span class="m">24</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">        </span><span class="n">sd</span><span class="w">      </span><span class="n">s0</span><span class="p">,</span><span class="m">16</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">        </span><span class="n">addi</span><span class="w">    </span><span class="n">s0</span><span class="p">,</span><span class="n">sp</span><span class="p">,</span><span class="m">32</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">        </span><span class="n">sd</span><span class="w">      </span><span class="n">a0</span><span class="p">,</span><span class="m">-24</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">        </span><span class="n">ld</span><span class="w">      </span><span class="n">a5</span><span class="p">,</span><span class="m">-24</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">        </span><span class="n">bne</span><span class="w">     </span><span class="n">a5</span><span class="p">,</span><span class="n">zero</span><span class="p">,</span><span class="n">.L2</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">        </span><span class="n">li</span><span class="w">      </span><span class="n">a5</span><span class="p">,</span><span class="m">1</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">        </span><span class="n">j</span><span class="w">       </span><span class="n">.L3</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">.L2</span><span class="o">:</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">        </span><span class="n">ld</span><span class="w">      </span><span class="n">a5</span><span class="p">,</span><span class="m">-24</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">        </span><span class="n">addi</span><span class="w">    </span><span class="n">a5</span><span class="p">,</span><span class="n">a5</span><span class="p">,</span><span class="m">-1</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">        </span><span class="n">mv</span><span class="w">      </span><span class="n">a0</span><span class="p">,</span><span class="n">a5</span>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">        </span><span class="n">call</span><span class="w">    </span><span class="n">factor</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">        </span><span class="n">mv</span><span class="w">      </span><span class="n">a4</span><span class="p">,</span><span class="n">a0</span>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="n">ld</span><span class="w">      </span><span class="n">a5</span><span class="p">,</span><span class="m">-24</span><span class="p">(</span><span class="n">s0</span><span class="p">)</span>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="n">mul</span><span class="w">     </span><span class="n">a5</span><span class="p">,</span><span class="n">a4</span><span class="p">,</span><span class="n">a5</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="n">.L3</span><span class="o">:</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="n">mv</span><span class="w">      </span><span class="n">a0</span><span class="p">,</span><span class="n">a5</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">        </span><span class="n">ld</span><span class="w">      </span><span class="n">ra</span><span class="p">,</span><span class="m">24</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span><span class="n">ld</span><span class="w">      </span><span class="n">s0</span><span class="p">,</span><span class="m">16</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">        </span><span class="n">addi</span><span class="w">    </span><span class="n">sp</span><span class="p">,</span><span class="n">sp</span><span class="p">,</span><span class="m">32</span>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">        </span><span class="n">jr</span><span class="w">      </span><span class="n">ra</span>
-</span></code></pre></div>
+<h3 id="理解递归汇编程序-15">理解递归汇编程序 15%<a class="headerlink" href="#理解递归汇编程序-15" title="Permanent link"></a></h3>
+<pre class="highlight"><code class="language-r">        .text
+        .globl  factor
+factor:
+        addi    sp,sp,-32
+        sd      ra,24(sp)
+        sd      s0,16(sp)
+        addi    s0,sp,32
+        sd      a0,-24(s0)
+        ld      a5,-24(s0)
+        bne     a5,zero,.L2
+        li      a5,1
+        j       .L3
+.L2:
+        ld      a5,-24(s0)
+        addi    a5,a5,-1
+        mv      a0,a5
+        call    factor
+        mv      a4,a0
+        ld      a5,-24(s0)
+        mul     a5,a4,a5
+.L3:
+        mv      a0,a5
+        ld      ra,24(sp)
+        ld      s0,16(sp)
+        addi    sp,sp,32
+        jr      ra</code></pre>
 <p>请阅读 <code>src/lab5-1/factor_plain.s</code> 回答以下问题 :</p>
 <ol>
 <li>为什么 <code>src/lab5-1/factor_plain.s</code> 中 <code>factor</code> 函数的入口处需要执行 <code>sd ra, 24(sp)</code> 指令，而 <code>src/lab5-1/acc_plain.s</code> 中的 <code>acc</code> 函数并没有执行该指令？2%
@@ -2401,70 +2733,68 @@
 <li>请从栈内存占用的角度比较 <code>src/lab5-1/factor_opt.s</code> 和 <code>src/lab5-1/factor_plain.s</code> 的优劣。2%</li>
 <li>请查阅_尾递归优化_的相关资料，解释编译器在生成 <code>src/lab5-1/factor_opt.s</code> 时做了什么优化，该优化的原理，以及什么时候能进行该优化。2%</li>
 </ol>
-<h3 id="switch-5">理解 switch 语句产生的跳转表 5%<a href="https://webvpn.zju.edu.cn/https/77726476706e69737468656265737421eafd54d134297b1e6e098ea98b1b393f9b77088ece7745/sys1/sys1-sp26/lab5-1/#%E7%90%86%E8%A7%A3-switch-%E8%AF%AD%E5%8F%A5%E4%BA%A7%E7%94%9F%E7%9A%84%E8%B7%B3%E8%BD%AC%E8%A1%A85" title="Permanent link">¶</a><a class="headerlink" href="#switch-5" title="Permanent link">&para;</a></h3>
+<h3 id="理解-switch-语句产生的跳转表-5">理解 switch 语句产生的跳转表 5%<a href="https://webvpn.zju.edu.cn/https/77726476706e69737468656265737421eafd54d134297b1e6e098ea98b1b393f9b77088ece7745/sys1/sys1-sp26/lab5-1/#%E7%90%86%E8%A7%A3-switch-%E8%AF%AD%E5%8F%A5%E4%BA%A7%E7%94%9F%E7%9A%84%E8%B7%B3%E8%BD%AC%E8%A1%A85" title="Permanent link">¶</a><a class="headerlink" href="#理解-switch-语句产生的跳转表-5" title="Permanent link"></a></h3>
 <p>在 <code>src/lab5-1/switch.c</code> 中实现了一个简单的基于 switch 语句的函数<code>switch_eq</code> :
-<div class="language-c highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">switch_eg</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">     </span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w">     </span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">     </span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">case</span><span class="w"> </span><span class="mi">20</span><span class="p">:</span><span class="w">         </span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w">    </span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w"> </span><span class="k">case</span><span class="w"> </span><span class="mi">21</span><span class="p">:</span><span class="w">         </span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">19</span><span class="p">;</span><span class="w">         </span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w">    </span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="mi">22</span><span class="p">:</span><span class="w">         </span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="n">result</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">11</span><span class="p">;</span><span class="w">         </span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="k">break</span><span class="p">;</span><span class="w">     </span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="mi">24</span><span class="p">:</span><span class="w">     </span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span><span class="k">case</span><span class="w"> </span><span class="mi">26</span><span class="p">:</span><span class="w">        </span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">   </span><span class="n">result</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span><span class="w">         </span>
-</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">   </span><span class="k">break</span><span class="p">;</span><span class="w">     </span>
-</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">   </span><span class="k">default</span><span class="o">:</span><span class="w">         </span>
-</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">   </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">     </span><span class="p">}</span><span class="w">     </span>
-</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">   </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
-</span></code></pre></div></p>
+<pre class="highlight"><code class="language-c">int switch_eg(long long x, long long y) {     
+long long result = y;     
+switch (x) {     
+case 20:         
+result = result - 5;    
+ case 21:         
+ result = result + 19;         
+ break;    
+  case 22:         
+  result += 11;         
+  break;     
+  case 24:     
+  case 26:        
+   result -= 20;         
+   break;     
+   default:         
+   result = 0;     }     
+   return result; }</code></pre></p>
 <p><code>src/lab5-1/switch.s</code> 为该函数的汇编版本，由以下命令生成：</p>
 <p>|   |
 |---|
 |<code>riscv64-linux-gnu-gcc -S switch.c -O2 -o switch.s</code>|
-<div class="language-r highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">    </span><span class="n">.text</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="n">.globl</span><span class="w">  </span><span class="n">switch_eg</span>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">switch_eg</span><span class="o">:</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="n">addi</span><span class="w">    </span><span class="n">a5</span><span class="p">,</span><span class="n">a0</span><span class="p">,</span><span class="m">-20</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="n">li</span><span class="w">  </span><span class="n">a4</span><span class="p">,</span><span class="m">6</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="n">bgtu</span><span class="w">    </span><span class="n">a5</span><span class="p">,</span><span class="n">a4</span><span class="p">,</span><span class="n">.L8</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="n">lla</span><span class="w"> </span><span class="n">a4</span><span class="p">,</span><span class="n">.L4</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="n">slli</span><span class="w">    </span><span class="n">a5</span><span class="p">,</span><span class="n">a5</span><span class="p">,</span><span class="m">2</span>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="n">add</span><span class="w"> </span><span class="n">a5</span><span class="p">,</span><span class="n">a5</span><span class="p">,</span><span class="n">a4</span>
-</span><span id="__span-3-10"><a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="n">lw</span><span class="w">  </span><span class="n">a5</span><span class="p">,</span><span class="m">0</span><span class="p">(</span><span class="n">a5</span><span class="p">)</span>
-</span><span id="__span-3-11"><a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="n">add</span><span class="w"> </span><span class="n">a5</span><span class="p">,</span><span class="n">a5</span><span class="p">,</span><span class="n">a4</span>
-</span><span id="__span-3-12"><a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="n">jr</span><span class="w">  </span><span class="n">a5</span>
-</span><span id="__span-3-13"><a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="n">.section</span><span class="w">    </span><span class="n">.rodata</span>
-</span><span id="__span-3-14"><a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="n">.align</span><span class="w">  </span><span class="m">2</span>
-</span><span id="__span-3-15"><a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="n">.align</span><span class="w">  </span><span class="m">2</span>
-</span><span id="__span-3-16"><a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="n">.L4</span><span class="o">:</span>
-</span><span id="__span-3-17"><a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="n">.word</span><span class="w">   </span><span class="n">.L7</span><span class="m">-.L4</span>
-</span><span id="__span-3-18"><a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="n">.word</span><span class="w">   </span><span class="n">.L6</span><span class="m">-.L4</span>
-</span><span id="__span-3-19"><a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="n">.word</span><span class="w">   </span><span class="n">.L5</span><span class="m">-.L4</span>
-</span><span id="__span-3-20"><a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="n">.word</span><span class="w">   </span><span class="n">.L8</span><span class="m">-.L4</span>
-</span><span id="__span-3-21"><a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span><span class="n">.word</span><span class="w">   </span><span class="n">.L3</span><span class="m">-.L4</span>
-</span><span id="__span-3-22"><a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="n">.word</span><span class="w">   </span><span class="n">.L8</span><span class="m">-.L4</span>
-</span><span id="__span-3-23"><a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="n">.word</span><span class="w">   </span><span class="n">.L3</span><span class="m">-.L4</span>
-</span><span id="__span-3-24"><a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="n">.text</span>
-</span><span id="__span-3-25"><a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="n">.L3</span><span class="o">:</span>
-</span><span id="__span-3-26"><a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">    </span><span class="n">addiw</span><span class="w">   </span><span class="n">a0</span><span class="p">,</span><span class="n">a1</span><span class="p">,</span><span class="m">-20</span>
-</span><span id="__span-3-27"><a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">    </span><span class="n">ret</span>
-</span><span id="__span-3-28"><a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="n">.L7</span><span class="o">:</span>
-</span><span id="__span-3-29"><a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">    </span><span class="n">addi</span><span class="w">    </span><span class="n">a1</span><span class="p">,</span><span class="n">a1</span><span class="p">,</span><span class="m">-5</span>
-</span><span id="__span-3-30"><a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="n">.L6</span><span class="o">:</span>
-</span><span id="__span-3-31"><a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">    </span><span class="n">addiw</span><span class="w">   </span><span class="n">a0</span><span class="p">,</span><span class="n">a1</span><span class="p">,</span><span class="m">19</span>
-</span><span id="__span-3-32"><a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">    </span><span class="n">ret</span>
-</span><span id="__span-3-33"><a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="n">.L5</span><span class="o">:</span>
-</span><span id="__span-3-34"><a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">    </span><span class="n">addiw</span><span class="w">   </span><span class="n">a0</span><span class="p">,</span><span class="n">a1</span><span class="p">,</span><span class="m">11</span>
-</span><span id="__span-3-35"><a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">    </span><span class="n">ret</span>
-</span><span id="__span-3-36"><a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="n">.L8</span><span class="o">:</span>
-</span><span id="__span-3-37"><a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="w">    </span><span class="n">li</span><span class="w">  </span><span class="n">a0</span><span class="p">,</span><span class="m">0</span>
-</span><span id="__span-3-38"><a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="w">    </span><span class="n">ret</span>
-</span></code></pre></div></p>
+<pre class="highlight"><code class="language-r">    .text
+    .globl  switch_eg
+switch_eg:
+    addi    a5,a0,-20
+    li  a4,6
+    bgtu    a5,a4,.L8
+    lla a4,.L4
+    slli    a5,a5,2
+    add a5,a5,a4
+    lw  a5,0(a5)
+    add a5,a5,a4
+    jr  a5
+    .section    .rodata
+    .align  2
+    .align  2
+.L4:
+    .word   .L7-.L4
+    .word   .L6-.L4
+    .word   .L5-.L4
+    .word   .L8-.L4
+    .word   .L3-.L4
+    .word   .L8-.L4
+    .word   .L3-.L4
+    .text
+.L3:
+    addiw   a0,a1,-20
+    ret
+.L7:
+    addi    a1,a1,-5
+.L6:
+    addiw   a0,a1,19
+    ret
+.L5:
+    addiw   a0,a1,11
+    ret
+.L8:
+    li  a0,0
+    ret</code></pre></p>
 <p>请阅读这两个文件并回答以下问题 :</p>
 <ol>
 <li>请简述在 <code>src/lab5-1/switch.s</code> 中是如何实现 switch 语句的。2%<ul>
@@ -2475,104 +2805,102 @@
 <li>请简述用跳转表实现 switch 和用 if-else 实现 switch 的优劣，在什么时候应该采用跳转表，在什么时候应该采用 if-else。3%<ul>
 <li>优势：执行的效率高，跳转时间基本上恒定在O(1)，而且代码简洁。</li>
 <li>劣势，占用的内存大，需要大量的空间来储存跳转表，使用的范围有限，只能存储离散的取值。
-<div class="language-r highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">.text</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="n">.globl</span><span class="w">  </span><span class="n">bubble_sort</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">bubble_sort</span><span class="o">:</span>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="n">addi</span><span class="w"> </span><span class="n">sp</span><span class="p">,</span><span class="n">sp</span><span class="p">,</span><span class="m">-32</span><span class="c1"># 栈指针向下移动32字节，为保存寄存器分配空间</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="n">sd</span><span class="w"> </span><span class="n">ra</span><span class="p">,</span><span class="m">24</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="c1"># 保存返回地址寄存器ra到栈中偏移24的位置</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="n">sd</span><span class="w"> </span><span class="n">s0</span><span class="p">,</span><span class="m">16</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="c1"># 保存s0寄存器到栈中偏移16的位置</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="n">sd</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="m">8</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="c1"># 保存s1寄存器到栈中偏移8的位置</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="n">sd</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="m">0</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="c1"># 保存s2寄存器到栈中偏移0的位置</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="n">mv</span><span class="w"> </span><span class="n">s0</span><span class="p">,</span><span class="n">a0</span><span class="c1"># s0 = 数组首地址（参数a0）</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="n">mv</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="n">a1</span><span class="c1"># s1 = 数组长度n（参数a1）</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="n">li</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="m">0</span><span class="c1"># s2 = 外层循环变量i = 0</span>
-</span><span id="__span-4-12"><a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="n">.L1</span><span class="o">:</span><span class="c1"># 外层循环开始</span>
-</span><span id="__span-4-13"><a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="n">addi</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span><span class="n">s1</span><span class="p">,</span><span class="m">-1</span><span class="c1"># t0 = n - 1</span>
-</span><span id="__span-4-14"><a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="n">bge</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span><span class="n">.L_done</span><span class="c1"># 如果i &gt;= n-1，跳转到结束</span>
-</span><span id="__span-4-15"><a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="n">li</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="m">0</span><span class="c1"># 内层循环变量j = 0</span>
-</span><span id="__span-4-16"><a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="n">.L2</span><span class="o">:</span><span class="c1"># 内层循环开始</span>
-</span><span id="__span-4-17"><a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="n">sub</span><span class="w"> </span><span class="n">t2</span><span class="p">,</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="c1"># t2 = n - i</span>
-</span><span id="__span-4-18"><a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="n">addi</span><span class="w"> </span><span class="n">t2</span><span class="p">,</span><span class="n">t2</span><span class="p">,</span><span class="m">-1</span><span class="c1"># t2 = n - i - 1</span>
-</span><span id="__span-4-19"><a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="n">bge</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="n">t2</span><span class="p">,</span><span class="n">.L1_next</span><span class="c1"># 如果j &gt;= n-i-1，跳转到外层循环的下一轮</span>
-</span><span id="__span-4-20"><a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span><span class="n">slli</span><span class="w"> </span><span class="n">t3</span><span class="p">,</span><span class="n">t1</span><span class="p">,</span><span class="m">3</span><span class="c1"># t3 = j * 8（每个元素8字节）</span>
-</span><span id="__span-4-21"><a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="n">add</span><span class="w"> </span><span class="n">t3</span><span class="p">,</span><span class="n">s0</span><span class="p">,</span><span class="n">t3</span><span class="c1"># t3 = &amp;array[j]</span>
-</span><span id="__span-4-22"><a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">    </span><span class="n">ld</span><span class="w"> </span><span class="n">t4</span><span class="p">,</span><span class="m">0</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span><span class="c1"># t4 = array[j]</span>
-</span><span id="__span-4-23"><a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">    </span><span class="n">ld</span><span class="w"> </span><span class="n">t5</span><span class="p">,</span><span class="m">8</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span><span class="c1"># t5 = array[j+1]</span>
-</span><span id="__span-4-24"><a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">    </span><span class="n">ble</span><span class="w"> </span><span class="n">t4</span><span class="p">,</span><span class="n">t5</span><span class="p">,</span><span class="n">.L3</span><span class="c1"># 如果array[j] &lt;= array[j+1]，跳过交换</span>
-</span><span id="__span-4-25"><a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">    </span><span class="n">sd</span><span class="w"> </span><span class="n">t5</span><span class="p">,</span><span class="m">0</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span><span class="c1"># 将array[j+1]存入array[j]的位置</span>
-</span><span id="__span-4-26"><a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">    </span><span class="n">sd</span><span class="w"> </span><span class="n">t4</span><span class="p">,</span><span class="m">8</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span><span class="c1"># 将array[j]存入array[j+1]的位置</span>
-</span><span id="__span-4-27"><a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="n">.L3</span><span class="o">:</span><span class="c1"># 跳转目标（不交换时来到这里）</span>
-</span><span id="__span-4-28"><a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">    </span><span class="n">addi</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="n">t1</span><span class="p">,</span><span class="m">1</span><span class="c1"># j++</span>
-</span><span id="__span-4-29"><a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">    </span><span class="n">j</span><span class="w"> </span><span class="n">.L2</span><span class="c1"># 继续内层循环</span>
-</span><span id="__span-4-30"><a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="n">.L1_next</span><span class="o">:</span><span class="c1"># 外层循环的下一次迭代</span>
-</span><span id="__span-4-31"><a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">    </span><span class="n">addi</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="n">s2</span><span class="p">,</span><span class="m">1</span><span class="c1"># i++</span>
-</span><span id="__span-4-32"><a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">    </span><span class="n">j</span><span class="w"> </span><span class="n">.L1</span><span class="c1"># 继续外层循环</span>
-</span><span id="__span-4-33"><a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="n">.L_done</span><span class="o">:</span><span class="c1"># 排序完成</span>
-</span><span id="__span-4-34"><a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">    </span><span class="n">ld</span><span class="w"> </span><span class="n">ra</span><span class="p">,</span><span class="m">24</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="c1"># 从栈中恢复寄存器</span>
-</span><span id="__span-4-35"><a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="w">    </span><span class="n">ld</span><span class="w"> </span><span class="n">s0</span><span class="p">,</span><span class="m">16</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="w">            </span>
-</span><span id="__span-4-36"><a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="w">    </span><span class="n">ld</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="m">8</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="w">           </span>
-</span><span id="__span-4-37"><a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="w">    </span><span class="n">ld</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="m">0</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="w">           </span>
-</span><span id="__span-4-38"><a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="w">    </span><span class="n">addi</span><span class="w"> </span><span class="n">sp</span><span class="p">,</span><span class="n">sp</span><span class="p">,</span><span class="m">32</span><span class="w">          </span>
-</span><span id="__span-4-39"><a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">    </span><span class="n">ret</span><span class="w">                   </span>
-</span></code></pre></div></li>
+<pre class="highlight"><code class="language-r">.text
+.globl  bubble_sort
+bubble_sort:
+    addi sp,sp,-32# 栈指针向下移动32字节，为保存寄存器分配空间
+    sd ra,24(sp)# 保存返回地址寄存器ra到栈中偏移24的位置
+    sd s0,16(sp)# 保存s0寄存器到栈中偏移16的位置
+    sd s1,8(sp)# 保存s1寄存器到栈中偏移8的位置
+    sd s2,0(sp)# 保存s2寄存器到栈中偏移0的位置
+    mv s0,a0# s0 = 数组首地址（参数a0）
+    mv s1,a1# s1 = 数组长度n（参数a1）
+    li s2,0# s2 = 外层循环变量i = 0
+.L1:# 外层循环开始
+    addi t0,s1,-1# t0 = n - 1
+    bge s2,t0,.L_done# 如果i &gt;= n-1，跳转到结束
+    li t1,0# 内层循环变量j = 0
+.L2:# 内层循环开始
+    sub t2,s1,s2# t2 = n - i
+    addi t2,t2,-1# t2 = n - i - 1
+    bge t1,t2,.L1_next# 如果j &gt;= n-i-1，跳转到外层循环的下一轮
+    slli t3,t1,3# t3 = j * 8（每个元素8字节）
+    add t3,s0,t3# t3 = &amp;array[j]
+    ld t4,0(t3)# t4 = array[j]
+    ld t5,8(t3)# t5 = array[j+1]
+    ble t4,t5,.L3# 如果array[j] &lt;= array[j+1]，跳过交换
+    sd t5,0(t3)# 将array[j+1]存入array[j]的位置
+    sd t4,8(t3)# 将array[j]存入array[j+1]的位置
+.L3:# 跳转目标（不交换时来到这里）
+    addi t1,t1,1# j++
+    j .L2# 继续内层循环
+.L1_next:# 外层循环的下一次迭代
+    addi s2,s2,1# i++
+    j .L1# 继续外层循环
+.L_done:# 排序完成
+    ld ra,24(sp)# 从栈中恢复寄存器
+    ld s0,16(sp)            
+    ld s1,8(sp)           
+    ld s2,0(sp)           
+    addi sp,sp,32          
+    ret                   </code></pre></li>
 </ul>
 </li>
 </ol>
-<div class="language-r highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">.text</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="n">.globl</span><span class="w">  </span><span class="n">fibonacci</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">fibonacci</span><span class="o">:</span>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="n">addi</span><span class="w"> </span><span class="n">sp</span><span class="p">,</span><span class="n">sp</span><span class="p">,</span><span class="m">-32</span><span class="c1">#栈帧每次下降32bit</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="n">sd</span><span class="w"> </span><span class="n">ra</span><span class="p">,</span><span class="m">24</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="c1">#设置前一个fibonacci函数的地址</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="n">sd</span><span class="w"> </span><span class="n">s0</span><span class="p">,</span><span class="m">16</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="c1">#n</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="n">sd</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="m">8</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="c1">#前一个数</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="n">sd</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="m">0</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="c1">#前两个数</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="n">mv</span><span class="w"> </span><span class="n">s0</span><span class="p">,</span><span class="n">a0</span><span class="c1">#s0=a0</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="n">li</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span><span class="m">0</span><span class="c1"># 因为beq是能在寄存器中进行比较</span>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="n">beq</span><span class="w"> </span><span class="n">s0</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span><span class="n">.Ldone</span><span class="w"> </span><span class="c1">#假入说两个数字是相等的0==n</span>
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="n">li</span><span class="w"> </span><span class="n">t0</span><span class="p">,</span><span class="m">1</span>
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="n">beq</span><span class="w"> </span><span class="n">s0</span><span class="p">,</span><span class="n">t0</span><span class="p">,</span><span class="n">.Ldone</span><span class="c1">#假如说n==1</span>
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="n">addi</span><span class="w"> </span><span class="n">a0</span><span class="p">,</span><span class="n">s0</span><span class="p">,</span><span class="m">-1</span><span class="w"> </span><span class="c1">#a0=s0-1</span>
-</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="n">call</span><span class="w"> </span><span class="n">fibonacci</span>
-</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span><span class="n">mv</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="n">a0</span><span class="w"> </span><span class="c1">#a0=fibonacci(n-1)</span>
-</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="n">addi</span><span class="w"> </span><span class="n">a0</span><span class="p">,</span><span class="n">s0</span><span class="p">,</span><span class="m">-2</span><span class="w"> </span><span class="c1">#a0=s0-2</span>
-</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="n">call</span><span class="w"> </span><span class="n">fibonacci</span>
-</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="n">mv</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="n">a0</span><span class="w"> </span><span class="c1"># a0=fibonacci(n-2)</span>
-</span><span id="__span-5-21"><a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">    </span><span class="n">add</span><span class="w"> </span><span class="n">a0</span><span class="p">,</span><span class="n">s1</span><span class="p">,</span><span class="n">s2</span><span class="c1"># fibonacci(n)=fibonacci(n-1)+fibonacci(n-2)</span>
-</span><span id="__span-5-22"><a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">    </span><span class="n">j</span><span class="w"> </span><span class="n">.L_return</span>
-</span><span id="__span-5-23"><a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="n">.Ldone</span><span class="o">:</span>
-</span><span id="__span-5-24"><a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">    </span><span class="n">li</span><span class="w"> </span><span class="n">a0</span><span class="p">,</span><span class="m">1</span><span class="c1"># 当n=0，1 的时候其值是1</span>
-</span><span id="__span-5-25"><a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="n">.L_return</span><span class="o">:</span>
-</span><span id="__span-5-26"><a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">    </span><span class="n">ld</span><span class="w"> </span><span class="n">ra</span><span class="p">,</span><span class="m">24</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span><span class="c1">#返回栈的值，回到原来的函数中</span>
-</span><span id="__span-5-27"><a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">    </span><span class="n">ld</span><span class="w"> </span><span class="n">s0</span><span class="p">,</span><span class="m">16</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
-</span><span id="__span-5-28"><a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">    </span><span class="n">ld</span><span class="w"> </span><span class="n">s1</span><span class="p">,</span><span class="m">8</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
-</span><span id="__span-5-29"><a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">    </span><span class="n">ld</span><span class="w"> </span><span class="n">s2</span><span class="p">,</span><span class="m">0</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
-</span><span id="__span-5-30"><a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">    </span><span class="n">addi</span><span class="w"> </span><span class="n">sp</span><span class="p">,</span><span class="n">sp</span><span class="p">,</span><span class="m">32</span>
-</span><span id="__span-5-31"><a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">    </span><span class="n">ret</span>
-</span></code></pre></div>
-<h1 id="lab5-2">lab5-2<a class="headerlink" href="#lab5-2" title="Permanent link">&para;</a></h1>
-<h2 id="qemu">qemu的方法破解<a class="headerlink" href="#qemu" title="Permanent link">&para;</a></h2>
-<h3 id="phase1">phase1<a class="headerlink" href="#phase1" title="Permanent link">&para;</a></h3>
+<pre class="highlight"><code class="language-r">.text
+.globl  fibonacci
+
+fibonacci:
+    addi sp,sp,-32#栈帧每次下降32bit
+    sd ra,24(sp)#设置前一个fibonacci函数的地址
+    sd s0,16(sp)#n
+    sd s1,8(sp)#前一个数
+    sd s2,0(sp)#前两个数
+    mv s0,a0#s0=a0
+    li t0,0# 因为beq是能在寄存器中进行比较
+    beq s0,t0,.Ldone #假入说两个数字是相等的0==n
+    li t0,1
+    beq s0,t0,.Ldone#假如说n==1
+    addi a0,s0,-1 #a0=s0-1
+    call fibonacci
+    mv s1,a0 #a0=fibonacci(n-1)
+    addi a0,s0,-2 #a0=s0-2
+    call fibonacci
+    mv s2,a0 # a0=fibonacci(n-2)
+    add a0,s1,s2# fibonacci(n)=fibonacci(n-1)+fibonacci(n-2)
+    j .L_return
+.Ldone:
+    li a0,1# 当n=0，1 的时候其值是1
+.L_return:
+    ld ra,24(sp)#返回栈的值，回到原来的函数中
+    ld s0,16(sp)
+    ld s1,8(sp)
+    ld s2,0(sp)
+    addi sp,sp,32
+    ret</code></pre>
+<h1 id="lab5-2">lab5-2<a class="headerlink" href="#lab5-2" title="Permanent link"></a></h1>
+<h2 id="qemu的方法破解">qemu的方法破解<a class="headerlink" href="#qemu的方法破解" title="Permanent link"></a></h2>
+<h3 id="phase1">phase1<a class="headerlink" href="#phase1" title="Permanent link"></a></h3>
 <ul>
 <li>只要是字符串中含8即可</li>
 </ul>
-<h3 id="phase2">phase2<a class="headerlink" href="#phase2" title="Permanent link">&para;</a></h3>
+<h3 id="phase2">phase2<a class="headerlink" href="#phase2" title="Permanent link"></a></h3>
 <ul>
 <li>要满足是两个数字<code>a,b</code></li>
 <li>还要满足 <span class="arithmatex">\(4^a^b=0\)</span></li>
 </ul>
-<h3 id="phase3">phase3<a class="headerlink" href="#phase3" title="Permanent link">&para;</a></h3>
+<h3 id="phase3">phase3<a class="headerlink" href="#phase3" title="Permanent link"></a></h3>
 <ul>
 <li>输入<code>5e53fd7d</code>即可
 <img alt="屏幕截图 2026-05-18 082222" src="../images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-05-18%20082222.png" /></li>
 </ul>
-<h2 id="_1">下面展示推导的过程<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="phase1_1">phase1<a class="headerlink" href="#phase1_1" title="Permanent link">&para;</a></h3>
+<h2 id="下面展示推导的过程">下面展示推导的过程<a class="headerlink" href="#下面展示推导的过程" title="Permanent link"></a></h2>
+<h3 id="phase1_1">phase1<a class="headerlink" href="#phase1_1" title="Permanent link"></a></h3>
 <ul>
 <li>先是通过<code>b phase1</code>跳转到phase1的位置设置断点，再<code>c</code>跳转到断点。通过gdb的调试发现在代码的66行有一句<code>if(char2num(*str)==data)</code>的判断语句，而且通过<code>list data</code>的语句发现<code>data</code>的值为8，分析可知是字符串中只要存在8就可以通过
 <img alt="屏幕截图 2026-05-17 170753" src="../images/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-05-17%20170753.png" /></li>
 </ul>
-<h2 id="phase2_1">phase2<a class="headerlink" href="#phase2_1" title="Permanent link">&para;</a></h2>
+<h2 id="phase2_1">phase2<a class="headerlink" href="#phase2_1" title="Permanent link"></a></h2>
 <ul>
 <li>我先通过<code>b phase2</code> <code>c</code>来定位到phase2的位置</li>
 <li>然后通过尝试发现<code>list 75,100</code>能显示全部的phase2代码</li>
@@ -2583,7 +2911,7 @@
 <p><img alt="d1e39c26591b461b877f71fde2f55dc1" src="../images/d1e39c26591b461b877f71fde2f55dc1.png" />
 - 发现要满足 <span class="arithmatex">\(4^a^b=0\)</span>
 - 经过实验发现40满足上面的答案</p>
-<h2 id="phase3_1">phase3<a class="headerlink" href="#phase3_1" title="Permanent link">&para;</a></h2>
+<h2 id="phase3_1">phase3<a class="headerlink" href="#phase3_1" title="Permanent link"></a></h2>
 <ul>
 <li>用了phase2里面的方法之后找到phase3的代码部分，发现最终的input是和<code>expect</code>的函数进行比对的，查看了input的断点运行之后发现input的值并没有发现改变。</li>
 <li>所以我只需要调用出来最终expect的值我就可以知道我应该输入什么值了
@@ -2602,7 +2930,40 @@
 
 
 
+
+
                 
+  
+<div class="page-info">
+  <span class="page-info__item page-info__stars">
+    <span class="page-info__label">
+      有用的话请给我个
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web/stargazers">star</a>
+      =&gt;
+    </span>
+    <span class="page-info__value">
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web/stargazers" aria-label="GitHub Stars">
+        <img
+          alt="Stars"
+          src="https://img.shields.io/github/stars/Evelina-IS/Evelina_personal_web?label=Stars&amp;style=flat"
+        >
+      </a>
+    </span>
+  </span>
+  <span class="page-info__item" id="busuanzi_container_site_pv">
+    <span class="page-info__label">本站总浏览</span>
+    <span class="page-info__value"><span id="busuanzi_value_site_pv"></span></span>
+  </span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <!-- Giscus 评论区（加载与主题同步逻辑见 features/enhancements.js 的 Giscus 模块）
+     本文件只负责在需要评论的页面放置容器并声明 giscus 配置。 -->
+
+<div class="giscus"></div>
+
+
               </article>
             </div>
           
@@ -2619,6 +2980,46 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../lab4-%E5%8D%B7%E7%A7%AF%E4%B8%8E%E4%B8%B2%E5%8F%A3/" class="md-footer__link md-footer__link--prev" aria-label="上一页: lab4 — 卷积与串口">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                lab4 — 卷积与串口
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../sys%E7%90%86%E8%AE%BA1-%E4%B9%A0%E9%A2%98/" class="md-footer__link md-footer__link--next" aria-label="下一页: 习题 1 — 数制与 IEEE 754">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                习题 1 — 数制与 IEEE 754
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -2653,26 +3054,36 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.select", "navigation.tracking", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script src="../../theme/js/core.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script src="../../theme/js/mathjax.js"></script>
       
-        <script src="../../javascripts/katex.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
       
-        <script src="../../javascripts/reader-counter.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/x86asm.min.js"></script>
       
-        <script src="../../javascripts/comments.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cmake.min.js"></script>
       
-        <script src="../../javascripts/extra.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/http.min.js"></script>
+      
+        <script src="../../theme/js/highlight.js"></script>
+      
+        <script src="../../theme/js/features/content.js"></script>
+      
+        <script src="../../theme/js/features/pdf.js"></script>
+      
+        <script src="../../theme/js/features/enhancements.js"></script>
       
     
   </body>

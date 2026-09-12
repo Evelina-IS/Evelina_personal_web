@@ -1,0 +1,32 @@
+{#-
+  Custom content partial — removes default comments.html include
+  because main.html already places page-info + comments at the bottom.
+-#}
+{% include "partials/actions.html" %}
+{% if page.meta.fold_toc %}
+  <script>document.body.setAttribute("data-page-fold-toc", "true");</script>
+{% endif %}
+{% set page_class = "" %}
+{% if page.meta.home %}
+  {% set page_class = "home-page" %}
+{% endif %}
+{% if page.meta.rainbow %}
+  {% set page_class = (page_class ~ " rainbow-page") | trim %}
+{% endif %}
+{% set has_page_state = page_class or page.meta.grid == false or page.meta.counter == false or page.meta.fold_toc %}
+{% if has_page_state %}
+  <div{% if page_class %} class="{{ page_class }}"{% endif %}{% if page.meta.grid == false %} data-page-grid="false"{% endif %}{% if page.meta.counter == false %} data-page-counter="false"{% endif %}{% if page.meta.fold_toc %} data-page-fold-toc="true"{% endif %}>
+    {% if page.meta.rainbow %}
+      <div class="rainbow-backdrop" aria-hidden="true"></div>
+    {% endif %}
+{% endif %}
+{% if "\u003ch1" not in page.content %}
+  <h1 id="__skip">{{ page.title | d(config.site_name, true)}}</h1>
+{% endif %}
+{{ page.content }}
+{% include "partials/tags.html" %}
+{% include "partials/source-file.html" %}
+{% include "partials/feedback.html" %}
+{% if has_page_state %}
+  </div>
+{% endif %}

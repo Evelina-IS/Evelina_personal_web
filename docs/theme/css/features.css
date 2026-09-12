@@ -1,0 +1,1243 @@
+/* ============================================================================
+   features.css —— 站点新增功能组件
+   ----------------------------------------------------------------------------
+   跨页面功能组件，移除本文件不影响其余元素的正常显示。
+
+   目录
+   00. 功能专属变量
+       组件配色、尺寸、终端与彩虹参数，按亮暗主题覆盖
+   01. 内容组件
+       1.1 GitHub 贡献图（数据面板：渲染、状态、图例、无障碍）
+       1.2 更新日志
+       1.3 友链
+       1.4 终端
+   02. 页面背景
+       网格、单页 data-page-grid 开关、彩虹层与 z 轴
+   03. 页面信息（顶部更新时间、底部统计）
+   04. PDF 阅读器
+   05. 响应式适配
+       窄屏友链/贡献图/日志、页面信息与文档阅读适配
+   06. 动效与动态反馈
+       彩虹背景与 TOC 的全局动效及减少动态效果
+   07. 站点增强体验
+       自定义滚动条与 LQIP 图片渐进加载
+
+   可调参数见 variables.css（加载于本文件之前）。
+   加载顺序：variables.css → main.css → features.css → home.css。
+   ============================================================================ */
+
+/* ============================================================================
+   00. 功能专属变量
+   ----------------------------------------------------------------------------
+   功能组件用到的配色/尺寸变量，按明暗方案定义。删 features.css 即随之一并消失，
+   variables.css 不残留死变量。引用的全站通用变量（--font-* / --shadow-* /
+   --radius-* / --blur-radius）仍在 variables.css。
+   ============================================================================ */
+[data-md-color-scheme="default"] {
+  /* 贡献图边框 + 日方格 5 级配色（0=无 1=少 2=中 3=多 4=最多） */
+  --cont-border: rgba(31, 35, 40, 0.05);
+  --ghc-level-0: #eff2f5;
+  --ghc-level-1: #aceebb;
+  --ghc-level-2: #4ac26b;
+  --ghc-level-3: #2da44e;
+  --ghc-level-4: #116329;
+
+  /* 组件面板 */
+  --component-panel: rgba(255, 255, 255, 0.64);
+  --component-border: #ccd6d8;
+
+  /* 友链头像 */
+  --avatar-color: #1a7f37;
+  --avatar-bg: color-mix(in srgb, #2da44e 10%, transparent);
+
+  /* 彩虹色斑 */
+  --rainbow-red: rgba(255, 92, 122, 0.2);
+  --rainbow-orange: rgba(255, 190, 86, 0.2);
+  --rainbow-green: rgba(77, 220, 138, 0.18);
+  --rainbow-cyan: rgba(58, 213, 230, 0.18);
+  --rainbow-blue: rgba(91, 156, 255, 0.18);
+  --rainbow-violet: rgba(174, 111, 255, 0.18);
+
+  /* 终端阴影 + 文字色 */
+  --terminal-shadow: var(--shadow-md);
+  --terminal-host-color: #2da44e;
+  --terminal-prompt-color: #0969da;
+  --terminal-command-color: #111111;
+  --terminal-cursor-color: #111111;
+}
+
+[data-md-color-scheme="slate"] {
+  /* 贡献图边框 + 日方格 5 级配色（暗色） */
+  --cont-border: rgba(1, 4, 9, 0.05);
+  --ghc-level-0: #151b23;
+  --ghc-level-1: #033a16;
+  --ghc-level-2: #196c2e;
+  --ghc-level-3: #2ea043;
+  --ghc-level-4: #56d364;
+
+  /* 组件面板（暗色） */
+  --component-panel: rgba(1, 4, 9, 0.64);
+  --component-border: #383e42;
+
+  /* 友链头像（暗色） */
+  --avatar-color: #7ee787;
+  --avatar-bg: color-mix(in srgb, #7ee787 12%, transparent);
+
+  /* 彩虹色斑（暗色更亮） */
+  --rainbow-red: rgba(255, 123, 146, 0.2);
+  --rainbow-orange: rgba(255, 201, 107, 0.2);
+  --rainbow-green: rgba(126, 231, 161, 0.18);
+  --rainbow-cyan: rgba(94, 234, 255, 0.18);
+  --rainbow-blue: rgba(147, 197, 253, 0.2);
+  --rainbow-violet: rgba(216, 180, 254, 0.18);
+
+  /* 终端阴影 + 文字色（暗色） */
+  --terminal-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  --terminal-host-color: #7ee787;
+  --terminal-prompt-color: #79c0ff;
+  --terminal-command-color: #ffffff;
+  --terminal-cursor-color: #fff;
+}
+
+/* 亮暗相同的值（终端圆点 + GitHub 贡献图字体栈） */
+:root {
+  /* 跨页面组件共用的弱化文字色。 */
+  --component-muted: var(--md-default-fg-color--light);
+  --component-softer: var(--md-default-fg-color--lighter);
+
+  /* macOS 风格终端圆点 */
+  --terminal-dot-red: #ff5c60;
+  --terminal-dot-yellow: #fac800;
+  --terminal-dot-green: #35c759;
+  /* GitHub 贡献图专用字体栈：与全站 --font-text 不同（Inter 优先）。 */
+  --font-ghc: "Inter", "Noto Sans SC", sans-serif;
+
+  /* 功能组件的元信息字号。 */
+  --component-meta-size: 0.68rem;
+
+  --friend-card-name-size: 0.8rem;
+  --friend-card-handle-size: 0.6rem;
+
+  /* 彩虹色斑不透明度（仅 features.css 使用，不污染 variables.css） */
+  --rainbow-opacity-aurora: 0.34;
+  --rainbow-opacity-beam-c: 0.16;
+  --rainbow-opacity-band-pass: 0.28;
+  --rainbow-opacity-beam-b: 0.2;
+  /* 彩虹动画关键帧 opacity 端点 */
+  --rainbow-aurora-min: 0.28;
+  --rainbow-aurora-max: 0.42;
+  --rainbow-bandpass-min: 0.2;
+  --rainbow-bandpass-max: 0.34;
+  --rainbow-beam-b-min: 0.14;
+  --rainbow-beam-b-max: 0.26;
+  --rainbow-beam-c-min: 0.12;
+  --rainbow-beam-c-max: 0.24;
+}
+
+/* ============================================================================
+   01. 内容组件
+   ----------------------------------------------------------------------------
+   1.1 GitHub 贡献图（数据面板）
+   ----------------------------------------------------------------------------
+   .ghc-* / .ContributionCalendar-* GitHub 贡献日历组件。
+   数据由 features/content.js 的 initGithubCalendar 渲染：本地 JSON + CORS 代理实时。
+   两路都通过 packageCells 统一计算等级与总数。
+   亮/暗模式各有 5 级颜色（data-level="0"~"4"），
+   与 GitHub 官方配色一致。
+   ============================================================================ */
+
+.github-calendar-wrap {
+  margin: 1rem auto 0;
+}
+
+.github-calendar-wrap:not([data-ghc-state="loading"]) .ghc-loading {
+  display: none;
+}
+
+.ghc-loading,
+.ghc-error,
+.ghc-shell {
+  border: 1px solid var(--component-border);
+  border-radius: var(--radius-lg);
+  background: var(--component-panel);
+  backdrop-filter: blur(var(--blur-radius));
+  -webkit-backdrop-filter: blur(var(--blur-radius));
+}
+
+.ghc-loading,
+.ghc-error {
+  padding: 1.4rem 0.75rem;
+  text-align: center;
+  color: var(--md-default-fg-color--light);
+  font-size: var(--font-base);
+}
+
+.ghc-error {
+  color: var(--md-primary-fg-color, #b42318);
+}
+
+.ghc-shell {
+  overflow: hidden;
+  font-family: var(--font-ghc);
+}
+
+.ghc-header {
+  padding: 0.85rem 1rem 0.25rem;
+}
+
+.md-typeset .ghc-title {
+  margin: 0;
+  color: var(--fgColor-default);
+  font-family: inherit;
+  font-size: var(--font-base);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.md-content__inner .ghc-title::before {
+  content: none;
+}
+
+.ghc-calendar-scroller {
+  display: flex;
+  justify-content: safe center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.45rem 1rem 0.6rem;
+}
+
+.ContributionCalendar-grid {
+  border-collapse: separate;
+  border-spacing: 3px;
+  overflow: hidden;
+  position: relative;
+  table-layout: fixed;
+}
+
+.ghc-weekday-col {
+  width: 28px;
+}
+
+.ghc-week-col {
+  width: 10px;
+}
+
+.ContributionCalendar-grid tr {
+  height: 10px;
+}
+
+.ContributionCalendar-grid thead tr {
+  height: 13px;
+}
+
+.ContributionCalendar-label {
+  position: relative;
+  width: 10px;
+  min-width: 10px;
+  padding: 0;
+  color: var(--fgColor-default);
+  font-family: inherit;
+  font-size: var(--font-ui-sm);
+  font-weight: 400;
+  line-height: 1;
+  text-align: left;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.ghc-corner,
+.ghc-day-label {
+  width: 28px;
+  min-width: 28px;
+}
+
+.ghc-day-label {
+  position: relative;
+}
+
+.ghc-day-label span:not(.sr-only) {
+  position: absolute;
+  bottom: -3px;
+}
+
+.ContributionCalendar-day,
+.ghc-empty-day {
+  width: 10px;
+  min-width: 10px;
+  height: 10px;
+  padding: 0;
+}
+
+.ContributionCalendar-day {
+  box-sizing: border-box;
+  border: 0.5px solid var(--cont-border);
+  border-radius: var(--radius-sm);
+  outline: none;
+  transition: opacity 0.12s ease;
+}
+
+.ContributionCalendar-day:hover,
+.ContributionCalendar-day:focus {
+  opacity: 0.7;
+}
+
+.ContributionCalendar-day:focus {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 1px;
+}
+
+/* 贡献图 5 级日方格配色（data-level="0"~"4"），引用 00 节定义的 --ghc-level-*。
+   与 GitHub 官方一致：0=无贡献 1=少 2=中 3=多 4=最多。
+   --ghc-level-* 与 --cont-border 已在 00 节按亮/暗方案分别取值，故此处无需
+   再写 [data-md-color-scheme] 前缀——变量自动按当前方案解析。 */
+.ContributionCalendar-day[data-level="0"] { background-color: var(--ghc-level-0); }
+.ContributionCalendar-day[data-level="1"] { background-color: var(--ghc-level-1); }
+.ContributionCalendar-day[data-level="2"] { background-color: var(--ghc-level-2); }
+.ContributionCalendar-day[data-level="3"] { background-color: var(--ghc-level-3); }
+.ContributionCalendar-day[data-level="4"] { background-color: var(--ghc-level-4); }
+
+.ghc-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0 1.5rem 0.8rem;
+  color: var(--fgColor-muted);
+  font-size: var(--font-ui-sm);
+}
+
+.ghc-help {
+  color: var(--fgColor-muted) !important;
+}
+
+.ghc-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.ghc-legend-day {
+  display: inline-block;
+  border-radius: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---- 1.2 更新日志 ------------------------------------------------- */
+.site-terminal__keys {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0 0.6rem;
+}
+
+.site-terminal__link {
+  color: var(--fgColor-accent);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.site-terminal__link:hover,
+.site-terminal__link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.2rem;
+}
+
+.site-changelog {
+  display: grid;
+  border: 1px solid var(--component-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--component-panel);
+  backdrop-filter: blur(var(--blur-radius));
+  -webkit-backdrop-filter: blur(var(--blur-radius));
+}
+
+/* Keep the rounded border and panel fill out of the scrolling compositing
+   layer. Older Safari can otherwise let square row layers cover its corners. */
+.site-changelog__scroller {
+  max-height: 15rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.site-changelog__entry {
+  display: grid;
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.64rem 0.8rem;
+}
+
+.site-changelog__entry + .site-changelog__entry {
+  border-top: 1px solid var(--component-border);
+}
+
+.site-changelog__date {
+  color: var(--component-softer);
+  font-size: var(--component-meta-size);
+  font-weight: 800;
+}
+
+.site-changelog__entry span:last-child {
+  color: var(--component-muted);
+  font-size: var(--component-meta-size);
+  line-height: 1.5;
+}
+
+/* ----------------------------------------------------------------------------
+   1.3 友链
+   友链卡片网格：auto-fit 自适应列，每列最小 12rem，随容器拉伸。
+   卡片间 0.65rem 间隙，同行的卡片由网格默认 align-items:stretch 拉到等高。
+   ---------------------------------------------------------------------------- */
+.site-friend-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.65rem;
+}
+
+/* ============================================================================
+   友链卡片（.site-friend-card）
+   ----------------------------------------------------------------------------
+   flex row：avatar 左 + 文字列右。极简布局，网格 stretch 保证同行等高。
+   ============================================================================ */
+.site-friend-card {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem;
+  border: 1px solid var(--component-border);
+  border-radius: var(--radius-lg);
+  background: var(--component-panel);
+  backdrop-filter: blur(var(--blur-radius));
+  -webkit-backdrop-filter: blur(var(--blur-radius));
+  color: var(--md-default-fg-color) !important;
+  font-size: var(--font-base);
+  text-decoration: none !important;
+  transition: border-color 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.site-friend-card:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+.site-friend-card__avatar {
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  /* Force filtered descendants to respect the circular clip in old WebKit. */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--component-border);
+  border-radius: 50%;
+  color: var(--avatar-color);
+  background: var(--avatar-bg);
+  font-size: var(--component-meta-size);
+  font-weight: 900;
+}
+
+.site-friend-card__avatar img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Keep the image aligned with the circular avatar frame, including while
+     Safari renders a filtered (blurred) layer. */
+  border-radius: 50%;
+  transition: filter 1s ease, opacity 0.3s ease;
+}
+
+/* 文字列：min-width:0 让 flex 子元素能收缩，防止长文本撑破卡片。
+   flex:1 占满 avatar 右侧剩余空间，内部 name/handle/meta 自然垂直排列。 */
+.site-friend-card__body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.05rem;
+}
+
+.site-friend-card strong {
+  font-size: var(--friend-card-name-size);
+  line-height: 1.2;
+}
+
+.site-friend-card__handle {
+  overflow: hidden;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+
+  color: var(--component-softer);
+  font-size: var(--friend-card-handle-size);
+  font-style: italic;
+  margin-left: 0.1rem;
+  white-space: nowrap;
+}
+.site-friend-card__meta {
+  margin-top: 0.3rem;
+  color: var(--component-muted);
+  font-size: var(--component-meta-size);
+  white-space: normal;
+  word-break: break-word;
+  text-decoration: none;
+  line-height: 1.5;
+}
+.site-friend-card__meta--empty {
+  display: none;
+}
+
+.site-component--activity .github-calendar-wrap {
+  margin: 0;
+}
+
+/* ---- 1.4 终端 ---------------------------------------------------- */
+
+.site-terminal {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--component-border);
+  border-radius: var(--radius-lg);
+  background: var(--component-panel);
+  backdrop-filter: blur(var(--blur-radius));
+  -webkit-backdrop-filter: blur(var(--blur-radius));
+  box-shadow: var(--shadow-md);
+}
+
+.site-terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.1rem;
+  padding: 0 0.75rem;
+  border-bottom: 1px solid var(--component-border);
+}
+
+.site-terminal__dot {
+  width: 0.68rem;
+  height: 0.68rem;
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+
+.site-terminal__dot--red { background: var(--terminal-dot-red); }
+.site-terminal__dot--yellow { background: var(--terminal-dot-yellow); }
+.site-terminal__dot--green { background: var(--terminal-dot-green); }
+
+.site-terminal__title {
+  margin-left: 0.35rem;
+  color: var(--md-default-fg-color--light);
+  font-family: var(--font-mono);
+  font-size: var(--font-code);
+}
+
+.site-terminal__screen {
+  position: relative;
+  min-height: 10rem;
+  padding: 0.6rem 0.9rem 0.7rem;
+  font-family: var(--font-mono);
+  font-size: var(--font-code);
+  line-height: 1.45;
+}
+
+.site-terminal__line {
+  min-height: 1.45em;
+  overflow-wrap: anywhere;
+}
+
+.site-terminal__line--output .typed-text {
+  color: var(--md-default-fg-color);
+}
+
+.terminal-hidden-input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+.typed-text {
+  font-family: var(--font-mono);
+}
+
+.typed-text--host {
+  color: var(--terminal-host-color);
+}
+
+.typed-text--prompt {
+  color: var(--terminal-prompt-color);
+}
+
+.typed-cursor {
+  font-family: var(--font-mono);
+  font-size: inherit;
+  color: var(--terminal-cursor-color);
+}
+
+.typed-text--command,
+.typed-text--separator,
+.site-terminal__line--user .typed-text,
+.site-terminal__line--flag .typed-text {
+  color: var(--terminal-command-color);
+}
+
+[data-md-color-scheme="slate"] .site-terminal {
+  box-shadow: var(--terminal-shadow);
+}
+
+/* ============================================================================
+   02. 页面背景
+   ----------------------------------------------------------------------------
+   虚线网格背景(body::before，mask 挖空正文区)、正文/footer/编辑按钮 z-index
+   叠压，以及彩虹背景层。
+   ============================================================================ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: var(--page-grid);
+  background-position: 0 0;
+  background-size: 80px 80px;
+  opacity: 1;
+  mask-image: var(--grid-mask);
+  -webkit-mask-image: var(--grid-mask);
+}
+
+body[data-page-rainbow="true"]::before,
+/* 单页关闭网格：front matter 里 grid: false → content.html 输出 data-page-grid="false"
+   → features/enhancements.js 同步到 body → 隐藏虚线网格背景（保留普通背景）。 */
+body[data-page-grid="false"]::before {
+  content: none;
+}
+
+.md-content {
+  background-color: var(--md-default-bg-color);
+  box-shadow: none;
+  position: relative;
+  z-index: 1;
+}
+
+.md-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.md-content__button {
+  position: relative;
+  z-index: 3;
+}
+
+.md-content__inner {
+  padding-inline: var(--content-padding-inline);
+}
+
+[data-md-color-scheme="default"] .md-content,
+[data-md-color-scheme="default"] .md-typeset {
+  background-color: var(--content-bg);
+}
+
+/* ---- 彩虹背景 ----------------------------------------------------- */
+.rainbow-page {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+body[data-page-rainbow="true"] .md-sidebar__inner {
+  background-color: transparent !important;
+}
+
+/* 窄屏（含平板）右侧 TOC 是浮层面板；展开后不能透出彩虹背景。 */
+@media screen and (max-width: 59.984375em) {
+  body[data-page-rainbow="true"] .md-sidebar--secondary .md-sidebar__inner {
+    background-color: var(--md-default-bg-color) !important;
+  }
+}
+
+.rainbow-page::before,
+.rainbow-page::after,
+.rainbow-backdrop::before,
+.rainbow-backdrop::after {
+  content: "";
+  position: fixed;
+  z-index: -1;
+  pointer-events: none;
+  transform: translate3d(0, 0, 0);
+}
+
+.rainbow-page::before {
+  top: -7rem;
+  right: auto;
+  bottom: auto;
+  left: -10rem;
+  width: min(58vw, 38rem);
+  height: 24rem;
+  background:
+    radial-gradient(circle at 24% 46%, var(--rainbow-red), transparent 8rem),
+    radial-gradient(circle at 48% 32%, var(--rainbow-orange), transparent 9rem),
+    radial-gradient(circle at 68% 56%, var(--rainbow-green), transparent 10rem);
+  filter: blur(24px) saturate(1.25);
+  opacity: var(--rainbow-opacity-aurora);
+}
+
+.rainbow-page::after {
+  top: 35rem;
+  right: auto;
+  bottom: auto;
+  left: 18vw;
+  width: min(30vw, 20rem);
+  height: 12rem;
+  background:
+    radial-gradient(circle at 40% 36%, var(--rainbow-violet), transparent 7rem),
+    radial-gradient(circle at 68% 62%, var(--rainbow-red), transparent 8rem);
+  filter: blur(28px) saturate(1.25);
+  opacity: var(--rainbow-opacity-beam-c);
+}
+
+.rainbow-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.rainbow-backdrop::before,
+.rainbow-backdrop::after {
+  z-index: 0;
+}
+
+.rainbow-backdrop::before {
+  top: 3.6rem;
+  right: 4vw;
+  bottom: auto;
+  left: auto;
+  width: min(38vw, 26rem);
+  height: 18rem;
+  background:
+    radial-gradient(circle at 35% 38%, var(--rainbow-cyan), transparent 8rem),
+    radial-gradient(circle at 64% 54%, var(--rainbow-blue), transparent 10rem),
+    radial-gradient(circle at 50% 72%, var(--rainbow-violet), transparent 8rem);
+  filter: blur(26px) saturate(1.2);
+  opacity: var(--rainbow-opacity-band-pass);
+}
+
+.rainbow-backdrop::after {
+  top: 20rem;
+  right: 7vw;
+  bottom: auto;
+  left: auto;
+  width: min(30vw, 20rem);
+  height: 12rem;
+  background:
+    radial-gradient(circle at 35% 35%, var(--rainbow-orange), transparent 7rem),
+    radial-gradient(circle at 42% 40%, var(--rainbow-green), transparent 7rem),
+    radial-gradient(circle at 68% 62%, var(--rainbow-cyan), transparent 8rem),
+    radial-gradient(circle at 72% 58%, var(--rainbow-blue), transparent 8rem);
+  filter: blur(28px) saturate(1.25);
+  opacity: var(--rainbow-opacity-beam-b);
+}
+
+/* ============================================================================
+   03. 页面信息
+   ----------------------------------------------------------------------------
+   顶部更新时间/字数条与底部页面信息。
+   ============================================================================ */
+/* ---- 顶部更新时间/字数条 ---- */
+.page-updated-top {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 var(--page-info-margin-bottom);
+  color: var(--md-default-fg-color--light);
+  font-size: var(--page-info-font-size);
+  line-height: var(--page-info-line-height);
+}
+
+.page-updated-top__label {
+  width: 6em;
+  flex-shrink: 0;
+}
+
+.page-updated-top__time {
+  color: var(--md-default-fg-color--lighter);
+  font-variant-numeric: tabular-nums;
+}
+
+.page-updated-top__sep {
+  color: var(--md-default-fg-color--lightest);
+  margin: 0 0.3em;
+}
+
+.page-updated-top__words {
+  margin-left: auto;
+  color: var(--md-default-fg-color--lighter);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- 底部页面信息 ---- */
+.page-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1.5rem;
+  margin: 2rem 0 1.2rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  font-size: var(--font-meta);
+}
+
+.page-info__item {
+  display: flex !important;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 1.4rem;
+}
+
+.page-info__item:last-child {
+  margin-left: auto;
+}
+
+.page-info__label {
+  width: 6em;
+  flex-shrink: 0;
+}
+
+.page-info__stars .page-info__label {
+  width: 12em;
+}
+
+.page-info__value {
+  color: var(--md-default-fg-color--lighter);
+  font-variant-numeric: tabular-nums;
+}
+
+.page-info__stars img {
+  display: block;
+}
+
+/* ============================================================================
+   04. PDF 阅读器
+   ----------------------------------------------------------------------------
+   .pdf-viewer-* / 下载进度 + 原生 PDF 查看器 + iOS/iPadOS 画布降级。
+   ============================================================================ */
+
+.pdf-viewer {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--md-code-bg-color);
+  background-clip: padding-box;
+  box-shadow: var(--shadow-sm);
+  font-family: inherit;
+  margin: 1em 0;
+}
+
+.pdf-viewer-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 8px 12px;
+  background: var(--md-default-bg-color);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  position: sticky;
+  top: 0;
+  z-index: 3;
+}
+
+.pdf-viewer-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex: 1 1 auto;
+}
+
+.pdf-viewer-title,
+.pdf-viewer-status {
+  font-size: var(--font-ui);
+  color: var(--md-typeset-color);
+  user-select: none;
+}
+
+.pdf-viewer-title {
+  flex: 0 0 auto;
+  font-weight: 600;
+}
+
+.pdf-viewer-status {
+  overflow: hidden;
+  color: var(--md-default-fg-color--light);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pdf-viewer-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  border-radius: var(--radius-md);
+  color: var(--md-default-fg-color--light);
+  transition: color 0.15s, background 0.15s;
+}
+
+.pdf-viewer-action:hover {
+  color: var(--md-accent-fg-color);
+  background: var(--md-default-fg-color--lightest);
+}
+
+.pdf-viewer-native-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
+  background: var(--md-code-bg-color);
+}
+
+.pdf-viewer-native {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: var(--md-default-bg-color);
+}
+
+.pdf-viewer-native[hidden] {
+  display: none;
+}
+
+/* ---- 加载覆盖层 ---- */
+.pdf-loader-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--md-default-bg-color);
+  z-index: 2;
+  padding: 24px;
+  transition: opacity 0.4s ease;
+}
+
+.pdf-loader-dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: var(--md-accent-fg-color);
+  animation: pdf-loader-blink 2s steps(1, end) infinite;
+}
+
+.pdf-loader-dot--done {
+  opacity: 0.6;
+  animation: none;
+}
+
+@keyframes pdf-loader-blink {
+  0%, 49.999% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.pdf-loader-percent {
+  color: var(--md-default-fg-color);
+  font-family: var(--font-mono);
+  font-size: var(--font-ui-sm);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.pdf-loader-bar-track {
+  width: min(320px, 80%);
+  height: 6px;
+  background: var(--md-default-fg-color--lightest);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.pdf-loader-bar-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--md-accent-fg-color);
+  border-radius: var(--radius-sm);
+  transition: width 0.15s linear;
+}
+
+.pdf-loader-detail {
+  font-size: var(--font-ui-sm);
+  color: var(--md-default-fg-color--light);
+  font-family: var(--font-mono);
+}
+
+[data-md-color-scheme="slate"] .pdf-loader-overlay {
+  background: var(--md-default-bg-color);
+}
+
+[data-md-color-scheme="slate"] .pdf-loader-bar-track {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.pdf-viewer-mobile-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  font-size: var(--font-ui-sm);
+  color: var(--md-default-fg-color--light);
+  background: color-mix(in srgb, var(--md-accent-fg-color) 6%, var(--md-default-bg-color));
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  line-height: 1.4;
+}
+
+.pdf-viewer-mobile-hint__text {
+  flex: 1 1 auto;
+  overflow-wrap: anywhere;
+}
+
+.pdf-viewer-mobile-hint__close {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.4rem;
+  height: 1.4rem;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--md-default-fg-color--light);
+  cursor: pointer;
+}
+
+.pdf-viewer-mobile-hint__close:hover {
+  color: var(--md-default-fg-color);
+  background: var(--md-default-fg-color--lightest);
+}
+
+[data-md-color-scheme="slate"] .pdf-viewer-toolbar,
+[data-md-color-scheme="slate"] .pdf-viewer-mobile-hint {
+  background: var(--md-default-bg-color);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-md-color-scheme="slate"] :is(.pdf-viewer, .pdf-viewer-native-wrap) {
+  background: var(--md-code-bg-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pdf-loader-dot { animation: none; }
+}
+/* ============================================================================
+   05. 响应式适配
+   ============================================================================
+   所有窄屏布局覆盖集中在这里；44.984375em 以下为手机窄屏，终端沿用桌面字号与
+   padding，无需另设移动变量。
+   ============================================================================ */
+@media screen and (max-width: 44.984375em) {
+  .site-friend-list {
+    grid-template-columns: 1fr;
+  }
+
+  .ghc-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-changelog__entry {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  .page-info__item:last-child {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+
+  .md-typeset :is(h1, h2, h3, h4, h5, h6) > .headerlink {
+    display: none;
+  }
+
+  .md-content__inner {
+    padding-inline: var(--mobile-content-padding);
+  }
+
+  .md-typeset pre.highlight,
+  .md-typeset pre[class*="language-"] {
+    margin-inline: 0;
+  }
+}
+
+.md-content__inner { transition: padding 0.3s ease; }
+@media (prefers-reduced-motion: reduce) {
+  .md-content__inner { transition: none; }
+}
+
+/* ============================================================================
+   06. 动效与动态反馈
+   ----------------------------------------------------------------------------
+   仅放跨组件的全局动效：彩虹背景与阅读目录。组件自身反馈归各自组件，
+   LQIP 则完整归入 07「站点增强体验」。
+   ============================================================================ */
+.md-nav--secondary [data-md-component="toc"] .md-nav__link { transition: color 0.15s ease, opacity 0.15s ease; }
+
+/* fold_toc: true 时直接复用官方 .md-nav__link--active：
+   active 项自身的子目录，以及包含 active 项的祖先目录展开。
+   隐藏层不用 display:none，保证所有 TOC 项仍按统一绝对时间轴执行淡入动画。
+   不支持 :has 的浏览器保持整棵 TOC 展开，作为降级方案。 */
+@supports selector(:has(*)) {
+  body[data-page-fold-toc="true"] .md-sidebar--secondary .md-nav > .md-nav__list > .md-nav__item > .md-nav {
+    display: grid;
+    grid-template-rows: minmax(.005rem, 0fr);
+    visibility: collapse;
+    opacity: 0;
+    margin: 0;
+    transition: grid-template-rows .25s cubic-bezier(.86, 0, .07, 1), opacity .25s,
+      visibility 0s .25s;
+  }
+
+  body[data-page-fold-toc="true"] .md-sidebar--secondary .md-nav > .md-nav__list > .md-nav__item > .md-nav > .md-nav__list {
+    overflow: hidden;
+  }
+
+  body[data-page-fold-toc="true"] .md-sidebar--secondary .md-nav > .md-nav__list > .md-nav__item > .md-nav__link--active + .md-nav,
+  body[data-page-fold-toc="true"] .md-sidebar--secondary .md-nav > .md-nav__list > .md-nav__item > .md-nav:has(.md-nav__link--active) {
+    grid-template-rows: minmax(.005rem, 1fr);
+    visibility: visible;
+    opacity: 1;
+    margin-top: 0.2rem;
+    transition: grid-template-rows .25s cubic-bezier(.86, 0, .07, 1), opacity .25s;
+  }
+}
+
+.rainbow-page::before { animation: rainbow-local-aurora 18s ease-in-out infinite alternate; }
+.rainbow-page::after { animation: rainbow-beam-c 27s ease-in-out infinite alternate; }
+.rainbow-backdrop::before { animation: rainbow-band-pass 16s ease-in-out infinite alternate; }
+.rainbow-backdrop::after { animation: rainbow-beam-b 23s ease-in-out infinite alternate; }
+
+@keyframes rainbow-local-aurora {
+  0% { transform: translate3d(-0.8rem, -0.4rem, 0) scale(0.98); opacity: var(--rainbow-aurora-min); }
+  100% { transform: translate3d(2rem, 1rem, 0) scale(1.06); opacity: var(--rainbow-aurora-max); }
+}
+@keyframes rainbow-band-pass {
+  0% { transform: translate3d(-1.2rem, -0.7rem, 0) scale(0.96); opacity: var(--rainbow-bandpass-min); }
+  100% { transform: translate3d(1.6rem, 0.9rem, 0) scale(1.05); opacity: var(--rainbow-bandpass-max); }
+}
+@keyframes rainbow-beam-b {
+  0% { transform: translate3d(1rem, -0.8rem, 0) scale(1); opacity: var(--rainbow-beam-b-min); }
+  100% { transform: translate3d(-1.6rem, 1rem, 0) scale(1.1); opacity: var(--rainbow-beam-b-max); }
+}
+@keyframes rainbow-beam-c {
+  0% { transform: translate3d(-0.8rem, -0.2rem, 0) scale(0.96); opacity: var(--rainbow-beam-c-min); }
+  100% { transform: translate3d(1.2rem, 1.2rem, 0) scale(1.08); opacity: var(--rainbow-beam-c-max); }
+}
+@keyframes toc-fade {
+  from { opacity: 0.4; color: var(--md-default-fg-color--light); }
+  40% { opacity: 0.5; color: var(--md-default-fg-color--light); }
+  66% { opacity: 0.6; color: color-mix(in srgb, var(--md-accent-fg-color) 40%, var(--md-default-fg-color)); }
+  to { opacity: 1; }
+}
+.md-sidebar--secondary [data-md-component="toc"] .md-nav__link {
+  --toc-fade-duration: 0.8s;
+  animation: toc-fade var(--toc-fade-duration) ease-out both;
+  animation-play-state: paused;
+}
+.md-sidebar--secondary [data-md-component="toc"] .md-nav__link.toc-fade-ready {
+  animation-play-state: running;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rainbow-page::before,
+  .rainbow-page::after,
+  .rainbow-backdrop::before,
+  .rainbow-backdrop::after,
+  .md-sidebar--secondary [data-md-component="toc"] .md-nav__link {
+    animation: none;
+  }
+  .md-nav--secondary [data-md-component="toc"] .md-nav__link {
+    transition: none;
+  }
+}
+
+/* ============================================================================
+   07. 站点增强体验
+   ----------------------------------------------------------------------------
+   sidebar 滚动容器与代码块横向滚动条共用一套样式：
+   Firefox 用 scrollbar-width / scrollbar-color，webkit 用 ::-webkit-scrollbar*。
+   尺寸与配色变量见 variables.css（--scrollbar-width / -height / -thumb /
+   -thumb-hover），按 [data-md-color-scheme] 切换明暗。
+   ============================================================================ */
+.md-sidebar :is(.md-sidebar__scrollwrap, .md-sidebar__inner),
+.md-typeset :is(pre.highlight, pre[class*="language-"]) code {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+.md-sidebar :is(.md-sidebar__scrollwrap, .md-sidebar__inner)::-webkit-scrollbar,
+.md-typeset :is(pre.highlight, pre[class*="language-"]) code::-webkit-scrollbar {
+  width: var(--scrollbar-width);
+  height: var(--scrollbar-height);
+}
+.md-sidebar :is(.md-sidebar__scrollwrap, .md-sidebar__inner)::-webkit-scrollbar-track,
+.md-typeset :is(pre.highlight, pre[class*="language-"]) code::-webkit-scrollbar-track {
+  background: transparent;
+}
+.md-sidebar :is(.md-sidebar__scrollwrap, .md-sidebar__inner)::-webkit-scrollbar-thumb,
+.md-typeset :is(pre.highlight, pre[class*="language-"]) code::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+.md-sidebar :is(.md-sidebar__scrollwrap, .md-sidebar__inner)::-webkit-scrollbar-thumb:hover,
+.md-typeset :is(pre.highlight, pre[class*="language-"]) code::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+.md-sidebar :is(.md-sidebar__scrollwrap, .md-sidebar__inner):is(:hover, :focus-within) {
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+.md-sidebar :is(.md-sidebar__scrollwrap, .md-sidebar__inner):is(:hover, :focus-within)::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+}
+.md-sidebar :is(.md-sidebar__scrollwrap, .md-sidebar__inner):is(:hover, :focus-within)::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+/* hljs 与 Material 布局兼容见 main.css（代码块 UI 归一管理） */
+
+
+/* ---- 图片渐进加载 -------------------------------------------------- */
+img[data-fullsrc] {
+  filter: blur(0);
+  transition: filter 1s ease, opacity 0.3s ease;
+}
+img.lqip {
+  filter: blur(var(--lqip-blur));
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  img[data-fullsrc] { transition: none; }
+}

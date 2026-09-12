@@ -1,0 +1,5 @@
+<!-- Giscus 评论区（加载与主题同步逻辑见 features/enhancements.js 的 Giscus 模块）
+     本文件只负责在需要评论的页面放置容器并声明 giscus 配置。 -->
+{% if page.meta.comments != false %}
+<div class="giscus"></div>
+{% endif %}
