@@ -1,0 +1,67 @@
+/* ============================================================================
+   home.css — 首页变量、布局与分区标题
+   ----------------------------------------------------------------------------
+   01. 首页变量面板
+   02. 首页页面层覆盖
+   03. 首页分区标题
+   04. 手机窄屏适配
+   ============================================================================ */
+
+:root {
+  --home-section-title-size: 0.92rem;
+  --home-section-margin-block: 1.8rem;
+  --home-section-head-gap: 1rem;
+  --home-section-head-margin-bottom: 0.75rem;
+  --home-section-head-padding-bottom: 0.45rem;
+}
+
+.home-page a { text-decoration: none; }
+
+/* 首页覆盖基础正文层。 */
+body[data-page-home="true"] .md-content__inner { padding-inline: 0; }
+body[data-page-home="true"] .md-content,
+body[data-page-home="true"] .md-content > .md-typeset { background-color: transparent !important; }
+body[data-page-home="true"]::before { content: none; }
+body[data-page-home="true"] .md-typeset h1 > .headerlink { display: none; }
+
+.site-section,
+.home-section {
+  margin-block: var(--home-section-margin-block);
+}
+
+/* 终端块不带 .home-section；显式给它同一套外边距，避免间距依赖相邻分区的
+   margin 折叠，在首页内容重排或插入新块时发生变化。 */
+.home-page > section[aria-label="homepage intro"] {
+  margin-block: var(--home-section-margin-block);
+}
+
+.site-section__head,
+.home-section__head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--home-section-head-gap);
+  margin-bottom: var(--home-section-head-margin-bottom);
+  border-bottom: 1px solid var(--component-border);
+  padding-bottom: var(--home-section-head-padding-bottom);
+}
+
+.md-typeset .site-section__title,
+.md-typeset .home-section__title {
+  margin: 0;
+  font-family: var(--font-section-title);
+  font-size: var(--home-section-title-size);
+  font-weight: 800;
+  line-height: 1.25;
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+@media screen and (max-width: 44.984375em) {
+  .site-section__head,
+  .home-section__head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}

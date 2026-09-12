@@ -1,0 +1,159 @@
+/* ============================================================================
+   variables.css —— 全局可调配置
+   ----------------------------------------------------------------------------
+   所有可调参数集中在此，方便统一调整。
+   亮色（default）和暗色（slate）分别定义，通过 [data-md-color-scheme] 切换。
+
+   首页变量位于 home.css；跨页面功能组件的变量位于 features.css。
+   本文件只保留全站可复用 token。
+
+   目录
+   01. 通用变量（亮暗共用）
+       字号、字体、标题编号、布局、断点、毛玻璃、admonition 尺寸、
+       圆角、页面信息、网格背景、滚动条、阴影、PDF 背景、移动端
+   02. 亮色模式（default）
+       背景、全局高亮色、导航选中态、滚动条、网格 SVG
+   03. 暗色模式（slate）
+       同上，暗色配色覆盖
+
+   加载顺序：variables.css → main.css → features.css → home.css。
+   ============================================================================ */
+
+/* ============================================================================
+   01. 通用变量（亮暗共用）
+   ----------------------------------------------------------------------------
+   字号、字体、标题编号、布局、断点、毛玻璃、admonition 尺寸、
+   圆角、页面信息、网格背景、滚动条、阴影、PDF 背景、响应式适配
+   ============================================================================ */
+:root {
+  /* === 字号体系 === */
+  /* 正文相关：rem 跟随 html 缩放 */
+  --font-base: 0.8rem;       /* 正文 16px */
+  --font-code: 0.68rem;      /* 代码块、admonition 13.6px */
+  --font-meta: 0.65rem;      /* 页面信息 13px */
+  /* UI 组件：px 固定值，不跟随缩放 */
+  --font-ui: 14px;           /* PDF 工具栏、错误提示 */
+  --font-ui-sm: 12px;        /* PDF 状态、移动端提示 */
+  --font-kbd: 11px;          /* 键盘按键 */
+  --font-footnote: 12px;     /* 脚注 */
+
+  /* === 字体家族 === */
+  /* 集中定义各字体栈，替换各文件里重复书写；引用处在加载时解析，顺序无关。 */
+  --font-text: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+    "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Helvetica Neue",
+    Helvetica, Arial, sans-serif;   /* 系统无衬线：正文/导航/搜索面板 */
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", "Noto Sans Mono CJK SC", monospace;  /* 等宽：代码/终端/键盘 */
+  --font-serif: "Noto Serif SC", serif;  /* 衬线：顶部标题/页面 H1 */
+  --font-section-title: "JetBrains Mono", "Noto Sans SC", sans-serif;
+
+  /* === 标题编号 === */
+  /* 集中管理 H2/H3/H4 自动编号的外观；字体与正文一致（复用 --font-text）。
+     颜色 --heading-number-color 依赖 .md-typeset 作用域的 --fgColor-default，
+     故此变量定义在 main.css 的 .md-typeset 内（:root 处无法解析该变量）。 */
+  --heading-number-font: var(--font-text);
+  --heading-number-weight: 550;
+  --heading-number-gap: 0.8em;            /* 编号与标题文字间距 */
+  --heading-number-letter-spacing: 0.03em; /* 编号内部的字符间距 */
+
+  /* === 布局 === */
+  --page-max-width: 65rem;
+  --content-padding-inline: 1rem;
+
+  /* === 毛玻璃 === */
+  --blur-radius: 12px;
+
+  /* === 图片渐进加载（LQIP blur-up）===
+     img.lqip 的模糊量；正式图加载完成或超时后移除 lqip 类，
+     由 features.css 的 transition 平滑过渡到清晰（blur→0）。 */
+  --lqip-blur: 6px;
+
+  /* === Admonition 提示块尺寸（@supports 块专用，main.css 引用）===
+     消费者：main.css 的 @supports (color-mix) 块。集中定义后，::before
+     高度的 calc 自引变量，改一个值全块联动，无需逐处同步。 */
+  --admonition-border-w: 0.075rem;     /* 提示块边框宽度 */
+  --admonition-pad-inline: 0.8rem;     /* 左右内边距 */
+  --admonition-title-margin: 0.4rem;   /* 标题 margin（顶/底） */
+  --admonition-title-lh: 1.8;          /* 标题行高（多行标题与首行渐变共用）*/
+  --admonition-body-margin: 0.6rem;    /* 正文 margin（首元素 padding-top + 末元素 margin-bottom，上下统一值）*/
+
+  /* === 圆角 === */
+  --radius-sm: 2px;   /* 贡献图小方块 */
+  --radius-md: 6px;   /* 按钮、行内代码、键盘按键、导航选中态 */
+  --radius-lg: 8px;   /* 卡片、面板、终端窗口、日志列表 */
+
+  /* === 页面信息 === */
+  --page-info-font-size: var(--font-meta);
+  --page-info-line-height: 1.5;
+  --page-info-margin-bottom: 1rem;
+
+  /* === 网格背景 === */
+  --grid-clear-half: 22rem;
+  --grid-fade: 16rem;
+  /* 网格 mask：左右显示、正文区挖空（供 features.css 的 mask-image/-webkit-mask-image 复用） */
+  --grid-mask: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) calc(50% - var(--grid-clear-half) - var(--grid-fade)),
+    transparent calc(50% - var(--grid-clear-half)),
+    transparent calc(50% + var(--grid-clear-half)),
+    rgba(0, 0, 0, 1) calc(50% + var(--grid-clear-half) + var(--grid-fade))
+  );
+
+  /* === 滚动条 === */
+  --scrollbar-width: 8px;
+  --scrollbar-height: 8px;
+
+  /* === 阴影 === */
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 8px 18px rgba(0, 0, 0, 0.07);
+
+  /* === 手机窄屏（全站通用）=== */
+  --mobile-content-padding: 0;
+}
+
+/* ============================================================================
+   02. 亮色模式（default）
+   ----------------------------------------------------------------------------
+   背景、全局高亮色、导航选中态、滚动条、网格 SVG
+   ============================================================================ */
+[data-md-color-scheme="default"] {
+  /* === 导航栏 / 面板半透明背景 === */
+  --header-bg: rgba(255, 255, 255, 0.8);
+
+  /* === 正文区域不透明背景 === */
+  --content-bg: #ffffff;
+
+  /* === 全局高亮色（链接、导航选中、headerlink 等） === */
+  --md-accent-fg-color: #0969da;
+
+  /* === 滚动条 === */
+  --scrollbar-thumb: rgba(107, 114, 128, 0.42);
+  --scrollbar-thumb-hover: rgba(75, 85, 99, 0.58);
+
+  /* === 网格 SVG（虚线） === */
+  --page-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cline x1='0' y1='0' x2='80' y2='0' stroke='rgba(100,100,100,0.32)' stroke-width='1' stroke-dasharray='3 5'/%3E%3Cline x1='0' y1='0' x2='0' y2='80' stroke='rgba(100,100,100,0.32)' stroke-width='1' stroke-dasharray='3 5'/%3E%3C/svg%3E");
+}
+
+/* ============================================================================
+   03. 暗色模式（slate）
+   ----------------------------------------------------------------------------
+   同上，暗色配色覆盖
+   ============================================================================ */
+[data-md-color-scheme="slate"] {
+  /* === 导航栏 / 面板半透明背景 === */
+  --header-bg: rgba(13, 17, 23, 0.8);
+
+  /* === 全局高亮色（链接、导航选中、headerlink 等） === */
+  --md-accent-fg-color: #4493f8;
+
+  /* === 滚动条 === */
+  --scrollbar-thumb: rgba(156, 163, 175, 0.38);
+  --scrollbar-thumb-hover: rgba(209, 213, 219, 0.52);
+
+  /* === 网格 SVG（虚线，暗色更淡） === */
+  --page-grid: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cline x1='0' y1='0' x2='80' y2='0' stroke='rgba(180,180,180,0.2)' stroke-width='1' stroke-dasharray='3 5'/%3E%3Cline x1='0' y1='0' x2='0' y2='80' stroke='rgba(180,180,180,0.2)' stroke-width='1' stroke-dasharray='3 5'/%3E%3C/svg%3E");
+
+  /* === 暗色基准背景（main.css 暗色全局背景引用） === */
+  --dark-bg: #0d1117;
+}

@@ -24,7 +24,7 @@
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../theme/assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -50,14 +50,18 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+      <link rel="stylesheet" href="../../theme/css/variables.css">
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../theme/css/main.css">
+    
+      <link rel="stylesheet" href="../../theme/css/features.css">
+    
+      <link rel="stylesheet" href="../../theme/css/home.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -65,15 +69,50 @@
 
     
     
+  
+  <script>
+    (function () {
+      try {
+        var dark = matchMedia("(prefers-color-scheme: dark)").matches;
+        var scheme = dark ? "slate" : "default";
+        document.documentElement.setAttribute("data-md-color-scheme", scheme);
+        var link = document.createElement("link");
+        link.id = "hljs-theme";
+        link.rel = "stylesheet";
+        link.href = dark
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+        document.head.appendChild(link);
+        // body 加载后同步 attribute（bundle 切换主题时写 body，这里保证 html 跟随）
+        var attach = function () {
+          document.body.setAttribute("data-md-color-scheme", scheme);
+          new MutationObserver(function () {
+            var s = document.body.getAttribute("data-md-color-scheme");
+            if (s) document.documentElement.setAttribute("data-md-color-scheme", s);
+          }).observe(document.body, {
+            attributes: true,
+            attributeFilter: ["data-md-color-scheme"],
+          });
+        };
+        if (document.body) attach();
+        else new MutationObserver(function (_, obs) {
+          if (document.body) { attach(); obs.disconnect(); }
+        }).observe(document.documentElement, { childList: true });
+      } catch (e) {}
+    })();
+  </script>
+
   </head>
   
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="green">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -82,7 +121,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lec-9-set-theory" class="md-skip">
+        <a href="#lec-9-集合论-set-theory" class="md-skip">
           跳转至
         </a>
       
@@ -94,15 +133,16 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Evelina_IS" class="md-header__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
-
+      <!-- Logo：复用 favicon.svg 的方角图标 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="bf-logo" role="img" aria-label="Evelina" width="64" height="64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#409ba5"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Courier New, Courier, monospace"
+        font-size="42" font-weight="700" fill="#ffffff">E</text>
+</svg>
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
@@ -126,7 +166,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="跟随系统"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="跟随系统" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07zm-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13zm-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87zM19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35zm4.33-2.7 1.15-2.77 2.2 2.54zm1.15-4.96-1.14-2.78 3.34.24zM9.63 18.93l2.77 1.15-2.53 2.19z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="深色模式"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="深色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -148,6 +224,11 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
         
         <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
@@ -194,6 +275,238 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../oneinall/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  网站大全
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../handwritten-notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  手写笔记
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../fds/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FDSNOTE
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../reports/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Reports
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%A4%A7%E7%89%A9%E4%B9%991/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8_%E5%89%AF%E6%9C%AC/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  大物乙1
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  git 的使用
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../probability/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  概率论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  离散数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../SYS1/sys%E6%B1%87%E7%BC%96/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SYS 体系结构
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../%E5%A4%A7%E7%89%A9/%E5%8A%9B%E5%AD%A6%E4%B8%8E%E6%8C%AF%E5%8A%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  大学物理
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -207,14 +520,19 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Evelina_IS" class="md-nav__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
-
+      <!-- Logo：复用 favicon.svg 的方角图标 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="bf-logo" role="img" aria-label="Evelina" width="64" height="64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#409ba5"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Courier New, Courier, monospace"
+        font-size="42" font-weight="700" fill="#ffffff">E</text>
+</svg>
     </a>
     Evelina_IS
   </label>
@@ -438,14 +756,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -520,8 +839,14 @@
     
     
     
+      
+        
+        
+      
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
@@ -547,7 +872,7 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
@@ -689,7 +1014,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-集合基本概念" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 集合基本概念
@@ -701,7 +1026,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
+  <a href="#11-集合定义" class="md-nav__link">
     <span class="md-ellipsis">
       
         1.1 集合定义
@@ -712,7 +1037,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
+  <a href="#12-集合的表示法" class="md-nav__link">
     <span class="md-ellipsis">
       
         1.2 集合的表示法
@@ -723,7 +1048,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13" class="md-nav__link">
+  <a href="#13-特殊集合" class="md-nav__link">
     <span class="md-ellipsis">
       
         1.3 特殊集合
@@ -734,7 +1059,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#14" class="md-nav__link">
+  <a href="#14-集合的关系" class="md-nav__link">
     <span class="md-ellipsis">
       
         1.4 集合的关系
@@ -750,7 +1075,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-集合基本运算" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 集合基本运算
@@ -761,7 +1086,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-cartesian-product" class="md-nav__link">
+  <a href="#3-笛卡尔积-cartesian-product" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 笛卡尔积 (Cartesian Product)
@@ -772,7 +1097,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-relation" class="md-nav__link">
+  <a href="#4-关系-relation" class="md-nav__link">
     <span class="md-ellipsis">
       
         4. 关系 (Relation)
@@ -784,7 +1109,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41" class="md-nav__link">
+  <a href="#41-基本概念" class="md-nav__link">
     <span class="md-ellipsis">
       
         4.1 基本概念
@@ -795,7 +1120,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42" class="md-nav__link">
+  <a href="#42-关系矩阵" class="md-nav__link">
     <span class="md-ellipsis">
       
         4.2 关系矩阵
@@ -806,7 +1131,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#43" class="md-nav__link">
+  <a href="#43-关系的性质" class="md-nav__link">
     <span class="md-ellipsis">
       
         4.3 关系的性质
@@ -817,7 +1142,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#44-equivalence-relation" class="md-nav__link">
+  <a href="#44-等价关系-equivalence-relation" class="md-nav__link">
     <span class="md-ellipsis">
       
         4.4 等价关系 (Equivalence Relation)
@@ -828,7 +1153,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#45-order-relation" class="md-nav__link">
+  <a href="#45-序关系-order-relation" class="md-nav__link">
     <span class="md-ellipsis">
       
         4.5 序关系 (Order Relation)
@@ -844,7 +1169,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-function" class="md-nav__link">
+  <a href="#5-函数-function" class="md-nav__link">
     <span class="md-ellipsis">
       
         5. 函数 (Function)
@@ -985,14 +1310,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_8" >
         
           
           <label class="md-nav__link" for="__nav_9_8" id="__nav_9_8_label" tabindex="0">
@@ -1435,14 +1761,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -1744,14 +2071,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_10" >
         
           
           <label class="md-nav__link" for="__nav_10_10" id="__nav_10_10_label" tabindex="0">
@@ -1902,14 +2230,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
         
           
           <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
@@ -2087,7 +2416,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-集合基本概念" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 集合基本概念
@@ -2099,7 +2428,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#11" class="md-nav__link">
+  <a href="#11-集合定义" class="md-nav__link">
     <span class="md-ellipsis">
       
         1.1 集合定义
@@ -2110,7 +2439,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12" class="md-nav__link">
+  <a href="#12-集合的表示法" class="md-nav__link">
     <span class="md-ellipsis">
       
         1.2 集合的表示法
@@ -2121,7 +2450,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#13" class="md-nav__link">
+  <a href="#13-特殊集合" class="md-nav__link">
     <span class="md-ellipsis">
       
         1.3 特殊集合
@@ -2132,7 +2461,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#14" class="md-nav__link">
+  <a href="#14-集合的关系" class="md-nav__link">
     <span class="md-ellipsis">
       
         1.4 集合的关系
@@ -2148,7 +2477,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-集合基本运算" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 集合基本运算
@@ -2159,7 +2488,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-cartesian-product" class="md-nav__link">
+  <a href="#3-笛卡尔积-cartesian-product" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 笛卡尔积 (Cartesian Product)
@@ -2170,7 +2499,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-relation" class="md-nav__link">
+  <a href="#4-关系-relation" class="md-nav__link">
     <span class="md-ellipsis">
       
         4. 关系 (Relation)
@@ -2182,7 +2511,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#41" class="md-nav__link">
+  <a href="#41-基本概念" class="md-nav__link">
     <span class="md-ellipsis">
       
         4.1 基本概念
@@ -2193,7 +2522,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#42" class="md-nav__link">
+  <a href="#42-关系矩阵" class="md-nav__link">
     <span class="md-ellipsis">
       
         4.2 关系矩阵
@@ -2204,7 +2533,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#43" class="md-nav__link">
+  <a href="#43-关系的性质" class="md-nav__link">
     <span class="md-ellipsis">
       
         4.3 关系的性质
@@ -2215,7 +2544,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#44-equivalence-relation" class="md-nav__link">
+  <a href="#44-等价关系-equivalence-relation" class="md-nav__link">
     <span class="md-ellipsis">
       
         4.4 等价关系 (Equivalence Relation)
@@ -2226,7 +2555,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#45-order-relation" class="md-nav__link">
+  <a href="#45-序关系-order-relation" class="md-nav__link">
     <span class="md-ellipsis">
       
         4.5 序关系 (Order Relation)
@@ -2242,7 +2571,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-function" class="md-nav__link">
+  <a href="#5-函数-function" class="md-nav__link">
     <span class="md-ellipsis">
       
         5. 函数 (Function)
@@ -2265,9 +2594,9 @@
               
               <article class="md-content__inner md-typeset">
                 
+  
+  
                   
-
-
   
     <a href="https://github.com/Evelina-IS/Evelina_personal_web/edit/main/docs/discrete-math/set-theory.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
       
@@ -2285,20 +2614,26 @@
   
 
 
-<h1 id="lec-9-set-theory">Lec 9: 集合论 (Set Theory)<a class="headerlink" href="#lec-9-set-theory" title="Permanent link">&para;</a></h1>
-<h2 id="1">1. 集合基本概念<a class="headerlink" href="#1" title="Permanent link">&para;</a></h2>
-<h3 id="11">1.1 集合定义<a class="headerlink" href="#11" title="Permanent link">&para;</a></h3>
+
+
+
+
+
+
+<h1 id="lec-9-集合论-set-theory">Lec 9: 集合论 (Set Theory)<a class="headerlink" href="#lec-9-集合论-set-theory" title="Permanent link"></a></h1>
+<h2 id="1-集合基本概念">1. 集合基本概念<a class="headerlink" href="#1-集合基本概念" title="Permanent link"></a></h2>
+<h3 id="11-集合定义">1.1 集合定义<a class="headerlink" href="#11-集合定义" title="Permanent link"></a></h3>
 <ul>
 <li>把一些确定的、彼此不同的对象作为一个整体来研究，这个整体称为<strong>集合</strong> (set)</li>
 <li>组成集合的对象叫做集合的<strong>元素</strong> (element)</li>
 <li><span class="arithmatex">\(a \in S\)</span>：<span class="arithmatex">\(a\)</span> 属于 <span class="arithmatex">\(S\)</span>；<span class="arithmatex">\(a \notin S\)</span>：<span class="arithmatex">\(a\)</span> 不属于 <span class="arithmatex">\(S\)</span></li>
 </ul>
-<h3 id="12">1.2 集合的表示法<a class="headerlink" href="#12" title="Permanent link">&para;</a></h3>
+<h3 id="12-集合的表示法">1.2 集合的表示法<a class="headerlink" href="#12-集合的表示法" title="Permanent link"></a></h3>
 <ul>
 <li><strong>列举法</strong>：<span class="arithmatex">\(A = \{1,2,3,4,5\}\)</span></li>
 <li><strong>描述法</strong>：<span class="arithmatex">\(A = \{x \mid P(x)\}\)</span></li>
 </ul>
-<h3 id="13">1.3 特殊集合<a class="headerlink" href="#13" title="Permanent link">&para;</a></h3>
+<h3 id="13-特殊集合">1.3 特殊集合<a class="headerlink" href="#13-特殊集合" title="Permanent link"></a></h3>
 <table>
 <thead>
 <tr>
@@ -2337,7 +2672,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="14">1.4 集合的关系<a class="headerlink" href="#14" title="Permanent link">&para;</a></h3>
+<h3 id="14-集合的关系">1.4 集合的关系<a class="headerlink" href="#14-集合的关系" title="Permanent link"></a></h3>
 <table>
 <thead>
 <tr>
@@ -2364,7 +2699,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="2">2. 集合基本运算<a class="headerlink" href="#2" title="Permanent link">&para;</a></h2>
+<h2 id="2-集合基本运算">2. 集合基本运算<a class="headerlink" href="#2-集合基本运算" title="Permanent link"></a></h2>
 <table>
 <thead>
 <tr>
@@ -2401,18 +2736,18 @@
 </tr>
 </tbody>
 </table>
-<h2 id="3-cartesian-product">3. 笛卡尔积 (Cartesian Product)<a class="headerlink" href="#3-cartesian-product" title="Permanent link">&para;</a></h2>
+<h2 id="3-笛卡尔积-cartesian-product">3. 笛卡尔积 (Cartesian Product)<a class="headerlink" href="#3-笛卡尔积-cartesian-product" title="Permanent link"></a></h2>
 <div class="arithmatex">\[A \times B = \{(a,b) \mid a \in A \land b \in B\}\]</div>
-<h2 id="4-relation">4. 关系 (Relation)<a class="headerlink" href="#4-relation" title="Permanent link">&para;</a></h2>
-<h3 id="41">4.1 基本概念<a class="headerlink" href="#41" title="Permanent link">&para;</a></h3>
+<h2 id="4-关系-relation">4. 关系 (Relation)<a class="headerlink" href="#4-关系-relation" title="Permanent link"></a></h2>
+<h3 id="41-基本概念">4.1 基本概念<a class="headerlink" href="#41-基本概念" title="Permanent link"></a></h3>
 <ul>
 <li>集合 <span class="arithmatex">\(A\)</span> 到 <span class="arithmatex">\(B\)</span> 的<strong>二元关系</strong>是 <span class="arithmatex">\(A \times B\)</span> 的子集</li>
 <li>若 <span class="arithmatex">\(R \subseteq A \times B\)</span>，且 <span class="arithmatex">\((a,b) \in R\)</span>，记作 <span class="arithmatex">\(aRb\)</span></li>
 </ul>
-<h3 id="42">4.2 关系矩阵<a class="headerlink" href="#42" title="Permanent link">&para;</a></h3>
+<h3 id="42-关系矩阵">4.2 关系矩阵<a class="headerlink" href="#42-关系矩阵" title="Permanent link"></a></h3>
 <p>关系 <span class="arithmatex">\(R\)</span> 可以用矩阵 <span class="arithmatex">\(M_R = (m_{ij})\)</span> 表示，其中：
 $<span class="arithmatex">\(m_{ij} = \begin{cases} 1 &amp; \text{若 } (a_i, b_j) \in R \\ 0 &amp; \text{若 } (a_i, b_j) \notin R \end{cases}\)</span>$</p>
-<h3 id="43">4.3 关系的性质<a class="headerlink" href="#43" title="Permanent link">&para;</a></h3>
+<h3 id="43-关系的性质">4.3 关系的性质<a class="headerlink" href="#43-关系的性质" title="Permanent link"></a></h3>
 <table>
 <thead>
 <tr>
@@ -2449,19 +2784,19 @@ $<span class="arithmatex">\(m_{ij} = \begin{cases} 1 &amp; \text{若 } (a_i, b_j
 </tr>
 </tbody>
 </table>
-<h3 id="44-equivalence-relation">4.4 等价关系 (Equivalence Relation)<a class="headerlink" href="#44-equivalence-relation" title="Permanent link">&para;</a></h3>
+<h3 id="44-等价关系-equivalence-relation">4.4 等价关系 (Equivalence Relation)<a class="headerlink" href="#44-等价关系-equivalence-relation" title="Permanent link"></a></h3>
 <ul>
 <li>同时满足<strong>自反、对称、传递</strong>的关系</li>
 </ul>
 <p><strong>等价类</strong>：<span class="arithmatex">\([a] = \{x \in A \mid xRa\}\)</span></p>
 <p><strong>划分</strong>：等价关系将集合划分成若干个互不相交的等价类</p>
-<h3 id="45-order-relation">4.5 序关系 (Order Relation)<a class="headerlink" href="#45-order-relation" title="Permanent link">&para;</a></h3>
+<h3 id="45-序关系-order-relation">4.5 序关系 (Order Relation)<a class="headerlink" href="#45-序关系-order-relation" title="Permanent link"></a></h3>
 <ul>
 <li><strong>偏序关系</strong>：满足自反、反对称、传递</li>
 <li><strong>全序关系</strong>：任意两个元素都可以比较的偏序</li>
 <li><strong>哈斯图 (Hasse diagram)</strong>：偏序关系的图形表示</li>
 </ul>
-<h2 id="5-function">5. 函数 (Function)<a class="headerlink" href="#5-function" title="Permanent link">&para;</a></h2>
+<h2 id="5-函数-function">5. 函数 (Function)<a class="headerlink" href="#5-函数-function" title="Permanent link"></a></h2>
 <ul>
 <li>函数 <span class="arithmatex">\(f: A \to B\)</span> 是 <span class="arithmatex">\(A\)</span> 到 <span class="arithmatex">\(B\)</span> 的一种特殊关系</li>
 <li><span class="arithmatex">\(\forall a \in A\)</span>，存在唯一的 <span class="arithmatex">\(b \in B\)</span> 使得 <span class="arithmatex">\((a,b) \in f\)</span></li>
@@ -2502,7 +2837,40 @@ $<span class="arithmatex">\(m_{ij} = \begin{cases} 1 &amp; \text{若 } (a_i, b_j
 
 
 
+
+
                 
+  
+<div class="page-info">
+  <span class="page-info__item page-info__stars">
+    <span class="page-info__label">
+      有用的话请给我个
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web/stargazers">star</a>
+      =&gt;
+    </span>
+    <span class="page-info__value">
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web/stargazers" aria-label="GitHub Stars">
+        <img
+          alt="Stars"
+          src="https://img.shields.io/github/stars/Evelina-IS/Evelina_personal_web?label=Stars&amp;style=flat"
+        >
+      </a>
+    </span>
+  </span>
+  <span class="page-info__item" id="busuanzi_container_site_pv">
+    <span class="page-info__label">本站总浏览</span>
+    <span class="page-info__value"><span id="busuanzi_value_site_pv"></span></span>
+  </span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <!-- Giscus 评论区（加载与主题同步逻辑见 features/enhancements.js 的 Giscus 模块）
+     本文件只负责在需要评论的页面放置容器并声明 giscus 配置。 -->
+
+<div class="giscus"></div>
+
+
               </article>
             </div>
           
@@ -2519,6 +2887,46 @@ $<span class="arithmatex">\(m_{ij} = \begin{cases} 1 &amp; \text{若 } (a_i, b_j
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../predicate-logic/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 谓词逻辑">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                谓词逻辑
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../graph-theory/" class="md-footer__link md-footer__link--next" aria-label="下一页: 图论">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                图论
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -2553,26 +2961,36 @@ $<span class="arithmatex">\(m_{ij} = \begin{cases} 1 &amp; \text{若 } (a_i, b_j
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.select", "navigation.tracking", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script src="../../theme/js/core.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script src="../../theme/js/mathjax.js"></script>
       
-        <script src="../../javascripts/katex.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
       
-        <script src="../../javascripts/reader-counter.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/x86asm.min.js"></script>
       
-        <script src="../../javascripts/comments.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cmake.min.js"></script>
       
-        <script src="../../javascripts/extra.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/http.min.js"></script>
+      
+        <script src="../../theme/js/highlight.js"></script>
+      
+        <script src="../../theme/js/features/content.js"></script>
+      
+        <script src="../../theme/js/features/pdf.js"></script>
+      
+        <script src="../../theme/js/features/enhancements.js"></script>
       
     
   </body>

@@ -24,7 +24,7 @@
         
       
       
-      <link rel="icon" href="../assets/images/favicon.png">
+      <link rel="icon" href="../theme/assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -50,14 +50,18 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+      <link rel="stylesheet" href="../theme/css/variables.css">
     
-      <link rel="stylesheet" href="../stylesheets/extra.css">
+      <link rel="stylesheet" href="../theme/css/main.css">
+    
+      <link rel="stylesheet" href="../theme/css/features.css">
+    
+      <link rel="stylesheet" href="../theme/css/home.css">
     
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -65,15 +69,50 @@
 
     
     
+  
+  <script>
+    (function () {
+      try {
+        var dark = matchMedia("(prefers-color-scheme: dark)").matches;
+        var scheme = dark ? "slate" : "default";
+        document.documentElement.setAttribute("data-md-color-scheme", scheme);
+        var link = document.createElement("link");
+        link.id = "hljs-theme";
+        link.rel = "stylesheet";
+        link.href = dark
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+        document.head.appendChild(link);
+        // body 加载后同步 attribute（bundle 切换主题时写 body，这里保证 html 跟随）
+        var attach = function () {
+          document.body.setAttribute("data-md-color-scheme", scheme);
+          new MutationObserver(function () {
+            var s = document.body.getAttribute("data-md-color-scheme");
+            if (s) document.documentElement.setAttribute("data-md-color-scheme", s);
+          }).observe(document.body, {
+            attributes: true,
+            attributeFilter: ["data-md-color-scheme"],
+          });
+        };
+        if (document.body) attach();
+        else new MutationObserver(function (_, obs) {
+          if (document.body) { attach(); obs.disconnect(); }
+        }).observe(document.documentElement, { childList: true });
+      } catch (e) {}
+    })();
+  </script>
+
   </head>
   
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="green">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -82,7 +121,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#probability-theory" class="md-skip">
+        <a href="#probability-theory-概率论" class="md-skip">
           跳转至
         </a>
       
@@ -94,15 +133,16 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href=".." title="Evelina_IS" class="md-header__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
-
+      <!-- Logo：复用 favicon.svg 的方角图标 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="bf-logo" role="img" aria-label="Evelina" width="64" height="64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#409ba5"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Courier New, Courier, monospace"
+        font-size="42" font-weight="700" fill="#ffffff">E</text>
+</svg>
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
@@ -126,7 +166,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="跟随系统"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="跟随系统" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07zm-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13zm-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87zM19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35zm4.33-2.7 1.15-2.77 2.2 2.54zm1.15-4.96-1.14-2.78 3.34.24zM9.63 18.93l2.77 1.15-2.53 2.19z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="深色模式"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="深色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -148,6 +224,11 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
         
         <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
@@ -194,6 +275,238 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../oneinall/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  网站大全
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../handwritten-notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  手写笔记
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../fds/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FDSNOTE
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../reports/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Reports
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E5%A4%A7%E7%89%A9%E4%B9%991/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8_%E5%89%AF%E6%9C%AC/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  大物乙1
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  git 的使用
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  概率论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../discrete-math/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  离散数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../SYS1/sys%E6%B1%87%E7%BC%96/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SYS 体系结构
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../%E5%A4%A7%E7%89%A9/%E5%8A%9B%E5%AD%A6%E4%B8%8E%E6%8C%AF%E5%8A%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  大学物理
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -207,14 +520,19 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Evelina_IS" class="md-nav__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
-
+      <!-- Logo：复用 favicon.svg 的方角图标 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="bf-logo" role="img" aria-label="Evelina" width="64" height="64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#409ba5"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Courier New, Courier, monospace"
+        font-size="42" font-weight="700" fill="#ffffff">E</text>
+</svg>
     </a>
     Evelina_IS
   </label>
@@ -440,8 +758,14 @@
     
     
     
+      
+        
+        
+      
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
@@ -518,14 +842,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -772,14 +1097,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_8" >
         
           
           <label class="md-nav__link" for="__nav_9_8" id="__nav_9_8_label" tabindex="0">
@@ -1222,14 +1548,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -1531,14 +1858,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_10" >
         
           
           <label class="md-nav__link" for="__nav_10_10" id="__nav_10_10_label" tabindex="0">
@@ -1689,14 +2017,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
         
           
           <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
@@ -1874,7 +2203,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lec-1-prerequisite-knowledge" class="md-nav__link">
+  <a href="#lec-1-prerequisite-knowledge-前置知识" class="md-nav__link">
     <span class="md-ellipsis">
       
         Lec 1: Prerequisite Knowledge (前置知识)
@@ -1909,7 +2238,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#english-chinese-glossary" class="md-nav__link">
+  <a href="#english-chinese-glossary-中英文对照表" class="md-nav__link">
     <span class="md-ellipsis">
       
         English-Chinese Glossary (中英文对照表)
@@ -1937,7 +2266,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#inclusion-exclusion-principle" class="md-nav__link">
+  <a href="#inclusion-exclusion-principle-容斥原理" class="md-nav__link">
     <span class="md-ellipsis">
       
         Inclusion-Exclusion Principle (容斥原理)
@@ -1948,7 +2277,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#conditional-probability" class="md-nav__link">
+  <a href="#conditional-probability-条件概率" class="md-nav__link">
     <span class="md-ellipsis">
       
         Conditional Probability (条件概率)
@@ -1959,7 +2288,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#multiplication-rule" class="md-nav__link">
+  <a href="#multiplication-rule-乘法公式" class="md-nav__link">
     <span class="md-ellipsis">
       
         Multiplication Rule (乘法公式)
@@ -1970,7 +2299,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#law-of-total-probability" class="md-nav__link">
+  <a href="#law-of-total-probability-全概率公式" class="md-nav__link">
     <span class="md-ellipsis">
       
         Law of Total Probability (全概率公式)
@@ -1981,7 +2310,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bayes-theorem" class="md-nav__link">
+  <a href="#bayes-theorem-贝叶斯公式" class="md-nav__link">
     <span class="md-ellipsis">
       
         Bayes' Theorem (贝叶斯公式)
@@ -2013,7 +2342,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lec-2-probability-distributions" class="md-nav__link">
+  <a href="#lec-2-probability-distributions-概率分布" class="md-nav__link">
     <span class="md-ellipsis">
       
         Lec 2: Probability Distributions (概率分布)
@@ -2131,7 +2460,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#26-poisson-random-variable" class="md-nav__link">
+  <a href="#26-poissonα-random-variable" class="md-nav__link">
     <span class="md-ellipsis">
       
         2.6 Poisson(α) Random Variable
@@ -2191,7 +2520,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lec-3-multivariate-random-variables" class="md-nav__link">
+  <a href="#lec-3-multivariate-random-variables-多维随机变量" class="md-nav__link">
     <span class="md-ellipsis">
       
         Lec 3: Multivariate Random Variables (多维随机变量)
@@ -2226,7 +2555,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#12-conditional-expectation-variance" class="md-nav__link">
+  <a href="#12-conditional-expectation--variance" class="md-nav__link">
     <span class="md-ellipsis">
       
         1.2 Conditional Expectation &amp; Variance
@@ -2242,7 +2571,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-independence" class="md-nav__link">
+  <a href="#2-independence-独立性" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. Independence (独立性)
@@ -2269,7 +2598,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lec-4-random-processes" class="md-nav__link">
+  <a href="#lec-4-random-processes-随机过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         Lec 4: Random Processes (随机过程)
@@ -2292,7 +2621,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-stationary-process" class="md-nav__link">
+  <a href="#2-stationary-process-平稳过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. Stationary Process (平稳过程)
@@ -2303,7 +2632,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-wide-sense-stationary-wss" class="md-nav__link">
+  <a href="#3-wide-sense-stationary-wss-广义平稳" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. Wide-Sense Stationary (WSS, 广义平稳)
@@ -2314,7 +2643,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-cross-correlation" class="md-nav__link">
+  <a href="#4-cross-correlation-互相关" class="md-nav__link">
     <span class="md-ellipsis">
       
         4. Cross-Correlation (互相关)
@@ -2325,7 +2654,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-gaussian-process" class="md-nav__link">
+  <a href="#5-gaussian-process-高斯过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         5. Gaussian Process (高斯过程)
@@ -2336,7 +2665,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6-white-gaussian-noise" class="md-nav__link">
+  <a href="#6-white-gaussian-noise-白高斯噪声" class="md-nav__link">
     <span class="md-ellipsis">
       
         6. White Gaussian Noise (白高斯噪声)
@@ -2375,9 +2704,9 @@
               
               <article class="md-content__inner md-typeset">
                 
+  
+  
                   
-
-
   
     <a href="https://github.com/Evelina-IS/Evelina_personal_web/edit/main/docs/probability/index.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
       
@@ -2395,21 +2724,27 @@
   
 
 
-<h1 id="probability-theory">Probability Theory (概率论)<a class="headerlink" href="#probability-theory" title="Permanent link">&para;</a></h1>
+
+
+
+
+
+
+<h1 id="probability-theory-概率论">Probability Theory (概率论)<a class="headerlink" href="#probability-theory-概率论" title="Permanent link"></a></h1>
 <blockquote>
 <p>English exam review notes — full glossary, formulas, and distributions.
 全英考试复习笔记，包含中英文对照、公式和分布详解。</p>
 </blockquote>
 <hr />
-<h2 id="lec-1-prerequisite-knowledge">Lec 1: Prerequisite Knowledge (前置知识)<a class="headerlink" href="#lec-1-prerequisite-knowledge" title="Permanent link">&para;</a></h2>
-<h3 id="1-basic-concepts">1. Basic Concepts<a class="headerlink" href="#1-basic-concepts" title="Permanent link">&para;</a></h3>
-<h4 id="mathematical-definitions">Mathematical Definitions<a class="headerlink" href="#mathematical-definitions" title="Permanent link">&para;</a></h4>
+<h2 id="lec-1-prerequisite-knowledge-前置知识">Lec 1: Prerequisite Knowledge (前置知识)<a class="headerlink" href="#lec-1-prerequisite-knowledge-前置知识" title="Permanent link"></a></h2>
+<h3 id="1-basic-concepts">1. Basic Concepts<a class="headerlink" href="#1-basic-concepts" title="Permanent link"></a></h3>
+<h4 id="mathematical-definitions">Mathematical Definitions<a class="headerlink" href="#mathematical-definitions" title="Permanent link"></a></h4>
 <ul>
 <li><strong>Mutually Exclusive</strong> (互斥): <span class="arithmatex">\(A_i \cap A_j = \emptyset \quad (i \neq j)\)</span></li>
 <li><strong>Collectively Exhaustive</strong> (穷尽): <span class="arithmatex">\(A_1 \cup A_2 \cup \cdots \cup A_n = S\)</span></li>
 <li><strong>Independent</strong> (独立): <span class="arithmatex">\(P(AB) = P(A) \cdot P(B)\)</span></li>
 </ul>
-<h4 id="english-chinese-glossary">English-Chinese Glossary (中英文对照表)<a class="headerlink" href="#english-chinese-glossary" title="Permanent link">&para;</a></h4>
+<h4 id="english-chinese-glossary-中英文对照表">English-Chinese Glossary (中英文对照表)<a class="headerlink" href="#english-chinese-glossary-中英文对照表" title="Permanent link"></a></h4>
 <table>
 <thead>
 <tr>
@@ -2480,29 +2815,29 @@
 </tr>
 </tbody>
 </table>
-<h3 id="2-important-formulas">2. Important Formulas<a class="headerlink" href="#2-important-formulas" title="Permanent link">&para;</a></h3>
-<h4 id="inclusion-exclusion-principle">Inclusion-Exclusion Principle (容斥原理)<a class="headerlink" href="#inclusion-exclusion-principle" title="Permanent link">&para;</a></h4>
+<h3 id="2-important-formulas">2. Important Formulas<a class="headerlink" href="#2-important-formulas" title="Permanent link"></a></h3>
+<h4 id="inclusion-exclusion-principle-容斥原理">Inclusion-Exclusion Principle (容斥原理)<a class="headerlink" href="#inclusion-exclusion-principle-容斥原理" title="Permanent link"></a></h4>
 <div class="arithmatex">\[P(A \cup B) = P(A) + P(B) - P(A \cap B)\]</div>
 <div class="arithmatex">\[P\left(\bigcup_{j=1}^{n} A_j\right) = \sum_{j=1}^{n} P(A_j) - \sum_{i&lt;j} P(A_i \cap A_j) + \sum_{i&lt;j&lt;k} P(A_i \cap A_j \cap A_k) - \cdots + (-1)^{n-1} P(A_1 \cap A_2 \cap \cdots \cap A_n)\]</div>
-<h4 id="conditional-probability">Conditional Probability (条件概率)<a class="headerlink" href="#conditional-probability" title="Permanent link">&para;</a></h4>
+<h4 id="conditional-probability-条件概率">Conditional Probability (条件概率)<a class="headerlink" href="#conditional-probability-条件概率" title="Permanent link"></a></h4>
 <div class="arithmatex">\[P(A \mid B) = \frac{P(A \cap B)}{P(B)}\]</div>
-<h4 id="multiplication-rule">Multiplication Rule (乘法公式)<a class="headerlink" href="#multiplication-rule" title="Permanent link">&para;</a></h4>
+<h4 id="multiplication-rule-乘法公式">Multiplication Rule (乘法公式)<a class="headerlink" href="#multiplication-rule-乘法公式" title="Permanent link"></a></h4>
 <div class="arithmatex">\[P(AB) = P(A) \cdot P(B \mid A) = P(B) \cdot P(A \mid B)\]</div>
 <div class="arithmatex">\[P(A_1 A_2 \ldots A_n) = P(A_1) \cdot P(A_2 \mid A_1) \cdot P(A_3 \mid A_1 A_2) \cdots P(A_n \mid A_1 A_2 \ldots A_{n-1})\]</div>
 <div class="arithmatex">\[P(ABC) = P(A \mid C) \cdot P(B \mid AC)\]</div>
-<h4 id="law-of-total-probability">Law of Total Probability (全概率公式)<a class="headerlink" href="#law-of-total-probability" title="Permanent link">&para;</a></h4>
+<h4 id="law-of-total-probability-全概率公式">Law of Total Probability (全概率公式)<a class="headerlink" href="#law-of-total-probability-全概率公式" title="Permanent link"></a></h4>
 <div class="arithmatex">\[P(A) = \sum_{j=1}^{n} P(B_j) \cdot P(A \mid B_j)\]</div>
-<h4 id="bayes-theorem">Bayes' Theorem (贝叶斯公式)<a class="headerlink" href="#bayes-theorem" title="Permanent link">&para;</a></h4>
+<h4 id="bayes-theorem-贝叶斯公式">Bayes' Theorem (贝叶斯公式)<a class="headerlink" href="#bayes-theorem-贝叶斯公式" title="Permanent link"></a></h4>
 <div class="arithmatex">\[P(B_k \mid A) = \frac{P(B_k) \cdot P(A \mid B_k)}{\sum_{j=1}^{n} P(B_j) \cdot P(A \mid B_j)}\]</div>
-<h3 id="3-writing-conventions">3. Writing Conventions<a class="headerlink" href="#3-writing-conventions" title="Permanent link">&para;</a></h3>
+<h3 id="3-writing-conventions">3. Writing Conventions<a class="headerlink" href="#3-writing-conventions" title="Permanent link"></a></h3>
 <ul>
 <li>Use uppercase letters for random variables, e.g., <span class="arithmatex">\(X\)</span></li>
 <li>Use <span class="arithmatex">\(S\)</span> to denote the range of a random variable, e.g., <span class="arithmatex">\(S_X\)</span></li>
 </ul>
 <hr />
-<h2 id="lec-2-probability-distributions">Lec 2: Probability Distributions (概率分布)<a class="headerlink" href="#lec-2-probability-distributions" title="Permanent link">&para;</a></h2>
-<h3 id="1-basic-concepts_1">1. Basic Concepts<a class="headerlink" href="#1-basic-concepts_1" title="Permanent link">&para;</a></h3>
-<h4 id="11-important-functions">1.1 Important Functions<a class="headerlink" href="#11-important-functions" title="Permanent link">&para;</a></h4>
+<h2 id="lec-2-probability-distributions-概率分布">Lec 2: Probability Distributions (概率分布)<a class="headerlink" href="#lec-2-probability-distributions-概率分布" title="Permanent link"></a></h2>
+<h3 id="1-basic-concepts_1">1. Basic Concepts<a class="headerlink" href="#1-basic-concepts_1" title="Permanent link"></a></h3>
+<h4 id="11-important-functions">1.1 Important Functions<a class="headerlink" href="#11-important-functions" title="Permanent link"></a></h4>
 <p><strong>PMF — Probability Mass Function</strong> (概率分布函数)</p>
 <div class="arithmatex">\[P_X(x) = P[X = x]\]</div>
 <div class="arithmatex">\[P_Y(y) = \sum_{x: g(x)=y} P_X(x)\]</div>
@@ -2514,7 +2849,7 @@
 <div class="arithmatex">\[f_X(x) \geq 0\]</div>
 <div class="arithmatex">\[F_X(x) = \int_{-\infty}^{x} f_X(u) du\]</div>
 <div class="arithmatex">\[\int_{-\infty}^{\infty} f_X(x) dx = 1\]</div>
-<h4 id="12-important-definitions">1.2 Important Definitions<a class="headerlink" href="#12-important-definitions" title="Permanent link">&para;</a></h4>
+<h4 id="12-important-definitions">1.2 Important Definitions<a class="headerlink" href="#12-important-definitions" title="Permanent link"></a></h4>
 <p><strong>Expected Value (期望值)</strong></p>
 <ul>
 <li>Discrete: <span class="arithmatex">\(E[X] = \mu_X = \sum_{x \in S_X} x P_X(x)\)</span></li>
@@ -2534,22 +2869,22 @@
 <li><span class="arithmatex">\(n\)</span>-th moment: <span class="arithmatex">\(E[X^n]\)</span></li>
 <li><span class="arithmatex">\(n\)</span>-th central moment: <span class="arithmatex">\(E[(X - \mu_X)^n]\)</span></li>
 </ul>
-<h3 id="2-discrete-random-variables">2. Discrete Random Variables<a class="headerlink" href="#2-discrete-random-variables" title="Permanent link">&para;</a></h3>
-<h4 id="21-bernoullip-random-variable">2.1 Bernoulli(p) Random Variable<a class="headerlink" href="#21-bernoullip-random-variable" title="Permanent link">&para;</a></h4>
+<h3 id="2-discrete-random-variables">2. Discrete Random Variables<a class="headerlink" href="#2-discrete-random-variables" title="Permanent link"></a></h3>
+<h4 id="21-bernoullip-random-variable">2.1 Bernoulli(p) Random Variable<a class="headerlink" href="#21-bernoullip-random-variable" title="Permanent link"></a></h4>
 <p>A single trial where the event either occurs or not.</p>
 <div class="arithmatex">\[P_X(x) = \begin{cases} 1-p &amp; x = 0 \\ p &amp; x = 1 \\ 0 &amp; \text{otherwise} \end{cases}\]</div>
 <ul>
 <li><span class="arithmatex">\(E[X] = p\)</span></li>
 <li><span class="arithmatex">\(Var[X] = p(1-p)\)</span></li>
 </ul>
-<h4 id="22-geometricp-random-variable">2.2 Geometric(p) Random Variable<a class="headerlink" href="#22-geometricp-random-variable" title="Permanent link">&para;</a></h4>
+<h4 id="22-geometricp-random-variable">2.2 Geometric(p) Random Variable<a class="headerlink" href="#22-geometricp-random-variable" title="Permanent link"></a></h4>
 <p>Number of trials until the first success.</p>
 <div class="arithmatex">\[P_X(x) = \begin{cases} p(1-p)^{x-1} &amp; x = 1,2,\ldots \\ 0 &amp; \text{otherwise} \end{cases}\]</div>
 <ul>
 <li><span class="arithmatex">\(E[X] = 1/p\)</span></li>
 <li><span class="arithmatex">\(Var[X] = (1-p)/p^2\)</span></li>
 </ul>
-<h4 id="23-binomialnp-random-variable">2.3 Binomial(n,p) Random Variable<a class="headerlink" href="#23-binomialnp-random-variable" title="Permanent link">&para;</a></h4>
+<h4 id="23-binomialnp-random-variable">2.3 Binomial(n,p) Random Variable<a class="headerlink" href="#23-binomialnp-random-variable" title="Permanent link"></a></h4>
 <p>Number of successes in <span class="arithmatex">\(n\)</span> independent Bernoulli trials.</p>
 <div class="arithmatex">\[P_K(k) = \binom{n}{k} p^k (1-p)^{n-k}\]</div>
 <ul>
@@ -2558,20 +2893,20 @@
 </ul>
 <p><strong>De Moivre-Laplace Formula</strong> (棣莫弗-拉普拉斯公式):</p>
 <div class="arithmatex">\[P[k_1 \leq K \leq k_2] \approx \Phi\left(\frac{k_2 + 0.5 - np}{\sqrt{np(1-p)}}\right) - \Phi\left(\frac{k_1 - 0.5 - np}{\sqrt{np(1-p)}}\right)\]</div>
-<h4 id="24-pascalkp-random-variable">2.4 Pascal(k,p) Random Variable<a class="headerlink" href="#24-pascalkp-random-variable" title="Permanent link">&para;</a></h4>
+<h4 id="24-pascalkp-random-variable">2.4 Pascal(k,p) Random Variable<a class="headerlink" href="#24-pascalkp-random-variable" title="Permanent link"></a></h4>
 <p>Number of trials needed to get <span class="arithmatex">\(k\)</span> successes.</p>
 <div class="arithmatex">\[P_X(x) = \binom{x-1}{k-1} p^k (1-p)^{x-k}\]</div>
 <ul>
 <li><span class="arithmatex">\(E[X] = k/p\)</span></li>
 <li><span class="arithmatex">\(Var[X] = k(1-p)/p^2\)</span></li>
 </ul>
-<h4 id="25-discrete-uniformkl-random-variable">2.5 Discrete Uniform(k,l) Random Variable<a class="headerlink" href="#25-discrete-uniformkl-random-variable" title="Permanent link">&para;</a></h4>
+<h4 id="25-discrete-uniformkl-random-variable">2.5 Discrete Uniform(k,l) Random Variable<a class="headerlink" href="#25-discrete-uniformkl-random-variable" title="Permanent link"></a></h4>
 <div class="arithmatex">\[P_X(x) = \begin{cases} 1/(l-k+1) &amp; x = k, k+1, \ldots, l \\ 0 &amp; \text{otherwise} \end{cases}\]</div>
 <ul>
 <li><span class="arithmatex">\(E[X] = (k+l)/2\)</span></li>
 <li><span class="arithmatex">\(Var[X] = (l-k)(l-k+2)/12\)</span></li>
 </ul>
-<h4 id="26-poisson-random-variable">2.6 Poisson(α) Random Variable<a class="headerlink" href="#26-poisson-random-variable" title="Permanent link">&para;</a></h4>
+<h4 id="26-poissonα-random-variable">2.6 Poisson(α) Random Variable<a class="headerlink" href="#26-poissonα-random-variable" title="Permanent link"></a></h4>
 <p>Describes the number of events in a fixed interval of time or space.</p>
 <div class="arithmatex">\[P_X(x) = \begin{cases} \alpha^x e^{-\alpha} / x! &amp; x = 0,1,2,\ldots \\ 0 &amp; \text{otherwise} \end{cases}\]</div>
 <ul>
@@ -2579,15 +2914,15 @@
 <li><span class="arithmatex">\(E[X] = \alpha\)</span></li>
 <li><span class="arithmatex">\(Var[X] = \alpha\)</span></li>
 </ul>
-<h3 id="3-continuous-random-variables">3. Continuous Random Variables<a class="headerlink" href="#3-continuous-random-variables" title="Permanent link">&para;</a></h3>
-<h4 id="31-uniform-random-variable">3.1 Uniform Random Variable<a class="headerlink" href="#31-uniform-random-variable" title="Permanent link">&para;</a></h4>
+<h3 id="3-continuous-random-variables">3. Continuous Random Variables<a class="headerlink" href="#3-continuous-random-variables" title="Permanent link"></a></h3>
+<h4 id="31-uniform-random-variable">3.1 Uniform Random Variable<a class="headerlink" href="#31-uniform-random-variable" title="Permanent link"></a></h4>
 <div class="arithmatex">\[f_X(x) = \begin{cases} 1/(b-a) &amp; a \leq x \leq b \\ 0 &amp; \text{otherwise} \end{cases}\]</div>
 <div class="arithmatex">\[F_X(x) = \begin{cases} 0 &amp; x \leq a \\ (x-a)/(b-a) &amp; a &lt; x \leq b \\ 1 &amp; x &gt; b \end{cases}\]</div>
 <ul>
 <li><span class="arithmatex">\(E[X] = (a+b)/2\)</span></li>
 <li><span class="arithmatex">\(Var[X] = (b-a)^2/12\)</span></li>
 </ul>
-<h4 id="32-gaussian-normal-random-variable">3.2 Gaussian (Normal) Random Variable<a class="headerlink" href="#32-gaussian-normal-random-variable" title="Permanent link">&para;</a></h4>
+<h4 id="32-gaussian-normal-random-variable">3.2 Gaussian (Normal) Random Variable<a class="headerlink" href="#32-gaussian-normal-random-variable" title="Permanent link"></a></h4>
 <p><strong>Standard Normal CDF</strong>:</p>
 <div class="arithmatex">\[\Phi(z) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{z} e^{-u^2/2} du\]</div>
 <p><strong>General Normal</strong> <span class="arithmatex">\(N(\mu, \sigma^2)\)</span>:</p>
@@ -2598,9 +2933,9 @@
 <li><span class="arithmatex">\(Var[X] = \sigma^2\)</span></li>
 </ul>
 <hr />
-<h2 id="lec-3-multivariate-random-variables">Lec 3: Multivariate Random Variables (多维随机变量)<a class="headerlink" href="#lec-3-multivariate-random-variables" title="Permanent link">&para;</a></h2>
-<h3 id="1-basic-concepts_2">1. Basic Concepts<a class="headerlink" href="#1-basic-concepts_2" title="Permanent link">&para;</a></h3>
-<h4 id="11-important-functions_1">1.1 Important Functions<a class="headerlink" href="#11-important-functions_1" title="Permanent link">&para;</a></h4>
+<h2 id="lec-3-multivariate-random-variables-多维随机变量">Lec 3: Multivariate Random Variables (多维随机变量)<a class="headerlink" href="#lec-3-multivariate-random-variables-多维随机变量" title="Permanent link"></a></h2>
+<h3 id="1-basic-concepts_2">1. Basic Concepts<a class="headerlink" href="#1-basic-concepts_2" title="Permanent link"></a></h3>
+<h4 id="11-important-functions_1">1.1 Important Functions<a class="headerlink" href="#11-important-functions_1" title="Permanent link"></a></h4>
 <p><strong>Joint PMF</strong> (联合概率分布函数):</p>
 <div class="arithmatex">\[P_{X,Y}(x,y) = P[X = x, Y = y]\]</div>
 <p><strong>Marginal PMF</strong> (边际概率分布函数):</p>
@@ -2610,16 +2945,16 @@
 <div class="arithmatex">\[f_{X,Y}(x,y) = \frac{\partial^2 F_{X,Y}(x,y)}{\partial x \partial y}\]</div>
 <p><strong>Conditional PMF</strong> (条件概率分布函数):</p>
 <div class="arithmatex">\[P_{X \mid Y}(x \mid y) = P[X = x \mid Y = y] = \frac{P_{X,Y}(x,y)}{P_Y(y)}\]</div>
-<h4 id="12-conditional-expectation-variance">1.2 Conditional Expectation &amp; Variance<a class="headerlink" href="#12-conditional-expectation-variance" title="Permanent link">&para;</a></h4>
+<h4 id="12-conditional-expectation--variance">1.2 Conditional Expectation &amp; Variance<a class="headerlink" href="#12-conditional-expectation--variance" title="Permanent link"></a></h4>
 <p><strong>Law of Iterated Expectation</strong> (迭代期望律):</p>
 <div class="arithmatex">\[E[X] = E[E[X \mid Y]]\]</div>
 <p><strong>Law of Total Variance</strong> (全方差律):</p>
 <div class="arithmatex">\[Var[X] = Var[E[X \mid Y]] + E[Var[X \mid Y]]\]</div>
-<h3 id="2-independence">2. Independence (独立性)<a class="headerlink" href="#2-independence" title="Permanent link">&para;</a></h3>
+<h3 id="2-independence-独立性">2. Independence (独立性)<a class="headerlink" href="#2-independence-独立性" title="Permanent link"></a></h3>
 <p>Random variables <span class="arithmatex">\(X\)</span> and <span class="arithmatex">\(Y\)</span> are independent iff:</p>
 <div class="arithmatex">\[F_{X,Y}(x,y) = F_X(x) F_Y(y)\]</div>
 <div class="arithmatex">\[f_{X,Y}(x,y) = f_X(x) f_Y(y)\]</div>
-<h3 id="3-covariance-and-correlation">3. Covariance and Correlation<a class="headerlink" href="#3-covariance-and-correlation" title="Permanent link">&para;</a></h3>
+<h3 id="3-covariance-and-correlation">3. Covariance and Correlation<a class="headerlink" href="#3-covariance-and-correlation" title="Permanent link"></a></h3>
 <p><strong>Covariance</strong> (协方差):</p>
 <div class="arithmatex">\[Cov[X,Y] = E[(X-\mu_X)(Y-\mu_Y)] = E[XY] - E[X]E[Y]\]</div>
 <p><strong>Correlation Coefficient</strong> (相关系数):</p>
@@ -2629,8 +2964,8 @@
 <li>If <span class="arithmatex">\(X\)</span> and <span class="arithmatex">\(Y\)</span> are independent, then <span class="arithmatex">\(Cov[X,Y] = 0\)</span></li>
 </ul>
 <hr />
-<h2 id="lec-4-random-processes">Lec 4: Random Processes (随机过程)<a class="headerlink" href="#lec-4-random-processes" title="Permanent link">&para;</a></h2>
-<h3 id="1-basic-concepts_3">1. Basic Concepts<a class="headerlink" href="#1-basic-concepts_3" title="Permanent link">&para;</a></h3>
+<h2 id="lec-4-random-processes-随机过程">Lec 4: Random Processes (随机过程)<a class="headerlink" href="#lec-4-random-processes-随机过程" title="Permanent link"></a></h2>
+<h3 id="1-basic-concepts_3">1. Basic Concepts<a class="headerlink" href="#1-basic-concepts_3" title="Permanent link"></a></h3>
 <p><strong>Definition</strong>: A random process <span class="arithmatex">\(X(t)\)</span> is a function of time <span class="arithmatex">\(t\)</span> where each <span class="arithmatex">\(X(t)\)</span> is a random variable.</p>
 <p><strong>Mean Function</strong> (均值函数):</p>
 <div class="arithmatex">\[\mu_X(t) = E[X(t)]\]</div>
@@ -2638,10 +2973,10 @@
 <div class="arithmatex">\[R_X(t, \tau) = E[X(t) X(t+\tau)]\]</div>
 <p><strong>Autocovariance Function</strong> (自协方差函数):</p>
 <div class="arithmatex">\[C_X(t, \tau) = R_X(t, \tau) - \mu_X(t) \mu_X(t+\tau)\]</div>
-<h3 id="2-stationary-process">2. Stationary Process (平稳过程)<a class="headerlink" href="#2-stationary-process" title="Permanent link">&para;</a></h3>
+<h3 id="2-stationary-process-平稳过程">2. Stationary Process (平稳过程)<a class="headerlink" href="#2-stationary-process-平稳过程" title="Permanent link"></a></h3>
 <p>A process <span class="arithmatex">\(X(t)\)</span> is <strong>strict-sense stationary</strong> (严平稳) if its joint PDF is invariant to time shifts:</p>
 <div class="arithmatex">\[f_{X(t_1), \ldots, X(t_n)}(x_1, \ldots, x_n) = f_{X(t_1+\tau), \ldots, X(t_n+\tau)}(x_1, \ldots, x_n)\]</div>
-<h3 id="3-wide-sense-stationary-wss">3. Wide-Sense Stationary (WSS, 广义平稳)<a class="headerlink" href="#3-wide-sense-stationary-wss" title="Permanent link">&para;</a></h3>
+<h3 id="3-wide-sense-stationary-wss-广义平稳">3. Wide-Sense Stationary (WSS, 广义平稳)<a class="headerlink" href="#3-wide-sense-stationary-wss-广义平稳" title="Permanent link"></a></h3>
 <p>A process <span class="arithmatex">\(X(t)\)</span> is WSS if:
 - <span class="arithmatex">\(E[X(t)] = \mu_X\)</span> (constant mean)
 - <span class="arithmatex">\(R_X(t, \tau) = R_X(0, \tau) = R_X(\tau)\)</span> (autocorrelation depends only on <span class="arithmatex">\(\tau\)</span>)</p>
@@ -2652,20 +2987,20 @@
 <li><span class="arithmatex">\(R_X(0) \geq |R_X(\tau)|\)</span></li>
 <li>Average power: <span class="arithmatex">\(R_X(0) = E[X^2(t)]\)</span></li>
 </ul>
-<h3 id="4-cross-correlation">4. Cross-Correlation (互相关)<a class="headerlink" href="#4-cross-correlation" title="Permanent link">&para;</a></h3>
+<h3 id="4-cross-correlation-互相关">4. Cross-Correlation (互相关)<a class="headerlink" href="#4-cross-correlation-互相关" title="Permanent link"></a></h3>
 <div class="arithmatex">\[R_{XY}(t, \tau) = E[X(t) Y(t+\tau)]\]</div>
 <p><strong>Property</strong>: <span class="arithmatex">\(R_{XY}(\tau) = R_{YX}(-\tau)\)</span></p>
-<h3 id="5-gaussian-process">5. Gaussian Process (高斯过程)<a class="headerlink" href="#5-gaussian-process" title="Permanent link">&para;</a></h3>
+<h3 id="5-gaussian-process-高斯过程">5. Gaussian Process (高斯过程)<a class="headerlink" href="#5-gaussian-process-高斯过程" title="Permanent link"></a></h3>
 <ul>
 <li><strong>Definition</strong>: For any <span class="arithmatex">\(k &gt; 0\)</span> and any set of time instants <span class="arithmatex">\(t_1, \ldots, t_k\)</span>, the vector <span class="arithmatex">\(\mathbf{X} = [X(t_1) \cdots X(t_k)]'\)</span> is a Gaussian random vector.</li>
 <li>If <span class="arithmatex">\(X(t)\)</span> is WSS Gaussian, then <span class="arithmatex">\(X(t)\)</span> is also strict-sense stationary.</li>
 </ul>
-<h3 id="6-white-gaussian-noise">6. White Gaussian Noise (白高斯噪声)<a class="headerlink" href="#6-white-gaussian-noise" title="Permanent link">&para;</a></h3>
+<h3 id="6-white-gaussian-noise-白高斯噪声">6. White Gaussian Noise (白高斯噪声)<a class="headerlink" href="#6-white-gaussian-noise-白高斯噪声" title="Permanent link"></a></h3>
 <ul>
 <li><strong>Definition</strong>: <span class="arithmatex">\(W(t)\)</span> is a stationary Gaussian process with <span class="arithmatex">\(\mu_W = 0\)</span> and <span class="arithmatex">\(R_W(\tau) = \eta_0 \delta(\tau)\)</span></li>
 </ul>
 <hr />
-<h2 id="key-summary-table">Key Summary Table<a class="headerlink" href="#key-summary-table" title="Permanent link">&para;</a></h2>
+<h2 id="key-summary-table">Key Summary Table<a class="headerlink" href="#key-summary-table" title="Permanent link"></a></h2>
 <table>
 <thead>
 <tr>
@@ -2726,7 +3061,40 @@
 
 
 
+
+
                 
+  
+<div class="page-info">
+  <span class="page-info__item page-info__stars">
+    <span class="page-info__label">
+      有用的话请给我个
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web/stargazers">star</a>
+      =&gt;
+    </span>
+    <span class="page-info__value">
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web/stargazers" aria-label="GitHub Stars">
+        <img
+          alt="Stars"
+          src="https://img.shields.io/github/stars/Evelina-IS/Evelina_personal_web?label=Stars&amp;style=flat"
+        >
+      </a>
+    </span>
+  </span>
+  <span class="page-info__item" id="busuanzi_container_site_pv">
+    <span class="page-info__label">本站总浏览</span>
+    <span class="page-info__value"><span id="busuanzi_value_site_pv"></span></span>
+  </span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <!-- Giscus 评论区（加载与主题同步逻辑见 features/enhancements.js 的 Giscus 模块）
+     本文件只负责在需要评论的页面放置容器并声明 giscus 配置。 -->
+
+<div class="giscus"></div>
+
+
               </article>
             </div>
           
@@ -2743,6 +3111,46 @@
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-footer__link md-footer__link--prev" aria-label="上一页: git 的使用">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                git 的使用
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../discrete-math/" class="md-footer__link md-footer__link--next" aria-label="下一页: 前置知识">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                前置知识
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -2777,26 +3185,36 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.select", "navigation.tracking", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script src="../theme/js/core.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script src="../theme/js/mathjax.js"></script>
       
-        <script src="../javascripts/katex.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
       
-        <script src="../javascripts/reader-counter.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/x86asm.min.js"></script>
       
-        <script src="../javascripts/comments.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cmake.min.js"></script>
       
-        <script src="../javascripts/extra.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/http.min.js"></script>
+      
+        <script src="../theme/js/highlight.js"></script>
+      
+        <script src="../theme/js/features/content.js"></script>
+      
+        <script src="../theme/js/features/pdf.js"></script>
+      
+        <script src="../theme/js/features/enhancements.js"></script>
       
     
   </body>

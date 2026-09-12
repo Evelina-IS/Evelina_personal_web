@@ -24,7 +24,7 @@
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../theme/assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -50,14 +50,18 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+      <link rel="stylesheet" href="../../theme/css/variables.css">
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../theme/css/main.css">
+    
+      <link rel="stylesheet" href="../../theme/css/features.css">
+    
+      <link rel="stylesheet" href="../../theme/css/home.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -65,15 +69,50 @@
 
     
     
+  
+  <script>
+    (function () {
+      try {
+        var dark = matchMedia("(prefers-color-scheme: dark)").matches;
+        var scheme = dark ? "slate" : "default";
+        document.documentElement.setAttribute("data-md-color-scheme", scheme);
+        var link = document.createElement("link");
+        link.id = "hljs-theme";
+        link.rel = "stylesheet";
+        link.href = dark
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+        document.head.appendChild(link);
+        // body 加载后同步 attribute（bundle 切换主题时写 body，这里保证 html 跟随）
+        var attach = function () {
+          document.body.setAttribute("data-md-color-scheme", scheme);
+          new MutationObserver(function () {
+            var s = document.body.getAttribute("data-md-color-scheme");
+            if (s) document.documentElement.setAttribute("data-md-color-scheme", s);
+          }).observe(document.body, {
+            attributes: true,
+            attributeFilter: ["data-md-color-scheme"],
+          });
+        };
+        if (document.body) attach();
+        else new MutationObserver(function (_, obs) {
+          if (document.body) { attach(); obs.disconnect(); }
+        }).observe(document.documentElement, { childList: true });
+      } catch (e) {}
+    })();
+  </script>
+
   </head>
   
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="green">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -82,7 +121,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1" class="md-skip">
+        <a href="#1-理论基础角动量定理" class="md-skip">
           跳转至
         </a>
       
@@ -94,15 +133,16 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Evelina_IS" class="md-header__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
-
+      <!-- Logo：复用 favicon.svg 的方角图标 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="bf-logo" role="img" aria-label="Evelina" width="64" height="64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#409ba5"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Courier New, Courier, monospace"
+        font-size="42" font-weight="700" fill="#ffffff">E</text>
+</svg>
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
@@ -126,7 +166,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="跟随系统"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="跟随系统" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07zm-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13zm-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87zM19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35zm4.33-2.7 1.15-2.77 2.2 2.54zm1.15-4.96-1.14-2.78 3.34.24zM9.63 18.93l2.77 1.15-2.53 2.19z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="深色模式"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="深色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -148,6 +224,11 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
         
         <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
@@ -194,6 +275,238 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../oneinall/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  网站大全
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../handwritten-notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  手写笔记
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../fds/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FDSNOTE
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../reports/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Reports
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%A4%A7%E7%89%A9%E4%B9%991/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8_%E5%89%AF%E6%9C%AC/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  大物乙1
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  git 的使用
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../probability/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  概率论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../discrete-math/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  离散数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../SYS1/sys%E6%B1%87%E7%BC%96/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SYS 体系结构
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  大学物理
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -207,14 +520,19 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Evelina_IS" class="md-nav__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
-
+      <!-- Logo：复用 favicon.svg 的方角图标 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="bf-logo" role="img" aria-label="Evelina" width="64" height="64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#409ba5"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Courier New, Courier, monospace"
+        font-size="42" font-weight="700" fill="#ffffff">E</text>
+</svg>
     </a>
     Evelina_IS
   </label>
@@ -438,14 +756,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -518,14 +837,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -772,14 +1092,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_8" >
         
           
           <label class="md-nav__link" for="__nav_9_8" id="__nav_9_8_label" tabindex="0">
@@ -1222,14 +1543,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -1531,14 +1853,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_10" >
         
           
           <label class="md-nav__link" for="__nav_10_10" id="__nav_10_10_label" tabindex="0">
@@ -1691,15 +2014,21 @@
     
     
     
+      
+        
+        
+      
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
         
           
-          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
             
   
   
@@ -1791,7 +2120,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-理论基础角动量定理" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 理论基础：角动量定理
@@ -1802,7 +2131,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-关键分析卫星所受的力矩" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 关键分析：卫星所受的力矩
@@ -1813,7 +2142,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#3-最终推论角动量守恒" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 最终推论：角动量守恒
@@ -1824,7 +2153,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#角动量守恒的物理图像与后果" class="md-nav__link">
     <span class="md-ellipsis">
       
         角动量守恒的物理图像与后果
@@ -1835,7 +2164,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#刚体运动学与动力学公式总结" class="md-nav__link">
     <span class="md-ellipsis">
       
         刚体运动学与动力学公式总结
@@ -1847,7 +2176,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#一-刚体运动学" class="md-nav__link">
     <span class="md-ellipsis">
       
         一、 刚体运动学
@@ -1859,7 +2188,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-translation" class="md-nav__link">
+  <a href="#1-平动-translation" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 平动 (Translation)
@@ -1870,7 +2199,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-rotation-about-a-fixed-axis" class="md-nav__link">
+  <a href="#2-定轴转动-rotation-about-a-fixed-axis" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 定轴转动 (Rotation about a Fixed Axis)
@@ -1881,7 +2210,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-plane-combined-motion" class="md-nav__link">
+  <a href="#3-平面平行运动-plane-combined-motion" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 平面平行运动 (Plane Combined Motion)
@@ -1897,7 +2226,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#二-刚体动力学" class="md-nav__link">
     <span class="md-ellipsis">
       
         二、 刚体动力学
@@ -1909,7 +2238,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
+  <a href="#1-质心运动定理" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 质心运动定理
@@ -1920,7 +2249,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
+  <a href="#2-转动定律" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 转动定律
@@ -1931,7 +2260,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-angular-momentum" class="md-nav__link">
+  <a href="#3-角动量-angular-momentum" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 角动量 (Angular Momentum)
@@ -1942,7 +2271,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-moment-of-inertia" class="md-nav__link">
+  <a href="#4-转动惯量-moment-of-inertia" class="md-nav__link">
     <span class="md-ellipsis">
       
         4. 转动惯量 (Moment of Inertia)
@@ -1953,7 +2282,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
+  <a href="#5-动能定理" class="md-nav__link">
     <span class="md-ellipsis">
       
         5. 动能定理
@@ -1969,7 +2298,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#三-解题核心思路求解约束力" class="md-nav__link">
     <span class="md-ellipsis">
       
         三、 解题核心思路：求解约束力
@@ -1985,7 +2314,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#simple-harmonic-motion" class="md-nav__link">
+  <a href="#简谐振动-simple-harmonic-motion-公式总结" class="md-nav__link">
     <span class="md-ellipsis">
       
         简谐振动 (Simple Harmonic Motion) 公式总结
@@ -1997,7 +2326,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#一-核心定义与运动方程" class="md-nav__link">
     <span class="md-ellipsis">
       
         一、 核心定义与运动方程
@@ -2009,7 +2338,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-dynamic-definition" class="md-nav__link">
+  <a href="#1-动力学定义-dynamic-definition" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 动力学定义 (Dynamic Definition)
@@ -2020,7 +2349,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-kinematic-equation" class="md-nav__link">
+  <a href="#2-运动学方程-kinematic-equation" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 运动学方程 (Kinematic Equation)
@@ -2031,7 +2360,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-velocity-acceleration" class="md-nav__link">
+  <a href="#3-速度与加速度-velocity--acceleration" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 速度与加速度 (Velocity &amp; Acceleration)
@@ -2047,7 +2376,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#二-核心物理量关系" class="md-nav__link">
     <span class="md-ellipsis">
       
         二、 核心物理量关系
@@ -2059,7 +2388,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_2" class="md-nav__link">
+  <a href="#1-周期频率与角频率" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 周期、频率与角频率
@@ -2070,7 +2399,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_2" class="md-nav__link">
+  <a href="#2-振幅与初相位的确定" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 振幅与初相位的确定
@@ -2086,7 +2415,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#energy" class="md-nav__link">
+  <a href="#三-能量公式-energy" class="md-nav__link">
     <span class="md-ellipsis">
       
         三、 能量公式 (Energy)
@@ -2097,7 +2426,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rotating-vector" class="md-nav__link">
+  <a href="#四-旋转矢量表示法-rotating-vector" class="md-nav__link">
     <span class="md-ellipsis">
       
         四、 旋转矢量表示法 (Rotating Vector)
@@ -2109,7 +2438,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#核心公式" class="md-nav__link">
     <span class="md-ellipsis">
       
         核心公式
@@ -2120,7 +2449,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_3" class="md-nav__link">
+  <a href="#2-计算时的注意事项" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 计算时的注意事项
@@ -2131,7 +2460,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#3-解题技巧" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 解题技巧
@@ -2147,7 +2476,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1_3" class="md-nav__link">
+  <a href="#1-核心公式系统" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 核心公式系统
@@ -2159,7 +2488,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#动力学特征" class="md-nav__link">
     <span class="md-ellipsis">
       
         动力学特征
@@ -2170,7 +2499,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#周期与频率" class="md-nav__link">
     <span class="md-ellipsis">
       
         周期与频率
@@ -2186,7 +2515,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_4" class="md-nav__link">
+  <a href="#2-运动方程角度形式" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 运动方程（角度形式）
@@ -2197,7 +2526,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_2" class="md-nav__link">
+  <a href="#3-能量转化" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 能量转化
@@ -2208,7 +2537,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4-重点提示什么时候简谐会失效" class="md-nav__link">
     <span class="md-ellipsis">
       
         4. 重点提示：什么时候“简谐”会失效？
@@ -2219,7 +2548,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#扭摆" class="md-nav__link">
     <span class="md-ellipsis">
       
         扭摆
@@ -2230,7 +2559,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#一-核心定义与公式" class="md-nav__link">
     <span class="md-ellipsis">
       
         一、 核心定义与公式
@@ -2242,7 +2571,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_4" class="md-nav__link">
+  <a href="#1-动力学方程" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 动力学方程
@@ -2253,7 +2582,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_5" class="md-nav__link">
+  <a href="#2-运动学特征" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 运动学特征
@@ -2264,7 +2593,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_3" class="md-nav__link">
+  <a href="#3-角频率与周期" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 角频率与周期
@@ -2280,7 +2609,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#二-扭摆的特殊用途测量转动惯量" class="md-nav__link">
     <span class="md-ellipsis">
       
         二、 扭摆的特殊用途：测量转动惯量
@@ -2291,7 +2620,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#三-能量转化" class="md-nav__link">
     <span class="md-ellipsis">
       
         三、 能量转化
@@ -2302,7 +2631,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#四-常见摆动模型对比" class="md-nav__link">
     <span class="md-ellipsis">
       
         四、 常见摆动模型对比
@@ -2313,7 +2642,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#热力学" class="md-nav__link">
     <span class="md-ellipsis">
       
         热力学
@@ -2324,7 +2653,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1_5" class="md-nav__link">
+  <a href="#1-热力学系统的平衡态" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 热力学系统的平衡态
@@ -2335,7 +2664,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_6" class="md-nav__link">
+  <a href="#2-理想气体状态方程" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 理想气体状态方程
@@ -2346,7 +2675,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_4" class="md-nav__link">
+  <a href="#3-理想气体压强公式" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 理想气体压强公式
@@ -2357,7 +2686,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4_1" class="md-nav__link">
+  <a href="#4-理想气体温度公式左边红圈" class="md-nav__link">
     <span class="md-ellipsis">
       
         4. 理想气体温度公式（左边红圈）
@@ -2368,7 +2697,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5_1" class="md-nav__link">
+  <a href="#5-能量均分定理与内能" class="md-nav__link">
     <span class="md-ellipsis">
       
         5. 能量均分定理与内能
@@ -2379,7 +2708,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
+  <a href="#6-麦克斯韦速率分布律--三种统计速率右边超级大红圈" class="md-nav__link">
     <span class="md-ellipsis">
       
         6. 麦克斯韦速率分布律 &amp; 三种统计速率（右边超级大红圈）
@@ -2391,7 +2720,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-v_p" class="md-nav__link">
+  <a href="#①-最概然速率-v_p最可能出现的速率" class="md-nav__link">
     <span class="md-ellipsis">
       
         ① 最概然速率 \(v_p\)（最可能出现的速率）
@@ -2402,7 +2731,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-overlinev" class="md-nav__link">
+  <a href="#②-平均速率-overlinev大锅饭平均数" class="md-nav__link">
     <span class="md-ellipsis">
       
         ② 平均速率 \(\overline{v}\)（大锅饭平均数）
@@ -2413,7 +2742,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-sqrtoverlinev2" class="md-nav__link">
+  <a href="#③-方根平均速率-sqrtoverlinev2与能量压强直接挂钩" class="md-nav__link">
     <span class="md-ellipsis">
       
         ③ 方根平均速率 \(\sqrt{\overline{v^2}}\)（与能量、压强直接挂钩）
@@ -2429,7 +2758,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
+  <a href="#7-玻尔兹曼分布律--重力场分布" class="md-nav__link">
     <span class="md-ellipsis">
       
         7. 玻尔兹曼分布律 &amp; 重力场分布
@@ -2440,7 +2769,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#8" class="md-nav__link">
+  <a href="#8-气体分子碰撞频率和平均自由程" class="md-nav__link">
     <span class="md-ellipsis">
       
         8. 气体分子碰撞频率和平均自由程
@@ -2580,7 +2909,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#1-理论基础角动量定理" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 理论基础：角动量定理
@@ -2591,7 +2920,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#2-关键分析卫星所受的力矩" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 关键分析：卫星所受的力矩
@@ -2602,7 +2931,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3" class="md-nav__link">
+  <a href="#3-最终推论角动量守恒" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 最终推论：角动量守恒
@@ -2613,7 +2942,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#角动量守恒的物理图像与后果" class="md-nav__link">
     <span class="md-ellipsis">
       
         角动量守恒的物理图像与后果
@@ -2624,7 +2953,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#刚体运动学与动力学公式总结" class="md-nav__link">
     <span class="md-ellipsis">
       
         刚体运动学与动力学公式总结
@@ -2636,7 +2965,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#一-刚体运动学" class="md-nav__link">
     <span class="md-ellipsis">
       
         一、 刚体运动学
@@ -2648,7 +2977,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-translation" class="md-nav__link">
+  <a href="#1-平动-translation" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 平动 (Translation)
@@ -2659,7 +2988,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-rotation-about-a-fixed-axis" class="md-nav__link">
+  <a href="#2-定轴转动-rotation-about-a-fixed-axis" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 定轴转动 (Rotation about a Fixed Axis)
@@ -2670,7 +2999,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-plane-combined-motion" class="md-nav__link">
+  <a href="#3-平面平行运动-plane-combined-motion" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 平面平行运动 (Plane Combined Motion)
@@ -2686,7 +3015,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#二-刚体动力学" class="md-nav__link">
     <span class="md-ellipsis">
       
         二、 刚体动力学
@@ -2698,7 +3027,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_1" class="md-nav__link">
+  <a href="#1-质心运动定理" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 质心运动定理
@@ -2709,7 +3038,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_1" class="md-nav__link">
+  <a href="#2-转动定律" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 转动定律
@@ -2720,7 +3049,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-angular-momentum" class="md-nav__link">
+  <a href="#3-角动量-angular-momentum" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 角动量 (Angular Momentum)
@@ -2731,7 +3060,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4-moment-of-inertia" class="md-nav__link">
+  <a href="#4-转动惯量-moment-of-inertia" class="md-nav__link">
     <span class="md-ellipsis">
       
         4. 转动惯量 (Moment of Inertia)
@@ -2742,7 +3071,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
+  <a href="#5-动能定理" class="md-nav__link">
     <span class="md-ellipsis">
       
         5. 动能定理
@@ -2758,7 +3087,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#三-解题核心思路求解约束力" class="md-nav__link">
     <span class="md-ellipsis">
       
         三、 解题核心思路：求解约束力
@@ -2774,7 +3103,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#simple-harmonic-motion" class="md-nav__link">
+  <a href="#简谐振动-simple-harmonic-motion-公式总结" class="md-nav__link">
     <span class="md-ellipsis">
       
         简谐振动 (Simple Harmonic Motion) 公式总结
@@ -2786,7 +3115,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#一-核心定义与运动方程" class="md-nav__link">
     <span class="md-ellipsis">
       
         一、 核心定义与运动方程
@@ -2798,7 +3127,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-dynamic-definition" class="md-nav__link">
+  <a href="#1-动力学定义-dynamic-definition" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 动力学定义 (Dynamic Definition)
@@ -2809,7 +3138,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-kinematic-equation" class="md-nav__link">
+  <a href="#2-运动学方程-kinematic-equation" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 运动学方程 (Kinematic Equation)
@@ -2820,7 +3149,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-velocity-acceleration" class="md-nav__link">
+  <a href="#3-速度与加速度-velocity--acceleration" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 速度与加速度 (Velocity &amp; Acceleration)
@@ -2836,7 +3165,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#二-核心物理量关系" class="md-nav__link">
     <span class="md-ellipsis">
       
         二、 核心物理量关系
@@ -2848,7 +3177,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_2" class="md-nav__link">
+  <a href="#1-周期频率与角频率" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 周期、频率与角频率
@@ -2859,7 +3188,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_2" class="md-nav__link">
+  <a href="#2-振幅与初相位的确定" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 振幅与初相位的确定
@@ -2875,7 +3204,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#energy" class="md-nav__link">
+  <a href="#三-能量公式-energy" class="md-nav__link">
     <span class="md-ellipsis">
       
         三、 能量公式 (Energy)
@@ -2886,7 +3215,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#rotating-vector" class="md-nav__link">
+  <a href="#四-旋转矢量表示法-rotating-vector" class="md-nav__link">
     <span class="md-ellipsis">
       
         四、 旋转矢量表示法 (Rotating Vector)
@@ -2898,7 +3227,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#核心公式" class="md-nav__link">
     <span class="md-ellipsis">
       
         核心公式
@@ -2909,7 +3238,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_3" class="md-nav__link">
+  <a href="#2-计算时的注意事项" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 计算时的注意事项
@@ -2920,7 +3249,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_1" class="md-nav__link">
+  <a href="#3-解题技巧" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 解题技巧
@@ -2936,7 +3265,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1_3" class="md-nav__link">
+  <a href="#1-核心公式系统" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 核心公式系统
@@ -2948,7 +3277,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#动力学特征" class="md-nav__link">
     <span class="md-ellipsis">
       
         动力学特征
@@ -2959,7 +3288,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#周期与频率" class="md-nav__link">
     <span class="md-ellipsis">
       
         周期与频率
@@ -2975,7 +3304,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_4" class="md-nav__link">
+  <a href="#2-运动方程角度形式" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 运动方程（角度形式）
@@ -2986,7 +3315,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_2" class="md-nav__link">
+  <a href="#3-能量转化" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 能量转化
@@ -2997,7 +3326,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4" class="md-nav__link">
+  <a href="#4-重点提示什么时候简谐会失效" class="md-nav__link">
     <span class="md-ellipsis">
       
         4. 重点提示：什么时候“简谐”会失效？
@@ -3008,7 +3337,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#扭摆" class="md-nav__link">
     <span class="md-ellipsis">
       
         扭摆
@@ -3019,7 +3348,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#一-核心定义与公式" class="md-nav__link">
     <span class="md-ellipsis">
       
         一、 核心定义与公式
@@ -3031,7 +3360,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1_4" class="md-nav__link">
+  <a href="#1-动力学方程" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 动力学方程
@@ -3042,7 +3371,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_5" class="md-nav__link">
+  <a href="#2-运动学特征" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 运动学特征
@@ -3053,7 +3382,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_3" class="md-nav__link">
+  <a href="#3-角频率与周期" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 角频率与周期
@@ -3069,7 +3398,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#二-扭摆的特殊用途测量转动惯量" class="md-nav__link">
     <span class="md-ellipsis">
       
         二、 扭摆的特殊用途：测量转动惯量
@@ -3080,7 +3409,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#三-能量转化" class="md-nav__link">
     <span class="md-ellipsis">
       
         三、 能量转化
@@ -3091,7 +3420,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#四-常见摆动模型对比" class="md-nav__link">
     <span class="md-ellipsis">
       
         四、 常见摆动模型对比
@@ -3102,7 +3431,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#热力学" class="md-nav__link">
     <span class="md-ellipsis">
       
         热力学
@@ -3113,7 +3442,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1_5" class="md-nav__link">
+  <a href="#1-热力学系统的平衡态" class="md-nav__link">
     <span class="md-ellipsis">
       
         1. 热力学系统的平衡态
@@ -3124,7 +3453,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2_6" class="md-nav__link">
+  <a href="#2-理想气体状态方程" class="md-nav__link">
     <span class="md-ellipsis">
       
         2. 理想气体状态方程
@@ -3135,7 +3464,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3_4" class="md-nav__link">
+  <a href="#3-理想气体压强公式" class="md-nav__link">
     <span class="md-ellipsis">
       
         3. 理想气体压强公式
@@ -3146,7 +3475,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#4_1" class="md-nav__link">
+  <a href="#4-理想气体温度公式左边红圈" class="md-nav__link">
     <span class="md-ellipsis">
       
         4. 理想气体温度公式（左边红圈）
@@ -3157,7 +3486,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5_1" class="md-nav__link">
+  <a href="#5-能量均分定理与内能" class="md-nav__link">
     <span class="md-ellipsis">
       
         5. 能量均分定理与内能
@@ -3168,7 +3497,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#6" class="md-nav__link">
+  <a href="#6-麦克斯韦速率分布律--三种统计速率右边超级大红圈" class="md-nav__link">
     <span class="md-ellipsis">
       
         6. 麦克斯韦速率分布律 &amp; 三种统计速率（右边超级大红圈）
@@ -3180,7 +3509,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-v_p" class="md-nav__link">
+  <a href="#①-最概然速率-v_p最可能出现的速率" class="md-nav__link">
     <span class="md-ellipsis">
       
         ① 最概然速率 \(v_p\)（最可能出现的速率）
@@ -3191,7 +3520,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-overlinev" class="md-nav__link">
+  <a href="#②-平均速率-overlinev大锅饭平均数" class="md-nav__link">
     <span class="md-ellipsis">
       
         ② 平均速率 \(\overline{v}\)（大锅饭平均数）
@@ -3202,7 +3531,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-sqrtoverlinev2" class="md-nav__link">
+  <a href="#③-方根平均速率-sqrtoverlinev2与能量压强直接挂钩" class="md-nav__link">
     <span class="md-ellipsis">
       
         ③ 方根平均速率 \(\sqrt{\overline{v^2}}\)（与能量、压强直接挂钩）
@@ -3218,7 +3547,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
+  <a href="#7-玻尔兹曼分布律--重力场分布" class="md-nav__link">
     <span class="md-ellipsis">
       
         7. 玻尔兹曼分布律 &amp; 重力场分布
@@ -3229,7 +3558,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#8" class="md-nav__link">
+  <a href="#8-气体分子碰撞频率和平均自由程" class="md-nav__link">
     <span class="md-ellipsis">
       
         8. 气体分子碰撞频率和平均自由程
@@ -3257,9 +3586,9 @@
               
               <article class="md-content__inner md-typeset">
                 
+  
+  
                   
-
-
   
     <a href="https://github.com/Evelina-IS/Evelina_personal_web/edit/main/docs/大物/力学与振动.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
       
@@ -3277,7 +3606,13 @@
   
 
 
-<h4 id="1"><strong>1. 理论基础：角动量定理</strong><a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+
+
+
+
+
+
+<h4 id="1-理论基础角动量定理"><strong>1. 理论基础：角动量定理</strong><a class="headerlink" href="#1-理论基础角动量定理" title="Permanent link"></a></h4>
 <p>根据我们之前讨论过的力学原理，一个质点角动量的变化率等于它所受的<strong>合外力矩</strong>。其数学表达式为：<br />
 dL⃗dt=τ⃗dtdL​=τ<br />
 其中：</p>
@@ -3285,7 +3620,7 @@ dL⃗dt=τ⃗dtdL​=τ<br />
 <li>L⃗=r⃗×p⃗=m(r⃗×v⃗)L=r×p​=m(r×v) 是质点关于某参考点（此处取地球质心）的<strong>角动量</strong>。</li>
 <li>τ⃗=r⃗×F⃗τ=r×F 是合外力关于同一参考点的<strong>力矩</strong>。</li>
 </ul>
-<h4 id="2"><strong>2. 关键分析：卫星所受的力矩</strong><a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<h4 id="2-关键分析卫星所受的力矩"><strong>2. 关键分析：卫星所受的力矩</strong><a class="headerlink" href="#2-关键分析卫星所受的力矩" title="Permanent link"></a></h4>
 <p>对于绕地球做椭圆运动的卫星：</p>
 <ul>
 <li><strong>受力</strong>：只受地球的<strong>万有引力</strong> F⃗F，方向永远指向地球质心。</li>
@@ -3294,13 +3629,13 @@ dL⃗dt=τ⃗dtdL​=τ<br />
 <p>由于力 F⃗F 与位矢 r⃗r <strong>始终共线（方向相反）</strong>，它们的矢量积（叉乘）为零：<br />
 τ⃗=r⃗×F⃗=r⃗×(−GMmr2r^)=−GMmr3(r⃗×r⃗)=0⃗τ=r×F=r×(−r2GMm​r^)=−r3GMm​(r×r)=0<br />
 <strong>结论：卫星所受关于地球质心的合外力矩恒为零。</strong></p>
-<h4 id="3"><strong>3. 最终推论：角动量守恒</strong><a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<h4 id="3-最终推论角动量守恒"><strong>3. 最终推论：角动量守恒</strong><a class="headerlink" href="#3-最终推论角动量守恒" title="Permanent link"></a></h4>
 <p>将 τ⃗=0⃗τ=0 代入角动量定理：<br />
 dL⃗dt=0⃗dtdL​=0<br />
 这意味着角动量 L⃗L <strong>不随时间变化</strong>，是一个常矢量。即：<br />
 L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小和方向均不变)</p>
 <hr />
-<h3 id="_1"><strong>角动量守恒的物理图像与后果</strong><a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<h3 id="角动量守恒的物理图像与后果"><strong>角动量守恒的物理图像与后果</strong><a class="headerlink" href="#角动量守恒的物理图像与后果" title="Permanent link"></a></h3>
 <p>理解了这个数学推导，我们可以从更直观的物理图像来看其含义和影响：</p>
 <ol>
 <li>
@@ -3317,9 +3652,9 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </ul>
 </li>
 </ol>
-<h1 id="_2">刚体运动学与动力学公式总结<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h1>
-<h2 id="_3">一、 刚体运动学<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
-<h3 id="1-translation">1. 平动 (Translation)<a class="headerlink" href="#1-translation" title="Permanent link">&para;</a></h3>
+<h1 id="刚体运动学与动力学公式总结">刚体运动学与动力学公式总结<a class="headerlink" href="#刚体运动学与动力学公式总结" title="Permanent link"></a></h1>
+<h2 id="一-刚体运动学">一、 刚体运动学<a class="headerlink" href="#一-刚体运动学" title="Permanent link"></a></h2>
+<h3 id="1-平动-translation">1. 平动 (Translation)<a class="headerlink" href="#1-平动-translation" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>质心位置：</strong> <span class="arithmatex">\(\vec{r}_c = \frac{1}{M} \sum m_i \vec{r}_i\)</span></p>
@@ -3331,7 +3666,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 <p><strong>质心加速度：</strong> <span class="arithmatex">\(\vec{a}_c = \frac{d\vec{v}_c}{dt}\)</span></p>
 </li>
 </ul>
-<h3 id="2-rotation-about-a-fixed-axis">2. 定轴转动 (Rotation about a Fixed Axis)<a class="headerlink" href="#2-rotation-about-a-fixed-axis" title="Permanent link">&para;</a></h3>
+<h3 id="2-定轴转动-rotation-about-a-fixed-axis">2. 定轴转动 (Rotation about a Fixed Axis)<a class="headerlink" href="#2-定轴转动-rotation-about-a-fixed-axis" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>角速度：</strong> <span class="arithmatex">\(\vec{\omega} = \frac{d\vec{\theta}}{dt}\)</span> （方向沿转轴，符合右手定则）</p>
@@ -3354,7 +3689,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </ul>
 </li>
 </ul>
-<h3 id="3-plane-combined-motion">3. 平面平行运动 (Plane Combined Motion)<a class="headerlink" href="#3-plane-combined-motion" title="Permanent link">&para;</a></h3>
+<h3 id="3-平面平行运动-plane-combined-motion">3. 平面平行运动 (Plane Combined Motion)<a class="headerlink" href="#3-平面平行运动-plane-combined-motion" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>运动分解：</strong> 随质心的平动 <span class="arithmatex">\(+\)</span> 绕质心的转动。</p>
@@ -3367,13 +3702,13 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ul>
 <hr />
-<h2 id="_4">二、 刚体动力学<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<h3 id="1_1">1. 质心运动定理<a class="headerlink" href="#1_1" title="Permanent link">&para;</a></h3>
+<h2 id="二-刚体动力学">二、 刚体动力学<a class="headerlink" href="#二-刚体动力学" title="Permanent link"></a></h2>
+<h3 id="1-质心运动定理">1. 质心运动定理<a class="headerlink" href="#1-质心运动定理" title="Permanent link"></a></h3>
 <div class="arithmatex">\[\sum \vec{F}_{ext} = M\vec{a}_c\]</div>
 <blockquote>
 <p><strong>用途：</strong> 求解质心运动轨迹或求支座/轴向的约束力。</p>
 </blockquote>
-<h3 id="2_1">2. 转动定律<a class="headerlink" href="#2_1" title="Permanent link">&para;</a></h3>
+<h3 id="2-转动定律">2. 转动定律<a class="headerlink" href="#2-转动定律" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>对固定轴：</strong> <span class="arithmatex">\(\sum M_z = I_z \beta\)</span> （或写做 <span class="arithmatex">\(I_z \alpha\)</span>）</p>
@@ -3385,7 +3720,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </ul>
 </li>
 </ul>
-<h3 id="3-angular-momentum">3. 角动量 (Angular Momentum)<a class="headerlink" href="#3-angular-momentum" title="Permanent link">&para;</a></h3>
+<h3 id="3-角动量-angular-momentum">3. 角动量 (Angular Momentum)<a class="headerlink" href="#3-角动量-angular-momentum" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>质点对定点 <span class="arithmatex">\(O\)</span>：</strong> <span class="arithmatex">\(\vec{L} = \vec{r} \times \vec{p} = \vec{r} \times (m\vec{v})\)</span></p>
@@ -3397,7 +3732,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 <p><strong>角动量定理（积分形式）：</strong> <span class="arithmatex">\(\int_{t_1}^{t_2} \sum \vec{M}_{ext} \, dt = \vec{L}_2 - \vec{L}_1\)</span></p>
 </li>
 </ul>
-<h3 id="4-moment-of-inertia">4. 转动惯量 (Moment of Inertia)<a class="headerlink" href="#4-moment-of-inertia" title="Permanent link">&para;</a></h3>
+<h3 id="4-转动惯量-moment-of-inertia">4. 转动惯量 (Moment of Inertia)<a class="headerlink" href="#4-转动惯量-moment-of-inertia" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>定义式：</strong> <span class="arithmatex">\(I = \sum m_i r_i^2\)</span> 或 <span class="arithmatex">\(I = \int r^2 \, dm\)</span></p>
@@ -3437,7 +3772,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </tr>
 </tbody>
 </table>
-<h3 id="5">5. 动能定理<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<h3 id="5-动能定理">5. 动能定理<a class="headerlink" href="#5-动能定理" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>平动动能：</strong> <span class="arithmatex">\(E_{k,tr} = \frac{1}{2}mv_c^2\)</span></p>
@@ -3453,7 +3788,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ul>
 <hr />
-<h2 id="_5">三、 解题核心思路：求解约束力<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="三-解题核心思路求解约束力">三、 解题核心思路：求解约束力<a class="headerlink" href="#三-解题核心思路求解约束力" title="Permanent link"></a></h2>
 <p>对于类似“棒对轴的约束力”问题，遵循以下两步走方案：</p>
 <ol>
 <li>
@@ -3477,11 +3812,11 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 <p>将运动量代入分量方程，即可解得约束力。</p>
 </li>
 </ul>
-<h1 id="simple-harmonic-motion">简谐振动 (Simple Harmonic Motion) 公式总结<a class="headerlink" href="#simple-harmonic-motion" title="Permanent link">&para;</a></h1>
+<h1 id="简谐振动-simple-harmonic-motion-公式总结">简谐振动 (Simple Harmonic Motion) 公式总结<a class="headerlink" href="#简谐振动-simple-harmonic-motion-公式总结" title="Permanent link"></a></h1>
 </li>
 </ol>
-<h2 id="_6">一、 核心定义与运动方程<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<h3 id="1-dynamic-definition">1. 动力学定义 (Dynamic Definition)<a class="headerlink" href="#1-dynamic-definition" title="Permanent link">&para;</a></h3>
+<h2 id="一-核心定义与运动方程">一、 核心定义与运动方程<a class="headerlink" href="#一-核心定义与运动方程" title="Permanent link"></a></h2>
+<h3 id="1-动力学定义-dynamic-definition">1. 动力学定义 (Dynamic Definition)<a class="headerlink" href="#1-动力学定义-dynamic-definition" title="Permanent link"></a></h3>
 <p>简谐振动的特征是受到的<strong>回复力</strong>与位移成正比且方向相反：</p>
 <div class="arithmatex">\[F = -kx\]</div>
 <ul>
@@ -3492,7 +3827,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 <p>负号：表示 <span class="arithmatex">\(F\)</span> 始终指向平衡位置。</p>
 </li>
 </ul>
-<h3 id="2-kinematic-equation">2. 运动学方程 (Kinematic Equation)<a class="headerlink" href="#2-kinematic-equation" title="Permanent link">&para;</a></h3>
+<h3 id="2-运动学方程-kinematic-equation">2. 运动学方程 (Kinematic Equation)<a class="headerlink" href="#2-运动学方程-kinematic-equation" title="Permanent link"></a></h3>
 <p>物体位移随时间变化的通解为：</p>
 <div class="arithmatex">\[x(t) = A \cos(\omega t + \phi_0)\]</div>
 <ul>
@@ -3509,7 +3844,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 <p><span class="arithmatex">\(\phi_0\)</span>：<strong>初相位</strong>，决定 <span class="arithmatex">\(t=0\)</span> 时的状态。</p>
 </li>
 </ul>
-<h3 id="3-velocity-acceleration">3. 速度与加速度 (Velocity &amp; Acceleration)<a class="headerlink" href="#3-velocity-acceleration" title="Permanent link">&para;</a></h3>
+<h3 id="3-速度与加速度-velocity--acceleration">3. 速度与加速度 (Velocity &amp; Acceleration)<a class="headerlink" href="#3-速度与加速度-velocity--acceleration" title="Permanent link"></a></h3>
 <p>通过对位移 <span class="arithmatex">\(x(t)\)</span> 求导获得：</p>
 <ul>
 <li>
@@ -3529,8 +3864,8 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ul>
 <hr />
-<h2 id="_7">二、 核心物理量关系<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<h3 id="1_2">1. 周期、频率与角频率<a class="headerlink" href="#1_2" title="Permanent link">&para;</a></h3>
+<h2 id="二-核心物理量关系">二、 核心物理量关系<a class="headerlink" href="#二-核心物理量关系" title="Permanent link"></a></h2>
+<h3 id="1-周期频率与角频率">1. 周期、频率与角频率<a class="headerlink" href="#1-周期频率与角频率" title="Permanent link"></a></h3>
 <div class="arithmatex">\[\omega = 2\pi f = \frac{2\pi}{T}\]</div>
 <p>对于常见的物理模型：</p>
 <ul>
@@ -3538,7 +3873,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 <li><span class="arithmatex">\(F=-kx=m{d^2x \over dt^2}\)</span></li>
 <li><strong>单摆 (小角度)：</strong> <span class="arithmatex">\(\omega = \sqrt{\frac{g}{L}} \implies T = 2\pi \sqrt{\frac{L}{g}}\)</span></li>
 </ul>
-<h3 id="2_2">2. 振幅与初相位的确定<a class="headerlink" href="#2_2" title="Permanent link">&para;</a></h3>
+<h3 id="2-振幅与初相位的确定">2. 振幅与初相位的确定<a class="headerlink" href="#2-振幅与初相位的确定" title="Permanent link"></a></h3>
 <p>由初始条件 <span class="arithmatex">\((x_0, v_0)\)</span> 唯一确定：</p>
 <ul>
 <li>
@@ -3552,7 +3887,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ul>
 <hr />
-<h2 id="energy">三、 能量公式 (Energy)<a class="headerlink" href="#energy" title="Permanent link">&para;</a></h2>
+<h2 id="三-能量公式-energy">三、 能量公式 (Energy)<a class="headerlink" href="#三-能量公式-energy" title="Permanent link"></a></h2>
 <p>在简谐振动中，动能与势能不断转化，但<strong>系统总机械能守恒</strong>：</p>
 <ul>
 <li>
@@ -3570,7 +3905,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ul>
 <hr />
-<h2 id="rotating-vector">四、 旋转矢量表示法 (Rotating Vector)<a class="headerlink" href="#rotating-vector" title="Permanent link">&para;</a></h2>
+<h2 id="四-旋转矢量表示法-rotating-vector">四、 旋转矢量表示法 (Rotating Vector)<a class="headerlink" href="#四-旋转矢量表示法-rotating-vector" title="Permanent link"></a></h2>
 <p>旋转矢量法是解决相位、相消/相干干涉、初相位判断的神器。</p>
 <table>
 <thead>
@@ -3604,7 +3939,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </table>
 <hr />
 <p>在简谐振动（SHM）中，已知任意时刻的位移 <span class="arithmatex">\(x\)</span> 和速度 <span class="arithmatex">\(v\)</span>，求振幅 <span class="arithmatex">\(A\)</span> 的最快方法是利用<strong>能量守恒</strong>或<strong>旋转矢量关系</strong>。</p>
-<h3 id="_8">核心公式<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h3 id="核心公式">核心公式<a class="headerlink" href="#核心公式" title="Permanent link"></a></h3>
 <p>最直接的计算公式如下：</p>
 <div class="arithmatex">\[A = \sqrt{x^2 + \left( \frac{v}{\omega} \right)^2}\]</div>
 <hr />
@@ -3632,7 +3967,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ul>
 <hr />
-<h3 id="2_3">2. 计算时的注意事项<a class="headerlink" href="#2_3" title="Permanent link">&para;</a></h3>
+<h3 id="2-计算时的注意事项">2. 计算时的注意事项<a class="headerlink" href="#2-计算时的注意事项" title="Permanent link"></a></h3>
 <p>在使用该公式前，你通常需要先确定 <strong>角频率 <span class="arithmatex">\(\omega\)</span></strong>。在题目中，<span class="arithmatex">\(\omega\)</span> 往往通过以下方式给出：</p>
 <ul>
 <li>
@@ -3646,15 +3981,15 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ul>
 <hr />
-<h3 id="3_1">3. 解题技巧<a class="headerlink" href="#3_1" title="Permanent link">&para;</a></h3>
+<h3 id="3-解题技巧">3. 解题技巧<a class="headerlink" href="#3-解题技巧" title="Permanent link"></a></h3>
 <p>如果题目给的是<strong>初始状态</strong>（即 <span class="arithmatex">\(t=0\)</span> 时的 <span class="arithmatex">\(x_0\)</span> 和 <span class="arithmatex">\(v_0\)</span>），这个公式同样适用，且能帮你进一步求出初相位 <span class="arithmatex">\(\phi_0\)</span>：</p>
 <div class="arithmatex">\[\phi_0 = \arctan\left( -\frac{v_0}{\omega x_0} \right)\]</div>
 <p>既然我们已经讨论了简谐振动（SHM）的通用公式，<strong>单摆（Simple Pendulum）</strong> 是物理学中最经典的 SHM 模型之一。</p>
 <p>它的核心逻辑在于：当摆角 <span class="arithmatex">\(\theta\)</span> 很小时，重力的切向分力充当了“回复力”，使得摆球的运动近似为简谐振动。</p>
 <hr />
-<h2 id="1_3">1. 核心公式系统<a class="headerlink" href="#1_3" title="Permanent link">&para;</a></h2>
+<h2 id="1-核心公式系统">1. 核心公式系统<a class="headerlink" href="#1-核心公式系统" title="Permanent link"></a></h2>
 <p>对于一个长度为 <span class="arithmatex">\(L\)</span>、摆球质量为 <span class="arithmatex">\(m\)</span> 的单摆，在重力加速度为 <span class="arithmatex">\(g\)</span> 的环境下：</p>
-<h3 id="_9">动力学特征<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="动力学特征">动力学特征<a class="headerlink" href="#动力学特征" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>回复力：</strong> <span class="arithmatex">\(F_t = -mg \sin\theta \approx -mg\theta\)</span> （当 <span class="arithmatex">\(\theta &lt; 5^\circ\)</span> 时）</p>
@@ -3666,7 +4001,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </blockquote>
 </li>
 </ul>
-<h3 id="_10">周期与频率<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="周期与频率">周期与频率<a class="headerlink" href="#周期与频率" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>周期公式：</strong> <span class="arithmatex">\(T = 2\pi\sqrt{\frac{L}{g}}\)</span> （这就是著名的单摆周期公式）</p>
@@ -3676,7 +4011,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ul>
 <hr />
-<h2 id="2_4">2. 运动方程（角度形式）<a class="headerlink" href="#2_4" title="Permanent link">&para;</a></h2>
+<h2 id="2-运动方程角度形式">2. 运动方程（角度形式）<a class="headerlink" href="#2-运动方程角度形式" title="Permanent link"></a></h2>
 <p>由于单摆在做圆弧运动，我们通常用角度 <span class="arithmatex">\(\theta\)</span> 随时间的变化来描述：</p>
 <div class="arithmatex">\[\theta(t) = \theta_{max} \cos(\omega t + \phi_0)\]</div>
 <ul>
@@ -3688,7 +4023,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ul>
 <hr />
-<h2 id="3_2">3. 能量转化<a class="headerlink" href="#3_2" title="Permanent link">&para;</a></h2>
+<h2 id="3-能量转化">3. 能量转化<a class="headerlink" href="#3-能量转化" title="Permanent link"></a></h2>
 <p>单摆运动本质上是<strong>动能</strong>与<strong>重力势能</strong>的交替转换：</p>
 <ul>
 <li>
@@ -3702,7 +4037,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ul>
 <hr />
-<h2 id="4">4. 重点提示：什么时候“简谐”会失效？<a class="headerlink" href="#4" title="Permanent link">&para;</a></h2>
+<h2 id="4-重点提示什么时候简谐会失效">4. 重点提示：什么时候“简谐”会失效？<a class="headerlink" href="#4-重点提示什么时候简谐会失效" title="Permanent link"></a></h2>
 <ol>
 <li>
 <p><strong>大角度：</strong> 如果摆角 <span class="arithmatex">\(\theta\)</span> 很大（例如超过 <span class="arithmatex">\(15^\circ\)</span>），<span class="arithmatex">\(\sin\theta \approx \theta\)</span> 的近似就不再成立，周期 <span class="arithmatex">\(T\)</span> 会随振幅增大而略微变长。</p>
@@ -3712,12 +4047,12 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ol>
 <hr />
-<h2 id="_11">扭摆<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="扭摆">扭摆<a class="headerlink" href="#扭摆" title="Permanent link"></a></h2>
 <p><strong>扭摆（Torsional Pendulum）</strong> 是大物中除单摆和弹簧振子外的第三类经典简谐振动模型。它的核心逻辑不是线性的“力”，而是<strong>力矩</strong>。</p>
 <p>当一根金属细丝被扭转时，它会产生一个试图恢复原状的<strong>弹性恢复力矩</strong>。</p>
 <hr />
-<h2 id="_12">一、 核心定义与公式<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
-<h3 id="1_4">1. 动力学方程<a class="headerlink" href="#1_4" title="Permanent link">&para;</a></h3>
+<h2 id="一-核心定义与公式">一、 核心定义与公式<a class="headerlink" href="#一-核心定义与公式" title="Permanent link"></a></h2>
+<h3 id="1-动力学方程">1. 动力学方程<a class="headerlink" href="#1-动力学方程" title="Permanent link"></a></h3>
 <p>扭摆遵循转动定律 <span class="arithmatex">\(\sum M = I\alpha\)</span>。当转角 <span class="arithmatex">\(\theta\)</span> 不大时，恢复力矩 <span class="arithmatex">\(M\)</span> 与转角成正比：</p>
 <div class="arithmatex">\[M = -K\theta\]</div>
 <ul>
@@ -3728,11 +4063,11 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 <p><strong>负号：</strong> 表示力矩方向始终指向平衡位置（转角为 0 的位置）。</p>
 </li>
 </ul>
-<h3 id="2_5">2. 运动学特征<a class="headerlink" href="#2_5" title="Permanent link">&para;</a></h3>
+<h3 id="2-运动学特征">2. 运动学特征<a class="headerlink" href="#2-运动学特征" title="Permanent link"></a></h3>
 <p>将 <span class="arithmatex">\(M = I\alpha\)</span>（其中 <span class="arithmatex">\(\alpha = \frac{d^2\theta}{dt^2}\)</span>）代入，得到：</p>
 <div class="arithmatex">\[I \frac{d^2\theta}{dt^2} = -K\theta \implies \frac{d^2\theta}{dt^2} + \frac{K}{I}\theta = 0\]</div>
 <p>这与简谐振动的标准形式完全吻合。</p>
-<h3 id="3_3">3. 角频率与周期<a class="headerlink" href="#3_3" title="Permanent link">&para;</a></h3>
+<h3 id="3-角频率与周期">3. 角频率与周期<a class="headerlink" href="#3-角频率与周期" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>角频率：</strong> <span class="arithmatex">\(\omega = \sqrt{\frac{K}{I}}\)</span></p>
@@ -3746,7 +4081,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ul>
 <hr />
-<h2 id="_13">二、 扭摆的特殊用途：测量转动惯量<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h2 id="二-扭摆的特殊用途测量转动惯量">二、 扭摆的特殊用途：测量转动惯量<a class="headerlink" href="#二-扭摆的特殊用途测量转动惯量" title="Permanent link"></a></h2>
 <p>在大物实验中，扭摆最常见的用途是测量形状复杂物体的转动惯量。</p>
 <p><strong>实验逻辑：</strong></p>
 <ol>
@@ -3761,7 +4096,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ol>
 <hr />
-<h2 id="_14">三、 能量转化<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h2 id="三-能量转化">三、 能量转化<a class="headerlink" href="#三-能量转化" title="Permanent link"></a></h2>
 <p>扭摆的能量在<strong>转动动能</strong>与<strong>扭转弹性势能</strong>之间转化：</p>
 <ul>
 <li>
@@ -3775,7 +4110,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </li>
 </ul>
 <hr />
-<h2 id="_15">四、 常见摆动模型对比<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h2 id="四-常见摆动模型对比">四、 常见摆动模型对比<a class="headerlink" href="#四-常见摆动模型对比" title="Permanent link"></a></h2>
 <table>
 <thead>
 <tr>
@@ -3806,8 +4141,8 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 </tr>
 </tbody>
 </table>
-<h2 id="_16">热力学<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
-<h2 id="1_5">1. 热力学系统的平衡态<a class="headerlink" href="#1_5" title="Permanent link">&para;</a></h2>
+<h2 id="热力学">热力学<a class="headerlink" href="#热力学" title="Permanent link"></a></h2>
+<h2 id="1-热力学系统的平衡态">1. 热力学系统的平衡态<a class="headerlink" href="#1-热力学系统的平衡态" title="Permanent link"></a></h2>
 <ul>
 <li>
 <p><strong>含义</strong>：在没有外界影响（不加热、不戳它）时，一个系统的宏观性质（如温度、压强）<strong>不随时间改变</strong>的状态。</p>
@@ -3816,7 +4151,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 <p><strong>大白话</strong>：就是气体在盒子里“静置”了足够长的时间，大家都妥协了，整箱气体的温度、压强到处都一样，不再乱变了。</p>
 </li>
 </ul>
-<h2 id="2_6">2. 理想气体状态方程<a class="headerlink" href="#2_6" title="Permanent link">&para;</a></h2>
+<h2 id="2-理想气体状态方程">2. 理想气体状态方程<a class="headerlink" href="#2-理想气体状态方程" title="Permanent link"></a></h2>
 <ul>
 <li>
 <p><strong>公式</strong>：</p>
@@ -3831,7 +4166,7 @@ L⃗=m(r⃗×v⃗)=常矢量(大小和方向均不变)L=m(r×v)=常矢量(大小
 <p>令 <span class="arithmatex">\(k = \frac{R}{N_A}\)</span>（玻尔兹曼常数），则 <span class="arithmatex">\(pV = NkT\)</span>。两边同除以 <span class="arithmatex">\(V\)</span>，定义单位体积分子数 <span class="arithmatex">\(n = \frac{N}{V}\)</span>，即得 <span class="arithmatex">\(p = nkT\)</span>。</p>
 </li>
 </ul>
-<h2 id="3_4">3. 理想气体压强公式<a class="headerlink" href="#3_4" title="Permanent link">&para;</a></h2>
+<h2 id="3-理想气体压强公式">3. 理想气体压强公式<a class="headerlink" href="#3-理想气体压强公式" title="Permanent link"></a></h2>
 <ul>
 <li>
 <p><strong>公式</strong>：</p>
@@ -3864,7 +4199,7 @@ $$其中 n={N\over V}\]</div>
 </ol>
 </li>
 </ul>
-<h2 id="4_1">4. 理想气体温度公式（左边红圈）<a class="headerlink" href="#4_1" title="Permanent link">&para;</a></h2>
+<h2 id="4-理想气体温度公式左边红圈">4. 理想气体温度公式（左边红圈）<a class="headerlink" href="#4-理想气体温度公式左边红圈" title="Permanent link"></a></h2>
 <ul>
 <li>
 <p><strong>公式</strong>：</p>
@@ -3881,7 +4216,7 @@ $$其中 n={N\over V}\]</div>
 <p><strong>物理本质</strong>：<strong>温度的本质就是分子平动动能的体现！</strong> 气体越热，分子抖动、乱撞得就越狂暴。</p>
 </li>
 </ul>
-<h2 id="5_1">5. 能量均分定理与内能<a class="headerlink" href="#5_1" title="Permanent link">&para;</a></h2>
+<h2 id="5-能量均分定理与内能">5. 能量均分定理与内能<a class="headerlink" href="#5-能量均分定理与内能" title="Permanent link"></a></h2>
 <ul>
 <li>
 <p><strong>核心思想</strong>：每个<strong>自由度</strong>（分子可以运动的独立方向）都平分到相同的平均能量：</p>
@@ -3912,11 +4247,11 @@ $$其中 n={N\over V}\]</div>
 <div class="arithmatex">\[E = \nu \cdot N_A \cdot \left(\frac{i}{2}kT\right) = \nu \frac{i}{2}RT = \frac{i}{2}pV\]</div>
 </li>
 </ul>
-<h2 id="6">6. 麦克斯韦速率分布律 &amp; 三种统计速率（右边超级大红圈）<a class="headerlink" href="#6" title="Permanent link">&para;</a></h2>
+<h2 id="6-麦克斯韦速率分布律--三种统计速率右边超级大红圈">6. 麦克斯韦速率分布律 &amp; 三种统计速率（右边超级大红圈）<a class="headerlink" href="#6-麦克斯韦速率分布律--三种统计速率右边超级大红圈" title="Permanent link"></a></h2>
 <p>气体分子虽然都在乱撞，但它们的速度是有规律的。大部分分子都在一个中间速度范围内，极快和极慢的都是少数。</p>
 <p>为了描述这个规律，引入了<strong>麦克斯韦速率分布函数 <span class="arithmatex">\(f(v)\)</span></strong>，满足归一化条件：<span class="arithmatex">\(\int_{0}^{\infty} f(v)\text{d}v = 1\)</span>（意思是个体概率加起来等于 100%）。</p>
 <p>重点来了！根据这个分布曲线，诞生了<strong>三种不同的代表性速率</strong>。考试特别喜欢让你填空或比大小，推导和记忆方法如下：</p>
-<h3 id="1-v_p">① 最概然速率 <span class="arithmatex">\(v_p\)</span>（最可能出现的速率）<a class="headerlink" href="#1-v_p" title="Permanent link">&para;</a></h3>
+<h3 id="①-最概然速率-v_p最可能出现的速率">① 最概然速率 <span class="arithmatex">\(v_p\)</span>（最可能出现的速率）<a class="headerlink" href="#①-最概然速率-v_p最可能出现的速率" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>公式</strong>：</p>
@@ -3929,7 +4264,7 @@ $$其中 n={N\over V}\]</div>
 <p><strong>记忆法</strong>：顶峰就是“众数”，代表<strong>绝大多数分子</strong>最倾向于拥有的速度。</p>
 </li>
 </ul>
-<h3 id="2-overlinev">② 平均速率 <span class="arithmatex">\(\overline{v}\)</span>（大锅饭平均数）<a class="headerlink" href="#2-overlinev" title="Permanent link">&para;</a></h3>
+<h3 id="②-平均速率-overlinev大锅饭平均数">② 平均速率 <span class="arithmatex">\(\overline{v}\)</span>（大锅饭平均数）<a class="headerlink" href="#②-平均速率-overlinev大锅饭平均数" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>公式</strong>：</p>
@@ -3942,7 +4277,7 @@ $$其中 n={N\over V}\]</div>
 <p><strong>记忆法</strong>：公式里带有圆周率 <span class="arithmatex">\(\pi\)</span>。</p>
 </li>
 </ul>
-<h3 id="3-sqrtoverlinev2">③ 方根平均速率 <span class="arithmatex">\(\sqrt{\overline{v^2}}\)</span>（与能量、压强直接挂钩）<a class="headerlink" href="#3-sqrtoverlinev2" title="Permanent link">&para;</a></h3>
+<h3 id="③-方根平均速率-sqrtoverlinev2与能量压强直接挂钩">③ 方根平均速率 <span class="arithmatex">\(\sqrt{\overline{v^2}}\)</span>（与能量、压强直接挂钩）<a class="headerlink" href="#③-方根平均速率-sqrtoverlinev2与能量压强直接挂钩" title="Permanent link"></a></h3>
 <ul>
 <li>
 <p><strong>公式</strong>：</p>
@@ -3961,7 +4296,7 @@ $$其中 n={N\over V}\]</div>
 <div class="arithmatex">\[\sqrt{\overline{v^2}} &gt; \overline{v} &gt; v_p\]</div>
 <p><strong>口诀</strong>：<strong>方根 &gt; 平均 &gt; 最概然</strong>（“方平最”，或者记数字根号里分别是 3、2.54、2）。</p>
 </blockquote>
-<h2 id="7">7. 玻尔兹曼分布律 &amp; 重力场分布<a class="headerlink" href="#7" title="Permanent link">&para;</a></h2>
+<h2 id="7-玻尔兹曼分布律--重力场分布">7. 玻尔兹曼分布律 &amp; 重力场分布<a class="headerlink" href="#7-玻尔兹曼分布律--重力场分布" title="Permanent link"></a></h2>
 <ul>
 <li>
 <p><strong>核心思想</strong>：如果把气体放在重力场等外力场中，分子不仅受热运动影响，还会受到外力吸引。</p>
@@ -3978,7 +4313,7 @@ $$其中 n={N\over V}\]</div>
 <p><strong>大白话理解</strong>：海拔越高，空气越稀薄，气压越低。公式里的负号表示高度 <span class="arithmatex">\(h\)</span> 越高，密度 <span class="arithmatex">\(n\)</span> 和压强 <span class="arithmatex">\(p\)</span> 呈指数衰减。</p>
 </li>
 </ul>
-<h2 id="8">8. 气体分子碰撞频率和平均自由程<a class="headerlink" href="#8" title="Permanent link">&para;</a></h2>
+<h2 id="8-气体分子碰撞频率和平均自由程">8. 气体分子碰撞频率和平均自由程<a class="headerlink" href="#8-气体分子碰撞频率和平均自由程" title="Permanent link"></a></h2>
 <ul>
 <li>
 <p><strong>平均碰撞频率 <span class="arithmatex">\(\overline{Z}\)</span></strong>：一个分子在一秒钟内和同伴相撞的平均次数。</p>
@@ -4003,7 +4338,40 @@ $$其中 n={N\over V}\]</div>
 
 
 
+
+
                 
+  
+<div class="page-info">
+  <span class="page-info__item page-info__stars">
+    <span class="page-info__label">
+      有用的话请给我个
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web/stargazers">star</a>
+      =&gt;
+    </span>
+    <span class="page-info__value">
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web/stargazers" aria-label="GitHub Stars">
+        <img
+          alt="Stars"
+          src="https://img.shields.io/github/stars/Evelina-IS/Evelina_personal_web?label=Stars&amp;style=flat"
+        >
+      </a>
+    </span>
+  </span>
+  <span class="page-info__item" id="busuanzi_container_site_pv">
+    <span class="page-info__label">本站总浏览</span>
+    <span class="page-info__value"><span id="busuanzi_value_site_pv"></span></span>
+  </span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <!-- Giscus 评论区（加载与主题同步逻辑见 features/enhancements.js 的 Giscus 模块）
+     本文件只负责在需要评论的页面放置容器并声明 giscus 配置。 -->
+
+<div class="giscus"></div>
+
+
               </article>
             </div>
           
@@ -4020,6 +4388,46 @@ $$其中 n={N\over V}\]</div>
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../../SYS1/sys%E7%90%86%E8%AE%BA3-%E4%B9%A0%E9%A2%98/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 习题 3 — RISC-V 指令分析">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                习题 3 — RISC-V 指令分析
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E6%B0%94%E4%BD%93%E5%8A%A8%E7%90%86%E8%AE%BA/" class="md-footer__link md-footer__link--next" aria-label="下一页: 气体动理论">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                气体动理论
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -4054,26 +4462,36 @@ $$其中 n={N\over V}\]</div>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.select", "navigation.tracking", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script src="../../theme/js/core.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script src="../../theme/js/mathjax.js"></script>
       
-        <script src="../../javascripts/katex.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
       
-        <script src="../../javascripts/reader-counter.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/x86asm.min.js"></script>
       
-        <script src="../../javascripts/comments.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cmake.min.js"></script>
       
-        <script src="../../javascripts/extra.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/http.min.js"></script>
+      
+        <script src="../../theme/js/highlight.js"></script>
+      
+        <script src="../../theme/js/features/content.js"></script>
+      
+        <script src="../../theme/js/features/pdf.js"></script>
+      
+        <script src="../../theme/js/features/enhancements.js"></script>
       
     
   </body>

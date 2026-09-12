@@ -24,7 +24,7 @@
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../theme/assets/favicon.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
@@ -50,14 +50,18 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+SC:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Noto Sans SC";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
     
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+      <link rel="stylesheet" href="../../theme/css/variables.css">
     
-      <link rel="stylesheet" href="../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../theme/css/main.css">
+    
+      <link rel="stylesheet" href="../../theme/css/features.css">
+    
+      <link rel="stylesheet" href="../../theme/css/home.css">
     
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
@@ -65,15 +69,50 @@
 
     
     
+  
+  <script>
+    (function () {
+      try {
+        var dark = matchMedia("(prefers-color-scheme: dark)").matches;
+        var scheme = dark ? "slate" : "default";
+        document.documentElement.setAttribute("data-md-color-scheme", scheme);
+        var link = document.createElement("link");
+        link.id = "hljs-theme";
+        link.rel = "stylesheet";
+        link.href = dark
+          ? "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+          : "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css";
+        document.head.appendChild(link);
+        // body 加载后同步 attribute（bundle 切换主题时写 body，这里保证 html 跟随）
+        var attach = function () {
+          document.body.setAttribute("data-md-color-scheme", scheme);
+          new MutationObserver(function () {
+            var s = document.body.getAttribute("data-md-color-scheme");
+            if (s) document.documentElement.setAttribute("data-md-color-scheme", s);
+          }).observe(document.body, {
+            attributes: true,
+            attributeFilter: ["data-md-color-scheme"],
+          });
+        };
+        if (document.body) attach();
+        else new MutationObserver(function (_, obs) {
+          if (document.body) { attach(); obs.disconnect(); }
+        }).observe(document.documentElement, { childList: true });
+      } catch (e) {}
+    })();
+  </script>
+
   </head>
   
   
     
     
+      
     
     
     
-    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="green">
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -82,7 +121,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#热力学第一定理" class="md-skip">
           跳转至
         </a>
       
@@ -94,15 +133,16 @@
     
       
 
-  
-
-<header class="md-header md-header--shadow" data-md-component="header">
+<header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="../.." title="Evelina_IS" class="md-header__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
-
+      <!-- Logo：复用 favicon.svg 的方角图标 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="bf-logo" role="img" aria-label="Evelina" width="64" height="64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#409ba5"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Courier New, Courier, monospace"
+        font-size="42" font-weight="700" fill="#ffffff">E</text>
+</svg>
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
@@ -126,7 +166,43 @@
     </div>
     
       
+        <form class="md-header__option" data-md-component="palette">
+  
     
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="跟随系统"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="跟随系统" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07zm-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13zm-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87zM19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35zm4.33-2.7 1.15-2.77 2.2 2.54zm1.15-4.96-1.14-2.78 3.34.24zM9.63 18.93l2.77 1.15-2.53 2.19z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="浅色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="浅色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="深色模式"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="深色模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -148,6 +224,11 @@
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
         
         <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
@@ -194,6 +275,238 @@
       
         
           
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../oneinall/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  网站大全
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../handwritten-notes/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  手写笔记
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../fds/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  FDSNOTE
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../reports/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Reports
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../%E5%A4%A7%E7%89%A9%E4%B9%991/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8_%E5%89%AF%E6%9C%AC/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  大物乙1
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  git 的使用
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../probability/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  概率论
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../discrete-math/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  离散数学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../SYS1/sys%E6%B1%87%E7%BC%96/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  SYS 体系结构
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../%E5%8A%9B%E5%AD%A6%E4%B8%8E%E6%8C%AF%E5%8A%A8/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  大学物理
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
         
       
       <main class="md-main" data-md-component="main">
@@ -207,14 +520,19 @@
                     
 
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Evelina_IS" class="md-nav__button md-logo" aria-label="Evelina_IS" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 20h7v2H6c-1.11 0-2-.89-2-2V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8.54l-1.5-.82-.5.28V4h-5v8l-2.5-2.25L8 12V4H6zm18-3-5.5-3-5.5 3 5.5 3zm-9 2.09v2L18.5 23l3.5-1.91v-2L18.5 21z"/></svg>
-
+      <!-- Logo：复用 favicon.svg 的方角图标 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" class="bf-logo" role="img" aria-label="Evelina" width="64" height="64">
+  <rect width="64" height="64" rx="12" ry="12" fill="#409ba5"/>
+  <text x="32" y="46" text-anchor="middle"
+        font-family="Courier New, Courier, monospace"
+        font-size="42" font-weight="700" fill="#ffffff">E</text>
+</svg>
     </a>
     Evelina_IS
   </label>
@@ -438,14 +756,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -518,14 +837,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
           <div class="md-nav__link md-nav__container">
@@ -772,14 +1092,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_9_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_8" >
         
           
           <label class="md-nav__link" for="__nav_9_8" id="__nav_9_8_label" tabindex="0">
@@ -1222,14 +1543,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
         
           
           <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
@@ -1531,14 +1853,15 @@
     
     
     
+      
+      
+    
     
     <li class="md-nav__item md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_10_10" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_10" >
         
           
           <label class="md-nav__link" for="__nav_10_10" id="__nav_10_10_label" tabindex="0">
@@ -1691,15 +2014,21 @@
     
     
     
+      
+        
+        
+      
+      
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" checked>
         
           
-          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
             
   
   
@@ -1847,7 +2176,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#热力学第一定理" class="md-nav__link">
     <span class="md-ellipsis">
       
         热力学第一定理
@@ -1859,7 +2188,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#热力学过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         热力学过程
@@ -1870,7 +2199,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#准静态过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         准静态过程
@@ -1881,7 +2210,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#内能" class="md-nav__link">
     <span class="md-ellipsis">
       
         内能
@@ -1892,7 +2221,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#公式热力学第一定律" class="md-nav__link">
     <span class="md-ellipsis">
       
         公式（热力学第一定律）
@@ -1908,7 +2237,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#功" class="md-nav__link">
     <span class="md-ellipsis">
       
         功
@@ -1919,7 +2248,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#热量" class="md-nav__link">
     <span class="md-ellipsis">
       
         热量
@@ -1930,7 +2259,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#热容量" class="md-nav__link">
     <span class="md-ellipsis">
       
         热容量
@@ -1942,7 +2271,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#比热比热容" class="md-nav__link">
     <span class="md-ellipsis">
       
         比热（比热容）
@@ -1953,7 +2282,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#摩尔热容量" class="md-nav__link">
     <span class="md-ellipsis">
       
         摩尔热容量
@@ -1969,7 +2298,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#等体过程等容过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         等体过程（等容过程）
@@ -1980,7 +2309,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#等压过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         等压过程
@@ -1991,7 +2320,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#等温过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         等温过程
@@ -2002,7 +2331,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#绝热过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         绝热过程
@@ -2013,7 +2342,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#多方过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         多方过程
@@ -2024,7 +2353,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#循环过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         循环过程
@@ -2036,7 +2365,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#热机效率" class="md-nav__link">
     <span class="md-ellipsis">
       
         热机效率
@@ -2047,7 +2376,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#制冷系数" class="md-nav__link">
     <span class="md-ellipsis">
       
         制冷系数
@@ -2131,7 +2460,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#热力学第一定理" class="md-nav__link">
     <span class="md-ellipsis">
       
         热力学第一定理
@@ -2143,7 +2472,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#热力学过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         热力学过程
@@ -2154,7 +2483,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#准静态过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         准静态过程
@@ -2165,7 +2494,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#内能" class="md-nav__link">
     <span class="md-ellipsis">
       
         内能
@@ -2176,7 +2505,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#公式热力学第一定律" class="md-nav__link">
     <span class="md-ellipsis">
       
         公式（热力学第一定律）
@@ -2192,7 +2521,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#功" class="md-nav__link">
     <span class="md-ellipsis">
       
         功
@@ -2203,7 +2532,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#热量" class="md-nav__link">
     <span class="md-ellipsis">
       
         热量
@@ -2214,7 +2543,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#热容量" class="md-nav__link">
     <span class="md-ellipsis">
       
         热容量
@@ -2226,7 +2555,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#比热比热容" class="md-nav__link">
     <span class="md-ellipsis">
       
         比热（比热容）
@@ -2237,7 +2566,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#摩尔热容量" class="md-nav__link">
     <span class="md-ellipsis">
       
         摩尔热容量
@@ -2253,7 +2582,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#等体过程等容过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         等体过程（等容过程）
@@ -2264,7 +2593,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#等压过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         等压过程
@@ -2275,7 +2604,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#等温过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         等温过程
@@ -2286,7 +2615,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#绝热过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         绝热过程
@@ -2297,7 +2626,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#多方过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         多方过程
@@ -2308,7 +2637,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#循环过程" class="md-nav__link">
     <span class="md-ellipsis">
       
         循环过程
@@ -2320,7 +2649,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#热机效率" class="md-nav__link">
     <span class="md-ellipsis">
       
         热机效率
@@ -2331,7 +2660,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#制冷系数" class="md-nav__link">
     <span class="md-ellipsis">
       
         制冷系数
@@ -2359,9 +2688,9 @@
               
               <article class="md-content__inner md-typeset">
                 
+  
+  
                   
-
-
   
     <a href="https://github.com/Evelina-IS/Evelina_personal_web/edit/main/docs/大物/热力学基础.md" title="编辑此页" class="md-content__button md-icon" rel="edit">
       
@@ -2379,15 +2708,21 @@
   
 
 
-  <h1>热力学基础</h1>
 
-<h2 id="_1">热力学第一定理<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="_2">热力学过程<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+
+
+
+
+
+  <h1 id="__skip">热力学基础</h1>
+
+<h2 id="热力学第一定理">热力学第一定理<a class="headerlink" href="#热力学第一定理" title="Permanent link"></a></h2>
+<h3 id="热力学过程">热力学过程<a class="headerlink" href="#热力学过程" title="Permanent link"></a></h3>
 <p>系统从一个平衡态过渡到另一个平衡态的过程。</p>
 <p>按过程是否可逆分类：
 - <strong>可逆过程</strong>：系统 + 外界可以完全复原，无耗散
 - <strong>不可逆过程</strong>：无法完全复原，自然界一切自发过程都是不可逆的</p>
-<h3 id="_3">准静态过程<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="准静态过程">准静态过程<a class="headerlink" href="#准静态过程" title="Permanent link"></a></h3>
 <p><strong>定义</strong>：过程进行得无限缓慢，每一中间态都无限接近于平衡态。</p>
 <ul>
 <li>准静态过程是实际过程的理想化抽象</li>
@@ -2395,13 +2730,13 @@
 <li><strong>可逆过程 = 无耗散的准静态过程</strong></li>
 </ul>
 <p>在准静态过程中，状态方程 <span class="arithmatex">\(pV = \nu RT\)</span> 在任一时刻都成立。</p>
-<h3 id="_4">内能<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="内能">内能<a class="headerlink" href="#内能" title="Permanent link"></a></h3>
 <p><strong>定义</strong>：系统内部所有微观粒子热运动能量的总和（分子动能 + 分子势能）。</p>
 <ul>
 <li>内能是 <strong>状态函数</strong>，只取决于当前状态，与过程无关 → <span class="arithmatex">\(\Delta U\)</span> 只取决于始末态</li>
 <li>理想气体的内能 <strong>只与温度有关</strong>：<span class="arithmatex">\(U = \frac{i}{2} \nu RT\)</span>（<span class="arithmatex">\(i\)</span> 为自由度）</li>
 </ul>
-<h3 id="_5">公式（热力学第一定律）<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="公式热力学第一定律">公式（热力学第一定律）<a class="headerlink" href="#公式热力学第一定律" title="Permanent link"></a></h3>
 <p>系统从外界吸收的热量，一部分使系统的内能发生变化，一部分用于对外做功：</p>
 <div class="arithmatex">\[
 Q = \Delta U + W
@@ -2413,7 +2748,7 @@ Q = \Delta U + W
 <p><strong>微分形式</strong>：<span class="arithmatex">\(dQ = dU + dW = dU + p\,dV\)</span></p>
 <p><strong>另一种表述</strong>：第一类永动机（不消耗能量而不断对外做功的机器）不可能制成。</p>
 <hr />
-<h2 id="_6">功<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="功">功<a class="headerlink" href="#功" title="Permanent link"></a></h2>
 <p>气体在准静态过程中体积变化所做的功：</p>
 <div class="arithmatex">\[
 W = \int_{V_1}^{V_2} p\,dV
@@ -2423,14 +2758,14 @@ W = \int_{V_1}^{V_2} p\,dV
 <li>功是 <strong>过程量</strong>，与路径有关（不是状态函数），不同过程做的功不同</li>
 </ul>
 <hr />
-<h2 id="_7">热量<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="热量">热量<a class="headerlink" href="#热量" title="Permanent link"></a></h2>
 <p><strong>定义</strong>：由于温度差而在系统与外界之间传递的能量。</p>
 <ul>
 <li>热量也是 <strong>过程量</strong>，与具体过程有关</li>
 <li>热传递的三种方式：热传导、热对流、热辐射</li>
 </ul>
 <hr />
-<h2 id="_8">热容量<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<h2 id="热容量">热容量<a class="headerlink" href="#热容量" title="Permanent link"></a></h2>
 <p><strong>定义</strong>：系统温度升高 1K（或 1°C）所吸收的热量：</p>
 <div class="arithmatex">\[
 C = \lim_{\Delta T \to 0} \frac{\Delta Q}{\Delta T} = \frac{dQ}{dT}
@@ -2438,12 +2773,12 @@ C = \lim_{\Delta T \to 0} \frac{\Delta Q}{\Delta T} = \frac{dQ}{dT}
 <ul>
 <li>热容量与过程有关（等压、等体、多方过程各不相同）</li>
 </ul>
-<h3 id="_9">比热（比热容）<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<h3 id="比热比热容">比热（比热容）<a class="headerlink" href="#比热比热容" title="Permanent link"></a></h3>
 <p>单位质量的物质温度升高 1K 所需的热量：</p>
 <div class="arithmatex">\[
 c = \frac{C}{m}
 \]</div>
-<h3 id="_10">摩尔热容量<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="摩尔热容量">摩尔热容量<a class="headerlink" href="#摩尔热容量" title="Permanent link"></a></h3>
 <p>1 mol 物质温度升高 1K 所需的热量：</p>
 <div class="arithmatex">\[
 C_m = \frac{C}{\nu}
@@ -2454,7 +2789,7 @@ C_m = \frac{C}{\nu}
 <li><strong>比热比</strong>（绝热指数）：<span class="arithmatex">\(\gamma = \frac{C_{p,m}}{C_{V,m}} = \frac{i+2}{i}\)</span></li>
 </ul>
 <hr />
-<h2 id="_11">等体过程（等容过程）<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<h2 id="等体过程等容过程">等体过程（等容过程）<a class="headerlink" href="#等体过程等容过程" title="Permanent link"></a></h2>
 <ul>
 <li><strong>条件</strong>：<span class="arithmatex">\(V = \text{常数}\)</span>，<span class="arithmatex">\(dV = 0\)</span></li>
 <li><strong><span class="arithmatex">\(p\)</span>-<span class="arithmatex">\(V\)</span> 图</strong>：竖直直线</li>
@@ -2463,7 +2798,7 @@ C_m = \frac{C}{\nu}
 <li><strong>热量</strong>：<span class="arithmatex">\(Q_V = \nu C_{V,m} (T_2 - T_1)\)</span></li>
 </ul>
 <hr />
-<h2 id="_12">等压过程<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<h2 id="等压过程">等压过程<a class="headerlink" href="#等压过程" title="Permanent link"></a></h2>
 <ul>
 <li><strong>条件</strong>：<span class="arithmatex">\(p = \text{常数}\)</span>，<span class="arithmatex">\(dp = 0\)</span></li>
 <li><strong><span class="arithmatex">\(p\)</span>-<span class="arithmatex">\(V\)</span> 图</strong>：水平直线</li>
@@ -2472,7 +2807,7 @@ C_m = \frac{C}{\nu}
 <li><strong>热量</strong>：<span class="arithmatex">\(Q_p = \nu C_{p,m} (T_2 - T_1)\)</span></li>
 </ul>
 <hr />
-<h2 id="_13">等温过程<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<h2 id="等温过程">等温过程<a class="headerlink" href="#等温过程" title="Permanent link"></a></h2>
 <ul>
 <li><strong>条件</strong>：<span class="arithmatex">\(T = \text{常数}\)</span>，<span class="arithmatex">\(dT = 0\)</span></li>
 <li><strong>理想气体状态方程</strong>：<span class="arithmatex">\(pV = \text{常数}\)</span></li>
@@ -2482,7 +2817,7 @@ C_m = \frac{C}{\nu}
 <li><strong>热力学第一定律</strong>：<span class="arithmatex">\(Q = W\)</span>（吸收的热量全部用于对外做功）</li>
 </ul>
 <hr />
-<h2 id="_14">绝热过程<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h2 id="绝热过程">绝热过程<a class="headerlink" href="#绝热过程" title="Permanent link"></a></h2>
 <ul>
 <li><strong>条件</strong>：<span class="arithmatex">\(Q = 0\)</span>（与外界无热量交换）</li>
 <li><strong>绝热方程</strong>（理想气体准静态绝热过程）：<ul>
@@ -2496,7 +2831,7 @@ C_m = \frac{C}{\nu}
 <li><strong>做功</strong>：<span class="arithmatex">\(W = -\nu C_{V,m}(T_2 - T_1) = \frac{p_1 V_1 - p_2 V_2}{\gamma - 1}\)</span></li>
 </ul>
 <hr />
-<h2 id="_15">多方过程<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<h2 id="多方过程">多方过程<a class="headerlink" href="#多方过程" title="Permanent link"></a></h2>
 <p>等温、等压、等体、绝热的概括形式：</p>
 <div class="arithmatex">\[
 pV^n = \text{常数}
@@ -2532,14 +2867,14 @@ pV^n = \text{常数}
 C_{n,m} = C_{V,m} - \frac{R}{n - 1} = \frac{R}{\gamma - 1} - \frac{R}{n - 1}
 \]</div>
 <hr />
-<h2 id="_16">循环过程<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<h2 id="循环过程">循环过程<a class="headerlink" href="#循环过程" title="Permanent link"></a></h2>
 <p>系统经过一系列状态变化后回到初始状态的过程。</p>
 <ul>
 <li><strong>特征</strong>：<span class="arithmatex">\(\Delta U = 0\)</span>（内能回到初始值）</li>
 <li><strong>总功</strong>：<span class="arithmatex">\(W = Q_1 - |Q_2|\)</span>（净吸热 = 净做功）</li>
 <li><strong><span class="arithmatex">\(p\)</span>-<span class="arithmatex">\(V\)</span> 图</strong>：闭合曲线，面积 = 循环净功</li>
 </ul>
-<h3 id="_17">热机效率<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<h3 id="热机效率">热机效率<a class="headerlink" href="#热机效率" title="Permanent link"></a></h3>
 <div class="arithmatex">\[
 \eta = \frac{W}{Q_1} = 1 - \frac{|Q_2|}{Q_1}
 \]</div>
@@ -2547,7 +2882,7 @@ C_{n,m} = C_{V,m} - \frac{R}{n - 1} = \frac{R}{\gamma - 1} - \frac{R}{n - 1}
 <li><span class="arithmatex">\(Q_1\)</span>：从高温热源吸收的热量</li>
 <li><span class="arithmatex">\(|Q_2|\)</span>：向低温热源放出的热量</li>
 </ul>
-<h3 id="_18">制冷系数<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<h3 id="制冷系数">制冷系数<a class="headerlink" href="#制冷系数" title="Permanent link"></a></h3>
 <div class="arithmatex">\[
 \varepsilon = \frac{Q_2}{W} = \frac{Q_2}{|Q_1| - Q_2}
 \]</div>
@@ -2567,7 +2902,40 @@ C_{n,m} = C_{V,m} - \frac{R}{n - 1} = \frac{R}{\gamma - 1} - \frac{R}{n - 1}
 
 
 
+
+
                 
+  
+<div class="page-info">
+  <span class="page-info__item page-info__stars">
+    <span class="page-info__label">
+      有用的话请给我个
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web/stargazers">star</a>
+      =&gt;
+    </span>
+    <span class="page-info__value">
+      <a href="https://github.com/Evelina-IS/Evelina_personal_web/stargazers" aria-label="GitHub Stars">
+        <img
+          alt="Stars"
+          src="https://img.shields.io/github/stars/Evelina-IS/Evelina_personal_web?label=Stars&amp;style=flat"
+        >
+      </a>
+    </span>
+  </span>
+  <span class="page-info__item" id="busuanzi_container_site_pv">
+    <span class="page-info__label">本站总浏览</span>
+    <span class="page-info__value"><span id="busuanzi_value_site_pv"></span></span>
+  </span>
+</div>
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  <!-- Giscus 评论区（加载与主题同步逻辑见 features/enhancements.js 的 Giscus 模块）
+     本文件只负责在需要评论的页面放置容器并声明 giscus 配置。 -->
+
+<div class="giscus"></div>
+
+
               </article>
             </div>
           
@@ -2584,6 +2952,46 @@ C_{n,m} = C_{V,m} - \frac{R}{n - 1} = \frac{R}{\gamma - 1} - \frac{R}{n - 1}
       </main>
       
         <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E6%B0%94%E4%BD%93%E5%8A%A8%E7%90%86%E8%AE%BA/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 气体动理论">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              <div class="md-ellipsis">
+                气体动理论
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../%E7%83%AD%E5%AD%A6%E5%85%AC%E5%BC%8F%E5%A4%A7%E5%85%A8/" class="md-footer__link md-footer__link--next" aria-label="下一页: 热学公式大全">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              <div class="md-ellipsis">
+                热学公式大全
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -2618,26 +3026,36 @@ C_{n,m} = C_{V,m} - \frac{R}{n - 1} = \frac{R}{\gamma - 1} - \frac{R}{n - 1}
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
     
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.copy", "content.code.select", "navigation.tracking", "navigation.expand", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy", "content.code.select", "content.tooltips", "navigation.footer", "navigation.indexes", "navigation.instant", "navigation.instant.progress", "navigation.tabs", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
       <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+        <script src="../../theme/js/core.js"></script>
       
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+        <script src="../../theme/js/mathjax.js"></script>
       
-        <script src="../../javascripts/katex.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
       
-        <script src="../../javascripts/reader-counter.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/x86asm.min.js"></script>
       
-        <script src="../../javascripts/comments.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cmake.min.js"></script>
       
-        <script src="../../javascripts/extra.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/http.min.js"></script>
+      
+        <script src="../../theme/js/highlight.js"></script>
+      
+        <script src="../../theme/js/features/content.js"></script>
+      
+        <script src="../../theme/js/features/pdf.js"></script>
+      
+        <script src="../../theme/js/features/enhancements.js"></script>
       
     
   </body>

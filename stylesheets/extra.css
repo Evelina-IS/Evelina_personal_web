@@ -324,6 +324,26 @@ input,
   background: transparent;
 }
 
+.giscus,
+#giscus-comments,
+giscus-widget {
+  display: none !important;
+}
+
+.md-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.md-main {
+  flex: 1 0 auto;
+}
+
+.md-footer {
+  margin-top: auto;
+}
+
 @media screen and (max-width: 44.9375em) {
   .md-typeset h1 {
     font-size: 1.25rem;
